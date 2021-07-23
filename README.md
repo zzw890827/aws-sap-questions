@@ -264,7 +264,7 @@
     - [ ] B. Configure the Amazon CloudWatch agent on all servers within the local environment and publish metrics to Amazon CloudWatch Logs.
     - [ ] C. Use AWS Application Discovexy Service and enable agentless discovexy in the existing virtualization environment.
     - [ ] D. Enable AWS Application Discovery Service in the AWS Management Console and configure the corporate firewall to allow scans over a VPN.
-52. A company will several AWS accounts is using AWS Organizations and service control policies (SCPs). An Administrator created the following SCP and has attached it to an organizational unit (OU) that contains AWS account 1111-1111-1111:
+52. A company will several AWS accounts is using AWS Organizations and service control policies (SCPs). An Administrator created the following SCP and has attached it to an organizational unit (OU) that contains AWS account 1111-1111-1111. Developers working in account 1111-1111-1111 complain that they cannot create Amazon S3 buckets. How should the Administrator address this problem?
 
     ```json
     {
@@ -286,7 +286,6 @@
     }
     ```
 
-  Developers working in account 1111-1111-1111 complain that they cannot create Amazon S3 buckets. How should the Administrator address this problem?
     - [ ] A. Add s3 :CreateBucket with "Allow" effect to the SCP.
     - [ ] B. Remove the account from the OU and attach the SCP directly to account 1111-1111-1111.
     - [ ] C. Instruct the Developers to add Amazon S3 permissions to their IAM entities.
