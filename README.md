@@ -800,8 +800,8 @@ olumes might also be deleted. How can the company prevent users from accidentall
 149. An AWS Solutions Architect has noticed that their company is using almost exclusively EBS General Purpose SSD (gp2) volume types for their EBS volumes. They are considering modifying the type of some of these volumes, but it is important that performance is not affected. Which of the following actions could the Solutions Architect consider? (Select TWO)
        - [ ] A. A 50GB gp2 root volume can be modified to an EBS Provisioned IOPS SSD (iol) without stopping the instance.
        - [ ] B. A gp2 volume that is attached to an instance as a root volume needs can be modified to a Throughput Optimized HDD (stl) volume.
-       - [ ] C. A IGB gp2 volume that is attached to an instance as a non-root volume can be modified to a Cold HDD (scl) volume.
-       - [ ] D. A IT B gp2 volume that is attached to an instance as a non-root volume can be modified to a Throughput Optimized HDD (stl) volume without stopping the instance or detaching the volume.
+       - [ ] C. A 1GB gp2 volume that is attached to an instance as a non-root volume can be modified to a Cold HDD (scl) volume.
+       - [ ] D. A 1TB gp2 volume that is attached to an instance as a non-root volume can be modified to a Throughput Optimized HDD (stl) volume without stopping the instance or detaching the volume.
 150. Which of the following are associated with using the "HLS" method of viewing the Kinesis video stream? (Select TWO)
        - [ ] A. A web application that is able to display the video stream using the third-party player Video.js.
        - [ ] B. In order to process Kinesis video streams, a SAAS provider needs to build a new video player which is integrated into their major online product.
