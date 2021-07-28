@@ -8,7 +8,7 @@
    <details>
       <summary>Answer</summary>
 
-      - A. 可用性不够高
+      - [x] A. 可用性不够高
       - B. 正确
       - C. 一个实例明显不够
       - D. Route53没这功能
@@ -301,6 +301,7 @@
        - B. 1GB的带宽很慢
        - C. Snowball无法保证24小时之内的数据可用
        - D. 1PB的EFS太贵了
+    </details>
 
 21. A company ingests and processes streaming market data. The data rate is constant. A nightly process that calculates aggregate statistics is run, and each execution takes about 4 hours to complete. The statistical analysis is not mission critical to the business, and previous data points are picked up on the next execution if a particular run fails. The current architecture uses a pool of Amazon EC2 Resewed Instances with I-year resewations running full time to ingest and store the streaming data in attached Amazon EBS volumes. On-Demand EC2 instances are launched each night to perform the nightly processing, accessing the stored data from NFS shares on the ingestion servers, and terminating the nightly processing sewers when complete.The Reserved Instance resewations are expiring, and the company needs to determine whether to purchase new reservations or implement a new design. Which is the most cost-effective design?
     - [ ] A. Update the ingestion process to use Amazon Kinesis Data Firehose to save data to Amazon S3. Use a fleet of On-Demand EC2 instances that launches each night to perform the batch processing of the S3 data and terminates when the processing completes.
