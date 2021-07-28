@@ -8,10 +8,10 @@
    <details>
       <summary>Answer</summary>
 
-      - [x] A. 可用性不够高
-      - B. 正确
-      - C. 一个实例明显不够
-      - D. Route53没这功能
+      - [ ] A. 可用性不够高
+      - [x] B. 正确
+      - [ ] C. 一个实例明显不够
+      - [ ] D. Route53没这功能
 
    </details>
 2. A Solutions Architect is working with a company that operates a standard three-tier web application in AWS. The web and application tiers run on Amazon EC2 and the database tier runs on Amazon RDS. The company is redesigning the web and application tiers to use AmazonAPI Gateway and AWS Lambda, and the company intends to deploy the new application within 6 months. The IT Manager has asked the Solutions Architect to reduce costs in the interim. Which solution will be MOST cost effective while maintaining reliability?
@@ -23,10 +23,10 @@
    <details>
       <summary>Answer</summary>
 
-      - A. Spot会终止实例无法持续使用
-      - B. 正确
-      - C. 同A
-      - D. 预留实例1起卖，所以无法在6个月以后关闭 -> [ref](https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/ec2-reserved-instances.html#ri-overview)
+      - [ ] A. Spot会终止实例无法持续使用
+      - [x] B. 正确
+      - [ ] C. 同A
+      - [ ] D. 预留实例1起卖，所以无法在6个月以后关闭 -> [ref](https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/ec2-reserved-instances.html#ri-overview)
 
    </details>
 
@@ -39,10 +39,10 @@
    <details>
       <summary>Answer</summary>
 
-      - A. 正确
-      - B. 可以在别的EC2实例上绑定同样的角色从而实现访问
-      - C. Key存储在Metadata里是不安全的
-      - D. 其他的实例也可以用
+      - [x] A. 正确
+      - [ ] B. 可以在别的EC2实例上绑定同样的角色从而实现访问
+      - [ ] C. Key存储在Metadata里是不安全的
+      - [ ] D. 其他的实例也可以用
 
    </details>
 
@@ -56,11 +56,11 @@
    <details>
       <summary>Answer</summary>
 
-      - A. HTTP错误日志无法找到根本原因
-      - B. 正确
-      - C. S3不是基于VPC的
-      - D. 正确 -> [ref](https://aws.amazon.com/cn/xray/?nc1=h_ls)
-      - E. S3和Lambda之间不存在延迟问题
+      - [ ] A. HTTP错误日志无法找到根本原因
+      - [x] B. 正确
+      - [ ] C. S3不是基于VPC的
+      - [x] D. 正确 -> [ref](https://aws.amazon.com/cn/xray/?nc1=h_ls)
+      - [ ] E. S3和Lambda之间不存在延迟问题
 
    </details>
 
@@ -130,13 +130,13 @@
    <details>
       <summary>Answer</summary>
 
-      - A. 等到了黄花菜都凉了
-      - B. VPC Endpoint不能走Direct Connect
-      - C. 这个好贵的
+      - [ ] A. 等到了黄花菜都凉了
+      - [ ] B. VPC Endpoint不能走Direct Connect
+      - [ ] C. 这个好贵的
 
         ![proxy-farm](./img/proxy-farm.png)
 
-      - D. 正确
+      - [x] D. 正确
 
    </details>
 
@@ -149,10 +149,10 @@
     <details>
        <summary>Answer</summary>
 
-       - A. VPC Peering的上线是125 -> [ref](https://docs.aws.amazon.com/zh_cn/vpc/latest/userguide/amazon-vpc-limits.html)
-       - B. 被拒绝的请求是没有通知的
-       - C. 用了VPN就无法追踪源IP了
-       - D. 正确
+       - [ ] A. VPC Peering的上线是125 -> [ref](https://docs.aws.amazon.com/zh_cn/vpc/latest/userguide/amazon-vpc-limits.html)
+       - [ ] B. 被拒绝的请求是没有通知的
+       - [ ] C. 用了VPN就无法追踪源IP了
+       - [x] D. 正确
 
     </details>
 
@@ -165,10 +165,10 @@
     <details>
        <summary>Answer</summary>
 
-       - A. 价格昂贵
-       - B. 不存在Robin路由
-       - C. 正确
-       - D. NLB不支持粘性会话
+       - [ ] A. 价格昂贵
+       - [ ] B. 不存在Robin路由
+       - [x] C. 正确
+       - [ ] D. NLB不支持粘性会话
 
     </details>
 
@@ -181,10 +181,10 @@
     <details>
        <summary>Answer</summary>
 
-       - A. KMS不能用于认证
-       - B. 同A
-       - C. ELB的证书不允许跨区域使用
-       - D. 正确
+       - [ ] A. KMS不能用于认证
+       - [ ] B. 同A
+       - [ ] C. ELB的证书不允许跨区域使用
+       - [x] D. 正确
 
     </details>
 
@@ -236,10 +236,10 @@
     <details>
        <summary>Answer</summary>
 
-       - A. 正确
-       - B. 因为CloudWatch里有Lambda的记录，所以不存在这种情况
-       - C. 如果是这种情况，Lambda是会部分正常工作的
-       - D. 同B
+       - [x] A. 正确
+       - [ ] B. 因为CloudWatch里有Lambda的记录，所以不存在这种情况
+       - [ ] C. 如果是这种情况，Lambda是会部分正常工作的
+       - [ ] D. 同B
 
     </details>
 
@@ -267,10 +267,10 @@
     <details>
        <summary>Answer</summary>
 
-       - A. RDS不支持z/OS-based DB2
-       - B. 正确
-       - C. 同A
-       - D. AWS SMS仅支持Linux和Windows
+       - [ ] A. RDS不支持z/OS-based DB2
+       - [x] B. 正确
+       - [ ] C. 同A
+       - [ ] D. AWS SMS仅支持Linux和Windows
 
     </details>
 
@@ -297,10 +297,10 @@
     <details>
        <summary>Answer</summary>
 
-       - A. 正确
-       - B. 1GB的带宽很慢
-       - C. Snowball无法保证24小时之内的数据可用
-       - D. 1PB的EFS太贵了
+       - [x] A. 正确
+       - [ ] B. 1GB的带宽很慢
+       - [ ] C. Snowball无法保证24小时之内的数据可用
+       - [ ] D. 1PB的EFS太贵了
     </details>
 
 21. A company ingests and processes streaming market data. The data rate is constant. A nightly process that calculates aggregate statistics is run, and each execution takes about 4 hours to complete. The statistical analysis is not mission critical to the business, and previous data points are picked up on the next execution if a particular run fails. The current architecture uses a pool of Amazon EC2 Resewed Instances with I-year resewations running full time to ingest and store the streaming data in attached Amazon EBS volumes. On-Demand EC2 instances are launched each night to perform the nightly processing, accessing the stored data from NFS shares on the ingestion servers, and terminating the nightly processing sewers when complete.The Reserved Instance resewations are expiring, and the company needs to determine whether to purchase new reservations or implement a new design. Which is the most cost-effective design?
