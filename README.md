@@ -223,7 +223,7 @@
     <details>
        <summary>Answer</summary>
 
-       独立账户和组织管理是最佳实践
+       独立账户和组织管理是最佳实践，答案A
 
     </details>
 
@@ -301,111 +301,305 @@
        - [ ] B. 1GB的带宽很慢
        - [ ] C. Snowball无法保证24小时之内的数据可用
        - [ ] D. 1PB的EFS太贵了
+
     </details>
 
-21. A company ingests and processes streaming market data. The data rate is constant. A nightly process that calculates aggregate statistics is run, and each execution takes about 4 hours to complete. The statistical analysis is not mission critical to the business, and previous data points are picked up on the next execution if a particular run fails. The current architecture uses a pool of Amazon EC2 Resewed Instances with I-year resewations running full time to ingest and store the streaming data in attached Amazon EBS volumes. On-Demand EC2 instances are launched each night to perform the nightly processing, accessing the stored data from NFS shares on the ingestion servers, and terminating the nightly processing sewers when complete.The Reserved Instance resewations are expiring, and the company needs to determine whether to purchase new reservations or implement a new design. Which is the most cost-effective design?
+21. A company ingests and processes streaming market data. The data rate is constant. A nightly process that calculates aggregate statistics is run, and each execution takes about 4 hours to complete. The statistical analysis is not mission critical to the business, and previous data points are picked up on the next execution if a particular run fails. The current architecture uses a pool of Amazon EC2 Resewed Instances with 1-year reservations running full time to ingest and store the streaming data in attached Amazon EBS volumes. On-Demand EC2 instances are launched each night to perform the nightly processing, accessing the stored data from NFS shares on the ingestion servers, and terminating the nightly processing sewers when complete.The Reserved Instance reservations are expiring, and the company needs to determine whether to purchase new reservations or implement a new design. Which is the most cost-effective design?
     - [ ] A. Update the ingestion process to use Amazon Kinesis Data Firehose to save data to Amazon S3. Use a fleet of On-Demand EC2 instances that launches each night to perform the batch processing of the S3 data and terminates when the processing completes.
     - [ ] B. Update the ingestion process to use Amazon Kinesis Data Firehose to save data to Amazon S3. Use AWS Batch to perform nightly processing with a Spot market bid of 50% of the On-Demand price.
-    - [ ] C. Update the ingestion process to use a fleet ofEC2 Reserved Instances behind a Network Load Balancer with 3-year leases. Use Batch with Spot instances with a maximum bid of 50% of the On-Demand price for the nightly processmg.
+    - [ ] C. Update the ingestion process to use a fleet of EC2 Reserved Instances behind a Network Load Balancer with 3-year leases. Use Batch with Spot instances with a maximum bid of 50% of the On-Demand price for the nightly processing.
     - [ ] D. Update the ingestion process to use Amazon Kinesis Data Firehose to save data to Amazon Redshift. Use an AWS Lambda function scheduled to run nightly with Amazon CloudWatch Events to query Amazon Redshift to generate the daily statistics.
-22. A three-tier web application runs on Amazon EC2 instances. Cron daemons are used to trigger scripts that collect the web server, application, and database logs and send them to a centralized location every hour. Occasionally, scaling events or unplanned outages have caused the instances to stop before the latest logs were collected, and the log files were lost. Which of the following options is the MOST reliable way of collecting and presewing the log files?
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 太贵了
+       - [x] B. 正确
+       - [ ] C. 会使用EBS，这样数据不太好收集
+       - [ ] D. Lambda最多运行15分钟
+
+    </details>
+
+22. A three-tier web application runs on Amazon EC2 instances. Cron daemons are used to trigger scripts that collect the web server, application, and database logs and send them to a centralized location every hour. Occasionally, scaling events or unplanned outages have caused the instances to stop before the latest logs were collected, and the log files were lost. Which of the following options is the MOST reliable way of collecting and preserving the log files?
     - [ ] A. Update the cron to run every 5 minutes instead of every hour to reduce the possibility of log messages being lost in an outage.
     - [ ] B. Use Amazon CloudWatch Events to trigger Amazon Systems Manager Run Command to invoke the log collection scripts more frequently to reduce the possibility of log messages being lost in an outage.
-    - [ ] C. Use the Amazon CloudWatch Logs agent to stream log messages directly to CloudWatch Logs. Configure the agent with a batch count of I to reduce the possibility of log messages being lost in an outage.
+    - [ ] C. Use the Amazon CloudWatch Logs agent to stream log messages directly to CloudWatch Logs. Configure the agent with a batch count of 1 to reduce the possibility of log messages being lost in an outage.
     - [ ] D. Use Amazon CloudWatch Events to trigger AWS Lambda to SSH into each running instance and invoke the log collection scripts more frequently to reduce the possibility of log messages being lost in an outage.
+  
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案C
+
+    </details>
+
 23. A company stores sales transaction data in Amazon DynamoDB tables. To detect anomalous behaviors and respond quickly, all changes to the items stored in the DynamoDB tables must be logged within 30 minutes. Which solution meets the requirements?
     - [ ] A. Copy the DynamoDB tables into Apache Hive tables on Amazon ENIR every hour and analyze them for anomalous behaviors. Send Amazon SNS notifications when anomalous behaviors are detected.
     - [ ] B. Use AWS CloudTrail to capture all the APIs that change the DynamoDB tables. Send SNS notifications when anomalous behaviors are detected using CloudTrail event filtering.
     - [ ] C. Use Amazon DynamoDB Streams to capture and send updates to AWS Lambda. Create a Lambda function to output records to Amazon Kinesis Data Streams. Analyze any anomalies with Amazon Kinesis Data Analytics. Send SNS notifications when anomalous behaviors are detected.
     - [ ] D. Use event patterns in Amazon CloudWatch Events to capture DynamoDB API call events with an AWS Lambda function as a target to analyze behavior. Send SNS notifications when anomalous behaviors are detected.
-24. A company is mnning multiple applications on Amazon EC2. Each application is deployed and managed by multiple business units. All applications are deployed on a single AWS account but on different virtual privateclouds (VPCs). The company uses a separate VPC in the same account for test and development purposes. Production applications suffered multiple outages when users accidentally terminated and modified resources that belonged to another business A Solutions Architect has been asked to improve the availability of the company applications while allowing the Developers access to the resources they need. Which option meets the requirements with the LEAST disruption?
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案C
+
+    </details>
+
+24. A company is running multiple applications on Amazon EC2. Each application is deployed and managed by multiple business units. All applications are deployed on a single AWS account but on different virtual private clouds (VPCs). The company uses a separate VPC in the same account for test and development purposes. Production applications suffered multiple outages when users accidentally terminated and modified resources that belonged to another business A Solutions Architect has been asked to improve the availability of the company applications while allowing the Developers access to the resources they need. Which option meets the requirements with the LEAST disruption?
     - [ ] A. Create an AWS account for each business unit. Move each business unit's instances to its own account and set up a federation to allow users to access their business unit's account.
     - [ ] B. Set up a federation to allow users to use their corporate credentials, and lock the users down to their own VPC. Use a network ACL to block each VPC from accessing other VPCs.
     - [ ] C. Implement a tagging policy based on business units. Create an IAM policy so that each user can terminate instances belonging to their own business units only.
     - [ ] D. Set up role-based access for each user and provide limited permissions based on individual roles and the services for which each user is responsible.
-25. An enterprise luns 103 line-of-business applications on virtual machines in an on-premises data center. Many of the applications are simple PHP, Java, or Ruby web applications, are no longer actively developed, and serve little traffic. Which approach should be used to migrate these applications to AWS with the infrastmcture costs?
+
+    <details>
+       <summary>Answer</summary>
+
+       人多了搞不定啊，答案C
+
+    </details>
+
+25. An enterprise runs 103 line-of-business applications on virtual machines in an on-premises data center. Many of the applications are simple PHP, Java, or Ruby web applications, are no longer actively developed, and serve little traffic. Which approach should be used to migrate these applications to AWS with the infrastrucxture costs?
     - [ ] A. Deploy the applications to single-instance AWS Elastic Beanstalk environments without a load balancer.
     - [ ] B. Use AWS SMS to create AMIs for each virtual machine and run them in Amazon EC2.
     - [ ] C. Convert each application to a Docker image and deploy to a small Amazon ECS cluster behind an Application Load Balancer.
     - [ ] D. Use VM ImportExport to create AMIs for each virtual machine and run them in single-instance AWS Elastic Beanstalk environments by configuring a custom image.
-26. A Solutions Architect must create a cost-effective backup solution for a company's 500MB source wxxxcode-style repository of proprietary and sensitive applications. The repositow runs on Linux and backs up daily to tape. Tape backups are stored for I year. The current solutions are not meeting the company's needs because it is a manual process that is prone to error, expensive to maintain, and does not meet the need for a Recovew Point Objective (RPO) of I hour or Recovery Time Objective (RTO) of 2 hours. The new disaster recove1Y requirement is for backups to be stored offsite and to be able to restore a single file if needed. Which solution meets the customer's needs for RTO, RPO, and disaster recovew with the LEAST effort and expense?
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，微服务用docker和ECS
+
+    </details>
+
+26. A Solutions Architect must create a cost-effective backup solution for a company's 500MB source wxxxcode-style repository of proprietary and sensitive applications. The repository runs on Linux and backs up daily to tape. Tape backups are stored for I year. The current solutions are not meeting the company's needs because it is a manual process that is prone to error, expensive to maintain, and does not meet the need for a Recover Point Objective (RPO) of 1 hour or Recovery Time Objective (RTO) of 2 hours. The new disaster recove1Y requirement is for backups to be stored offsite and to be able to restore a single file if needed. Which solution meets the customer's needs for RTO, RPO, and disaster recover with the LEAST effort and expense?
     - [ ] A. Replace local tapes with an AWS Storage Gateway virtual tape library to integrate with current backup software. Run backups nightly and store the virtual tapes on Amazon S3 standard storage in US-EAST-I. Use cross-region replication to create a second copy in US-WEST-2. Use Amazon S3 lifecycle policies to perform automatic migration to Amazon Glacier and deletion of expired backups after I year?
     - [ ] B. Configure the local source wxxxcode-style repository to synchronize files to an AWS Storage Gateway file Amazon gateway to store backup copies in an Amazon S3 Standard bucket. Enable versioning on the Amazon S3 bucket. Create Amazon S3 lifecycle policies to automatically migrate old versions of objects to Amazon S3 Standard 0 Infrequent Access, then Amazon Glacier, then delete backups after I year.
-    - [ ] C. Replace the local source wxxxcode-style repository storage with a Storage Gateway stored volume. Change the default snapshot frequency to I hour. Use Amazon S3 lifecycle policies to archive snapshots to Amazon Glacier and remove old snapshots after I year. Use cross-region replication to run on create a copy of the snapshots in US-WEST-2.
-    - [ ] D. Replace the local source wxxxcode-style repository storage with a Storage Gateway cached volume. Create a snapshot schedule to take hourly snapshots. Use an Amazon CloudWatch Eventsn schedule expression rule to run on hourly AWS Lambda task to copy snapshots from US-EAST -l to USWEST-2.
+    - [ ] C. Replace the local source wxxxcode-style repository storage with a Storage Gateway stored volume. Change the default snapshot frequency to 1 hour. Use Amazon S3 lifecycle policies to archive snapshots to Amazon Glacier and remove old snapshots after 1 year. Use cross-region replication to run on create a copy of the snapshots in US-WEST-2.
+    - [ ] D. Replace the local source wxxxcode-style repository storage with a Storage Gateway cached volume. Create a snapshot schedule to take hourly snapshots. Use an Amazon CloudWatch Events schedule expression rule to run on hourly AWS Lambda task to copy snapshots from US-EAST -l to USWEST-2.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. RPO无法实现1小时
+       - [x] B. 正确
+       - [ ] C. 无法恢复单个文件
+       - [ ] D. 缓存卷不用于文件备份
+
+    </details>
+
 27. A company CFO recently analyzed the company's AWS monthly bill and identified an opportunity to reduce the cost for AWS Elastic Beanstalk environments in use. The CFO has asked a Solutions Architect to design a highly available solution that will spin up an Elastic Beanstalk environment in the morning and terminate it at the end of the day. The solution should be designed with minimal operational overhead and to minimize costs. It should also be able to handle the increased use of Elastic Beanstalk environments among different teams, and must provide a one-stop scheduler solution for all teams to keep the operational costs low. What design will meet these requirements?
     - [ ] A. Set up a Linux EC2 Micro instance. Configure an IAM role to allow the start and stop of the Elastic Beanstalk environment and attach it to the instance. Create scripts on the instance to start and stop the Elastic Beanstalk environment. Configure cron jobs on the instance to execute the scripts.
     - [ ] B. Develop AWS Lambda functions to start and stop the Elastic Beanstalk environment. Configure a Lambda execution role granting Elastic Beanstalk environment start/stop permissions, and assign the role to the Lambda functions. Configure cron expression Amazon CloudWatch Events rules to trigger the Lambda functions.
     - [ ] C. Step function is not used for this, and the role with step function will not help the worker task.
     - [ ] D. EC2 need to run during datetime.. and not really good solution.
-28. A company plans to move regulated and security-sensitive businesses to AWS. The Security team is developing a framework to validate the adoption ofAWS best practice and industryrecognized compliance standards. The AWS Management Console is the preferred method for teams to provision resources. Which strategies should a Solutions Architect use to meet the business requirements and continuously assess, audit, and monitor the configurations ofAWS resources? (Choose two.)
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案B
+
+    </details>
+
+28. A company plans to move regulated and security-sensitive businesses to AWS. The Security team is developing a framework to validate the adoption of AWS best practice and industry recognized compliance standards. The AWS Management Console is the preferred method for teams to provision resources. Which strategies should a Solutions Architect use to meet the business requirements and continuously assess, audit, and monitor the configurations of AWS resources? (Choose two.)
     - [ ] A. Use AWS Config rules to periodically audit changes to AWS resources and monitor the compliance of the configuration. Develop AWS Config custom rules using AWS Lambda to establish a test-driven development approach, and further automate the evaluation of configuration changes against the required controls.
     - [ ] B. Use Amazon CloudWatch Logs agent to collect all the AWS SDK logs. Search the log data using a pre-defined set of filter patterns that machines mutating API calls. Send notifications using Amazon CloudWatch alarms when unintended changes are performed. Archive log data by using a batch export to Amazon S3 and then Amazon Glacier for a long-term retention and auditability.
     - [ ] C. Use AWS CloudTrail events to assess management activities of all AWS accounts. Ensure that CloudTrail is enabled in all accounts and available AWS services. Enable trails, encrypt CloudTrail event log files with an AWS KMS key, and monitor recorded activities with CloudWatch Logs.
     - [ ] D. Use the Amazon CloudWatch Events near-real-time capabilities to monitor system events patterns, and trigger AWS Lambda functions to automatically revert non-authorized changes in AWS resources. Also, target Amazon SNS topics to enable notifications and improve the response time of incident responses.
     - [ ] E. Use CloudTrail integration with Amazon SNS to automatically notify unauthorized API activities. Ensure that CloudTrail is enabled in all accounts and available AWS services. Evaluate the usage of Lambda functions to automatically revert non-authorized changes in AWS resources.
-29. A company is mnning a high-user-volume media-sharing application on premises. It currently hosts about 400 TB of data with millions of video files. The company is migrating this application to AWS to improve reliability and reduce costs. The Solutions Architecture team plans to store the videos in an Amazon S3 bucket and use Amazon CloudFront to distribute videos to users. The company needs to migrate this application to AWS 10 days with the least amount of downtime possible. The company currently has I Gbps connectivity to the Internet with 30 percent free capacity. Which of the following solutions would enable the company to migrate the workload to AWS and meet all of the requirements?
+
+    <details>
+       <summary>Answer</summary>
+
+       - [x] A. 正确
+       - [ ] B. CloudWatch不用于账号审计
+       - [x] C. 正确
+       - [ ] D. 同B
+       - [ ] E. CloudTrail没有filter功能
+
+    </details>
+
+29. A company is running a high-user-volume media-sharing application on premises. It currently hosts about 400 TB of data with millions of video files. The company is migrating this application to AWS to improve reliability and reduce costs. The Solutions Architecture team plans to store the videos in an Amazon S3 bucket and use Amazon CloudFront to distribute videos to users. The company needs to migrate this application to AWS 10 days with the least amount of downtime possible. The company currently has I Gbps connectivity to the Internet with 30 percent free capacity. Which of the following solutions would enable the company to migrate the workload to AWS and meet all of the requirements?
     - [ ] A. Use a multi-part upload in Amazon S3 client to parallel-upload the data to the Amazon S3 bucket over the Internet. Use the throttling feature to ensure that the Amazon S3 client does not use more than 30 percent of available Internet capacity.
-    - [ ] B. Request an AWS Snowmobile with I PB capacity to be delivered to the data center. Load the data into Snowmobile and send it back to have AWS download that data to the Amazon S3 bucket. Sync the new data that was generated while migration was in flight.
-    - [ ] C. Use an Amazon S3 client to transfer data from the data center to the Amazon S3 bucket over the Internet. Use the throttling feature to ensure the Amazon S3 client does not use more than 30 percent of available Internet capacit
+    - [ ] B. Request an AWS Snowmobile with 1 PB capacity to be delivered to the data center. Load the data into Snowmobile and send it back to have AWS download that data to the Amazon S3 bucket. Sync the new data that was generated while migration was in flight.
+    - [ ] C. Use an Amazon S3 client to transfer data from the data center to the Amazon S3 bucket over the Internet. Use the throttling feature to ensure the Amazon S3 client does not use more than 30 percent of available Internet capacity.
     - [ ] D. Request multiple AWS Snowball devices to be delivered to the data center. Load the data concurrently into these devices and send it back. Have AWS download that data to the Amazon S3 bucket. Sync the new data that was generated while migration was in flight.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案D
+
+    </details>
+
 30. A company has developed a new billing application that will be released in two weeks. Developers are testing the application running on 10 EC2 instances managed by an Auto Scaling group in subnet 172.31.0.0/24 within VPC A with CIDR block 172.31.0.0/16. The Developers noticed connection timeout errors in the application logs while connecting to an Oracle database running on an Amazon EC2 instance in the same region within VPC B with CIDR block 172.50.0.0/16. The IP of the database instance is hard-wxxxcode-styled in the application instances. Which recommendations should a Solutions Architect present to the Developers to solve the problem in a secure way with minimal maintenance and overhead?
-    - [ ] A. Disable the SrcDestCheck attribute for all instances mnning the application and Oracle Database. Change the default route ofVPC A to point ENI of the Oracle Database that has an IP address assigned within the range of 172.50.0.0/26
+    - [ ] A. Disable the SrcDestCheck attribute for all instances rnning the application and Oracle Database. Change the default route of VPC A to point ENI of the Oracle Database that has an IP address assigned within the range of 172.50.0.0/26
     - [ ] B. Create and attach internet gateways for both VPCs. Configure default routes to the Internet gateways for both VPCs. Assign an Elastic IP for each Amazon EC2 instance in VPC A
     - [ ] C. Create a VPC peering connection between the two VPCs and add a route to the routing table of VTC A that points to the IP address range of 172.50.0.0/16
     - [ ] D. Create an additional Amazon EC2 instance for each VPC as a customer gateway; create one virtual private gateway (VGW) for each VPC, configure an end-to-end VPC, and advertise the routes for 172.50.0.0/16
-31. A Solutions Architect has been asked to look at a company's Amazon Redshift cluster, which has quickly become an integral part of its technology and supports key business process. The Solutions Architect is to increase the reliability and availability of the cluster and provide options to ensure that if an issue arises, the cluster can either operate or be restored within four hours. Which of the following solution options BEST addresses the business need in the most costeffective manner?
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案C
+
+    </details>
+
+31. A Solutions Architect has been asked to look at a company's Amazon Redshift cluster, which has quickly become an integral part of its technology and supports key business process. The Solutions Architect is to increase the reliability and availability of the cluster and provide options to ensure that if an issue arises, the cluster can either operate or be restored within four hours. Which of the following solution options BEST addresses the business need in the most cost effective manner?
     - [ ] A. Ensure that the Amazon Redshift cluster has been set up to make use of Auto Scaling groups with the nodes in the cluster spread across multiple Availability Zones.
     - [ ] B. Ensure that the Amazon Redshift cluster creation has been template using AWS CloudFormation so it can easily be launched in another Availability Zone and data populated from the automated Redshift back-ups stored in Amazon S3.
     - [ ] C. Use Amazon Kinesis Data Firehose to collect the data ahead of ingestion into Amazon Redshift and create clusters using AWS CloudFormation in another region and stream the data to both clusters.
     - [ ] D. Create two identical Amazon Redshift clusters in different regions (one as the primary, one as the secondary). Use Amazon S3 cross-region replication from the primary to secondary). Use Amazon S3 cross-region replication from the primary to secondary region, which triggers an AWS Lambda function to populate the cluster in the secondary region.
+  
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. Amazon Redshift cluster只有单可用区
+       - [x] B. 正确
+       - [ ] C. 四小时的RPO所以不需要复制集群
+       - [ ] D. Lambda有可能超时
+
+    </details>
+
 32. A company prefers to limit running Amazon EC2 instances to those that were launched from AMIs pre-approved by the Information Security department. The Development team has an agile continuous integration and deployment process that cannot be stalled by the solution. Which method enforces the required controls with the LEAST impact on the development process? (Choose two.)
     - [ ] A. Use IAM policies to restrict the ability of users or other automated entities to launch EC2 instances based on a specific set of pre-approved AMIs, such as those tagged in a specific way by Information Security.
     - [ ] B. Use regular scans within Amazon Inspector with a custom assessment template to determine if the EC2 instance that the Amazon Inspector Agent is running on is based upon a pre-approved AMI. If it is not, shut down the instance and inform information Security by email that this occurred.
     - [ ] C. Only allow launching ofEC2 instances using a centralized DevOps team, which is given work packages via notifications from an internal ticketing system. Users make requests for resources using this ticketing tool, which has manual information security approval steps to ensure that EC2 instances are only launched from approved AMIs.
     - [ ] D. Use AWS Config rules to spot any launches of EC2 instances based on non-approved AMIs, trigger an AWS Lambda function to automatically terminate the instance, and publish a message to an Amazon SNS topic to inform Information Security that this occurred.
     - [ ] E. Use a scheduled AWS Lambda function to scan through the list of running instances within the virtual private cloud (VPC) and determine if any of these are based on unapproved AMIs. Publish a message to an SNS topic to inform Information Security that this occurred and then shut down the instance.
+  
+    <details>
+       <summary>Answer</summary>
+
+       - [x] A. 正确
+       - [ ] B. AWS Inspector是用于扫描漏洞的，并不是用去AMI
+       - [ ] C. 这个不属于敏捷
+       - [x] D. 正确
+       - [ ] E. 并不存在预定的预定的AWS Lambda
+
+    </details>
+
 33. A Company has a security event whereby an Amazon S3 bucket with sensitive information was made public. Company policy is to never have public S3 objects, and the Compliance team must be informed immediately when any public objects are identified. How can the presence of a public S3 object be detected, set to trigger alarm notifications, and automatically remediated in the future? (Choose two.)
     - [ ] A. Turn on object-level logging for Amazon S3. Turn on Amazon S3 event notifications to notify by using an Amazon SNS topic when a PutObject API call is made with a public-read permission.
     - [ ] B. Configure an Amazon CloudWatch Events rule that invokes an AWS Lambda function to secure the S3 bucket.
     - [ ] C. Use the S3 bucket permissions for AWS Trusted Advisor and configure a CloudWatch event to notify by using Amazon SNS.
     - [ ] D. Turn on object-level logging for Amazon S3. Configure a CloudWatch event to notify by using an SNS topic when a PutObject API call with public-read permission is detected in the AWS CloudTrail logs.
     - [ ] E. Schedule a recursive Lambda function to regularly change all object permissions inside the S3 bucket.
-34. A company is using an Amazon CloudFront distribution to distribute both static and dynamic content from a web application mnning behind an Application Load Balancer. The web application requires user authorization and session tracking for dynamic content. The CloudFront distribution has a single cache behavior configured to forward the Authorization, Host, and User-Agent HTTP whitelist headers and a session cookie to the origin. All other cache behavior settings are set to their default value. A valid ACM certificate is applied to the CloudFront distribution with a matching CNAME in the distribution settings. The ACM certificate is also applied to the HTTPS listener for the Application Load Balancer. The CloudFront origin protocol policy is set to HTTPS only. Analysis of the cache statistics report shows that the miss rate for this distribution is very high. What can the Solutions Architect do to improve the cache hit rate for this distribution without causing the SSL/TLS handshake between CloudFront and the Application Load Balancer to fail?
+  
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. S3 notification中不存在权限信息
+       - [ ] B. 这一看就错的
+       - [ ] C. Trusted Advisor不干这事儿
+       - [x] D. 正确
+       - [x] E. 正确
+
+    </details>
+
+34. A company is using an Amazon CloudFront distribution to distribute both static and dynamic content from a web application running behind an Application Load Balancer. The web application requires user authorization and session tracking for dynamic content. The CloudFront distribution has a single cache behavior configured to forward the Authorization, Host, and User-Agent HTTP whitelist headers and a session cookie to the origin. All other cache behavior settings are set to their default value. A valid ACM certificate is applied to the CloudFront distribution with a matching CNAME in the distribution settings. The ACM certificate is also applied to the HTTPS listener for the Application Load Balancer. The CloudFront origin protocol policy is set to HTTPS only. Analysis of the cache statistics report shows that the miss rate for this distribution is very high. What can the Solutions Architect do to improve the cache hit rate for this distribution without causing the SSL/TLS handshake between CloudFront and the Application Load Balancer to fail?
     - [ ] A. Create two cache behaviors for static and dynamic content. Remove the User-Agent and Host HTTP headers from the whitelist headers section on both if the cache behaviors. Remove the session cookie from the whitelist cookies section and the Authorization HTTP header from the whitelist headers section for cache behavior configured for static content.
     - [ ] B. Remove the User-Agent and Authorization HTTPS headers from the whitelist headers section of the cache behavior. Then update the cache behavior to use presigned cookies for authorization.
     - [ ] C. Remove the Host HTTP header from the whitelist headers section and remove the session cookie from the whitelist cookies section for the default cache behavior. Enable automatic object compression and use Lambda@Edge viewer request events for user authorization.
-    - [ ] D. Create two cache behaviors for static and dynamic content. Remove the User-Agent HTTP header from the whitelist headers section on both of the cache behaviors. Remove the session cookie from the whitelist cookies sectionand the Authorization HTTP header from the whitelist headers section for cache behavior configured for static content.
-35. An organization has a write-intensive mobile application that uses Amazon API Gateway, AWS Lambda, and Amazon DynamoDB. The application has scaled well, however, costs have increased exponentially because of higher than anticipated Lambda costs. The application's use is unpredictable, but there has been a steady 20% increase in utilization every month. While monitoring the current Lambda functions, the Solutions Architect notices that the executiontime averages 4.5 minutes. Most of the wait time is the result ofa high-latency network call to a 3TB MySQL database server that is on-premises. A VPN is used to connect to the VPC, so the Lambda functions have been configured with a five-minute timeout. How can the Solutions Architect reduce the cost of the current architecmre?
+    - [ ] D. Create two cache behaviors for static and dynamic content. Remove the User-Agent HTTP header from the whitelist headers section on both of the cache behaviors. Remove the session cookie from the whitelist cookies section and the Authorization HTTP header from the whitelist headers section for cache behavior configured for static content.
+
+    <details>
+       <summary>Answer</summary>
+
+       这道题有点难，答案是D
+
+    </details>
+
+35. An organization has a write-intensive mobile application that uses Amazon API Gateway, AWS Lambda, and Amazon DynamoDB. The application has scaled well, however, costs have increased exponentially because of higher than anticipated Lambda costs. The application's use is unpredictable, but there has been a steady 20% increase in utilization every month. While monitoring the current Lambda functions, the Solutions Architect notices that the execution time averages 4.5 minutes. Most of the wait time is the result of a high-latency network call to a 3TB MySQL database server that is on-premises. A VPN is used to connect to the VPC, so the Lambda functions have been configured with a five-minute timeout. How can the Solutions Architect reduce the cost of the current architecture?
     - [ ] A. Replace the with AWS Direct Connect to reduce the network latency to the on-premises MySQL database. Enable local caching in the mobile application to reduce the Lambda function invocation calls. Monitor the Lambda function performance; gradually adjust the timeout and memory properties to lower values while maintaining an acceptable execution time. Offload the frequently accessed records from DynamoDB to Amazon ElastiCache.
     - [ ] B. Replace the with AWS Direct Connect to reduce the network latency to the on-premises MySQL database. Cache the API Gateway results to Amazon CloudFront. Use Amazon EC2 Reserved Instances instead of Lambda. Enable Auto Scaling on EC2, and use Spot Instances during peak times. Enable DynamoDB Auto Scaling to manage target utilization.
-    - [ ] C. Migrate the MySQL database server into a Multi-AZ Amazon RDS for MySQL. Enable caching of the Amazon API Gateway results in Amazon CloudFront to reduce the number of Lambda function invocations. Monitor the Lambda function performance; gradually adjust the timeout and memoxy properties to lower values while maintaining an acceptable execution time. Enable DynamoDB Accelerator for frequently accessed records, and enable the DynamoDB Auto Scaling feature.
+    - [ ] C. Migrate the MySQL database server into a Multi-AZ Amazon RDS for MySQL. Enable caching of the Amazon API Gateway results in Amazon CloudFront to reduce the number of Lambda function invocations. Monitor the Lambda function performance; gradually adjust the timeout and memory properties to lower values while maintaining an acceptable execution time. Enable DynamoDB Accelerator for frequently accessed records, and enable the DynamoDB Auto Scaling feature.
     - [ ] D. Migrate the MySQL database server into a Multi-AZ Amazon RDS for MySQL. Enable API caching on API Gateway to reduce the number of Lambda function invocations. Continue to monitor the AWS Lambda function performance; gradually adjust the timeout and memory properties to lower values while maintaining an acceptable execution time. Enable Auto Scaling in DynamoDB.
-36. A company runs a video processing platform. Files are uploaded by users who connect to a web server, which stores them on an Amazon EFS share. This web server is mnning on a single Amazon EC2 instance. A different group of instances, ntnning in an Auto Scaling group, scans the EFS share directory structure for new files to process and generates new videos (thumbnails, different resolution, compression, etc.) according to the instmctions file, which is uploaded along with the video files. A different application mnning on a group of instances managed by an Auto Scaling group processes the video files and then deletes them from the EFS share. The results are stored in an S3 bucket. Links to the processed video files are emailed to the customer. The company has recently discovered that as they add more instances to the Auto Scaling Group, many files are processed twice, so image processing speed is not improved. The maximum size of these video files is 2GB. What should the Solutions Architect do to improve reliability and reduce the redundant processing of video files?
-    - [ ] A. Modify the web application to upload the video files directly to Amazon S3. Use Amazon CloudWatch Events to trigger an AWS Lambda function every time a file is uploaded, and have this Lambda function put a message into an Amazon queue for new files and use the queue depth metric to scale instances in the video processing Auto Scaling group.
+
+    <details>
+       <summary>Answer</summary>
+
+       由于数据库在本地，所以首先考虑迁移到AWS上，排除AB，C选项使用DAX还是挺贵的，答案D
+
+    </details>
+
+36. A company runs a video processing platform. Files are uploaded by users who connect to a web server, which stores them on an Amazon EFS share. This web server is running on a single Amazon EC2 instance. A different group of instances, running in an Auto Scaling group, scans the EFS share directory structure for new files to process and generates new videos (thumbnails, different resolution, compression, etc.) according to the instructions file, which is uploaded along with the video files. A different application running on a group of instances managed by an Auto Scaling group processes the video files and then deletes them from the EFS share. The results are stored in an S3 bucket. Links to the processed video files are emailed to the customer. The company has recently discovered that as they add more instances to the Auto Scaling Group, many files are processed twice, so image processing speed is not improved. The maximum size of these video files is 2GB. What should the Solutions Architect do to improve reliability and reduce the redundant processing of video files?
+    - [ ] A. Modify the web application to upload the video files directly to Amazon S3. Use Amazon CloudWatch Events to trigger an AWS Lambda function every time a file is uploaded and have this Lambda function put a message into an Amazon queue for new files and use the queue depth metric to scale instances in the video processing Auto Scaling group.
     - [ ] B. Set up a cron job on the web server instance to synchronize the contents of the EFS share into Amazon S3. Trigger an AWS Lambda function every time a file is uploaded to process the video file and store the results in Amazon S3. Using Amazon CloudWatch Events trigger an Amazon SES job to send an email to the customer containing the link to the processed file.
     - [ ] C. Rewrite the web application to run directly from Amazon S3 and use Amazon API Gateway to upload the video files to an S3 bucket. Use an S3 trigger to run an AWS Lambda function each time a file is uploaded to process and store new video files in a different bucket. Using CloudWatch Events, trigger an SES job to send an email to the customer containing the link to the processed file.
     - [ ] D. Rewrite the application to run from Amazon S3 and upload the video files to an S3 bucket. Each time a new file is uploaded, trigger an AWS Lambda function to put a message in an SQS queue containing the link and the instructions. Modify the video processing application to read from the SQS queue and the S3 bucket. Use the queue depth metric to adjust the size of the Auto Scaling group for video processing instances.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. CloudWatch里没有S3事件 -> [ref](https://docs.aws.amazon.com/zh_cn/AmazonCloudWatch/latest/events/WhatIsCloudWatchEvents.html)
+       - [ ] B. 同A
+       - [ ] C. Lambda有同时执行限制（1000）
+       - [x] D. 正确
+
+    </details>
+
 37. A Solutions Architect must establish a patching plan for a large mixed fleet of Windows and Linux servers. The patching plan must be implemented securely, be audit ready, and comply with the company's business requirements. Which option will meet these requirements with MINIMAL effort?
     - [ ] A. Install and use an OS-native patching service to manage the update frequency and release approval for all instances. Use AWS Config to verify the OS state on each instance and report on any patch compliance issues.
     - [ ] B. Use AWS Systems Manager on all instances to manage patching. Test patches outside of production and then deploy during a maintenance window with the appropriate approval.
     - [ ] C. Use AWS OpsWorks for Chef Automate to run a set of scripts that will iterate through all instances of a given type. Issue the appropriate OS command to get and install updates on each instance, including any required restarts during the maintenance window.
     - [ ] D. Migrate all applications to AWS OpsWorks and use OpsWorks automatic patching support to keep the OS up-to-date following the initial installation. Use AWS Config to provide audit and compliance reporting.
-38. A Solutions Architect must design a highly available, stateless, REST service. The service will require multiple persistent storage layers for sewice object meta information and the delivery of content. Each request needs to be authenticated and securely processed. There is a requirement to keep costs as low as possible? How can these requirements be met?
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 应该使用AWS提供的方法
+       - [x] B. 正确
+       - [ ] C. OpsWorks for Chef Automate不是干这事儿的
+       - [ ] D. 同C
+
+    </details>
+
+38. A Solutions Architect must design a highly available, stateless, REST service. The service will require multiple persistent storage layers for service object meta information and the delivery of content. Each request needs to be authenticated and securely processed. There is a requirement to keep costs as low as possible. How can these requirements be met?
     - [ ] A. Use AWS Fargate to host a container that runs a self-contained REST service. Set up an Amazon ECS service that is fronted by an Application Load Balancer (ALB). Use a custom authenticator to control access to the APL Store request meta information in Amazon DynamoDB with Auto Scaling and static content in a secured S3 bucket. Make secure signed requests for Amazon S3 objects and proxy the data through the REST service interface.
-    - [ ] B. Use AWS Fargate to host a container that runs a self-contained REST service. Set up an ECS service that is fronted by a cross-zone ALB. Use anAmazon Cognito user pool to control access to the APL Store request meta information in DynamoDB with Auto Scaling and static content in a secured S3 bucket. Generate presigned URLs when returning references to content stored in Amazon S3.
-    - [ ] C. Set up Amazon API Gateway and create the required API resources and methods. Use an Amazon Cognito user pool to control access to the API. Configure the methods to use AWS Lambda proxy integrations, and process each resource with a unique AWS Lambda function. Store request meta information in DynamoDB with Auto Scaling and static content in a secured S3 bucket. Generate presigned URLs when returning references to content stored in Amazon S3.
-    - [ ] D. Set up Amazon API Gateway and create the required API resources and methods. Use an Amazon API Gateway custom authorizer to control access to the APL Configure the methods to use AWS Lambda custom integrations, and process each resource with a unique Lambda function. Store request meta information in an Amazon ElastiCache Multi-AZ cluster and static content in a secured S3 bucket. Generate presigned URLs when returning references to content stored in Amazon S3.
-39. A large company experienced a drastic increase in its monthly AWS spend. This is after Developers accidentally launched Amazon EC2 instances in unexpected regions. The company has established practices around least privileges for Developers and controls access to onpremises resources using Active Directow groups. The company now want to control costs by restricting the level of access that Developers have to the AWS Management Console without impacting their productivity. The company would also like to allow Developers to launch Amazon EC2 in only one region, without limiting access to other services in any region. How can this company achieve these new security requirements while minimizing the administrative burden on the Operations team?
+    - [ ] B. Use AWS Fargate to host a container that runs a self-contained REST service. Set up an ECS service that is fronted by a cross-zone ALB. Use an Amazon Cognito user pool to control access to the APL Store request meta information in DynamoDB with Auto Scaling and static content in a secured S3 bucket. Generate presigned URLs when returning references to content stored in Amazon S3.
+    - [ ] C. Set up Amazon API Gateway and create the required API resources and methods. Use an Amazon Cognito user pool to control access to the API. Configure the methods to use AWS Lambda proxy integrations and process each resource with a unique AWS Lambda function. Store request meta information in DynamoDB with Auto Scaling and static content in a secured S3 bucket. Generate presigned URLs when returning references to content stored in Amazon S3.
+    - [ ] D. Set up Amazon API Gateway and create the required API resources and methods. Use an Amazon API Gateway custom authorizer to control access to the APL Configure the methods to use AWS Lambda custom integrations and process each resource with a unique Lambda function. Store request meta information in an Amazon ElastiCache Multi-AZ cluster and static content in a secured S3 bucket. Generate presigned URLs when returning references to content stored in Amazon S3.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 一个容器无法实现高可用性
+       - [ ] B. 同A
+       - [x] C. 正确
+       - [ ] D. 涉及到Lambda集成问题，目前不太清楚 -> [ref](https://docs.aws.amazon.com/zh_cn/apigateway/latest/developerguide/set-up-lambda-integrations.html)
+
+    </details>
+
+39. A large company experienced a drastic increase in its monthly AWS spend. This is after Developers accidentally launched Amazon EC2 instances in unexpected regions. The company has established practices around least privileges for Developers and controls access to on-premises resources using Active Directory groups. The company now want to control costs by restricting the level of access that Developers have to the AWS Management Console without impacting their productivity. The company would also like to allow Developers to launch Amazon EC2 in only one region, without limiting access to other services in any region. How can this company achieve these new security requirements while minimizing the administrative burden on the Operations team?
     - [ ] A. Set up SAML-based authentication tied to an IAM role that has an AdministrativeAccess managed policy attached to it. Attach a customer managed policy that denies access to Amazon EC2 in each region except for the one required.
     - [ ] B. Create an IAM user for each Developer and add them to the developer IAM group that has the PowerUserAccess managed policy attached to it. Attach a customer managed policy that allows the Developers access to Amazon EC2 only in the required region.
     - [ ] C. Set up SAML-based authentication tied to an IAM role that has a PowerUserAccess managed policy and a customer managed policy that deny all the Developers access to any AWS services except AWS Service Catalog. Within AWS Service Catalog, create a product containing only the EC2 resources in the approved region.
     - [ ] D. Set up SAML-based authentication tied to an IAM role that has the PowerUserAccess managed policy attached to it. Attach a customer managed policy that denies access to Amazon EC2 in each region except for the one required.
-40. A company is finalizing the architecture for its backup solution for applications running on AWS. All of the applications run on AWS and use at least two Availability Zones in each tier. Company policy requires IT to durably store nightly backups f all its data in at least two locations:production and disaster recovery. The locations must be in different geographic regions. The company also needs the backup to be available to restore immediately at the production data center, and within 24 hours at the disaster recovery location. All backup processes must be fully automated. What is the MOST cost-effective backup solution that will meet all requirement
-    - [ ] A. Back up all the data to a large Amazon EBS volume attached to the backup media server in the production region. Run automated scripts to snapshot these volumes nightly, and copy these snapshots to the disaster recovery region.
-    - [ ] B. Back up all the data to Amazon S3 in the disaster recovexy region. Use a lifecycle policy to move this data to Amazon Glacier in the production region immediately. Only the data is replicated; remove the data from the S3 bucket in the disaster recovery region.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. AdministrativeAccess权限太大，他们依然可以使用IAM去给与启EC2的权限
+       - [ ] B. 没毛用啊，他们依然可以去别得区域
+       - [ ] C. Service Catalog只能完成部分事务，太严格了
+       - [x] D. 正确
+
+    </details>
+
+40. A company is finalizing the architecture for its backup solution for applications running on AWS. All the applications run on AWS and use at least two Availability Zones in each tier. Company policy requires IT to durably store nightly backups f all its data in at least two locations:production and disaster recovery. The locations must be in different geographic regions. The company also needs the backup to be available to restore immediately at the production data center, and within 24 hours at the disaster recovery location. All backup processes must be fully automated. What is the MOST cost-effective backup solution that will meet all requirement?
+    - [ ] A. Back up all the data to a large Amazon EBS volume attached to the backup media server in the production region. Run automated scripts to snapshot these volumes nightly and copy these snapshots to the disaster recovery region.
+    - [ ] B. Back up all the data to Amazon S3 in the disaster recover region. Use a lifecycle policy to move this data to Amazon Glacier in the production region immediately. Only the data is replicated; remove the data from the S3 bucket in the disaster recovery region.
     - [ ] C. Back up all the data to Amazon Glacier in the production region. Set up cross-region replication of this data to Amazon Glacier in the disaster recovery region. Set up a lifecycle policy to delete any data older than 60 days.
     - [ ] D. Back up all the data to Amazon S3 in the production region. Set up cross-region replication of this S3 bucket to another region and set up a lifecycle policy in the second region to immediately move this data to Amazon Glacier.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案D
+
+    </details>
+
 41. A company has an existing on-premises three-tier web application. The Linux web servers serve content from a centralized file share on a NAS sewer because the content is refreshed several times a day from various sources. The existing infrastmcture is not optimized and the company would like to move to AWS in order to gain the ability to scale resources up and down in response to load. On-premises and AWS resources are connected using AWS Direct Connect. How can the company migrate the web infrastmcture to AWS without delaying the content refresh process?
     - [ ] A. Create a cluster of web server Amazon EC2 instances behind a Classic Load Balancer on AWS. Share an Amazon EBS volume among all instances for the content. Schedule a periodic synchronization of this volume and the NAS server.
     - [ ] B. Create an on-premises file gateway using AWS Storage Gateway to replace the NAS server and replicate content to AWS. On the AWS side, mount the same Storage Gateway bucket to each web server Amazon EC2 instance toserve the content.
