@@ -372,11 +372,11 @@
 
     </details>
 
-26. A Solutions Architect must create a cost-effective backup solution for a company's 500MB source wxxxcode-style repository of proprietary and sensitive applications. The repository runs on Linux and backs up daily to tape. Tape backups are stored for I year. The current solutions are not meeting the company's needs because it is a manual process that is prone to error, expensive to maintain, and does not meet the need for a Recover Point Objective (RPO) of 1 hour or Recovery Time Objective (RTO) of 2 hours. The new disaster recove1Y requirement is for backups to be stored offsite and to be able to restore a single file if needed. Which solution meets the customer's needs for RTO, RPO, and disaster recover with the LEAST effort and expense?
+26. A Solutions Architect must create a cost-effective backup solution for a company's 500MB source repository of proprietary and sensitive applications. The repository runs on Linux and backs up daily to tape. Tape backups are stored for I year. The current solutions are not meeting the company's needs because it is a manual process that is prone to error, expensive to maintain, and does not meet the need for a Recover Point Objective (RPO) of 1 hour or Recovery Time Objective (RTO) of 2 hours. The new disaster recove1Y requirement is for backups to be stored offsite and to be able to restore a single file if needed. Which solution meets the customer's needs for RTO, RPO, and disaster recover with the LEAST effort and expense?
     - [ ] A. Replace local tapes with an AWS Storage Gateway virtual tape library to integrate with current backup software. Run backups nightly and store the virtual tapes on Amazon S3 standard storage in US-EAST-I. Use cross-region replication to create a second copy in US-WEST-2. Use Amazon S3 lifecycle policies to perform automatic migration to Amazon Glacier and deletion of expired backups after I year?
-    - [ ] B. Configure the local source wxxxcode-style repository to synchronize files to an AWS Storage Gateway file Amazon gateway to store backup copies in an Amazon S3 Standard bucket. Enable versioning on the Amazon S3 bucket. Create Amazon S3 lifecycle policies to automatically migrate old versions of objects to Amazon S3 Standard 0 Infrequent Access, then Amazon Glacier, then delete backups after I year.
-    - [ ] C. Replace the local source wxxxcode-style repository storage with a Storage Gateway stored volume. Change the default snapshot frequency to 1 hour. Use Amazon S3 lifecycle policies to archive snapshots to Amazon Glacier and remove old snapshots after 1 year. Use cross-region replication to run on create a copy of the snapshots in US-WEST-2.
-    - [ ] D. Replace the local source wxxxcode-style repository storage with a Storage Gateway cached volume. Create a snapshot schedule to take hourly snapshots. Use an Amazon CloudWatch Events schedule expression rule to run on hourly AWS Lambda task to copy snapshots from US-EAST -l to USWEST-2.
+    - [ ] B. Configure the local source repository to synchronize files to an AWS Storage Gateway file Amazon gateway to store backup copies in an Amazon S3 Standard bucket. Enable versioning on the Amazon S3 bucket. Create Amazon S3 lifecycle policies to automatically migrate old versions of objects to Amazon S3 Standard 0 Infrequent Access, then Amazon Glacier, then delete backups after I year.
+    - [ ] C. Replace the local source repository storage with a Storage Gateway stored volume. Change the default snapshot frequency to 1 hour. Use Amazon S3 lifecycle policies to archive snapshots to Amazon Glacier and remove old snapshots after 1 year. Use cross-region replication to run on create a copy of the snapshots in US-WEST-2.
+    - [ ] D. Replace the local source repository storage with a Storage Gateway cached volume. Create a snapshot schedule to take hourly snapshots. Use an Amazon CloudWatch Events schedule expression rule to run on hourly AWS Lambda task to copy snapshots from US-EAST -l to USWEST-2.
 
     <details>
        <summary>Answer</summary>
@@ -432,7 +432,7 @@
 
     </details>
 
-30. A company has developed a new billing application that will be released in two weeks. Developers are testing the application running on 10 EC2 instances managed by an Auto Scaling group in subnet 172.31.0.0/24 within VPC A with CIDR block 172.31.0.0/16. The Developers noticed connection timeout errors in the application logs while connecting to an Oracle database running on an Amazon EC2 instance in the same region within VPC B with CIDR block 172.50.0.0/16. The IP of the database instance is hard-wxxxcode-styled in the application instances. Which recommendations should a Solutions Architect present to the Developers to solve the problem in a secure way with minimal maintenance and overhead?
+30. A company has developed a new billing application that will be released in two weeks. Developers are testing the application running on 10 EC2 instances managed by an Auto Scaling group in subnet 172.31.0.0/24 within VPC A with CIDR block 172.31.0.0/16. The Developers noticed connection timeout errors in the application logs while connecting to an Oracle database running on an Amazon EC2 instance in the same region within VPC B with CIDR block 172.50.0.0/16. The IP of the database instance is hard in the application instances. Which recommendations should a Solutions Architect present to the Developers to solve the problem in a secure way with minimal maintenance and overhead?
     - [ ] A. Disable the SrcDestCheck attribute for all instances rnning the application and Oracle Database. Change the default route of VPC A to point ENI of the Oracle Database that has an IP address assigned within the range of 172.50.0.0/26
     - [ ] B. Create and attach internet gateways for both VPCs. Configure default routes to the Internet gateways for both VPCs. Assign an Elastic IP for each Amazon EC2 instance in VPC A
     - [ ] C. Create a VPC peering connection between the two VPCs and add a route to the routing table of VTC A that points to the IP address range of 172.50.0.0/16
@@ -600,61 +600,170 @@
 
     </details>
 
-41. A company has an existing on-premises three-tier web application. The Linux web servers serve content from a centralized file share on a NAS sewer because the content is refreshed several times a day from various sources. The existing infrastmcture is not optimized and the company would like to move to AWS in order to gain the ability to scale resources up and down in response to load. On-premises and AWS resources are connected using AWS Direct Connect. How can the company migrate the web infrastmcture to AWS without delaying the content refresh process?
+41. A company has an existing on-premises three-tier web application. The Linux web servers serve content from a centralized file share on a NAS sever because the content is refreshed several times a day from various sources. The existing infrastructure is not optimized, and the company would like to move to AWS to gain the ability to scale resources up and down in response to load. On-premises and AWS resources are connected using AWS Direct Connect. How can the company migrate the web infrastructure to AWS without delaying the content refresh process?
     - [ ] A. Create a cluster of web server Amazon EC2 instances behind a Classic Load Balancer on AWS. Share an Amazon EBS volume among all instances for the content. Schedule a periodic synchronization of this volume and the NAS server.
-    - [ ] B. Create an on-premises file gateway using AWS Storage Gateway to replace the NAS server and replicate content to AWS. On the AWS side, mount the same Storage Gateway bucket to each web server Amazon EC2 instance toserve the content.
+    - [ ] B. Create an on-premises file gateway using AWS Storage Gateway to replace the NAS server and replicate content to AWS. On the AWS side, mount the same Storage Gateway bucket to each web server Amazon EC2 instance to serve the content.
     - [ ] C. Expose an Amazon EFS share to on-premises users to serve as the NAS serve. Mount the same EFS share to the web server Amazon EC2 instances to serve the content.
     - [ ] D. Create web server Amazon EC2 instances on AWS in an Auto Scaling group. Configure a nightly process where the web server instances are updated from the NAS server.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. EBS无法作为文件共享
+       - [ ] B. S3无法挂载到EC2实例上
+       - [x] C. 正确
+       - [ ] D. 数据不同步
+
+    </details>
+
 42. A company has multiple AWS accounts hosting IT applications. An Amazon CloudWatch Logs agent is installed on all Amazon EC2 instances. The company wants to aggregate all security events in a centralized AWS account dedicated to log storage. Security Administrators need to perform near-real-time gathering and correlating of events across multiple AWS accounts. Which solution satisfies these requirements?
     - [ ] A. Create a Log Audit IAM role in each application AWS account with permissions to view CloudWatch Logs, configure an AWS Lambda function to assume the Log Audit role, and perform an hourly export of CloudWatch Logs data to an Amazon S3 bucket in the logging AWS account.
     - [ ] B. Configure CloudWatch Logs streams in each application AWS account to forward events to CloudWatch Logs in the logging AWS account. In the logging AWS account, subscribe an Amazon Kinesis Data Firehose stream to Amazon CloudWatch Events, and use the stream to persist log data in Amazon S3.
     - [ ] C. Create Amazon Kinesis Data Streams in the logging account, subscribe the stream to CloudWatch Logs streams in each application AWS account, configure an Amazon Kinesis Data Firehose delivery stream with the Data Streams as its source, and persist the log data in an Amazon S3 bucket inside the logging AWS account.
     - [ ] D. Configure CloudWatch Logs agents to publish data to an Amazon Kinesis Data Firehose stream in the logging AWS account, use an AWS Lambda function to read messages from the stream and push messages to Data Firehose, and persist the data in Amazon S3.
-43. A company has a serverless application comprised of Amazon CloudFront, Amazon API Gateway, and AWS Lambda ftnctions. The current deployment process of the application wxxxcode-style is to create a new version number of the Lambda function and run an AWS CLI script to update. Ifthe new function version has errors, another CLI script reverts by deploying the previous working version of the function. The company would like to decrease the time to deploy new versions of the application logic provided by the Lambda functions, and also reduce the time to detect and revert when errors are identified. How can this be accomplished?
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 每个小时执行一此不是接近实时的了
+       - [ ] B. CloudWatch不支持流式记录
+       - [x] C. 正确 -> [ref](https://aws.amazon.com/cn/blogs/architecture/stream-amazon-cloudwatch-logs-to-a-centralized-account-for-audit-and-analysis/)
+       - [ ] D. CloudWatch代理不推记录，需要通过别得方式拉取记录
+
+    </details>
+
+43. A company has a serverless application comprised of Amazon CloudFront, Amazon API Gateway, and AWS Lambda functions. The current deployment process of the application is to create a new version number of the Lambda function and run an AWS CLI script to update. If the new function version has errors, another CLI script reverts by deploying the previous working version of the function. The company would like to decrease the time to deploy new versions of the application logic provided by the Lambda functions, and reduce the time to detect and revert when errors are identified. How can this be accomplished?
     - [ ] A. Create and deploy nested AWS CloudFormation stacks with the parent stack consisting of the AWS CloudFront distribution and API Gateway, and the child stack containing the Lambda function. For changes to Lambda, create an AWS CloudFormation change set and deploy; if errors are triggered, revert the AWS CloudFormation change set to the previous version.
-    - [ ] B. Use AWS SAM and built-in AWS CodeDeploy to deploy the new Lambda version, gradually shift traffic to the new version, and use pre-traffic and post-traffic test functions to verify wxxxcode-style. Rollback ifAmazon CloudWatch alarms are triggered.
+    - [ ] B. Use AWS SAM and built-in AWS CodeDeploy to deploy the new Lambda version, gradually shift traffic to the new version, and use pre-traffic and post-traffic test functions to verify. Rollback if Amazon CloudWatch alarms are triggered.
     - [ ] C. Refactor the AWS CLI scripts into a single script that deploys the new Lambda version. When deployment is completed, the script tests execute. If errors are detected, revert to the previous Lambda version.
     - [ ] D. Create and deploy an AWS CloudFormation stack that consists of a new API Gateway endpoint that references the new Lambda version. Change the CloudFront origin to the new API Gateway endpoint, monitor errors and if detected, change the AWS CloudFront origin to the previous API Gateway endpoint.
-44. A company is mnning a .NET three-tier web application on AWS. The team currently uses XL storage optimized instances to store serve the website's image and video files on local instance storage. The company has encountered issues with data loss from replication and instance failures. The Solutions Architect has been asked to redesign this application to improve its reliability while keeping costs low. Which solution will meet these requirements?
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. API Gateway也需要指向新的Lambda
+       - [x] B. 正确
+       - [ ] C. 同A
+       - [ ] D. 不是自动的
+
+    </details>
+
+44. A company is running a .NET three-tier web application on AWS. The team currently uses XL storage optimized instances to store serve the website's image and video files on local instance storage. The company has encountered issues with data loss from replication and instance failures. The Solutions Architect has been asked to redesign this application to improve its reliability while keeping costs low. Which solution will meet these requirements?
     - [ ] A. Set up a new Amazon EFS share, move all image and video files to this share, and then attach this new drive as a mount point to all existing servers. Create an Elastic Load Balancer with Auto Scaling general purpose instances. Enable Amazon CloudFront to the Elastic Load Balancer. Enable Cost Explorer and use AWS Trusted advisor checks to continue monitoring the environment for future savings.
     - [ ] B. Implement Auto Scaling with general purpose instance types and an Elastic Load Balancer. Enable an Amazon CloudFront distribution to Amazon S3 and move images and video files to Amazon S3. Reserve general purpose instances to meet base performance requirements. Use Cost Explorer and AWS Trusted Advisor checks to continue monitoring the environment for future savings.
     - [ ] C. Move the entire website to Amazon S3 using the S3 website hosting feature. Remove all the web servers and have Amazon S3 communicate directly with the application servers in Amazon VPC.
     - [ ] D. Use AWS Elastic Beanstalk to deploy the .NET application. Move all images and video files to Amazon EFS. Create an Amazon CloudFront distribution that points to the EFS share. Reserve the m4.4xl instances needed to meet base performance requirements.
-45. A company has developed a web application that runs on Amazon EC2 instances in one AWS Region. The company has taken on new business in other countries and must deploy its application into other to meet low-latency requirements for its users. The regions can be segregated, and an application mnning in one region does not need to communicate with instances in other regions. How should the company's Solutions Architect automate the deployment of the application so that it can be MOST efficiently deployed into multiple regions?
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. EFS比S3贵
+       - [x] B. 正确
+       - [ ] C. 服务器可以访问S3但是S3无法直接访问服务器
+       - [ ] D. CloudFront无法直接指向NFS
+
+    </details>
+
+45. A company has developed a web application that runs on Amazon EC2 instances in one AWS Region. The company has taken on new business in other countries and must deploy its application into other to meet low-latency requirements for its users. The regions can be segregated, and an application running in one region does not need to communicate with instances in other regions. How should the company's Solutions Architect automate the deployment of the application so that it can be MOST efficiently deployed into multiple regions?
     - [ ] A. Write a bash script that uses the AWS CLI to query the current state in one region and output a JSON representation. Pass the JSON representation to the AWS CLI, specifying the --region parameter to deploy the application to other regions.
     - [ ] B. Write a bash script that uses the AWS CLI to query the current state in one region and output an AWS CloudFormation template. Create a CloudFormation stack from the template by using the AWS CLI, specifying the --region parameter to deploy the application to other regions.
-    - [ ] C. Write a CloudFormation template describing the application's infrastructure in the resources section. Create a CloudFormation stack from the template by using the AWS CLI, specify multiple regions using the -ter to deploy the application.-regions parame
-    - [ ] D. Write a CloudFormation template describing the application's infrastructure in the Resources section. Use a CloudFormation stack set from an administrator account to launch stack instances that deploy the application to other reglons.
+    - [ ] C. Write a CloudFormation template describing the application's infrastructure in the resources section. Create a CloudFormation stack from the template by using the AWS CLI, specify multiple regions using the --regions to deploy the application.
+    - [ ] D. Write a CloudFormation template describing the application's infrastructure in the Resources section. Use a CloudFormation stack set from an administrator account to launch stack instances that deploy the application to other regions.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，跨区域部署要使用堆栈集，答案D
+
+    </details>
+
 46. A media company has a 30-TB repository of digital news videos. These videos are stored on tape in an on-premises tape libraw and referenced by a Media Asset Management (MAM) system. The company wants to enrich the metadata for these videos in an automated fashion and put them into a searchable catalog by using a MAM feature. The company must be able to search based on information in the video, such as objects, scenery items, or people's faces. A catalog is available that contains faces of people who have appeared in the videos that include an image of each person. The company would like to migrate these videos to AWS. The company has a high-speed AWS Direct Connect connection with AWS and would like to move the MAM solution video content directly from its current file system. How can these requirements be met by using the LEAST amount of ongoing management overhead and causing MINIMAL dismption to the existing system?
     - [ ] A. Set up an AWS Storage Gateway, file gateway appliance on premises. Use the MAM solution to extract the videos from the current archive and push them into the file gateway. Use the catalog of faces to build a collection in Amazon Rekognition. Build an AWS Lambda function that invokes the Rekognition Javascript SDK to have Rekognition pull the video from the Amazon S3 files backing the file gateway, retrieve the required metadata, and push the metadata into the MAM solution.
     - [ ] B. Set up an AWS Storage Gateway, tape gateway appliance on-premises. Use the MAM solution to extract the videos from the current archive and push them into the tape gateway. Use the catalog of faces to build a collection in Amazon Rekognition. Build an AWS Lambda function that invokes the Rekognition Javascript SDK to have Amazon Rekognition process the video in the tape gateway, retrieve the required metadata, and push the metadata into the MAM solution.
     - [ ] C. Configure a video ingestion stream by using Amazon Kinesis Video Streams. Use the catalog of faces to build a collection in Amazon Rekognition. Stream the videos from the MAM solution into Kinesis Video Streams. Configure Amazon Rekognition to process the streamed videos. Then, use a stream consumer to retrieve the required metadata, and push the metadata into the MAM solution. Configure the stream to store the videos in Amazon S3.
     - [ ] D. Set up an Amazon EC2 instance that runs the OpenCV libraries. Copy the video, images, and face catalog from the on-premisesin into an Amazon EBS volume mounted on this EC2 instance. Process the video to retriev the required metadata, and push the metadata into the MAM solution while also copying the video files to an Amazon S3 bucket.
-47. A company is planning the migration of several lab environments used for software testing. An assortment of custom tooling is used to manage the test runs for each lab. The labs use immutable infrastmcture for the soft ware test mns, and the results are stored in a highly available SQL database cluster. Although completely rewriting the custom tooling is out of scope for the migration project, the company would like to optimize workloads during the migration. Which application migration strategy meets this requirement?
+
+    <details>
+       <summary>Answer</summary>
+
+       - [x] A. 正确
+       - [ ] B. 磁带需要在某处恢复后才可以被访问
+       - [ ] C. 服务器可以访问S3但是S3无法直接访问服务器
+       - [ ] D. 无法将流直接存储与S3
+
+    </details>
+
+47. A company is planning the migration of several lab environments used for software testing. An assortment of custom tooling is used to manage the test runs for each lab. The labs use immutable infrastructure for the software test runs, and the results are stored in a highly available SQL database cluster. Although completely rewriting the custom tooling is out of scope for the migration project, the company would like to optimize workloads during the migration. Which application migration strategy meets this requirement?
     - [ ] A. Re-host
     - [ ] B. Re-platform
     - [ ] C. Re-factor/re-architect
     - [ ] D. Retire
-48. A company is implementing a multi-account strategy; however, the Management team has expressed concerns that sewices like DNS may become overly complex. The company needs a solution that allows private DNS to be shared among virtual private clouds (VPCs) in different accounts. The company will have approximately 50 accounts in total. What solution would create the LEAST complex DNS architecture and ensure that each VPC can resolve all AWS resources?
-    - [ ] A. Create a shared services VPC in a central account, and create a VPC peering connection from the shared services VPC to each of the VTCs in the other accounts. Within Amazon Route 53, create a privately hosted zone in the shared services VPC and resource record sets for the domain and subdomains. Programmatically associate other VPCs with the hosted zone.
-    - [ ] B. Create a VPC peering connection among the VPCs in all accounts. Set the VPC attributes enableDnsHostnames and enableDnsSupport to "true" for each VQC. Create an Amazon Route 53 private zone for each VPC. Create resource record sets for the domain and subdomains. Programmatically associate the hosted zones in each VPC with the other VPCs.
-    - [ ] C. Create a shared services VPC in a central account. Create a VPC peering connection from the VPCs in other accounts to the shared services VPC. Create an Amazon Route 53 privately hosted zone in the shared services WTC with resource record sets for the domain and subdomains. Allow UDP and TCP port 53 over the VPC peering connections.
+
+    <details>
+       <summary>Answer</summary>
+
+       概念题，答案B -> [ref](https://aws.amazon.com/jp/builders-flash/202007/awsgeek-migration-steps/?awsf.filter-name=*all)
+
+    </details>
+
+48. A company is implementing a multi-account strategy; however, the Management team has expressed concerns that services like DNS may become overly complex. The company needs a solution that allows private DNS to be shared among virtual private clouds (VPCs) in different accounts. The company will have approximately 50 accounts in total. What solution would create the LEAST complex DNS architecture and ensure that each VPC can resolve all AWS resources?
+    - [ ] A. Create a shared services VPC in a central account, and create a VPC peering connection from the shared services VPC to each of the VPCs in the other accounts. Within Amazon Route 53, create a privately hosted zone in the shared services VPC and resource record sets for the domain and subdomains. Programmatically associate other VPCs with the hosted zone.
+    - [ ] B. Create a VPC peering connection among the VPCs in all accounts. Set the VPC attributes enableDnsHostnames and enableDnsSupport to "true" for each VPC. Create an Amazon Route 53 private zone for each VPC. Create resource record sets for the domain and subdomains. Programmatically associate the hosted zones in each VPC with the other VPCs.
+    - [ ] C. Create a shared services VPC in a central account. Create a VPC peering connection from the VPCs in other accounts to the shared services VPC. Create an Amazon Route 53 privately hosted zone in the shared services VPC with resource record sets for the domain and subdomains. Allow UDP and TCP port 53 over the VPC peering connections.
     - [ ] D. Set the VPC attributes enableDnsHostnames and enableDnsSupport to "false" in every VPC. Create an AWS Direct Connect connection with a private virtual interface. Allow UDP and TCP port 53 over the virtual interface. Use the on-premises DNS servers to resolve the IP addresses in each VPC on AWS.
-49. A company has released a new version ofa website to target an audience in Asia and South America. The website's media assets are hosted on Amazon S3 and have anAmazon CloudFront distribution to improve end-user performance. However, users are having a poor login experience the authentication service is only available in the us-east-I AWS Region. How can the Solutions Architect improve the login experience and maintain high security and performance with minimal management overhead?
+
+    <details>
+       <summary>Answer</summary>
+
+       - [x] A. 正确
+       - [ ] B. 为每一个VPC创建对等连接数量太大（N^2）
+       - [ ] C. 没必要开53端口
+       - [ ] D. 跟题目没啥关系，干扰项
+
+    </details>
+
+49. A company has released a new version of a website to target an audience in Asia and South America. The website's media assets are hosted on Amazon S3 and have an Amazon CloudFront distribution to improve end-user performance. However, users are having a poor login experience the authentication service is only available in the us-east-I AWS Region. How can the Solutions Architect improve the login experience and maintain high security and performance with minimal management overhead?
     - [ ] A. Replicate the setup in each new geography and use Amazon Route 53 geo-based routing to route traffic to the AWS Region closest to the users.
     - [ ] B. Use an Amazon Route 53 weighted routing policy to route traffic to the CloudFront distribution. Use CloudFront cached HTTP methods to improve the user login experience.
-    - [ ] C. Use Amazon Lambda@Edge attached to the CloudFront viewer request trigger to authenticate and authorize users by maintaining a secure cookie token with a session expiry to improve the user experience in multiple geographles.
+    - [ ] C. Use Amazon Lambda@Edge attached to the CloudFront viewer request trigger to authenticate and authorize users by maintaining a secure cookie token with a session expiry to improve the user experience in multiple geographies.
     - [ ] D. Replicate the setup in each geography and use Network Load Balancers to route traffic to the authentication service running in the closest region to users.
-50. A company has a standard three-tier architecture using two Availability Zones. During the company's off season, users report that the website is not working. The Solutions Architect finds that no changes have been made to the environment recently, the website is reachable, and it is possible to log in. However, when the Solutions Architect selects the "find a store near you" function, the maps provided on the site by a third-party RESTful API call do not work about 50% of the time after refreshing the page. The outbound API calls are made through Amazon EC2 NAT instances. What is the MOST likely reason for this failure and how can it be mitigated in the fumre?
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 不是最佳体验
+       - [ ] B. 登录无法被缓存
+       - [x] C. 正确 -> [ref](https://docs.aws.amazon.com/zh_cn/AmazonCloudFront/latest/DeveloperGuide/lambda-generating-http-responses-in-requests.html)
+       - [ ] D. NLB不是干这个的
+
+    </details>
+
+50. A company has a standard three-tier architecture using two Availability Zones. During the company's off season, users report that the website is not working. The Solutions Architect finds that no changes have been made to the environment recently, the website is reachable, and it is possible to log in. However, when the Solutions Architect selects the "find a store near you" function, the maps provided on the site by a third-party RESTful API call do not work about 50% of the time after refreshing the page. The outbound API calls are made through Amazon EC2 NAT instances. What is the MOST likely reason for this failure and how can it be mitigated in the future?
     - [ ] A. The network ACL for one subnet is blocking outbound web traffic. Open the networkACL and prevent administration from making future changes through IAM.
     - [ ] B. The fault is in the third-party environment. Contact the third party that provides the maps and request a fix that will provide better uptime.
-    - [ ] C. One NAT instance has become overloaded. Replace both EC2 NAT instances with a larger-sized instance and make sure to account for grmvth when making the new instance size.
+    - [ ] C. One NAT instance has become overloaded. Replace both EC2 NAT instances with a larger-sized instance and make sure to account for growth when making the new instance size.
     - [ ] D. One of the NAT instances failed. Recommend replacing the EC2 NAT instances with a NAT gateway.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案D
+
+    </details>
+
 51. A company is migrating to the cloud. It wants to evaluate the configurations of virtual machines in its existing data center environment to ensure that it can size new Amazon EC2 instances accurately. The company wants to collect metrics, such as CPU, memory, and disk utilization, and it needs an inventory of what processes are running on each instance. The company would also like to monitor network connections to map communications between servers. Which would enable the collection of this data MOST cost effectively?
     - [ ] A. Use AWS Application Discovery Service and deploy the data collection agent to each virtual machine in the data center.
     - [ ] B. Configure the Amazon CloudWatch agent on all servers within the local environment and publish metrics to Amazon CloudWatch Logs.
-    - [ ] C. Use AWS Application Discovexy Service and enable agentless discovexy in the existing virtualization environment.
+    - [ ] C. Use AWS Application Discovery Service and enable agentless discovery in the existing virtualization environment.
     - [ ] D. Enable AWS Application Discovery Service in the AWS Management Console and configure the corporate firewall to allow scans over a VPN.
+  
+    <details>
+       <summary>Answer</summary>
+
+       概念题，CloudWatch无法监控网络流，答案A
+
+    </details>
+
 52. A company will several AWS accounts is using AWS Organizations and service control policies (SCPs). An Administrator created the following SCP and has attached it to an organizational unit (OU) that contains AWS account 1111-1111-1111. Developers working in account 1111-1111-1111 complain that they cannot create Amazon S3 buckets. How should the Administrator address this problem?
 
     ```json
@@ -662,13 +771,13 @@
         "Version": 2012-10-27,
         "Statement": [
             {
-                "Sid": "AllowsA11Actions",
+                "Sid": "AllowsAllActions",
                 "Effect": "Allow",
                 "Action": "*",
                 "Resource" : "*"
             },
             {
-                "Sid": "DenyC10udTrai1",
+                "Sid": "DenyCloudTrail",
                 "Effect": "Deny",
                 "Action": "cloudtrail",
                 "Resource" : "*"
@@ -681,47 +790,128 @@
     - [ ] B. Remove the account from the OU and attach the SCP directly to account 1111-1111-1111.
     - [ ] C. Instruct the Developers to add Amazon S3 permissions to their IAM entities.
     - [ ] D. Remove the SCP from account 1111-1111-1111.
-53. A company that provides wireless services need a solution to store and analyze log files about user activites. Currently, log files are delivered daily to Amazon Linux on Amazon EC2 instance. A batch script is run once a day to aggregate data used for analysis by a third-party tool. The data pushed to the third-party tool is used to generate a visualization for end users. The batch script is cumbersome to maintain, and it takes several hours to deliver the ever-increasing data volumes to the third-party tool. The company wants to lower costs, and is open to considering a new tool that minimizes development effort and lowers administrative overhead. The company wants to build a more agile solution that can store and perform the analysis in near-real time, with minimal overhead. The solution needs to be cost effective and scalable to meet the company's end-user base growth. Which solution meets the company's requirements?
+  
+    <details>
+       <summary>Answer</summary>
+
+       管理员仍然必须附加基于身份或基于资源的策略分配给 IAM 用户或角色，或者您账户中的资源，以实际授予权限。答案C -> [ref](https://docs.aws.amazon.com/zh_cn/organizations/latest/userguide/orgs_manage_policies_scps.html)
+
+    </details>
+
+53. A company that provides wireless services need a solution to store and analyze log files about user activities. Currently, log files are delivered daily to Amazon Linux on Amazon EC2 instance. A batch script is run once a day to aggregate data used for analysis by a third-party tool. The data pushed to the third-party tool is used to generate a visualization for end users. The batch script is cumbersome to maintain, and it takes several hours to deliver the ever-increasing data volumes to the third-party tool. The company wants to lower costs and is open to considering a new tool that minimizes development effort and lowers administrative overhead. The company wants to build a more agile solution that can store and perform the analysis in near-real time, with minimal overhead. The solution needs to be cost effective and scalable to meet the company's end-user base growth. Which solution meets the company's requirements?
     - [ ] A. Develop a Python script to failure the data from Amazon EC2 in real time and store the data in Amazon S3. Use a copy command to copy data from Amazon S3 to Amazon Redshift. Connect a business intelligence tool running on Amazon EC2 to Amazon Redshift and create the visualizations.
     - [ ] B. Use an Amazon Kinesis agent running on an EC2 instance in an Auto Scaling group to collect and send the data to an Amazon Kinesis Data Firehose delivery stream. The Kinesis Data Firehose delivery stream will deliver the data directly to Amazon ES. Use Kibana to visualize the data.
     - [ ] C. Use an in-memory caching application running on an Amazon EBS-optimized EC2 instance to capture the log data in near real-time. Install an Amazon ES cluster on the same EC2 instance to store the log files as they are delivered to Amazon EC2 in near real-time. Install a Kibana plugin to create the visualizations.
-    - [ ] D. Use an Amazon Kinesis agent running on an EC2 instance to collect and send the data to an Amazon Kinesis Data Firehose delivexy stream. The Kinesis Data Firehose delivery stream will deliver the data to Amazon S3. Use an AWS Lambda function to deliver the data from Amazon S3 to Amazon EST Use Kibana to visualize the data.
-54. A company wants to move a web application to AWS. The application stores session information locally on each web sewer, which will make auto scaling difficult. As part of the migration, the application will be rewritten to decouple the session data from the web servers. The company requires low latency, scalability, and availability. Which service will meet the requirements for storing the session information in the MOST costeffective way?
+    - [ ] D. Use an Amazon Kinesis agent running on an EC2 instance to collect and send the data to an Amazon Kinesis Data Firehose delivery stream. The Kinesis Data Firehose delivery stream will deliver the data to Amazon S3. Use an AWS Lambda function to deliver the data from Amazon S3 to Amazon ES Use Kibana to visualize the data.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. Python脚本变成了维护的一部分不符合客户要求
+       - [x] B. 正确
+       - [ ] C. io1很贵
+       - [ ] D. Amazon Kinesis Data Firehose直接可以把数据发送到Amazon ES -> [ref](https://docs.aws.amazon.com/zh_cn/elasticsearch-service/latest/developerguide/es-aws-integrations.html)
+
+    </details>
+
+54. A company wants to move a web application to AWS. The application stores session information locally on each web server, which will make auto scaling difficult. As part of the migration, the application will be rewritten to decouple the session data from the web servers. The company requires low latency, scalability, and availability. Which service will meet the requirements for storing the session information in the MOST cost effective way?
     - [ ] A. Amazon ElastiCache with the Memcached engine
     - [ ] B. Amazon S3
     - [ ] C. Amazon RDS MySQL
     - [ ] D. Amazon ElastiCache with the Redis engine
-55. A company has an Amazon EC2 deployment that has the following architecmre:-An application tier that contains 8 m4.xlarge instances -A Classic Load Balancer -Amazon S3 as a persistent data store After one of the EC2 instances fails, users report very slow processing of their requests. A Solutions Architect must recommend design changes to maximize system reliability. The solution must minimize costs. What should the Solution Architect recommend?
+
+    <details>
+       <summary>Answer</summary>
+
+       ElastiCache用于缓存会话信息，排除BC，Memcached是单AZ不满足高HA，答案D
+
+    </details>
+
+55. A company has an Amazon EC2 deployment that has the following architecture: -An application tier that contains 8 m4.xlarge instances -A Classic Load Balancer -Amazon S3 as a persistent data store After one of the EC2 instances fails, users report very slow processing of their requests. A Solutions Architect must recommend design changes to maximize system reliability. The solution must minimize costs. What should the Solution Architect recommend?
     - [ ] A. Migrate the existing EC2 instances to a serverless deployment using AWS Lambda functions
     - [ ] B. Change the Classic Load Balancer to an Application Load Balancer
     - [ ] C. Replace the application tier with m4.large instances in an Auto Scaling group
     - [ ] D. Replace the application tier with 4 m4.2xlarge instances
-56. An on-premises application will be migrated to the cloud. The application consists of a single Elasticsearch virtual machine with data source feeds from local systems that will not be migrated, and a Java web application on Apache Tomcat lunning on three virtual machines. The Elasticsearch server currently uses I TB of storage out of 16 TB available storage, and the web application is updated eve1Y 4 months. Multiple users access the web application from the Internet. There is a IOGbit AWS Direct Connect connection established, and the application can be migrated over a schedules 48-hour change window. Which strategy will have the LEAST impact on the Operations staff after the migration?
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，因为没有加Auto Scaling，答案C
+
+    </details>
+
+56. An on-premises application will be migrated to the cloud. The application consists of a single Elasticsearch virtual machine with data source feeds from local systems that will not be migrated, and a Java web application on Apache Tomcat running on three virtual machines. The Elasticsearch server currently uses 1TB of storage out of 16 TB available storage, and the web application is updated eve1Y 4 months. Multiple users access the web application from the Internet. There is a 10Gbit AWS Direct Connect connection established, and the application can be migrated over a schedules 48-hour change window. Which strategy will have the LEAST impact on the Operations staff after the migration?
     - [ ] A. Create an Elasticsearch server on Amazon EC2 right-sized with 2 TB of Amazon EBS and a public AWS Elastic Beanstalk environment for the web application. Pause the data sources, export the Elasticsearch index from on premises, and import into the EC2 Elasticsearch server. Move data source feeds to the new Elasticsearch server and move users to the web application.
     - [ ] B. Create an Amazon ES cluster for Elasticsearch and a public AWS Elastic Beanstalk environment for the web application. Use AWS DMS to replicate Elasticsearch data. When replication has finished, move data source feeds to the new Amazon ES cluster endpoint and move users to the new web application.
     - [ ] C. Use the AWS SMS to replicate the virtual machines into AWS. When the migration is complete, pause the data source feeds and start the migrated Elasticsearch and web application instances. Place the web application instances behind a public Elastic Load Balancer. Move the data source feeds to the new Elasticsearch server and move users to the new web Application Load Balancer.
     - [ ] D. Create an Amazon ES cluster for Elasticsearch and a public AWS Elastic Beanstalk environment for the web application. Pause the data source feeds, export the Elasticsearch index from on premises, and import into the Amazon ES cluster. Move the data source feeds to the new Amazon ES cluster endpoint and move users to the new web application.
-57. A company's application is increasingly popular and experiencing latency because of high volume reads on the database sewer. The service has the following properties:-A highly available REST API hosted in one region using Application Load Balancer (ALB) with auto scaling. -A MySQL database hosted on an Amazon EC2 instance in a single Availability Zone. -The company wants to reduce latency, increase in-region database read performance, and have multi-region disaster recovery capabilities that can perform a live recovew automatically without any data or performance loss (HADR). Which deployment strategy will meet these requirements?
-    - [ ] A. Use AWS CloudFormation StackSets to deploy the API layer in two regions. Migrate the database to an Amazon Aurora with MySQL database cluster with multiple read replicas in one region and a read replica in a different region than the source database cluster. Use Amazon Route 53 health checks to trigger a DNS failover to the standby region if the health checks to the primaxy load balancer fail. In the event of Route 53 failover, promote the cross-region database replica to be the master and build out new read replicas in the standby region.
-    - [ ] B. Use Amazon ElastiCache for Redis Multi-AZ with an automatic failover to cache the database read queries. Use AWS OpsWorks to deploy the API layer, cache layer, and existing database layer in two regions. In the event of failure, use Amazon Route 53 health checks on the database to trigger a DNS failover to the standby region if the health checks in the primary region fail. Back up the MySQL database frequently, and in the event ofa failure in an active region, copy the backup to the standby region and restore the standby database.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 非高可用，不满足AWS最佳实践
+       - [ ] B. DMS不干这事儿
+       - [ ] C. 同A
+       - [x] D. 正确
+
+    </details>
+
+57. A company's application is increasingly popular and experiencing latency because of high volume reads on the database server. The service has the following properties: -A highly available REST API hosted in one region using Application Load Balancer (ALB) with auto scaling. -A MySQL database hosted on an Amazon EC2 instance in a single Availability Zone. -The company wants to reduce latency, increase in-region database read performance, and have multi-region disaster recovery capabilities that can perform a live recover automatically without any data or performance loss (HADR). Which deployment strategy will meet these requirements?
+    - [ ] A. Use AWS CloudFormation StackSets to deploy the API layer in two regions. Migrate the database to an Amazon Aurora with MySQL database cluster with multiple read replicas in one region and a read replica in a different region than the source database cluster. Use Amazon Route 53 health checks to trigger a DNS failover to the standby region if the health checks to the primary load balancer fail. In the event of Route 53 failover, promote the cross-region database replica to be the master and build out new read replicas in the standby region.
+    - [ ] B. Use Amazon ElastiCache for Redis Multi-AZ with an automatic failover to cache the database read queries. Use AWS OpsWorks to deploy the API layer, cache layer, and existing database layer in two regions. In the event of failure, use Amazon Route 53 health checks on the database to trigger a DNS failover to the standby region if the health checks in the primary region fail. Back up the MySQL database frequently, and in the event of a failure in an active region, copy the backup to the standby region and restore the standby database.
     - [ ] C. Use AWS CloudFormation StackSets to deploy the API layer in two regions. Add the database to an Auto Scaling group. Add a read replica to the database in the second region. Use Amazon Route 53 health checks in the primaregion fail. Promote the cross-region database replica to be the master and build out new read replicas in the standby region.
     - [ ] D. Use Amazon ElastiCache for Redis Multi-AZ with an automatic failover to cache the database read queries. Use AWS OpsWorks to deploy the API layer, cache layer, and existing database layer in two regions. Use Amazon Route 53 health checks on the ALB to trigger a DNS failover to the standby region if the health checks in the primary region fail. Back up the MySQL database frequently, and in the event of a failure in an active region, copy the backup to the standby region and restore the standby database.
-58. A company runs a three-tier application in AWS. Users report that the application performance can vaty greatly depending on the time of day and functionality being accessed. The application includes the following components:-Eight t2.large front-end web servers that sewe static content and proxy dynamic content from the application tier. -Four t2.large application sewers. -One db.m4.large Amazon RDS MySQL Multi-AZ DB instance. Operations has determined that the web and application tiers are network constrained. Which of the following should cost effective improve application performance? (Choose two.)
+
+    <details>
+       <summary>Answer</summary>
+
+       别看他题目长，就是一简单题，答案A
+
+    </details>
+
+58. A company runs a three-tier application in AWS. Users report that the application performance can vary greatly depending on the time of day and functionality being accessed. The application includes the following components: -Eight t2.large front-end web servers that serve static content and proxy dynamic content from the application tier. -Four t2.large application servers. -One db.m4.large Amazon RDS MySQL Multi-AZ DB instance. Operations has determined that the web and application tiers are network constrained. Which of the following should cost effective improve application performance? (Choose two.)
     - [ ] A. Replace web and app tiers with t2.xlarge instances
     - [ ] B. Use AWS Auto Scaling and m4.large instances for the web and application tiers
     - [ ] C. Convert the MySQL RDS instance to a self-managed MySQL cluster on Amazon EC2
     - [ ] D. Create an Amazon CloudFront distribution to cache content
     - [ ] E. Increase the size of the Amazon RDS instance to db.m4.xlarge
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，首先题目中没有使用Auto Scaling group，所以先选B，而且m4和t2的网络性能是一样的，CloudFront是标准操作，答案BD
+
+    </details>
+
 59. An online retailer needs to regularly process large product catalogs, which are handled in batches. These are sent out to be processed by people using the Amazon Mechanical Turk service, but the retailer has asked its Solutions Architect to design a workflow orchestration system that allows it to handle multiple concurrent Mechanical Turk operations, deal with the result assessment process, and reprocess failures. Which of the following options gives the retailer the ability to interrogate the state of every workflow with the LEAST amount of implementation effort?
     - [ ] A. Trigger Amazon CloudWatch alarms based upon message visibility in multiple Amazon SQS queues (one queue per workflow stage) and send messages via Amazon SNS to trigger AWS Lambda functions to process the next step. Use Amazon ES and Kibana to visualize Lambda processing logs to see the workflow states.
     - [ ] B. Hold workflow information in an Amazon RDS instance with AWS Lambda functions polling RDS for status changes. Worker Lambda functions then process the next workflow steps. Amazon QuickSight will visualize workflow states directly out of Amazon RDS.
     - [ ] C. Build the workflow in AWS Step Functions, using it to orchestrate multiple concurrent workflows. The status of each workflow can be visualized in the AWS Management Console, and historical data can be written to Amazon S3 and visualized using Amazon QuickSight.
     - [ ] D. Use Amazon SWF to create a workflow that handles a single batch of catalog records with multiple worker tasks to extract the data, transform it, and send it through Mechanical Turk. Use Amazon ES and Kibana to visualize AWS Lambda processing logs to see the workflow states.
-60. An organization has two Amazon EC2 instances:-The first is mnning an ordering application and an inventory application. -The second is mnning a queuing system. During certain times of the year, several thousand orders are placed per second. Some orders were lost when the queuing system was down. Also, the organization's inventory application has the incorrect quantity of products because some orders were processed twice. What should be done to ensure that the applications can handle the increasing number of orders?
-    - [ ] A. Put the ordering and inventoxy applications into their own AWS Lambda functions. Have the ordering application write the messages into an Amazon SQS FIFO queue.
+
+    <details>
+       <summary>Answer</summary>
+
+       这题是固定套路，答案D -> [ref](https://aws.amazon.com/cn/swf/?nc1=h_ls)
+
+    </details>
+
+60. An organization has two Amazon EC2 instances: -The first is running an ordering application and an inventory application. -The second is running a queuing system. During certain times of the year, several thousand orders are placed per second. Some orders were lost when the queuing system was down. Also, the organization's inventory application has the incorrect quantity of products because some orders were processed twice. What should be done to ensure that the applications can handle the increasing number of orders?
+    - [ ] A. Put the ordering and inventory applications into their own AWS Lambda functions. Have the ordering application write the messages into an Amazon SQS FIFO queue.
     - [ ] B. Put the ordering and inventory applications into their own Amazon ECS containers and create an Auto Scaling group for each application. Then, deploy the message queuing server in multiple Availability Zones.
     - [ ] C. Put the ordering and inventory applications into their own Amazon EC2 instances, and create an Auto Scaling group for each application. Use Amazon SQS standard queues for the incoming orders, and implement idempotency in the inventory application.
-    - [ ] D. Put the ordering and inventoxy applications into their own Amazon EC2 instances. Write the incoming orders to an Amazon Kinesis data stream Configure AWS Lambda to poll the stream and update the inventory application.
+    - [ ] D. Put the ordering and inventory applications into their own Amazon EC2 instances. Write the incoming orders to an Amazon Kinesis data stream Configure AWS Lambda to poll the stream and update the inventory application.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 比较脏，Lambda并发最大1000，几千条肯定搞不定
+       - [ ] B. ECS里没有AutoScaling
+       - [x] C. 正确
+       - [ ] D. Amazon Kinesis data stream里依然会出现丢失或者重复的消息
+
+    </details>
+
 61. A company is migrating its on-premises build artifact server to an AWS solution. The current system consists of an Apache HTTP server that serves artifacts to clients on the local network, restricted by the perimeter firewall. The artifact consumers are largely build automation scripts that download artifacts via anonymous HTTP, which the company will be unable to modify within its migration timetable. The company decides to move the solution to Amazon S3 static website hosting. The aftifact consumers will be migrated to Amazon EC2 instances located within both public and private subnets in a virtual private cloud (VPC). Which solution will permit the artifact consumers to download artifacts without modifying the existing automation scripts?
     - [ ] A. Create a NAT gateway within a public subnet of the VPC. Add a default route pointing to the NAT gateway into the route table associated with the subnets containing consumers. Configure the bucket policy to allow the s3 :ListBucket and s3 :GetObject actions using the condition IpAddress and the condition key aws:SourceIp matching the elastic IP address if the NAT gateway.
     - [ ] B. Create a VPC endpoint and add it to the route table associated with subnets containing consumers. Configure the bucket policy to allow s3 :ListBucket and s3:GetObject actions using the condition and the condition key aws:sourceVpce matching the identification of the VPC StringEquals endpoint.
@@ -751,9 +941,9 @@ connection.
     - [ ] E. Write the records to an Amazon ElastiCache for Redis. Configure the Redis append-only file (AOF) persistence logs to write to Amazon S3. Recover from the log if the ElastiCache instance has failed.
 66. A Development team is deploying new APIs as serverless applications within a company. The team is currently using the AWS Management Console to provision Amazon API Gateway, AWS Lambda, and Amazon DynamoDB resources. A Solutions Architect has been tasked with automating the future deployments of these sewerless APIs. How can this be accomplished?
     - [ ] A. Use AWS CloudFormation with a Lambda-backed custom resource to provision API Gateway. Use the AWS::DynamoDB::Table and resources to create the Amazon DynamoDB table and Lambda functions. Write a script to automate the deployment of the CloudFormation template.
-    - [ ] B. Use the AWS Serverless Application Model to define the resources. Upload a YAML template and application files to the wxxxcode-style repositoxy. Use AWS CodePipeline to connect to the repository and to create an action to build using AWS CodeBuild. Use the AWS CloudFormation deployment provider in CodePipeline to deploy the solution.
+    - [ ] B. Use the AWS Serverless Application Model to define the resources. Upload a YAML template and application files to the repositoxy. Use AWS CodePipeline to connect to the repository and to create an action to build using AWS CodeBuild. Use the AWS CloudFormation deployment provider in CodePipeline to deploy the solution.
     - [ ] C. Use AWS CloudFormation to define the serverless application. Implement versioning on the Lambda functions and create aliases to point to the versions. When deploying, configure weights to implement shifting traffic to the newest version, and gradually update the weights as traffic moves over.
-    - [ ] D. Commit the application wxxxcode-style to the AWS CodeCommit wxxxcode-style repository. Use AWS CodePipeline and connect to the CodeCommit repository. Use AWS CodeBuild to build and deploy the Lambda functions using AWS CodeDeploy. Specify the deployment preference type in CodeDeploy to gradually shift traffic over to the new version.
+    - [ ] D. Commit the application to the AWS CodeCommit repository. Use AWS CodePipeline and connect to the CodeCommit repository. Use AWS CodeBuild to build and deploy the Lambda functions using AWS CodeDeploy. Specify the deployment preference type in CodeDeploy to gradually shift traffic over to the new version.
 67. The company Security team queries that all data uploaded into an Amazon S3 bucket must be encrypted. The encryption keys must be highly available and the company must be able to control access on a per-user basis, with different users having access to different encwption keys. Which of the following architectures will meet these requirements? (Choose two.)
     - [ ] A. Use Amazon S3 server-side encryption with Amazon S3-managed keys. Allow Amazon S3 to generate an AWS/S3 master key, and use IAM to control access to the data keys that are generated.
     - [ ] B. Use Amazon S3 server-side encryption with AWS KMS-managed keys, create multiple customer master keys, and use key policies to control access to them.
@@ -764,7 +954,7 @@ connection.
     - [ ] A. Use AWS Elastic Beanstalk to deploy the Java web service and enable Auto Scaling. Then switch the application to use the new web service.
     - [ ] B. Lift and shift the Apache server to the cloud using AWS SMS. Then switch the application to direct web service traffic to the new instance.
     - [ ] C. Create a Docker image and migrate the image to Amazon ECS. Then change the application to direct web service queries to the ECS container.
-    - [ ] D. Modify the application to call the web service via Amazon API Gateway. Then create a new AWS Lambda Java function to run the Java web service wxxxcode-style. After testing, change API Gateway to use the Lambda function.
+    - [ ] D. Modify the application to call the web service via Amazon API Gateway. Then create a new AWS Lambda Java function to run the Java web service. After testing, change API Gateway to use the Lambda function.
 69. A company is using AWS for production and development workloads. Each business unit has its own AWS account for production, and a separate AWS account to develop and deploy its applications. The Information Security department has introduced new security policies that limit access for terminating certain Amazon ECS instances in all accounts to a small group of individuals from the Security team. How can the Solutions Architect meet these requirements?
     - [ ] A. Create a new IAM policy that allows access to those EC2 instances only for the Security team. Apply this policy to the AWS Organizations master account.
     - [ ] B. Create a new tag-based IAM policy that allows access to these EC2 instances only for the Security team. Tag the instances appropriately, and apply this policy in each account.
@@ -869,8 +1059,8 @@ connection.
     - [ ] D. Order a second Direct Connect connection to a Direct Connect facility with connectivity to the us-west-2 region. Work with partner to establish a network extension link over dark fiber from the Direct Connect facility to the company's data center. Establish private VIFs on the Direct Connect connections for each of the company's VPCs in the respective regions. Configure the company's data center router to connect directly with the VPCs in those regions via the private VIFs.
 89. A company has a web service deployed in the following two AWS Regions:us-west-2 and us-estl. Each AWS region mns an identical version of the web service. Amazon Route 53 is used to route customers to the AWS Region that has the lowest latency. The company wants to improve the availability of the web sewice in case an outage occurs in one of the two AWS Regions. A Solutions Architect has recommended that a Route 53 health check be performed. The health check must detect a specific text on an endpoint. What combination of conditions should the endpoint meet to pass the Route 53 health check? (Choose two.)
     - [ ] A. The endpoint must establish a TCP connection within 10 seconds.
-    - [ ] B. The endpoint must return an HTTP 200 status wxxxcode-style.
-    - [ ] C. The endpoint must return an HTTP 2xx or 3xx status wxxxcode-style.
+    - [ ] B. The endpoint must return an HTTP 200 status.
+    - [ ] C. The endpoint must return an HTTP 2xx or 3xx status.
     - [ ] D. The specific text string must appear within the first 5, 120 bytes of the response.
     - [ ] E. The endpoint must respond to the request within the number of seconds specified when creating the health check.
 90. A company operating a website on AWS requires high levels of scalability, availability and performance. The company is mnning a Ruby on Rails application on Amazon EC2. It has a data tier on MySQL 5.6 on Amazon EC2 using 16 TB of Amazon EBS storage Amazon CloudFront is used to cache application content. The Operations team is reporting continuous and unexpected growth of EBS volumes assigned to the MySQL database. The Solutions Architect has been asked to design a highly scalable, highly available, and high-performing solution. Which solution is the MOST cost-effective at scale?
@@ -878,7 +1068,7 @@ connection.
     - [ ] B. Design and implement the Docker-based containerized solution for the application using Amazon ECS. Migrate to an Amazon Aurora MySQL Multi-AZ cluster. Implement storage checks for Aurora MySQL storage utilization and an AWS Lambda function to grow the Aurora MySQL storage, as necessary. Ensure that Multi-AZ architectures are implemented.
     - [ ] C. Ensure that EC2 instances are right-sized and behind an Elastic Load Balancing load balancer. Implement Auto Scaling with EC2 instances. Ensure that the reserved instances are purchased for fixed capacity and that Auto Scaling instances run on demand. Migrate to an Amazon Aurora MySQL Multi-AZ cluster. Ensure that Multi-AZ architectures are implemented.
     - [ ] D. Ensure that EC2 instances are right-sized and behind an Elastic Load Balancer. Implement Auto Scaling with EC2 instances. Ensure that Reserved instances are purchased for fixed capacity and that Auto Scaling instances run on demand. Migrate to an Amazon Aurora MySQL Multi-AZ cluster. Implement storage checks for Aurora MySQL storage utilization and an AWS Lambda function to grow Aurora MySQL storage, as necessary. Ensure Multi-AZ architectures are implemented.
-91. The Security team needs to provide a team of interns with an AWS environment so they can build the serverless video transcoding application. The project will use Amazon S3, AWS Lambda, Amazon API Gateway, Amazon Cognito, Amazon DynamoDB, and Amazon Elastic Transwxxxcode-styler. The interns should be able to create and configure the necessary resources, but they may not have access to create or modify AWS IAM roles. The Solutions Architect creates a policy and attaches it to the interns' group. How should the Security team configure the environment to ensure that the interns are selfsufficient?
+91. The Security team needs to provide a team of interns with an AWS environment so they can build the serverless video transcoding application. The project will use Amazon S3, AWS Lambda, Amazon API Gateway, Amazon Cognito, Amazon DynamoDB, and Amazon Elastic Trans. The interns should be able to create and configure the necessary resources, but they may not have access to create or modify AWS IAM roles. The Solutions Architect creates a policy and attaches it to the interns' group. How should the Security team configure the environment to ensure that the interns are selfsufficient?
     - [ ] A. Create a policy that allows creation of project-related resources only. Create roles with required service permissions, which are assumable by the services.
     - [ ] B. Create a policy that allows creation of all project-related resources, including roles that allow access only to specified resources.
     - [ ] C. Create roles with the required service permissions, which are assumable by the services. Have the interns create and use a bastion host to create the project resources in the project subnet only.
@@ -992,7 +1182,7 @@ connection.
        - [ ] B. Use AWS Snowmobile to migrate the existing cluster data to Amazon S3. Create a persistent Amazon ENIR cluster of similar size and configuration to the current cluster. Store the data on EMRFS. Minimize costs by using Reserved Instances. As the workload grows each quarter, purchase additional Reserved Instances and add to the cluster.
        - [ ] C. Use AWS Snowball to migrate the existing cluster data to Amazon S3. Create a persistent Amazon EMR cluster initially sized to handle the interactive workloads based on historical data from the on-premises cluster. Store the on ENIRFS. Minimize costs using Reserved Instances for master and core nodes and Spot Instances for task nodes, and auto scale task nodes based on Amazon CloudWatch metrics. Create job-specific, optimized clusters for batch workloads that are similarly optimized.
        - [ ] D. Use AWS Direct Connect to migrate the existing cluster data to Amazon S3. Create a persistent Amazon EMR cluster initially sized to handle the interactive workload based on historical data from the on-premises cluster. Storethe data on EMRFS. Minimize costs using Reserved Instances for master and core nodes and Spot Instances for task nodes, and auto scale task nodes based on Amazon CloudWatch metrics. Create job-specific, optimized clusters for batch workloads that are similarly optimized.
-112. A company is running a large application on-premises. Its technology stack consists of Microsoft .NET for the web server platform and Apache Cassandra for the database. The company wants to migrate the application to AWS to improve service reliability. The IT team also wants to reduce the time it spends on capacity management and maintenance of this infrastructure. The Development team is willing and available to make wxxxcode-style changes to support the migration. Which design is the LEAST complex to manage after the migration?
+112. A company is running a large application on-premises. Its technology stack consists of Microsoft .NET for the web server platform and Apache Cassandra for the database. The company wants to migrate the application to AWS to improve service reliability. The IT team also wants to reduce the time it spends on capacity management and maintenance of this infrastructure. The Development team is willing and available to make changes to support the migration. Which design is the LEAST complex to manage after the migration?
        - [ ] A. Migrate the web servers to Amazon EC2 instances in an Auto Scaling group that is running .NET. Migrate the existing Cassandra database to Amazon Aurora with multiple read replicas, and run both in a Multi-AZ mode.
        - [ ] B. Migrate the web servers to an AWS Elastic Beanstalk environment that is running the .NET platform in a Multi-AZ Auto Scaling configuration. Migrate the Cassandra database to Amazon EC2 instances that are running in a MuIti-AZ configuration.
        - [ ] C. Migrate the web servers to an AWS Elastic Beanstalk environment that is running the .NET platform in a Multi-AZ Auto Scaling configuration. Migrate the existing Cassandra database to Amazon DynamoDB.
@@ -1007,14 +1197,13 @@ connection.
        - [ ] A. Run a physical-to-virtual conversion on the application server. Transfer the server image over the internet, and transfer the static data to Amazon S3.
        - [ ] B. Run a physical-to-virtual conversion on the application server. Transfer the server image over AWS Direct Connect, and transfer the static data to Amazon S3.
        - [ ] C. Re-platform the server to Amazon EC2, and use AWS Snowball to transfer the static data to Amazon S3.
-       - [ ] D. Re-platform the server by using the AWS Server Migration Service to move the wxxxcode-style and data to a new Amazon EC2 instance.
+       - [ ] D. Re-platform the server by using the AWS Server Migration Service to move the and data to a new Amazon EC2 instance.
 115. A company has an application that generates a weather forecast that is updated every 15 minutes with an output resolution of I billion unique positions, each approximately 20 bytes in size (20 Gigabytes per forecast). Every hour, the forecast data is globally accessed approximately 5 million times (l ,400 requests per second), and up to 10 times more during weather events. The forecast data is ovenvritten every update. Users of the current weather forecast application expect responses to queries to be returned in less than two seconds for each request. Which design meets the required request rate and response time?
        - [ ] A. Store forecast locations in an Amazon ES cluster. Use an Amazon CloudFront distribution targeting an Amazon API Gateway endpoint with AWS Lambda functions responding to queries as the origin. Enable API caching on the API Gateway stage with a cache-control timeout set for 15 minutes.
        - [ ] B. Store forecast locations in an Amazon EFS volume. Create an Amazon CloudFront distribution that targets an Elastic Load Balancing group of an Auto Scaling fleet of Amazon EC2 instances that have mounted the Amazon EFS volume. Set the set cache-control timeout for 15 minutes in the CloudFront distribution.
        - [ ] C. Store forecast locations in an Amazon ES cluster. Use an Amazon CloudFront distribution targeting an API Gateway endpoint with AWS Lambda functions responding to queries as the origin. Create an Amazon Lambda@Edge function that caches the data locally at edge locations for 15 minutes.
        - [ ] D. Store forecast locations in an Amazon S3 as individual objects. Create an Amazon CloudFront distribution targeting an Elastic Load Balancing group of an Auto Scaling fleet ofEC2 instances, querying the origin of the S3 object. Set the cache-control timeout for 15 minutes in the 3CloudFront distribution.
-116. A company is using AWS CloudFormation to deploy its infrastructure. The company is concerned that, if a production CloudFormation stack is deleted, important data stored in Amazon RDS databases or Amazon EBS v
-olumes might also be deleted. How can the company prevent users from accidentally deleting data in this way?
+116. A company is using AWS CloudFormation to deploy its infrastructure. The company is concerned that, if a production CloudFormation stack is deleted, important data stored in Amazon RDS databases or Amazon EBS volumes might also be deleted. How can the company prevent users from accidentally deleting data in this way?
        - [ ] A. Modify the CloudFormation templates to add a DeletionPolicy attribute to RDS and EBS resources.
        - [ ] B. Configure a stack policy that disallows the deletion of RDS and EBS resources.
        - [ ] C. Modify IAM policies to deny deleting RDS an EBS resources that are tagged with an tag.
@@ -1152,10 +1341,10 @@ olumes might also be deleted. How can the company prevent users from accidentall
        - [ ] C. Create an IAM policy in each account that denies access to the service. Associate the policy with an IAM role, and instmct users to log in using their corporate credentials and assume the IAM role.
        - [ ] D. Create a service control policy that denies access to the services, and apply the policy to the root of the organization.
 142. A company is planning to migrate an application from on-premises to AWS. The application currently uses an Oracle database and the company can tolerate a brief downtime of I hour when performing the switch to the new infrastmcture. As part of the migration, the database engine will be changed to MySQL A Solutions Architect needs to determine which AWS services can be used to perform the migration while minimizing the amount of work and time required. Which of the following will meet the requirements?
-       - [ ] A. Use AWS SCT to generate the schema scripts and apply them on the target prior to migration. Use AWS DMS to analyse the current schema and provide a recommendation for the optimal database engine. Then, use AWS DMS to migrate to the recommended enginer. Use AWS SCT to identify what embedded SQL wxxxcode-style in the application can be converted and what has to be done manually.
-       - [ ] B. Use AWS SC T to generate the schema scripts and apply them on the target prior to migration. Use AWS DMS to begin moving data from the on-premises database to AWS. After the initial copy, continue to use AWS DMS to keep the databases insync until cutting over to the new database. Use AWS SCT to identify what embedded SQL wxxxcode-style in the application can be converted and what has to be done manually.
+       - [ ] A. Use AWS SCT to generate the schema scripts and apply them on the target prior to migration. Use AWS DMS to analyse the current schema and provide a recommendation for the optimal database engine. Then, use AWS DMS to migrate to the recommended enginer. Use AWS SCT to identify what embedded SQL in the application can be converted and what has to be done manually.
+       - [ ] B. Use AWS SC T to generate the schema scripts and apply them on the target prior to migration. Use AWS DMS to begin moving data from the on-premises database to AWS. After the initial copy, continue to use AWS DMS to keep the databases insync until cutting over to the new database. Use AWS SCT to identify what embedded SQL in the application can be converted and what has to be done manually.
        - [ ] C. Use AWS DMS to help identify the best target deployment between installing the database engine on Amazon EC2 dierctly or moving to Amazon RDS. Then, use AWS DMS to migrate to the platform. Use AWS Application Discovery Service to identify what embedded SQL in the application can be converted and what has to be done manually.
-       - [ ] D. Use AWS DMS to begin moving data from the on-premises database to AWS. After the intitial copy, continue to use AWS DMS to keep the databases in sync until cutting over to the new database. Use AWS Application Discovery Service to identify what embedded SQL wxxxcode-style in the application can be converted and what has to be done manually.
+       - [ ] D. Use AWS DMS to begin moving data from the on-premises database to AWS. After the intitial copy, continue to use AWS DMS to keep the databases in sync until cutting over to the new database. Use AWS Application Discovery Service to identify what embedded SQL in the application can be converted and what has to be done manually.
 143. A Solutions Architect has created an AWS CloudFormation template for a three-tier application that contains an Auto Scaling group of Amazon EC2 instances running a custom AMI. The Solutions Architect wants to ensure that future updates to the custom AMI can be deployed to a running stack by first updating the template to refer to the new AMI, and then invoking UpdateStack to replace the EC2 instances with instances launched from the new AML How can updates to the AMI be deployed to meet these requirements?
        - [ ] A. Create a change set for a new version of the template, view the changes to the running EC2 instances to ensure that the AMI is correctly updated, and then execute the change set.
        - [ ] B. Edit the AWS::AutoScaling::LaunchConfiguration resource in the template, changing its to Replace. DeletionPolicy
@@ -1185,7 +1374,7 @@ olumes might also be deleted. How can the company prevent users from accidentall
        - [ ] D. In AWS CloudWatch Events console, click-reate Event using the cron expression 08:00 Configure the target as the Lambda function.
 148. A supermarket chain had a big data analysis system deployed in AWS. The system has the raw data such as clickstream or process logs in S3. Am3.large EC2 instance transformed the data to other formats and saved it to another S3 bucket. Amazon Redshift analysed the data afterwards. Your team is in charge of improving the system using AWS Glue which is a fully managed ETL (extract, transform, and load) service. Which tasks can AWS Glue simplify during re-establishing the big data system? (Select TWO)
        - [ ] A. AWS Glue contains a crawler that connects to the S3 bucket and scans the dataset. Then the service creates metadata tables in the data catalog.
-       - [ ] B. AWS Glue automatically generates wxxxcode-style in Java to extract data from the source and transform the data to match the target schema.
+       - [ ] B. AWS Glue automatically generates in Java to extract data from the source and transform the data to match the target schema.
        - [ ] C. Be default, AWS Glue creates a scheduler to trigger the activated tasks every minute.
        - [ ] D. AWS Glue has a central metadata repository (data catalog). The data in the catalog is available for analysis immediately.
 149. An AWS Solutions Architect has noticed that their company is using almost exclusively EBS General Purpose SSD (gp2) volume types for their EBS volumes. They are considering modifying the type of some of these volumes, but it is important that performance is not affected. Which of the following actions could the Solutions Architect consider? (Select TWO)
