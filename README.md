@@ -1208,94 +1208,252 @@ connection.
 
     </details>
 
-81. A company wants to migrate its website from an on-premises data center onto AWS. At the same time, it wants to migrate the website to a containerized microservice-based architecture to improve the availability and cost efficiency. The company's security policy states that privileges and network permissions must be configured according to best practice, using least privilege. A Solutions Architect must create a containerized architecturethat meets the security requirements and has deployed the application to an Amazon ECS cluster. What steps are required after the deployment to meet the requirements? (Choose two.)
+81. A company wants to migrate its website from an on-premises data center onto AWS. At the same time, it wants to migrate the website to a containerized microservice-based architecture to improve the availability and cost efficiency. The company's security policy states that privileges and network permissions must be configured according to best practice, using least privilege. A Solutions Architect must create a containerized architecture that meets the security requirements and has deployed the application to an Amazon ECS cluster. What steps are required after the deployment to meet the requirements? (Choose two.)
     - [ ] A. Create tasks using the bridge network mode.
-    - [ ] B. Create tasks using the awsvpc network mode.
+    - [ ] B. Create tasks using the AWS VPC network mode.
     - [ ] C. Apply security groups to Amazon EC2 instances, and use IAM roles for EC2 instances to access other resources.
     - [ ] D. Apply security groups to the tasks, and pass IAM credentials into the container at launch time to access other resources.
     - [ ] E. Apply security groups to the tasks, and use IAM roles for tasks to access other resources.
-82. A company is migrating its marketing website and content management system from an onpremises data center to AWS. The company wants the AWS application to be developed in a VPC with Amazon EC2 instances used for the web servers and an Amazon RDS instance for the database. The company has a mnbook document that describes the installation process of the on-premises system. The company would like to base the AWS system on the processes referenced in the mnbook document. The runbook document describes the installation and configuration of the operating systems, network settings, the website, and content management system software on the servers. After the migration is complete, the company wants to be able to make changes quickly to take advantage of other AWS features. How can the application and environment be deployed and automated in AWS, while allowing for fumre changes?
-    - [ ] A. Update the runbook to describe how to create the VPC, the EC2 instances, and the RDS instance for the application by using the AWS Console. Make sure that the rest of the steps in the mnbook are updated to reflect any changes that may come from the AWS migration.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 在桥接模式下，所有容器共享一个安全组，这样就不得不开所有端口，不符合最小特权
+       - [x] B. 正确
+       - [ ] C. 因为不选A，随意C是不必要的
+       - [ ] D. 传输IAM认证信息是不安全的
+       - [x] E. 正确
+
+    </details>
+
+82. A company is migrating its marketing website and content management system from an on-premises data center to AWS. The company wants the AWS application to be developed in a VPC with Amazon EC2 instances used for the web servers and an Amazon RDS instance for the database. The company has a runbook document that describes the installation process of the on-premises system. The company would like to base the AWS system on the processes referenced in the runbook document. The runbook document describes the installation and configuration of the operating systems, network settings, the website, and content management system software on the servers. After the migration is complete, the company wants to be able to make changes quickly to take advantage of other AWS features. How can the application and environment be deployed and automated in AWS, while allowing for future changes?
+    - [ ] A. Update the runbook to describe how to create the VPC, the EC2 instances, and the RDS instance for the application by using the AWS Console. Make sure that the rest of the steps in the runbook are updated to reflect any changes that may come from the AWS migration.
     - [ ] B. Write a Python script that uses the AWS API to create the VPC, the EC2 instances, and the RDS instance for the application. Write shell scripts that implement the rest of the steps in the runbook. Have the Python script copy and run the shell scripts on the newly created instances to complete the installation.
-    - [ ] C. Write an AWS CloudFormation template that creates the VPC, the EC2 instances, and the RDS instance for the application. Ensure that the rest of the steps in the runbook are updated to reflect any changes that may come fromthe AWS migration.
+    - [ ] C. Write an AWS CloudFormation template that creates the VPC, the EC2 instances, and the RDS instance for the application. Ensure that the rest of the steps in the runbook are updated to reflect any changes that may come from the AWS migration.
     - [ ] D. Write an AWS CloudFormation template that creates the VPC, the EC2 instances, and the RDS instance for the application. Include EC2 user data in the AWS CloudFormation template to install and configure the software.
-83. A company is adding a new approved external vendor that only supports IPv6 connectivity. The company's backend systems sit in the private subnet of an Amazon VPC. The company uses a NAT gateway to allow these systems to communicate with external vendors over IPv4. Company policy requires systems that communicate with external vendors use a security group that limits access to only approved external vendors. The virtual private cloud (VPC) uses the default network ACL The Systems Operator successfully assigns IPv6 addresses to each of the backend systems. The Systems Operator also updates the outbound security group to include the IPv6 CIDR of the external vendor (destination). The systems within the VPC are able to ping one another successfully over IPv6. However, these systems are unable to communicate with the external vendor. What changes are required to enable communication with the external vendor?
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案D
+
+    </details>
+
+83. A company is adding a new approved external vendor that only supports IPv6 connectivity. The company's backend systems sit in the private subnet of an Amazon VPC. The company uses a NAT gateway to allow these systems to communicate with external vendors over IPv4. Company policy requires systems that communicate with external vendors use a security group that limits access to only approved external vendors. The virtual private cloud (VPC) uses the default network ACL The Systems Operator successfully assigns IPv6 addresses to each of the backend systems. The Systems Operator also updates the outbound security group to include the IPv6 CIDR of the external vendor (destination). The systems within the VPC can ping one another successfully over IPv6. However, these systems are unable to communicate with the external vendor. What changes are required to enable communication with the external vendor?
     - [ ] A. Create an IPv6 NAT instance. Add a route for destination 0.0.0.0/0 pointing to the NAT instance.
-    - [ ] B. Enable IPv6 on the NAT gateway. Add a route for destination ::/0 pointing to the NAT gateway.
+    - [ ] B. Enable IPv6 on the NAT gateway. Add a route for destination::/0 pointing to the NAT gateway.
     - [ ] C. Enable IPv6 on the internet gateway. Add a route for destination 0.0.0.0/0 pointing to the IGW.
-    - [ ] D. Create an egress-only internet gateway. Add a route for destination ::/0 pointing to the gateway.
-84. A finance company is mnning its business-critical application on current-generation Linux EC2 instances. The application includes a self-managed MySQL database performing heavy 1/0 operations. The application is working fine to handle a moderate amount of traffic during the month. However, it slows down during the final three days of each month due to month-end reporting, even though the company is using Elastic Load Balancers and Auto Scaling within its infrastructure to meet the increased demand. Which of the following actions would allow the database to handle the month-end load with the LEAST impact on performance?
+    - [ ] D. Create an egress-only internet gateway. Add a route for destination::/0 pointing to the gateway.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案D
+
+    </details>
+
+84. A finance company is running its business-critical application on current-generation Linux EC2 instances. The application includes a self-managed MySQL database performing heavy I/O operations. The application is working fine to handle a moderate amount of traffic during the month. However, it slows down during the final three days of each month due to month-end reporting, even though the company is using Elastic Load Balancers and Auto Scaling within its infrastructure to meet the increased demand. Which of the following actions would allow the database to handle the month-end load with the LEAST impact on performance?
     - [ ] A. Pre-warming Elastic Load Balancers, using a bigger instance type, changing all Amazon EBS volumes to GP2 volumes.
     - [ ] B. Performing a one-time migration of the database cluster to Amazon RDS, and creating several additional read replicas to handle the load during end of month.
     - [ ] C. Using Amazon CloudWatch with AWS Lambda to change the type, size, or IOPS of Amazon EBS volumes in the cluster based on a specific CloudWatch metric.
     - [ ] D. Replacing all existing Amazon EBS volumes with new PIOPS volumes that have the maximum available storage size and 1/0 per second by taking snapshots before the end of the month and reverting back afterwards.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案D
+
+    </details>
+
 85. A Solutions Architect is designing the storage layer for a data warehousing application. The data files are large, but they have statically placed metadata at the beginning of each file that describes the size and placement of the file's index. The data files are read in by a fleet of Amazon EC2 instances that store the index size, index location, and other category information about the data file in a database. That database is used by Amazon EMR to group files together for deeper analysis. What would be the MOST cost-effective, high availability storage solution for this workflow?
     - [ ] A. Store the data files in Amazon S3 and use Range GET for each file's metadata, then index the relevant data.
     - [ ] B. Store the data files in Amazon EFS mounted by the EC2 fleet and EMR nodes.
     - [ ] C. Store the data files on Amazon EBS volumes and allow the EC2 fleet and EMR to mount and unmount the volumes where they are needed.
     - [ ] D. Store the content of the data files in Amazon DynamoDB tables with the metadata, index, and data as their own keys.
-86. A company uses an Amazon EMR cluster to process data once a day. The raw data comes from Amazon S3, and the resulting processed data is also stored in Amazon S3. The processing must complete within 4 hours; currently, it only takes 3 hours. However, the processing time is taking 5 to 10 minutes. longer each week due to an increasing volume of raw data. The team is also concerned about rising costs as the compute capacity increases. The EMR cluster is currently mnning on three m3 xlarge instances (one master and two core nodes). Which of the following solutions will reduce costs related to the increasing compute needs?
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案A
+
+    </details>
+
+86. A company uses an Amazon EMR cluster to process data once a day. The raw data comes from Amazon S3, and the resulting processed data is also stored in Amazon S3. The processing must complete within 4 hours; currently, it only takes 3 hours. However, the processing time is taking 5 to 10 minutes. longer each week due to an increasing volume of raw data. The team is also concerned about rising costs as the compute capacity increases. The EMR cluster is currently running on three m3 xlarge instances (one master and two core nodes). Which of the following solutions will reduce costs related to the increasing compute needs?
     - [ ] A. Add additional task nodes, but have the team purchase an all-upfront convertible Reserved Instance for each additional node to offset the costs.
-    - [ ] B. Add additional task nodes, but use instance fleets with the master node in on-Demand mode and a mix of On-Demand and Spot Instances for the core and task nodes. Purchase a scheduled Reserved Instances for the master nod
+    - [ ] B. Add additional task nodes, but use instance fleets with the master node in on-Demand mode and a mix of On-Demand and Spot Instances for the core and task nodes. Purchase a scheduled Reserved Instances for the master node
     - [ ] C. Add additional task nodes, but use instance fleets with the master node in Spot mode and a mix of On-Demand and Spot Instances for the core and task nodes. Purchase enough scheduled Reserved Instances to offset the cost of running any On-Demand instances.
-    - [ ] D. Add additional task nodes, but use instance fleets with the master node in On-Demand mode and a mix of On-Demand and Spot Instances for the core and task nodes. Purchase a standard allupfront Reserved Instance for the master node.
+    - [ ] D. Add additional task nodes, but use instance fleets with the master node in On-Demand mode and a mix of On-Demand and Spot Instances for the core and task nodes. Purchase a standard all-upfront Reserved Instance for the master node.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 额外节点使用预购实例会很贵
+       - [x] B. 正确
+       - [ ] C. 主节点不能够使用spot实例因为它会被终断
+       - [ ] D. 同A
+
+    </details>
+
 87. A company is building an AWS landing zone and has asked a Solutions Architect to design a multi-account access strategy that will allow hundreds of users to use corporate credentials to access the AWS Console. The company is running a Microsoft Active Directory and users will use an AWS Direct Connect connection to connect to AWS. The company also wants to be able to federate to third-party services and providers, including custom applications. Which solution meets the requirements by using the LEAST amount of management overhead?
-    - [ ] A. Connect the Active Directory to AWS by using single sign-on and an Active Directory Federation Services (AD FS) with SAML 2.0, and then configure the identity Provider (IdP) system to use form-based authentication. Build the AD FS portal page with corporate branding, and integrate third-party applications that support SAML 2.0 as required.
-    - [ ] B. Create a two-way Forest tmst relationship between the on-premises Active Directory and the AWS Directory Service. Set up AWS Single Sign-On with AWS Organizations. Use single sign-on integrations for connections with third-party applications.
+    - [ ] A. Connect the Active Directory to AWS by using single sign-on and an Active Directory Federation Services (AD FS) with SAML 2.0, and then configure the identity Provider (IdP) system to use form-based authentication. Build the AD FS portal page with corporate branding and integrate third-party applications that support SAML 2.0 as required.
+    - [ ] B. Create a two-way Forest trust relationship between the on-premises Active Directory and the AWS Directory Service. Set up AWS Single Sign-On with AWS Organizations. Use single sign-on integrations for connections with third-party applications.
     - [ ] C. Configure single sign-on by connecting the on-premises Active Directory using the AWS Directory Service AD Connector. Enable federation to the AWS services and accounts by using the IAM applications and services linking function. Leverage third-party single sign-on as needed.
     - [ ] D. Connect the company's Active Directory to AWS by using AD FS and SAML 2.0. Configure the AD FS claim rule to leverage Regex third-party single sign-on as needed, and add it to the AD FS server.
-88. A Solutions Architect is designing a network solution for a company that has applications running in a data center in Northern Virginia. The applications in the company's data center require predictable performance to applications running in a virtual private cloud (VPC) located in useast-l, and a secondary VPC in us-west-2 within the same account. The company data center is collocated in an AWS Direct Connect facility that serves the us-est-l region. The company has already ordered an AWS Direct Connect connection and a cross-connect has been established. Which solution will meet the requirements at the cost?
-    - [ ] A. Provision a Direct Connect gateway and attach the virtual private (VGW) for the VPC in us-east-I and the VGW for the VPC in us-west-2. Create a private VIF on the Direct Connect connection and associate it to the Direct Connect gateway.
-    - [ ] B. Create private VIFs on the Direct Connect connection for each of the company's VPCs in the usest-l and us-west-2 regions. Configure the company's data center router to connect directly with the VPCs in those regions via the private VIFs.
-    - [ ] C. Deploy a transit VPC solution using Amazon EC2-based router instances in the us-east-I region. Establish IPsec VPN tunnels between the transit routers and virtual private gateways (VGWs) located in the us-east-I and us-west-2 regions, which are attached to the company's VPCs in those regions. Create a public VIF on the Direct Connect connection and establish IPsec VPN tunnels over the public V IF between the transit routers and the company's data center router.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 需要构筑额外的登录页面
+       - [x] B. 正确
+       - [ ] C. 非服务相关角色应用场景
+       - [ ] D. 需要维护AD FS服务器
+
+    </details>
+
+88. A Solutions Architect is designing a network solution for a company that has applications running in a data center in Northern Virginia. The applications in the company's data center require predictable performance to applications running in a virtual private cloud (VPC) located in us-east-1, and a secondary VPC in us-west-2 within the same account. The company data center is collocated in an AWS Direct Connect facility that serves the us-east-1 region. The company has already ordered an AWS Direct Connect connection and a cross-connect has been established. Which solution will meet the requirements at the cost?
+    - [ ] A. Provision a Direct Connect gateway and attach the virtual private (VGW) for the VPC in us-east-1 and the VGW for the VPC in us-west-2. Create a private VIF on the Direct Connect connection and associate it to the Direct Connect gateway.
+    - [ ] B. Create private VIFs on the Direct Connect connection for each of the company's VPCs in the us-east-1 and us-west-2 regions. Configure the company's data center router to connect directly with the VPCs in those regions via the private VIFs.
+    - [ ] C. Deploy a transit VPC solution using Amazon EC2-based router instances in the us-east-1 region. Establish IPsec VPN tunnels between the transit routers and virtual private gateways (VGWs) located in the us-east-1 and us-west-2 regions, which are attached to the company's VPCs in those regions. Create a public VIF on the Direct Connect connection and establish IPsec VPN tunnels over the public V IF between the transit routers and the company's data center router.
     - [ ] D. Order a second Direct Connect connection to a Direct Connect facility with connectivity to the us-west-2 region. Work with partner to establish a network extension link over dark fiber from the Direct Connect facility to the company's data center. Establish private VIFs on the Direct Connect connections for each of the company's VPCs in the respective regions. Configure the company's data center router to connect directly with the VPCs in those regions via the private VIFs.
-89. A company has a web service deployed in the following two AWS Regions:us-west-2 and us-estl. Each AWS region mns an identical version of the web service. Amazon Route 53 is used to route customers to the AWS Region that has the lowest latency. The company wants to improve the availability of the web sewice in case an outage occurs in one of the two AWS Regions. A Solutions Architect has recommended that a Route 53 health check be performed. The health check must detect a specific text on an endpoint. What combination of conditions should the endpoint meet to pass the Route 53 health check? (Choose two.)
+
+    <details>
+       <summary>Answer</summary>
+
+       DX是全球资源，可以直接连接，答案A
+
+    </details>
+
+89. A company has a web service deployed in the following two AWS Regions:us-west-2 and us-east-1. Each AWS region runs an identical version of the web service. Amazon Route 53 is used to route customers to the AWS Region that has the lowest latency. The company wants to improve the availability of the web service in case an outage occurs in one of the two AWS Regions. A Solutions Architect has recommended that a Route 53 health check be performed. The health check must detect a specific text on an endpoint. What combination of conditions should the endpoint meet to pass the Route 53 health check? (Choose two.)
     - [ ] A. The endpoint must establish a TCP connection within 10 seconds.
     - [ ] B. The endpoint must return an HTTP 200 status.
     - [ ] C. The endpoint must return an HTTP 2xx or 3xx status.
-    - [ ] D. The specific text string must appear within the first 5, 120 bytes of the response.
+    - [ ] D. The specific text string must appear within the first 5,120 bytes of the response.
     - [ ] E. The endpoint must respond to the request within the number of seconds specified when creating the health check.
-90. A company operating a website on AWS requires high levels of scalability, availability and performance. The company is mnning a Ruby on Rails application on Amazon EC2. It has a data tier on MySQL 5.6 on Amazon EC2 using 16 TB of Amazon EBS storage Amazon CloudFront is used to cache application content. The Operations team is reporting continuous and unexpected growth of EBS volumes assigned to the MySQL database. The Solutions Architect has been asked to design a highly scalable, highly available, and high-performing solution. Which solution is the MOST cost-effective at scale?
+
+    <details>
+       <summary>Answer</summary>
+
+       如果是匹配字符串，建立TCP连接的时间是4秒，且返回的是2xx或者是3xx状态码，排除A和B，C正确，Route 53 将在响应正文中搜索您指定的字符串。该字符串必须完全显示在响应正文的前 5120 个字节中，D正确，答案CD
+
+    </details>
+
+90. A company operating a website on AWS requires high levels of scalability, availability, and performance. The company is running a Ruby on Rails application on Amazon EC2. It has a data tier on MySQL 5.6 on Amazon EC2 using 16 TB of Amazon EBS storage Amazon CloudFront is used to cache application content. The Operations team is reporting continuous and unexpected growth of EBS volumes assigned to the MySQL database. The Solutions Architect has been asked to design a highly scalable, highly available, and high-performing solution. Which solution is the MOST cost-effective at scale?
     - [ ] A. Implement Multi-AZ and Auto Scaling for all EC2 instances in the current configuration. Ensure that all EC2 instances are purchased as reserved instances. Implement new elastic Amazon EBS volumes for the data tier.
     - [ ] B. Design and implement the Docker-based containerized solution for the application using Amazon ECS. Migrate to an Amazon Aurora MySQL Multi-AZ cluster. Implement storage checks for Aurora MySQL storage utilization and an AWS Lambda function to grow the Aurora MySQL storage, as necessary. Ensure that Multi-AZ architectures are implemented.
     - [ ] C. Ensure that EC2 instances are right-sized and behind an Elastic Load Balancing load balancer. Implement Auto Scaling with EC2 instances. Ensure that the reserved instances are purchased for fixed capacity and that Auto Scaling instances run on demand. Migrate to an Amazon Aurora MySQL Multi-AZ cluster. Ensure that Multi-AZ architectures are implemented.
     - [ ] D. Ensure that EC2 instances are right-sized and behind an Elastic Load Balancer. Implement Auto Scaling with EC2 instances. Ensure that Reserved instances are purchased for fixed capacity and that Auto Scaling instances run on demand. Migrate to an Amazon Aurora MySQL Multi-AZ cluster. Implement storage checks for Aurora MySQL storage utilization and an AWS Lambda function to grow Aurora MySQL storage, as necessary. Ensure Multi-AZ architectures are implemented.
-91. The Security team needs to provide a team of interns with an AWS environment so they can build the serverless video transcoding application. The project will use Amazon S3, AWS Lambda, Amazon API Gateway, Amazon Cognito, Amazon DynamoDB, and Amazon Elastic Trans. The interns should be able to create and configure the necessary resources, but they may not have access to create or modify AWS IAM roles. The Solutions Architect creates a policy and attaches it to the interns' group. How should the Security team configure the environment to ensure that the interns are selfsufficient?
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 用EC2上的MySQL不是最佳实践
+       - [ ] B. 极光的磁盘是可以自动扩张的
+       - [x] C. 正确
+       - [ ] D. 同B
+
+    </details>
+
+91. The Security team needs to provide a team of interns with an AWS environment so they can build the serverless video transcoding application. The project will use Amazon S3, AWS Lambda, Amazon API Gateway, Amazon Cognito, Amazon DynamoDB, and Amazon Elastic Trans. The interns should be able to create and configure the necessary resources, but they may not have access to create or modify AWS IAM roles. The Solutions Architect creates a policy and attaches it to the interns' group. How should the Security team configure the environment to ensure that the interns are self-sufficient?
     - [ ] A. Create a policy that allows creation of project-related resources only. Create roles with required service permissions, which are assumable by the services.
     - [ ] B. Create a policy that allows creation of all project-related resources, including roles that allow access only to specified resources.
     - [ ] C. Create roles with the required service permissions, which are assumable by the services. Have the interns create and use a bastion host to create the project resources in the project subnet only.
     - [ ] D. Create a policy that allows creation of project-related resources only. Require the interns to raise a request for roles to be created with the Security team. The interns will provide the requirements for the permissions to be set in the role.
-92. A company is mnning a commercial Apache Hadoop cluster on Amazon EC2. This cluster is being used daily to query large files on Amazon S3. The data on Amazon S3 has been curated and does not require any additional transformations steps. The company is using a commerciALBusiness intelligence (BI) tool on Amazon EC2 to run queries against the Hadoop cluster and visualize the data. The company wants to reduce or eliminate the overhead costs associated with managing the Hadoop cluster and the BI tool. The company would like to remove to a more cost-effective solution with minimal effort. The visualization is simple and requires performing some basic aggregation steps only. Which option will meet the company's requirements?
+
+    <details>
+       <summary>Answer</summary>
+
+       - [x] A. 正确
+       - [ ] B. 不应该赋予操作Role的权限
+       - [ ] C. 有一些资源是全球的，不在VPC内的
+       - [ ] D. 这个不能自给自足
+
+    </details>
+
+92. A company is running a commercial Apache Hadoop cluster on Amazon EC2. This cluster is being used daily to query large files on Amazon S3. The data on Amazon S3 has been curated and does not require any additional transformations steps. The company is using a commerciALBusiness intelligence (BI) tool on Amazon EC2 to run queries against the Hadoop cluster and visualize the data. The company wants to reduce or eliminate the overhead costs associated with managing the Hadoop cluster and the BI tool. The company would like to remove to a more cost-effective solution with minimal effort. The visualization is simple and requires performing some basic aggregation steps only. Which option will meet the company's requirements?
     - [ ] A. Launch a transient Amazon ENIR cluster daily and develop an Apache Hive script to analyze the files on Amazon S3. Shut down the Amazon ENIR cluster when the job is complete. The use the Amazon QuickSight to connect to Amazon EMR and perform the visualization.
     - [ ] B. Develop a stored procedure invoked from a MySQL database running on Amazon EC2 to analyze EC2 to analyze the files in Amazon S3. Then use a fast in-memory BL tool running on Amazon EC2 to visualize the data.
-    - [ ] C. Develop a script that uses Amazon Athena to quexy and analyze the files on Amazon S3. Then use Amazon QuickSight to connect to Athena and perform the visualization.
+    - [ ] C. Develop a script that uses Amazon Athena to query and analyze the files on Amazon S3. Then use Amazon QuickSight to connect to Athena and perform the visualization.
     - [ ] D. Use a commercial extract, transform, load (ETL) tool that runs on Amazon EC2 to prepare the data for processing. Then switch to a faster and cheaper Bl tool that runs on Amazon EC2 to visualize the data from Amazon S3.
-93. A large multinational company luns a timesheet application on AWS that is used by staff across the world. The application ntns on Amazon EC2 instances in an Auto Scaling group behind an Elastic Load Balancing (ELB) load balancer, and stores in an Amazon RDS MySQL Multi-AZ database instance. The CFO is concerned about the impact on the business if the application is not available. The application must not be down for more than two hours, but he solution must be as cost-effective as possible. How should the Solutions Architect meet the CFO's requirements while minimizing data loss?
-    - [ ] A. In another region, configure a read replica and create a copy of the infrastmcture. When an issue occurs, promote the read replica and configure as an Amazon RDS Multi-AZ database instance. Update the DNS to point to the other region's ELB.
-    - [ ] B. Configure a I-day window of 60-minute snapshots of the Amazon RDS Multi-AZ database instance. Create an AWS CloudFormation template of the application infrastructure that uses the latest snapshot. When an issue occurs, use the AWS CloudFormation template to create the environment in another region. Update the DNS record to point to the other region's ELB.
-    - [ ] C. Configure a I-day window of 60-minute snapshots of the Amazon RDS Multi-AZ database instance which is copied to another region. Crate an AWS CloudFormation template of the application infrastmcture that uses the latest copied snapshot. When an issue occurs, use the AWS CloudFormation template to create the environment in another region. Update the DNS record to point to the other region's ELB.
-    - [ ] D. Configure a read replica in another region. Create an AWS CloudFormation template of the application infrastmcture. When an issue occurs, promote the read replica and configure as an Amazon RDS Multi-AZ database instance and use the AWS CloudFormation template to create the environment in another region using the promoted Amazon RDS instance. Update the DNS record to point to the other region's ELB.
-94. A development team has created a series ofAWS CloudFormation templates to help deploy services. They created a template for a network /viltual private (VPC) stack, a database stack, a bastion host stack, and a web application-specific stack. Each service requires the deployment of at least:A network'VPC stackA bastion host stackA web application stack Each template has multiple input parameters that make it difficult to deploy the services individually from the AWS CloudFormation console. The input parameters from one stack are typically outputs from other stacks. For example, the VPC ID, subnet IDs, and security groups from the network stack may need to be used in the application stack or database stack Which actions will help reduce the operationALBurden and the number of parameters passed into a service deployment? (Choose two.)
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案C
+
+    </details>
+
+93. A large multinational company runs a timesheet application on AWS that is used by staff across the world. The application runs on Amazon EC2 instances in an Auto Scaling group behind an Elastic Load Balancing (ELB) load balancer, and stores in an Amazon RDS MySQL Multi-AZ database instance. The CFO is concerned about the impact on the business if the application is not available. The application must not be down for more than two hours, but he solution must be as cost-effective as possible. How should the Solutions Architect meet the CFO's requirements while minimizing data loss?
+    - [ ] A. In another region, configure a read replica and create a copy of the infrastructure. When an issue occurs, promote the read replica, and configure as an Amazon RDS Multi-AZ database instance. Update the DNS to point to the other region's ELB.
+    - [ ] B. Configure a 1-day window of 60-minute snapshots of the Amazon RDS Multi-AZ database instance. Create an AWS CloudFormation template of the application infrastructure that uses the latest snapshot. When an issue occurs, use the AWS CloudFormation template to create the environment in another region. Update the DNS record to point to the other region's ELB.
+    - [ ] C. Configure a 1-day window of 60-minute snapshots of the Amazon RDS Multi-AZ database instance which is copied to another region. Crate an AWS CloudFormation template of the application infrastructure that uses the latest copied snapshot. When an issue occurs, use the AWS CloudFormation template to create the environment in another region. Update the DNS record to point to the other region's ELB.
+    - [ ] D. Configure a read replica in another region. Create an AWS CloudFormation template of the application infrastructure. When an issue occurs, promote the read replica, and configure as an Amazon RDS Multi-AZ database instance and use the AWS CloudFormation template to create the environment in another region using the promoted Amazon RDS instance. Update the DNS record to point to the other region's ELB.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 没必要事先在两外一个区域架构一个网站，这样会很贵
+       - [ ] B. 快照需要复制到另外一个区域
+       - [ ] C. 会有一个小时的数据丢失
+       - [x] D. 正确
+
+    </details>
+
+94. A development team has created a series ofAWS CloudFormation templates to help deploy services. They created a template for a network viltual private (VPC) stack, a database stack, a bastion host stack, and a web application-specific stack. Each service requires the deployment of at least:A network'VPC stackA bastion host stackA web application stack Each template has multiple input parameters that make it difficult to deploy the services individually from the AWS CloudFormation console. The input parameters from one stack are typically outputs from other stacks. For example, the VPC ID, subnet IDs, and security groups from the network stack may need to be used in the application stack or database stack Which actions will help reduce the operation burden and the number of parameters passed into a service deployment? (Choose two.)
     - [ ] A. Create a new AWS CloudFormation template for each service. After the existing templates to use cross-stack references to eliminate passing many parameters to each template. Call each required stack for the application as a neSted stack from the new stack. Call the newly created service stack from the AWS CloudFormation console to deploy the specific service with a subset of the parameters previously required.
     - [ ] B. Create a new portfolio in AWS Service Catalog for each service. Create a product for each existing AWS CloudFormation template required to build the service. Add the products to the portfolio that represents that service in AWS Service Catalog. To deploy the service, select the specific service portfolio and launch the portfolio with the necessary parameters to deploy all templates.
     - [ ] C. Set up an AWS CodePipeline workflow for each service. For each existing template, choose AWS CloudFormation as a deployment action. Add the AWS CloudFormation template to the deployment action. Ensure that the deployment actions are processed to make sure that dependences are obeyed. Use configuration files and scripts to share parameters between the stacks. To launch the service, execute the specific template by choosing the name of the service and releasing a change.
     - [ ] D. Use AWS Step Functions to define a new service. Create a new AWS CloudFormation template for each service. After the existing templates to use cross-stack references to eliminate passing many parameters to each template. Call each required stack for the application as a nested stack from the new service template. Configure AWS Step Functions to call the service template directly. In the AWS Step Functions console, execute the step.
     - [ ] E. Create a new portfolio for the Services in AWS Service Catalog. Create a new AWS CloudFormation template for each service. After the existing templates to use cross-stack references to eliminate passing many parameters to each template. Call each required stack for the application as a nested stack from the new stack. Create a product for each application. Add the service template to the product. Add each new product to the portfolio. Deploy the product from the portfolio to deploy the service with the necessary parameters only to start the deployment.
-95. A company has an application behind a load balancer with enough Amazon EC2 instances to satisfy peak demand. Scripts and third-party deployment solutions are used to configure EC2 instances when demand increases or an instance fails. The team must periodically evaluate the utilization of the instance types to ensure that the correct sizes are deployed. How can this workload be optimized to meet these requirements?
-    - [ ] A. Use CloudFormer" to create AWS CloudFormation stacks from the current resources. Deploy that stack by using AWS CloudFormation in the same region. Use Amazon CloudWatch alarms to send notifications about underutilized resources to provide cost-savings suggestions.
-    - [ ] B. Create an Auto Scaling group to scale the instances, and use AWS CodeDeploy to perform the configuration. Change from a load balancer to an Application Load Balancer. Purchase a third party product that provides suggestions for cost savings on AWS resources.
-    - [ ] C. Deploy the application by using AWS Elastic Beanstalk with default options. Register for an AWS Support Developer plan. Review the instance usage for the application by using Amazon CloudWatch, and identify less expensive instances that can handle the load. Hold monthly meetings to review new instance types and determine whether Reserved instances should be purchased.
-    - [ ] D. Deploy the application as a Docker image by using Amazon ECS. Set up Amazon EC2 Auto Scaling and Amazon ECS scaling. Register for AWS Business Supp AWS Business Support ort and use Tmsted Advisor checks to provide suggestions on cost savings
-96. A large global financial services company has multiple business units. The company wants to allow Developers to try new sewices, but there are multiple compliance requirements for different workloads. The Security team is concerned about the access strategy for on-premises and AWS implementations. They would like to enforce governance for AWS sewices used by business team for regulatory workloads, including Payment Card Industry (PCI) requirements. Which solution will address the Security team's concerns and allow the Developers to fry new services?
+
+    <details>
+       <summary>Answer</summary>
+
+       使用嵌套template，选A；使用Service Catalog选E，答案AE
+
+    </details>
+
+95. A company has an application behind a load balancer with enough Amazon EC2 instances to satisfy peak demand. Scripts and third-party deployment solutions are used to configure EC2 instances when demand increases, or an instance fails. The team must periodically evaluate the utilization of the instance types to ensure that the correct sizes are deployed. How can this workload be optimized to meet these requirements?
+    - [ ] A. Use CloudFormer to create AWS CloudFormation stacks from the current resources. Deploy that stack by using AWS CloudFormation in the same region. Use Amazon CloudWatch alarms to send notifications about underutilized resources to provide cost-savings suggestions.
+    - [ ] B. Create an Auto Scaling group to scale the instances, and use AWS CodeDeploy to perform the configuration. Change from a load balancer to an Application Load Balancer. Purchase a third-party product that provides suggestions for cost savings on AWS resources.
+    - [ ] C. Deploy the application by using AWS Elastic Beanstalk with default options. Register for an AWS Support Developer plan. Review the instance usage for the application by using Amazon CloudWatch and identify less expensive instances that can handle the load. Hold monthly meetings to review new instance types and determine whether Reserved instances should be purchased.
+    - [ ] D. Deploy the application as a Docker image by using Amazon ECS. Set up Amazon EC2 Auto Scaling and Amazon ECS scaling. Register for AWS Business Supp AWS Business Support ort and use Trusted Advisor checks to provide suggestions on cost savings
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 不关CloudFormation什么事儿
+       - [ ] B. CodeDeploy是部署应用的，不管基盘部署
+       - [ ] C. 答非所问
+       - [x] D. 正确
+
+    </details>
+
+96. A large global financial services company has multiple business units. The company wants to allow Developers to try new services, but there are multiple compliance requirements for different workloads. The Security team is concerned about the access strategy for on-premises and AWS implementations. They would like to enforce governance for AWS services used by business team for regulatory workloads, including Payment Card Industry (PCI) requirements. Which solution will address the Security team's concerns and allow the Developers to fry new services?
     - [ ] A. Implement a strong identity and access management model that includes users, groups, and roles in various AWS accounts. Ensure that centralized AWS CloudTrail logging is enabled to detect anomalies. Build automation with AWS Lambda to tear down unapproved AWS resources for governance.
-    - [ ] B. Build a multi-account strategy based on business units, environments, and specific regulatoxy requirements. Implement SAML-based federation across all AWS accounts with an on-premises identity store. Use AWS Organizations and build organizational units (OUs) structure based on regulations and service governance. Implement service control policies across OUs.
+    - [ ] B. Build a multi-account strategy based on business units, environments, and specific regulatory requirements. Implement SAML-based federation across all AWS accounts with an on-premises identity store. Use AWS Organizations and build organizational units (OUs) structure based on regulations and service governance. Implement service control policies across OUs.
     - [ ] C. Implement a multi-account strategy based on business units, environments, and specific regulatory requirements. Ensure that only PCI-compliant services are approved for use in the accounts. Build IAM policies to give access to only PCI-compliant services for governance.
-    - [ ] D. Build one AWS account for the company for the strong security controls. Ensure that all the service limits are raised to meet company scalability requirements. Implement SAML federation with an on-premises identity store, and ensure that only approved services are used in the account.
-97. A company had a tight deadline to migrate its on-premises environment to AWS. It moved over Microsoft SQL Servers and Microsoft Windows Servers using the virtual machine import/export sewice and rebuild other applications native to the cloud. The team created both Amazon EC2 databases and used Amazon RDS. Each team in the company was responsible for migrating their applications, and would like suggestions on reducing its AWS spend. Which steps should a Solutions Architect take to reduce costs?
-    - [ ] A. Enable AWS Business Support and review AWS Tmsted Advisor's cost checks. Create Amazon EC2 Auto Scaling groups for applications that experience fluctuating demand. Save AWS Simple Monthly Calculator reports in Amazon S3 for trend analysis. Create a master account under Organizations and have teams join for consolidating billing.
-    - [ ] B. Enable Cost Explorer and AWS Business Support Reserve Amazon EC2 and Amazon RDS DB instances. Use Amazon CloudWatch and AWS Tmsted Advisor for monitoring and to receive cost-savings suggestions. Create a master account under Organizations and have teams join for consolidated billing.
+    - [ ] D. Build one AWS account for the company for the strong security controls. Ensure that all the service limits are raised to meet company scalability requirements. Implement SAML federation with an on-premises identity store and ensure that only approved services are used in the account.
+
+    <details>
+       <summary>Answer</summary>
+
+       使用AWS Organization是最佳实践，答案C
+
+    </details>
+
+97. A company had a tight deadline to migrate its on-premises environment to AWS. It moved over Microsoft SQL Servers and Microsoft Windows Servers using the virtual machine import/export service and rebuild other applications native to the cloud. The team created both Amazon EC2 databases and used Amazon RDS. Each team in the company was responsible for migrating their applications and would like suggestions on reducing its AWS spend. Which steps should a Solutions Architect take to reduce costs?
+    - [ ] A. Enable AWS Business Support and review AWS Trusted Advisor's cost checks. Create Amazon EC2 Auto Scaling groups for applications that experience fluctuating demand. Save AWS Simple Monthly Calculator reports in Amazon S3 for trend analysis. Create a master account under Organizations and have teams join for consolidating billing.
+    - [ ] B. Enable Cost Explorer and AWS Business Support Reserve Amazon EC2 and Amazon RDS DB instances. Use Amazon CloudWatch and AWS Trusted Advisor for monitoring and to receive cost-savings suggestions. Create a master account under Organizations and have teams join for consolidated billing.
     - [ ] C. Create an AWS Lambda function that changes the instance size based on Amazon CloudWatch alarms. Reserve instances based on AWS Simple Monthly Calculator suggestions. Have an AWS Well-Architected framework review and apply recommendations. Create a master account under Organizations and have teams join for consolidated billing.
     - [ ] D. Create a budget and monitor for costs exceeding the budget. Create Amazon EC2 Auto Scaling groups for applications that experience fluctuating demand. Create an AWS Lambda function that changes instance sizes based on Amazon CloudWatch alarms. Have each team upload their bill to an Amazon S3 bucket for analysis of team spending. Use Spot instances on nightly batch processing jobs.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案B
+
+    </details>
+
 98. A company wants to replace its call system with a solution built using AWS managed services. The company call center would like the solution to receive calls, create contact flows, and scale to handle growth projections. The call center would also like the solution to use deep learning capabilities to recognize the intent of the callers and handle basic tasks, reducing the need to speak an agent. The solution should also be able to query business applications and provide relevant information back to calls as requested. Which services should the Solution Architect use to build this solution? (Choose three.)
     - [ ] A. Amazon Rekognition to identity who is calling.
     - [ ] B. Amazon Connect to create a cloud-based contact center.
@@ -1303,17 +1461,50 @@ connection.
     - [ ] D. AWS Lambda to integrate with internal systems.
     - [ ] E. Amazon Lex to recognize the intent of the caller.
     - [ ] F. Amazon SQS to add incoming callers to a queue.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. Amazon Rekognition用于图像识别
+       - [x] B. Amazon Connect提供语言连接服务，符合场景，正确
+       - [ ] C. Amazon Alexa是只能音响
+       - [x] D. 通过Lambda进行内部统括，正确
+       - [ ] E. Amazon Lex提供对话业务，正确
+       - [ ] F. SQS不干这些事儿
+
+    </details>
+
 99. A large company is migrating its entire IT portfolio to AWS. Each business in the company has a standalone AWS account that supports both development and test environments. New accounts to support production workloads will be needed soon. The Finance department requires a centralized method for payment but must maintain visibility into each group's spending to allocate costs. The Security team requires a centralized mechanism to control IAM usage in all the company's accounts. What combination of the following options meet the company's needs with LEAST effort? (Choose two.)
     - [ ] A. Use a collection of parameterized AWS CloudFormation templates defining common IAM permissions that are launched into each account. Require all new and existing accounts to launch the appropriate stacks to enforce the least privilege model.
     - [ ] B. Use AWS Organizations to create a new organization from a chosen payer account and define an organizational unit hierarchy. Invite the existing accounts to join the organization and create new accounts using Organizations.
     - [ ] C. Require each business unit to use its own AWS accounts. Tag each AWS account appropriately and enable Cost Explorer to administer chargebacks.
     - [ ] D. Enable all features of AWS Organizations and establish appropriate service control policies that filter IAM permissions for sub-accounts.
     - [ ] E. Consolidate all of the company's AWS accounts into a single AWS account. Use tags for billing purposes and IAM's Access Advice feature to enforce the least privilege model.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 影响范围太大了
+       - [x] B. 正确
+       - [ ] C. 无法满足统一支付
+       - [x] D. 正确
+       - [ ] E. 合并成一个账户不是最佳解决方案
+
+    </details>
+
 100. A company collects a steady stream of 10 million data records from 100,000 sources each day. These records are written to an Amazon RDS MySQL DB. A query must produce the daily average of a data source over the past 30 days. There are twice as many reads as writes. Queries to the collected data are for one source ID at a time. How can the Solutions Architect improve the reliability and cost effectiveness of this solution?
      - [ ] A. Use Amazon Aurora with MySQL in a Multi-AZ mode. Use four additional read replicas.
      - [ ] B. Use Amazon DynamoDB with the source ID as the partition key and the timestamp as the sort key. Use a Time to Live (TTL) to delete data after 30 days.
      - [ ] C. Use Amazon DynamoDB with the source ID as the partition key. Use a different table each day.
      - [ ] D. Ingest data into Amazon Kinesis using a retention period of 30 days. Use AWS Lambda to write data records to Amazon ElastiCache for read access.
+
+     <details>
+        <summary>Answer</summary>
+
+        简单题，答案B
+
+     </details>
+
 101. A company is moving a business-critical application onto AWS. It is a traditional three-tier web application using an Oracle database. Data must be encwpted in transit and at rest. The database hosts 12 TB of data. Network connectivity to the source Oracle database over the internal is allowed, and the company wants to reduce the operational costs by using AWS Managed Services where possible. All primary keys only; however, it contains many Binary Large Object (BLOB) fields. It was not possible to use the database's native replication tools because of licensing restrictions. Which database migration solution will result in the LEAST amount of impact to the application's availability?
        - [ ] A. Provision an Amazon RDS for Oracle instance. Host the RDS database within a virtual private cloud (VPC) subnet with internet access, and set up the RDS database as an encrypted Read Replica of the source database. Use SSL to encxypt the connection between the two databases. Monitor the replication performance by watching the RDS ReplicaLag metric. During the application maintenance window, shut down the on-premises database and switch over the application connection to the RDS instance when there is no more replication lag. Promote the Read Replica into a standalone database instance.
        - [ ] B. Provision an Amazon EC2 instance and install the same Oracle database software. Create a backup of the source database using the supported tools. During the application maintenance window, restore the backup into the Oracle database mnning in the EC2 instance. Set up an Amazon RDS for Oracle instance, and create an import job between the database hosted in AWS. Shut down the source database and switch over the database connections to the RDS instance when the job is complete.
