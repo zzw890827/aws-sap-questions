@@ -11,13 +11,13 @@ option = {
     },
     xAxis: {
         type: 'category',
-        data: ['8/1', '8/2']
+        data: ['8/1', '8/2', '8/3']
     },
     yAxis: {
         type: 'value'
     },
     series: [{
-        data: [45, 40],
+        data: [45, 40, 50],
         type: 'line'
     }]
 };

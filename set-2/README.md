@@ -294,112 +294,297 @@
 
     </details>
 
-21. A company receives clickstream data files to Amazon S3 evew five minutes. A Python script runs as a cronjob once a day on an Amazon EC2 instance to process each file and load it into a database hosted on Amazon RDS. The cronjob takes 15 to 30 minutes to process 24 hours of data. The data consumers ask for the data be available as soon as possible. Which solution would accomplish the desired outcome?
+21. A company receives clickstream data files to Amazon S3 every five minutes. A Python script runs as a cronjob once a day on an Amazon EC2 instance to process each file and load it into a database hosted on Amazon RDS. The cron job takes 15 to 30 minutes to process 24 hours of data. The data consumers ask for the data be available as soon as possible. Which solution would accomplish the desired outcome?
     - [ ] A. Increase the size of the instance to speed up processing and update the schedule to run once an hour.
     - [ ] B. Convert the cron job to an AWS Lambda function and trigger this new function using a cron job on an EC2 instance.
     - [ ] C. Convert the cron job to an AWS Lambda function and schedule it to run once an hour using Amazon CloudWatch events.
     - [ ] D. Create an AWS Lambda function that runs when a file is delivered to Amazon S3 using S3 event notifications.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 不是最佳解决方案
+       - [ ] B. Lambda最大执行时间是15分钟
+       - [ ] C. 同B
+       - [x] D. 正确
+
+    </details>
+
 22. A company that is new to AWS reports it has exhausted its service limits across several accounts that are on the Basic Support plan. The company would like to prevent this from happening in the future. What is the MOST efficient way of monitoring and managing all service limits in the company's accounts?
     - [ ] A. Use Amazon CloudWatch and AWS Lambda to periodically calculate the limits across all linked accounts using AWS Trusted Advisor, provide notifications using Amazon SNS if the limits are close to exceeding the threshold.
     - [ ] B. Reach out to AWS Support to proactively increase the limits across all accounts. That way, the customer avoids creating and managing infrastructure just to raise the service limits.
     - [ ] C. Use Amazon CloudWatch and AWS Lambda to periodically calculate the limits across all linked accounts using AWS Trusted Advisor, programmatically increase the limits that are close to exceeding the threshold.
     - [ ] D. Use Amazon CloudWatch and AWS Lambda to periodically calculate the limits across all linked accounts using AWS Trusted Advisor, and use Amazon SNS for notifications if a limit is close to exceeding the threshold. Ensure that the accounts are using the AWS Business Support plan at a minimum.
+
+    <details>
+       <summary>Answer</summary>
+
+       如果需要使用Service Limit，需要启用AWS Business Support Plan，答案D
+
+    </details>
+
 23. A company needs to run a software package that has a license that must be run on the same physical host for the duration of its use. The software package is only going to be used for 90 days. The company requires patching and restarting of all instances every 30 days. How can these requirements be met using AWS?
     - [ ] A. Run a dedicated instance with auto-placement disabled.
     - [ ] B. Run the instance on a dedicated host with Host Affinity set to Host.
     - [ ] C. Run an On-Demand instance with a Reserved Instance to ensure consistent placement.
     - [ ] D. Run the instance on a licensed host with termination set for 90 days.
-24. A company runs an 10T platform on AWS. 10T sensors in various locations send data to the company's Node.js API servers on Amazon EC2 instances running behind an Application Load Balancer. The data is stored in an Amazon RDS MySQL DB instance that uses a 4 TB General Purpose SSD volume. The number of sensors the company has deployed in the field has increased over time, and is expected to grow significantly. The API servers are consistently overloaded and RDS metrics show high write latency. Which of the following steps together will resolve the issues permanently and enable growth as new sensors are provisioned, while keeping this platform cost-efficient? (Choose two.)
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. auto-placement对应的是专用主机而不是专用实例
+       - [x] B. 正确
+       - [ ] C. 只有专有主机才是物理不变的
+       - [ ] D. 同C
+
+    </details>
+
+24. A company runs an IoT platform on AWS. IoT sensors in various locations send data to the company's Node.js API servers on Amazon EC2 instances running behind an Application Load Balancer. The data is stored in an Amazon RDS MySQL DB instance that uses a 4 TB General Purpose SSD volume. The number of sensors the company has deployed in the field has increased over time and is expected to grow significantly. The API servers are consistently overloaded and RDS metrics show high write latency. Which of the following steps together will resolve the issues permanently and enable growth as new sensors are provisioned, while keeping this platform cost-efficient? (Choose two.)
     - [ ] A. Resize the MySQL General Purpose SSD storage to 6 TB to improve the volume's IOPS
     - [ ] B. Re-architect the database tier to use Amazon Aurora instead of an RDS MySQL DB instance and add read replicas
     - [ ] C. Leverage Amazon Kinesis Data Streams and AWS Lambda to ingest and process the raw data
     - [ ] D. Use AWS-X-Ray to analyze and debug application issues and add more API servers to match the load
     - [ ] E. Re-architect the database tier to use Amazon DynamoDB instead of an RDS MySQL DB instance
-25. A Solutions Architect is designing a system that will collect and store data from 2,000 internetconnected sensors. Each sensor produces I KB of data every second. The data must be available for analysis within a few seconds of it being sent to the system and stored for analysis indefinitely. Which is the MOST cost-effective solution for collecting and storing the data?
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. gp2的容量有限
+       - [ ] B. 欧若拉的容量有限，最大64TB
+       - [x] C. 正确
+       - [ ] D. 并没有提出改善的方法
+       - [x] E. 正确，因为DynamoDB是没有容量限制的
+
+    </details>
+
+25. A Solutions Architect is designing a system that will collect and store data from 2,000 internetconnected sensors. Each sensor produces 1 KB of data every second. The data must be available for analysis within a few seconds of it being sent to the system and stored for analysis indefinitely. Which is the MOST cost-effective solution for collecting and storing the data?
     - [ ] A. Put each record in Amazon Kinesis Data Streams. Use an AWS Lambda function to write each record to an object in Amazon S3 with a prefix that organizes the records by hour and hashes the record's key. Analyze recent data from Kinesis Data Streams and historical data from Amazon S3.
     - [ ] B. Put each record in Amazon Kinesis Data Streams. Set up Amazon Kinesis Data Firehose to read records from the stream and group them into objects in Amazon S3. Analyze recent data from Kinesis Data Streams and historical data from Amazon S3.
     - [ ] C. Put each record into an Amazon DynamoDB table. Analyze the recent data by querying the table. Use an AWS Lambda function connected to a DynamoDB stream to group records together, write them into objects in Amazon S3, and then delete the record from the DynamoDB table. Analyze recent data from the DynamoDB table and historical data from Amazon S3
     - [ ] D. Put each record into an object in Amazon S3 with a prefix what organizes the records by hour and hashes the record's key. Use S3 lifecycle management to transition objects to S3 infrequent access storage to reduce storage costs. Analyze recent and historical data by accessing the data in Amazon S3
-26. An auction web servers that write bid records into Amazon Kinesis Data Streams. A single t2.large instance has a cronjob that runs the bid processor, which reads incoming bids from Kinesis Data Streams and processes each bid. The auction site is growing in popularity, but users are complaining that some bids are not registering. Troubleshooting indicates that the bid processor is too slow during peak demand hours, sometimes crashes while processing, and occasionally loses track of which records is being processed. What changes should make the bid processing more reliable?
-    - [ ] A. Refactor the web application to use the Amazon Kinesis Producer Libraxy (KPL) when posting bids to Kinesis Data Streams. Refactor the bid processor to flag each record in Kinesis Data Streams as being unread, processing, and processed. At the start of each bid processing run, scan Kinesis Data Streams for unprocessed records.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案B
+
+    </details>
+
+26. An auction web server that write bid records into Amazon Kinesis Data Streams. A single t2.large instance has a cronjob that runs the bid processor, which reads incoming bids from Kinesis Data Streams and processes each bid. The auction site is growing in popularity, but users are complaining that some bids are not registering. Troubleshooting indicates that the bid processor is too slow during peak demand hours, sometimes crashes while processing, and occasionally loses track of which records is being processed. What changes should make the bid processing more reliable?
+    - [ ] A. Refactor the web application to use the Amazon Kinesis Producer Library (KPL) when posting bids to Kinesis Data Streams. Refactor the bid processor to flag each record in Kinesis Data Streams as being unread, processing, and processed. At the start of each bid processing run, scan Kinesis Data Streams for unprocessed records.
     - [ ] B. Refactor the web application to post each incoming bid to an Amazon SNS topic in place of Kinesis Data Streams. Configure the SNS topic to trigger an AWS Lambda function that processes each bid as soon as a user submits it.
-    - [ ] C. Refactor the web application to post each incoming bid to an Amazon SQS FIFO queue in place of Kinesis Data Streams. Refactor the bid processor to continuously the SQS queue. Place the bid processing EC2 instance in an Auto Scaling group with a minimum and a maximum size of I.
-    - [ ] D. Switch the EC2 instance type from t2.large to a larger general compute instance type. Put the bid processor EC2 instances in an Auto Scaling group that scales out the number of EC2 instances running the bid processor, based on the IncomingRecords metric in Kinesis Data Streams.
+    - [ ] C. Refactor the web application to post each incoming bid to an Amazon SQS FIFO queue in place of Kinesis Data Streams. Refactor the bid processor to continuously the SQS queue. Place the bid processing EC2 instance in an Auto Scaling group with a minimum and a maximum size of 1.
+    - [ ] D. Switch the EC2 instance type from t2.large to a larger general compute instance type. Put the bid processor EC2 instances in an Auto Scaling group that scales out the number of EC2 instances running the bid processor, based on the Incoming Records metric in Kinesis Data Streams.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. Kinesis中的数据无法被标记
+       - [ ] B. Lambda有并发执行限制
+       - [x] C. 正确
+       - [ ] D. EC2不是最佳实践
+
+    </details>
+
 27. A company has asked a Solutions Architect to design a secure content management solution that can be accessed by API calls by external customer applications. The company requires that a customer administrator must be able to submit an API call and roll back changes to existing files sent to the content management solution, as needed. What is the MOST secure deployment design that meets all solution requirements?
-    - [ ] A. Use Amazon S3 for object storage with versioning and bucket access logging enabled, and an IAM role and access policy for each customer application. Encryrpt objects using SSE-KMS. Develop the content management application to use a separate AWS KMS key for each customer.
+    - [ ] A. Use Amazon S3 for object storage with versioning and bucket access logging enabled, and an IAM role and access policy for each customer application. Encrypt objects using SSE-KMS. Develop the content management application to use a separate AWS KMS key for each customer.
     - [ ] B. Use Amazon WorkDocs for object storage. Leverage Work-Docs encryption, user access management, and version control. Use AWS CloudTrail to log all SDK actions and create reports of hourly access by using the Amazon CloudWatch dashboard. Enable a revert function in the SDK based on a static Amazon S3 webpage that shows the output of the CloudWatch dashboard.
     - [ ] C. Use Amazon EFS for object storage, using encryption at rest for the Amazon EFS volume and a customer managed key stored in AWS KMS. Use IAM roles and Amazon EFS access policies to specify separate encryption keys for each customer application. Deploy the content management application to store all new versions as new files in Amazon EFS and use a control API to revert a specific file to a previous version.
-    - [ ] D. Use Amazon S3 for object storage with versioning and enable S3 bucket access logging. Use an IAM role and access policy for each customer application. Encrypt objects using client-side encryption, and distribute an encryption key to all customers when accessing the content management application.
+    - [ ] D. Use Amazon S3 for object storage with versioning and enable S3 bucket access logging. Use an IAM role and access policy for each customer application. Encrypt objects using client-side encryption and distribute an encryption key to all customers when accessing the content management application.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [x] A. 正确
+       - [ ] B. Work-Docs不是干这事儿的
+       - [ ] C. 需要使用KMS策略去控制文件访问而不是EFS策略
+       - [ ] D. 给客户发送密匙胆儿挺肥啊
+
+    </details>
+
 28. A company has been using a third-party provider for its content delivery network and recently decided to switch to Amazon CloudFront the Development team wants to maximize performance for the global user base. The company uses a content management system (CMS) that serves both static and dynamic content. The CMS is both md an Application Load Balancer (ALB) which is set as the default origin for the distribution. Static assets are sewed from an Amazon S3 bucket. The Origin Access Identity (OAI) was created property d the S3 bucket policy has been updated to allow the GetObject action from the OAI, but static assets are receiving a 404 error. Which combination of steps should the Solutions Architect take to fix the error? (Select TWO.)
     - [ ] A. Add another origin to the CloudFront distribution for the static assets
     - [ ] B. Add a path based rule to the ALB to forward requests for the static assets
     - [ ] C. Add an RTMP distribution to allow caching of both static and dynamic content
     - [ ] D. Add a behavior to the CloudFront distribution for the path pattern and the origin of the static assets
-    - [ ] E. Add a host header condition to the ALB listener and fonvard the header from CloudFront to add traffic to the allow list
-29. A bank is re-architecting its mainframe-based credit card approval processing application to a cloud-native application on the AWS cloud. The new application will receive up to 1,000 requests per second at peak load. There are multiple steps to each transaction, and each step must receive the result of the previous step. The entire request must return an authorization response within less than 2 seconds with zero data loss. Every request must receive a response. The solution must be Payment Card Industry Data Security Standard (PCI DSS)-compliant. Which option will meet all of the bank's objectives with the LEAST complexity and cost while also meeting compliance requirements?
+    - [ ] E. Add a host header condition to the ALB listener and forward the header from CloudFront to add traffic to the allow list
+
+    <details>
+       <summary>Answer</summary>
+
+       疑难题，不知道选啥。
+
+    </details>
+
+29. A bank is re-architecting its mainframe-based credit card approval processing application to a cloud-native application on the AWS cloud. The new application will receive up to 1,000 requests per second at peak load. There are multiple steps to each transaction, and each step must receive the result of the previous step. The entire request must return an authorization response within less than 2 seconds with zero data loss. Every request must receive a response. The solution must be Payment Card Industry Data Security Standard (PCI DSS)-compliant. Which option will meet all the bank's objectives with the LEAST complexity and cost while also meeting compliance requirements?
     - [ ] A. Create an Amazon API Gateway to process inbound requests using a single AWS Lambda task that performs multiple steps and returns a JSON object with the approval status. Open a support case to increase the limit for the number of concurrent Lambdas to allow room for bursts of activity due to the new application.
-    - [ ] B. Create an Application Load Balancer with an Amazon ECS cluster on Amazon EC2 Dedicated instances in a target group to process incoming requests. Use Auto Scaling to scale the cluster out/in based on average CPU utilization. Deploy a web service that processes all of the approval steps and returns a JSON object with the approval status.
-    - [ ] C. Deploy the application on Amazon EC2 on Dedicated Instances. Use an Elastic Load Balancer in front of a farm of application servers in an Auto Scaling group to handle incoming requests. Scale outlin based on a custom Amazon CloudWatch metric for the number of inbound requests per second after measuring the capacity of a single instance.
-    - [ ] D. Create an Amazon API Gateway to process inbound requests using a series ofAWS Lambda processes, each with an Amazon SQS input queue. As each step completes, it writes its result to the next step's queue. The final step returns a JSON object with the approval status. Open a support case to increase the limit for the number of concurrent Lambdas to allow room for bursts of activity due to the new application.
-30. A Solutions Architect is migrating a 10 TB PostgreSQL database to Amazon RDS for PostgreSQL The company's internet link is 50 MB with a VPN in the Amazon VPC, and the Solutions Architect needs to migrate the data and synchronize the changes before the cutover. The cutover must take place within an 8-day period. What is the LEAST complex method of migrating the database securely and reliably?
+    - [ ] B. Create an Application Load Balancer with an Amazon ECS cluster on Amazon EC2 Dedicated instances in a target group to process incoming requests. Use Auto Scaling to scale the cluster out/in based on average CPU utilization. Deploy a web service that processes all the approval steps and returns a JSON object with the approval status.
+    - [ ] C. Deploy the application on Amazon EC2 on Dedicated Instances. Use an Elastic Load Balancer in front of a farm of application servers in an Auto Scaling group to handle incoming requests. Scale out/in based on a custom Amazon CloudWatch metric for the number of inbound requests per second after measuring the capacity of a single instance.
+    - [ ] D. Create an Amazon API Gateway to process inbound requests using a series of AWS Lambda processes, each with an Amazon SQS input queue. As each step completes, it writes its result to the next step's queue. The final step returns a JSON object with the approval status. Open a support case to increase the limit for the number of concurrent Lambdas to allow room for bursts of activity due to the new application.
+
+    <details>
+       <summary>Answer</summary>
+
+       数据不丢失的只有D啦
+
+    </details>
+
+30. A Solutions Architect is migrating a 10 TB PostgreSQL database to Amazon RDS for PostgreSQL. The company's internet link is 50 MB with a VPN in the Amazon VPC, and the Solutions Architect needs to migrate the data and synchronize the changes before the cutover. The cutover must take place within an 8-day period. What is the LEAST complex method of migrating the database securely and reliably?
     - [ ] A. Order an AWS Snowball device and copy the database using the AWS DMS. When the database is available in Amazon 3, use AWS DMS to load it to Amazon RDS, and configure a job to synchronize changes before the cutover.
     - [ ] B. Create an AWS DMS job to continuously replicate the data from on premises to AWS. Cutover to Amazon RDS after the data is synchronized.
     - [ ] C. Order an AWS Snowball device and copy a database dump to the device. After the data has been copied to Amazon S3, import it to the Amazon RDS instance. Set up log shipping over a VPN to synchronize changes before the cutover.
     - [ ] D. Order an AWS Snowball device and copy the database by using the AWS Schema Conversion Tool. When the data is available in Amazon S3, use AWS DMS to load it to Amazon RDS, and configure a job to synchronize changes before the cutover.
+
+    <details>
+       <summary>Answer</summary>
+
+       使用Snowball之前需要使用SCT，然后进入S3，通过DMS导入到RDS，这是标准做法，答案D
+
+    </details>
+
 31. A Solutions Architect must update an application environment within AWS Elastic Beanstalk using a blue/ green deployment methodology. The Solutions Architect creates an environment that is identical to the existing application environment and deploys the application to the new environment. What should be done next to complete the update?
     - [ ] A. Redirect to the new environment using Amazon Route 53
     - [ ] B. Select the Swap Environment URLs option
     - [ ] C. Replace the Auto Scaling launch configuration
     - [ ] D. Update the DNS records to point to the green environment
-32. A company has a legacy application running on servers on premises. To increase the application's reliability, the company wants to gain actionable insights using application logs. A Solutions Architect has been given following requirements for the solution:-Aggregate logs using AWS. -Automate log analysis for errors. -Notify the Operations team when errors go beyond a specified threshold. What solution meets the requirements?
+
+    <details>
+       <summary>Answer</summary>
+
+       概念题，答案B
+
+    </details>
+
+32. A company has a legacy application running on servers on premises. To increase the application's reliability, the company wants to gain actionable insights using application logs. A Solutions Architect has been given following requirements for the solution: -Aggregate logs using AWS. -Automate log analysis for errors. -Notify the Operations team when errors go beyond a specified threshold. What solution meets the requirements?
     - [ ] A. Install Amazon Kinesis Agent on servers, send logs to Amazon Kinesis Data Streams and use Amazon Kinesis Data Analytics to identify errors, create an Amazon CloudWatch alarm to notify the Operations team of errors
     - [ ] B. Install an AWS X-Ray agent on servers, send logs to AWS Lambda and analyze them to identify errors, use Amazon CloudWatch Events to notify the Operations team of errors.
-    - [ ] C. Install Logstash on servers, send logs to Amazon S3 and use Amazon Athena to identify errors, use sendmail to notify the Operations team of errors.
+    - [ ] C. Install Logstash on servers, send logs to Amazon S3 and use Amazon Athena to identify errors, use send mail to notify the Operations team of errors.
     - [ ] D. Install the Amazon CloudWatch agent on servers, send logs to Amazon CloudWatch Logs and use metric filters to identify errors, create a CloudWatch alarm to notify the Operations team of errors.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. Amazon Kinesis Data Analytics是做数据分析而不是错误识别的
+       - [ ] B. X-Ray用于检测网络的
+       - [ ] C. Logstash是将数据加载到Elasticsearch中而不是S3
+       - [ ] D. 正确
+  
+    </details>
+
 33. What combination of steps could a Solutions Architect take to protect a web workload running on Amazon EC2 from DDoS and application layer attacks? (Select two.)
     - [ ] A. Put the EC2 instances behind a Network Load Balancer and configure AWS WAF on it.
     - [ ] B. Migrate the DNS to Amazon Route 53 and use AWS Shield.
     - [ ] C. Put the EC2 instances in an Auto Scaling group and configure AWS WAF on it.
     - [ ] D. Create and use an Amazon CloudFront distribution and configure AWS WAF on it.
     - [ ] E. Create and use an internet gateway in the VPC and use AWS Shield.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案BD
+
+    </details>
+
 34. A photo-sharing and publishing company receives 10,000 to 150,000 images daily. The company receives the images from multiple suppliers and users registered with the service. The company is moving to AWS and wants to enrich the existing metadata by adding data using Amazon Rekognition. The following is an example of the additional data:As part of the cloud migration program, the company uploaded existing image data to Amazon S3 and told users to upload images directly to Amazon S3. What should the Solutions Architect do to support these requirements?
     - [ ] A. Trigger AWS Lambda based on an S3 event notification to create additional metadata using Amazon Rekognition. Use Amazon DynamoDB to store the metadata and Amazon ES to create an index. Use a web front-end to provide search capabilities backed by Amazon ES.
     - [ ] B. Use Amazon Kinesis to stream data based on an S3 event. Use an application running in Amazon EC2 to extract metadata from the images. Then store the data on Amazon DynamoDB and Amazon CloudSearch and create an index. Use a web front-end with search capabilities backed by CloudSearch.
     - [ ] C. Start an Amazon SQS queue based on S3 event notifications. Then have Amazon SQS send the metadata information to Amazon DynamoDB. An application running on Amazon EC2 extracts data from Amazon Rekognition using the API and adds data to DynamoDB and Amazon ES. Use a web front-end to provide search capabilities backed by Amazon ES.
     - [ ] D. Trigger AWS Lambda based on an S3 event notification to create additional metadata using Amazon Rekognition. Use Amazon RDS MySQL Multi-AZ to store the metadata information and use Lambda to create an index. Use a web front-end with search capabilities backed by Lambda.
-35. A Solutions Architect is redesigning an image-viewing and messaging platform to be delivered as SaaS. Currently, there is a farm of virtual desktop infrastmcture (VDI) that runs a desktop image- viewing application and a desktop messaging application. Both applications use a shared database to manage user accounts and sharing. Users log in from a web portal that launches the applications and streams the view of the application on the user's machine. The Development Operations team wants to move away from using VDI and wants to rewrite the application. What is the MOST cost-effective architecture that offers both security and ease of management?
-    - [ ] A. Run a website from an Amazon S3 bucket with a separate S3 bucket for images amd messaging data. Call AWS Lambda functions from embedded JavaScript to manage the dynamic content, and use Amazon Cognito for user and sharing management.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案A
+
+    </details>
+
+35. A Solutions Architect is redesigning an image-viewing and messaging platform to be delivered as SaaS. Currently, there is a farm of virtual desktop infrastructure (VDI) that runs a desktop image- viewing application and a desktop messaging application. Both applications use a shared database to manage user accounts and sharing. Users log in from a web portal that launches the applications and streams the view of the application on the user's machine. The Development Operations team wants to move away from using VDI and wants to rewrite the application. What is the MOST cost-effective architecture that offers both security and ease of management?
+    - [ ] A. Run a website from an Amazon S3 bucket with a separate S3 bucket for images and messaging data. Call AWS Lambda functions from embedded JavaScript to manage the dynamic content and use Amazon Cognito for user and sharing management.
     - [ ] B. Run a website from Amazon EC2 Linux servers, storing the images in Amazon S3, and use Amazon Cognito for user accounts and sharing. Create AWS CloudFormation templates to launch the application by using EC2 user data to install and configure the application.
     - [ ] C. Run a website as an AWS Elastic Beanstalk application, storing the images in Amazon S3, and using an Amazon RDS database for user accounts and sharing. Create AWS CloudFormation templates to launch the application and perform blue/green deployments.
     - [ ] D. Run a website from an Amazon S3 bucket that authorizes Amazon AppStream to stream applications for a combined image viewer and messenger that stores images in Amazon S3. Have the website use an Amazon RDS database for user accounts and sharing.
-36. A company would like to implement a sewerless application by using Amazon API Gateway, AWS Lambda and Amazon DynamoDB. They deployed a proof of concept and stated that the average response time is greater than what their upstream services can accept Amazon CloudWatch metrics did not indicate any issues with DynamoDB but showed that some Lambda functions were hitting their timeout. Which of the following actions should the Solutions Architect consider to improve performance? (Choose two.)
-    - [ ] A. Configure the AWS Lambda function to reuse containers to avoid unnecessaxy startup time.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. JavaScript不能直接触发Lambda
+       - [ ] B. Cognito对共享的支持不怎么样
+       - [ ] C. 正确
+       - [ ] D. AppStream不是用来干Saas的
+
+    </details>
+
+36. A company would like to implement a serverless application by using Amazon API Gateway, AWS Lambda and Amazon DynamoDB. They deployed a proof of concept and stated that the average response time is greater than what their upstream services can accept Amazon CloudWatch metrics did not indicate any issues with DynamoDB but showed that some Lambda functions were hitting their timeout. Which of the following actions should the Solutions Architect consider improving performance? (Choose two.)
+    - [ ] A. Configure the AWS Lambda function to reuse containers to avoid unnecessary startup time.
     - [ ] B. Increase the amount of memory and adjust the timeout on the Lambda function. Complete performance testing to identify the ideal memory and timeout configuration for the Lambda function.
-    - [ ] C. Create an Amazon ElastiCache cluster mnning Memcached, and configure the Lambda function for VPC integration with access to the Amazon ElastiCache cluster.
+    - [ ] C. Create an Amazon ElastiCache cluster running Memcached, and configure the Lambda function for VPC integration with access to the Amazon ElastiCache cluster.
     - [ ] D. Enable API cache on the appropriate stage in Amazon API Gateway, and override the T TL for individual methods that require a lower T TL than the entire stage.
     - [ ] E. Increase the amount of CPU, and adjust the timeout on the Lambda function. Complete performance testing to identify the ideal CPU and timeout configuration for the Lambda function.
-37. A company is migrating an application to AWS. It wants to use fully managed sewices as much as possible during the migration. The company needs to store large, important documents within the application with the following requirements:-The data must be highly durable and available. -The data must always be encrypted at rest and in transit. -The encwption key must be managed by the company and rotated periodically. Which ofthe following solutions should the Solutions Architect recommend?
-    - [ ] A. Deploy the storage gateway to AWS in file gateway mode. Use Amazon EBS volume encryption using an AWS KMS key to encxypt the storage gateway volumes.
-    - [ ] B. Use Amazon S3 with a bucket policy to enforce HTTPS for connections to the bucket and to enforce server-side encryption and AWS KMS for object encxyption.
-    - [ ] C. Use Amazon DynamoDB with SSL to connect to DynamoDB. Use an AWS KMS key to encryrpt DynamoDB objects at rest.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案BD
+
+    </details>
+
+37. A company is migrating an application to AWS. It wants to use fully managed services as much as possible during the migration. The company needs to store large, important documents within the application with the following requirements: -The data must be highly durable and available. -The data must always be encrypted at rest and in transit. -The encryption key must be managed by the company and rotated periodically. Which of the following solutions should the Solutions Architect recommend?
+    - [ ] A. Deploy the storage gateway to AWS in file gateway mode. Use Amazon EBS volume encryption using an AWS KMS key to encrypt the storage gateway volumes.
+    - [ ] B. Use Amazon S3 with a bucket policy to enforce HTTPS for connections to the bucket and to enforce server-side encryption and AWS KMS for object encryption.
+    - [ ] C. Use Amazon DynamoDB with SSL to connect to DynamoDB. Use an AWS KMS key to encrypt DynamoDB objects at rest.
     - [ ] D. Deploy instances with Amazon EBS volumes attached to store this data. Use EBS volume encryption using an AWS KMS key to encrypt the data.
-38. A Solutions Architect is designing a highly available and reliable solution for a cluster of Amazon EC2 instances. The Solutions Architect must ensure that any EC2 instance within the cluster recovers automatically afterta system failure. The solution must ensure that the recovered instance maintains the same IP address. How can these requirements be met?
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. Storage Gateway是跟S3相对应的
+       - [x] B. 正确
+       - [ ] C. 建立SSL连接是用于故障排除而不是数据传输的
+       - [ ] D. 密匙没法轮换了
+
+    </details>
+
+38. A Solutions Architect is designing a highly available and reliable solution for a cluster of Amazon EC2 instances. The Solutions Architect must ensure that any EC2 instance within the cluster recovers automatically after a system failure. The solution must ensure that the recovered instance maintains the same IP address. How can these requirements be met?
     - [ ] A. Create an AWS Lambda script to restart any EC2 instances that shut down unexpectedly.
-    - [ ] B. Create an Auto Scaling group for each EC2 instance that has a minimum and maximum size of l.
+    - [ ] B. Create an Auto Scaling group for each EC2 instance that has a minimum and maximum size of 1.
     - [ ] C. Create a new t2.micro instance to monitor the cluster instances. Configure the t2.micro instance to issue an aws ec2 reboot-instances command upon failure.
     - [ ] D. Create an Amazon CloudWatch alarm for the StatusCheckFailed System metric, and then configure an EC2 action to recover the instance.
-39. A public retail web application uses an Application Load Balancer (ALB) in front ofAmazon EC2 instances running across multiple Availability Zones (AZs) in a Region backed by an Amazon RDS MySQL Multi-AZ deployment. Target group health checks are configured to use HTTP and pointed at the product catalog page. Auto Scaling is configured to maintain the web fleet size based on the ALB health check. Recently, the application experienced an outage. Auto Scaling continuously replaced the instances during the outage. A subsequent investigation determined that the web server metrics were within the normal range, but the database tier was experiencing high load, resulting in severely elevated query response times. Which of the following changes together would remediate these issues while improving monitoring capabilities for the availability and ftnctionality of the entire application stack for future growth? (Select TWO.)
+
+    <details>
+       <summary>Answer</summary>
+
+       系统方面的问题用StatusCheckFailed，答案D
+
+    </details>
+
+39. A public retail web application uses an Application Load Balancer (ALB) in front of Amazon EC2 instances running across multiple Availability Zones (AZs) in a Region backed by an Amazon RDS MySQL Multi-AZ deployment. Target group health checks are configured to use HTTP and pointed at the product catalog page. Auto Scaling is configured to maintain the web fleet size based on the ALB health check. Recently, the application experienced an outage. Auto Scaling continuously replaced the instances during the outage. A subsequent investigation determined that the web server metrics were within the normal range, but the database tier was experiencing high load, resulting in severely elevated query response times. Which of the following changes together would remediate these issues while improving monitoring capabilities for the availability and functionality of the entire application stack for future growth? (Select TWO.)
     - [ ] A. Configure read replicas for Amazon RDS MySQL and use the single reader endpoint in the web application to reduce the load on the backend database tier.
     - [ ] B. Configure the target group health check to point at a simple HTML page instead of a product catalog page and the Amazon Route 53 health check against the product page to evaluate full application functionality. Configure Amazon CloudWatch alarms to notify administrators when the site fails.
     - [ ] C. Configure the target group health check to use a TCP check of the Amazon EC2 web server and the Amazon Route 53 health check against the product page to evaluate full application functionality. Configure Amazon CloudWatch alarms to notify administrators when the site fails.
     - [ ] D. Configure an Amazon CloudWatch alarm for Amazon RDS with an action to recover a high-load, impaired RDS instance in the database tier.
     - [ ] E. Configure an Amazon ElastiCache cluster and place it between the web application and RDS MySQL instances to reduce the load on the backend database tier.
-40. A company is mnning an email application across multiple AWS Regions. The company uses Ohio (us-east-2) as the primaw Region and Northern Virginia (us-east-I) as the Disaster Recovery (DR) Region. The data is continuously replicated from the primaw Region to the DR Region by a single instance on the public subnet in both Regions. The replication messages between the Regions have a significant backlog during certain times of the day. The backlog clears on its own after a short time, but it affects the application's RPC). Which of the following solutions should help remediate this performance problem? (Select TWO)
+
+    <details>
+       <summary>Answer</summary>
+
+       这题选BE，但是布置到为啥
+
+    </details>
+
+40. A company is running an email application across multiple AWS Regions. The company uses Ohio (us-east-2) as the primary Region and Northern Virginia (us-east-1) as the Disaster Recovery (DR) Region. The data is continuously replicated from the primary Region to the DR Region by a single instance on the public subnet in both Regions. The replication messages between the Regions have a significant backlog during certain times of the day. The backlog clears on its own after a short time, but it affects the application's RPC). Which of the following solutions should help remediate this performance problem? (Select TWO)
     - [ ] A. Increase the size of the instances.
-    - [ ] B. Have the instance in the primary Region write the data to an Amazon SQS queue in the primary Region instead, and have the instance in the DR Region poll from this queue.
+    - [ ] B. Have the instance in the primary Region write the data to an Amazon SQS queue in the primary Region instead and have the instance in the DR Region poll from this queue.
     - [ ] C. Use multiple instances on the primary and DR Regions to send and receive the replication data.
     - [ ] D. Change the DR Region to Oregon (us-west-2) instead of the current DR Region.
     - [ ] E. Attach an additional elastic network interface to each of the instances in both Regions and set up load balancing between the network interfaces.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案BC
+
+    </details>
+
 41. A company has implemented AWS Organizations. It has recently set up a number of new accounts and wants to deny access to a specific set of AWS services in these new accounts. How can this be controlled MOST efficiently?
     - [ ] A. Create an IAM policy in each account that denies access to the services. Associate the policy with an IAM group, and add all IAM users to the group.
     - [ ] B. Create a service control policy that denies access to the services. Add all of the new accounts to a single organizations unit (OU), and apply the policy to that OU.
