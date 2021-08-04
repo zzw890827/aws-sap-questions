@@ -567,7 +567,7 @@
     <details>
        <summary>Answer</summary>
 
-       这题选BE，但是布置到为啥
+       这题选BE，但是不知道为啥
 
     </details>
 
@@ -586,111 +586,277 @@
     </details>
 
 41. A company has implemented AWS Organizations. It has recently set up a number of new accounts and wants to deny access to a specific set of AWS services in these new accounts. How can this be controlled MOST efficiently?
-    - [ ] A. Create an IAM policy in each account that denies access to the services. Associate the policy with an IAM group, and add all IAM users to the group.
-    - [ ] B. Create a service control policy that denies access to the services. Add all of the new accounts to a single organizations unit (OU), and apply the policy to that OU.
-    - [ ] C. Create an IAM policy in each account that denies access to the service. Associate the policy with an IAM role, and instmct users to log in using their corporate credentials and assume the IAM role.
+    - [ ] A. Create an IAM policy in each account that denies access to the services. Associate the policy with an IAM group and add all IAM users to the group.
+    - [ ] B. Create a service control policy that denies access to the services. Add all of the new accounts to a single organizations unit (OU) and apply the policy to that OU.
+    - [ ] C. Create an IAM policy in each account that denies access to the service. Associate the policy with an IAM role and instruct users to log in using their corporate credentials and assume the IAM role.
     - [ ] D. Create a service control policy that denies access to the services, and apply the policy to the root of the organization.
-42. A company is planning to migrate an application from on-premises to AWS. The application currently uses an Oracle database and the company can tolerate a brief downtime of I hour when performing the switch to the new infrastmcture. As part of the migration, the database engine will be changed to MySQL A Solutions Architect needs to determine which AWS services can be used to perform the migration while minimizing the amount of work and time required. Which of the following will meet the requirements?
-    - [ ] A. Use AWS SCT to generate the schema scripts and apply them on the target prior to migration. Use AWS DMS to analyse the current schema and provide a recommendation for the optimal database engine. Then, use AWS DMS to migrate to the recommended enginer. Use AWS SCT to identify what embedded SQL in the application can be converted and what has to be done manually.
-    - [ ] B. Use AWS SC T to generate the schema scripts and apply them on the target prior to migration. Use AWS DMS to begin moving data from the on-premises database to AWS. After the initial copy, continue to use AWS DMS to keep the databases insync until cutting over to the new database. Use AWS SCT to identify what embedded SQL in the application can be converted and what has to be done manually.
-    - [ ] C. Use AWS DMS to help identify the best target deployment between installing the database engine on Amazon EC2 dierctly or moving to Amazon RDS. Then, use AWS DMS to migrate to the platform. Use AWS Application Discovery Service to identify what embedded SQL in the application can be converted and what has to be done manually.
-    - [ ] D. Use AWS DMS to begin moving data from the on-premises database to AWS. After the intitial copy, continue to use AWS DMS to keep the databases in sync until cutting over to the new database. Use AWS Application Discovery Service to identify what embedded SQL in the application can be converted and what has to be done manually.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，使用SCP，答案B
+
+    </details>
+
+42. A company is planning to migrate an application from on-premises to AWS. The application currently uses an Oracle database, and the company can tolerate a brief downtime of I hour when performing the switch to the new infrastructure. As part of the migration, the database engine will be changed to MySQL A Solutions Architect needs to determine which AWS services can be used to perform the migration while minimizing the amount of work and time required. Which of the following will meet the requirements?
+    - [ ] A. Use AWS SCT to generate the schema scripts and apply them on the target prior to migration. Use AWS DMS to analyze the current schema and provide a recommendation for the optimal database engine. Then, use AWS DMS to migrate to the recommended engineer. Use AWS SCT to identify what embedded SQL in the application can be converted and what must be done manually.
+    - [ ] B. Use AWS SCT to generate the schema scripts and apply them on the target prior to migration. Use AWS DMS to begin moving data from the on-premises database to AWS. After the initial copy, continue to use AWS DMS to keep the databases in sync until cutting over to the new database. Use AWS SCT to identify what embedded SQL in the application can be converted and what must be done manually.
+    - [ ] C. Use AWS DMS to help identify the best target deployment between installing the database engine on Amazon EC2 directly or moving to Amazon RDS. Then, use AWS DMS to migrate to the platform. Use AWS Application Discovery Service to identify what embedded SQL in the application can be converted and what must be done manually.
+    - [ ] D. Use AWS DMS to begin moving data from the on-premises database to AWS. After the initial copy After the initial copy, continue to use AWS DMS to keep the databases in sync until cutting over to the new database. Use AWS Application Discovery Service to identify what embedded SQL in the application can be converted and what must be done manually.
+
+    <details>
+       <summary>Answer</summary>
+
+       概念题，标准做法，答案B -> [ref](https://docs.aws.amazon.com/zh_cn/SchemaConversionTool/latest/userguide/CHAP_Converting.App.html)
+
+    </details>
+
 43. A Solutions Architect has created an AWS CloudFormation template for a three-tier application that contains an Auto Scaling group of Amazon EC2 instances running a custom AMI. The Solutions Architect wants to ensure that future updates to the custom AMI can be deployed to a running stack by first updating the template to refer to the new AMI, and then invoking UpdateStack to replace the EC2 instances with instances launched from the new AML How can updates to the AMI be deployed to meet these requirements?
     - [ ] A. Create a change set for a new version of the template, view the changes to the running EC2 instances to ensure that the AMI is correctly updated, and then execute the change set.
     - [ ] B. Edit the AWS::AutoScaling::LaunchConfiguration resource in the template, changing its to Replace. DeletionPolicy
     - [ ] C. Edit the AWS::AutoScaling::AutoScalingGroup resource in the template, inserting an attribute.UpdatePolicy
     - [ ] D. Create a new stack from the updated template. Once it is successfully deployed, modify the DNS records to point to the new stack and delete the old stack.
-44. Your company has a logging microservice which is used to generate logs when users have entered certain commands in another application. This logging sewice is implemented via an SQS standard queue that an EC2 instance is listening to. However, you have found that on some occasions, the order of the logs are not maintained. As a result, it becomes harder to use this service to trace users' activities. How should you fix this issue in a simple way?
+
+    <details>
+       <summary>Answer</summary>
+
+       更改 Auto Scaling 组的 AWS::AutoScaling时需要使用UpdatePolicy，答案C
+
+    </details>
+
+44. Your company has a logging microservice which is used to generate logs when users have entered certain commands in another application. This logging service is implemented via an SQS standard queue that an EC2 instance is listening to. However, you have found that on some occasions, the order of the logs are not maintained. As a result, it becomes harder to use this service to trace users' activities. How should you fix this issue in a simple way?
     - [ ] A. Convert the existing standard queue into a FIFO queue. Add a deduplication ID for the messages that are sent to the queue.
     - [ ] B. Delete the existing standard queue and recreate it as a FIFO queue. As a result, the order for the messages to be received is ensured.
     - [ ] C. Migrate the whole microservice application to SWF so that the operation sequence is guaranteed.
     - [ ] D. The wrong order of timestamps is a limitation of SQS, which does not have a fix.
-45. A large trading company is using an on-premise system to analyze the trade data. After the trading day closes, the data including the day's transaction costs, execution reporting, and market performance is sent to a Redhat server which runs big data analytics tools for predictions for next day trading. A bash script is used to configure resource and schedule when to run the data analytics workloads. How should the on-premise system be migrated to AWS with appropriate tools? (Select THREE)
+
+    <details>
+       <summary>Answer</summary>
+
+       您无法将现有标准队列转换为 FIFO 队列。要实现转移，必须为应用程序创建新的 FIFO 队列，或者删除现有标准队列并重新将其创建为 FIFO 队列。答案B -> [ref](https://docs.aws.amazon.com/zh_cn/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-moving.html)
+
+    </details>
+
+45. A large trading company is using an on-premises system to analyze the trade data. After the trading day closes, the data including the day's transaction costs, execution reporting, and market performance is sent to a Redhat server which runs big data analytics tools for predictions for next day trading. A bash script is used to configure resource and schedule when to run the data analytics workloads. How should the on-premises system be migrated to AWS with appropriate tools? (Select THREE)
     - [ ] A. Create a S3 bucket to store the trade data that is used for post processing.
     - [ ] B. Send the trade data from various sources to a dedicated SQS queue.
     - [ ] C. Use AWS Batch to execute the bash script using a proper job definition.
     - [ ] D. Create EC2 instances with auto-scaling to handle with the big data analytics workloads.
     - [ ] E. Use CloudWatch Events to schedule the data analytics jobs
-46. A large IT company has an on-premise website which provides real-estate information such as renting, house prices and latest news to users. The website has a Java backend and a NoSQL MongoDB database that is used to store subscribers data. You are a cloud analyst and need to migrate the whole application to AWS platform. Your manager requires that a similar stmcture should be deployed in AWS for high availability. Moreover, a tracing framework is essential which can record data from both the client request and the downstream call to the database in AWS. Which AWS services should you choose to implement the migration? Select 3 Options.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案ACD
+
+    </details>
+
+46. A large IT company has an on-premises website which provides real-estate information such as renting, house prices and latest news to users. The website has a Java backend and a NoSQL MongoDB database that is used to store subscribers’ data. You are a cloud analyst and need to migrate the whole application to AWS platform. Your manager requires that a similar structure should be deployed in AWS for high availability. Moreover, a tracing framework is essential which can record data from both the client request and the downstream call to the database in AWS. Which AWS services should you choose to implement the migration? Select 3 Options.
     - [ ] A. Deploy an autoscaling group of Java backend servers to provide high availability
     - [ ] B. Use RDS Aurora as the database for the subscriber data because it is highly available and can scale up to 15 Read Replicas
     - [ ] C. Create a DynamoDB database to hold subscriber data. Set up an autoscaling policy for the read/write throughput.
     - [ ] D. Use AWS X-Ray SDK to record data about incoming and outgoing requests. View the statistics graph in X-Ray console.
     - [ ] E. Trace the requests using AWS JAVA SDK and send logs to AWS CloudWatch Events. Create a CloudWatch dashboard to view the statistics.
-47. You work in a video game company and your team is working on a feature that tells how many times that certain web pages have been viewed or clicked. You also created an AWS Lambda function to show some key statistics of the data. You tested the Lambda ftnction and it worked perfectly. However, your team lead requires you to show the statistics eve1Y day at 8:00AM GMT on a big TV screen so that when employees come in to the office every they have a rough idea of how the feature runs. What is the most cost efficient and straightfonvard way for you to make this happen?
-    - [ ] A. Create an AWS CloudWatch Events rule that is scheduled using a cron expression as 00:08 Configure the target as the Lambda function.
-    - [ ] B. Create an Amazon linux EC2 T2 instance and set up a Cronjob using Crontab. Use AWS CLI to call your AWS Lambda evexy 8:00AM.
-    - [ ] C. Use Amazon Batch to set up a job with a job definition that runs evexy 8:00AM for the Lambda function.
-    - [ ] D. In AWS CloudWatch Events console, click-reate Event using the cron expression 08:00 Configure the target as the Lambda function.
-48. A supermarket chain had a big data analysis system deployed in AWS. The system has the raw data such as clickstream or process logs in S3. Am3.large EC2 instance transformed the data to other formats and saved it to another S3 bucket. Amazon Redshift analysed the data afterwards. Your team is in charge of improving the system using AWS Glue which is a fully managed ETL (extract, transform, and load) service. Which tasks can AWS Glue simplify during re-establishing the big data system? (Select TWO)
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案ACD
+
+    </details>
+
+47. You work in a video game company and your team is working on a feature that tells how many times that certain web pages have been viewed or clicked. You also created an AWS Lambda function to show some key statistics of the data. You tested the Lambda function and it worked perfectly. However, your team lead requires you to show the statistics eve1Y day at 8:00AM GMT on a big TV screen so that when employees come into the office every they have a rough idea of how the feature runs. What is the most cost efficient and straightforward way for you to make this happen?
+    - [ ] A. Create an AWS CloudWatch Events rule that is scheduled using a cron expression as 08:00 Configure the target as the Lambda function.
+    - [ ] B. Create an Amazon Linux EC2 T2 instance and set up a Cronjob using Crontab. Use AWS CLI to call your AWS Lambda every 8:00AM.
+    - [ ] C. Use Amazon Batch to set up a job with· a job definition that runs every 8:00AM for the Lambda function.
+    - [ ] D. In AWS CloudWatch Events console, click-rate Event using the cron expression 08:00 Configure the target as the Lambda function.
+
+    <details>
+       <summary>Answer</summary>
+
+       这题首先要使用CloudWatch，排除BC，rate表达式不是08:00，所以选A
+
+    </details>
+
+48. A supermarket chain had a big data analysis system deployed in AWS. The system has the raw data such as clickstream or process logs in S3. Am3.large EC2 instance transformed the data to other formats and saved it to another S3 bucket. Amazon Redshift analyzed the data afterwards. Your team oversees improving the system using AWS Glue which is a fully managed ETL (extract, transform, and load) service. Which tasks can AWS Glue simplify during re-establishing the big data system? (Select TWO)
     - [ ] A. AWS Glue contains a crawler that connects to the S3 bucket and scans the dataset. Then the service creates metadata tables in the data catalog.
     - [ ] B. AWS Glue automatically generates in Java to extract data from the source and transform the data to match the target schema.
     - [ ] C. Be default, AWS Glue creates a scheduler to trigger the activated tasks every minute.
     - [ ] D. AWS Glue has a central metadata repository (data catalog). The data in the catalog is available for analysis immediately.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案AD -> [ref](https://docs.aws.amazon.com/zh_cn/glue/latest/dg/what-is-glue.html)
+
+    </details>
+
 49. An AWS Solutions Architect has noticed that their company is using almost exclusively EBS General Purpose SSD (gp2) volume types for their EBS volumes. They are considering modifying the type of some of these volumes, but it is important that performance is not affected. Which of the following actions could the Solutions Architect consider? (Select TWO)
-    - [ ] A. A 50GB gp2 root volume can be modified to an EBS Provisioned IOPS SSD (iol) without stopping the instance.
-    - [ ] B. A gp2 volume that is attached to an instance as a root volume needs can be modified to a Throughput Optimized HDD (stl) volume.
-    - [ ] C. A 1GB gp2 volume that is attached to an instance as a non-root volume can be modified to a Cold HDD (scl) volume.
-    - [ ] D. A 1TB gp2 volume that is attached to an instance as a non-root volume can be modified to a Throughput Optimized HDD (stl) volume without stopping the instance or detaching the volume.
+    - [ ] A. A 50GB gp2 root volume can be modified to an EBS Provisioned IOPS SSD (io1) without stopping the instance.
+    - [ ] B. A gp2 volume that is attached to an instance as a root volume need can be modified to a Throughput Optimized HDD (st1) volume.
+    - [ ] C. A 1GB gp2 volume that is attached to an instance as a non-root volume can be modified to a Cold HDD (sc1) volume.
+    - [ ] D. A 1TB gp2 volume that is attached to an instance as a non-root volume can be modified to a Throughput Optimized HDD (st1) volume without stopping the instance or detaching the volume.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [x] A. 正确
+       - [ ] B. st1无法作为根卷
+       - [ ] C. sc1的其实大小是125G
+       - [x] D. 正确
+
+    </details>
+
 50. Which of the following are associated with using the "HLS" method of viewing the Kinesis video stream? (Select TWO)
-    - [ ] A. A web application that is able to display the video stream using the third-party player Video.js.
-    - [ ] B. In order to process Kinesis video streams, a SAAS provider needs to build a new video player which is integrated into their major online product.
+    - [ ] A. A web application that can display the video stream using the third-party player Video.js.
+    - [ ] B. To process Kinesis video streams, a SAAS provider needs to build a new video player which is integrated into their major online product.
     - [ ] C. Able to view only live video, not archived video.
     - [ ] D. Playback video by typing in the HLS streaming session URL in the location bar of the Apple Safari browser for debug purpose.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [x] A. 正确
+       - [ ] B. 可以再浏览器播放，无需使用专用播放器
+       - [ ] C. 两种视频都能播放
+       - [x] D. 正确
+
+    </details>
+
 51. A team has just received a task to build an application that needs to recognize faces in streaming videos. They will get the source videos from a third party which use a container format (MKV). The APP should be able to quickly address faces through the video in real time and save the output in a suitable manner for downstream to process. As recommended by the AWS Solutions Architect colleague, they would like to develop the service using AWS Rekognition. Which below options are needed to accomplish the task? Select 3.
     - [ ] A. S3 buckets to store the source NIKV videos for AWS Rekognition to process. S3 should be used in this case as it has provided an unlimited, highly available and durable storing space. Make sure that the third party has the write access to S3 buckets.
     - [ ] B. A Kinesis video stream for sending streaming video to Amazon Rekognition Video. This can be done by using Kinesis*utMedia API in Java SDK. The PutMedia operation writes video data fragments into a Kinesis video stream that Amazon Rekognition Video consumes.
     - [ ] C. An Amazon Rekognition Video stream processor to manage the analysis of the streaming video. It can be used to start, stop, and manage stream processors according to needs.
     - [ ] D. Use EC2 or Lambda to call Rekognition APIfietectFaces with the source videos saved in S3 bucket. For each face detected, the operation returns face details. These details include a bounding box of the face, a confidence value, and a fixed set of attributes such as facial landmarks, etc.
     - [ ] E. After the APP has utilized Rekognition API to fetch the recognized faces from live videos, use S3 or RDS database to store the output from Rekognition. Another lambda can be used to post-process the result and present to UI.
-    - [ ] F. A Kinesis data stream consumer to read the analysis results that Amazon Rekognition Video sends to the Kinesis data stream. It can be an Amazon EC2 instance by adding to one of Amazon Machine Images (AMIs). The consumer can be autoscaled by running it on multiple Amazon EC2 instances under an Auto Scaling group.
+    - [ ] F. A Kinesis data stream consumer to read the analysis results that Amazon Rekognition Video sends to the Kinesis data stream. It can be an Amazon EC2 instance by adding to one of Amazon Machine Images (AMIs). The consumer can be auto scaled by running it on multiple Amazon EC2 instances under an Auto Scaling group.
+
+    <details>
+       <summary>Answer</summary>
+
+       文档原话，答案BCF -> [ref](https://docs.aws.amazon.com/zh_cn/rekognition/latest/dg/streaming-video.html)
+
+    </details>
+
 52. A large company starts to use AWS organizations with consolidated billing feature to manage its separate departments. The AWS operation team has just created 3 OUS (organization units) with 2 AWS accounts each. To be compliant with company-wide security policy, CloudTrail is required for all AWS accounts which is already been set up. However after some time, there are cases that users in certain OU have turned off the CloudTrail of their accounts. What is the best way for the AWS operation team to prevent this from happening again?
-    - [ ] A. Update the AWS Organizations feature sets to features?and then create a Service Control Policies (SCP) to Prevent Users from Disabling AWS CloudTrail. This can be achieved by a deny policy with cloudtrail:StopLogging denied.
-    - [ ] B. This can be achieved by Service Control Policies (SCP) in features?set. The team needs to delete and recreate the AWS Organizations with features?enabled and then use a proper control policy to limit the operation of cloudtrail: StopLogging.
+    - [ ] A. Update the AWS Organizations feature and then create a Service Control Policies (SCP) to Prevent Users from Disabling AWS CloudTrail. This can be achieved by a deny policy with cloudtrail:StopLogging denied.
+    - [ ] B. This can be achieved by Service Control Policies (SCP). The team needs to delete and recreate the AWS Organizations with features?enabled and then use a proper control policy to limit the operation of cloudtrail: StopLogging.
     - [ ] C. In each AWS account in this organization, create an IAM policy to deny cloudtrail:StopLogging for all users including administrators.
     - [ ] D. Use a Service Control Policies (SCP) to prevent users from disabling AWS CloudTrail. This can be done by a allow policy which denies cloudtrail:StopLogging
-53. A mobile App developer just made an App in both IOS and Android that has a feature to count step numbers. He has used AWS Cognito to authorize users with a user pool and identity pool to provide access to AWS DynamoDB table. The App uses the DynamoDB table to store user subscriber data and number of steps. Now the developer also needs Cognito to integrate with Google to provide federated authentication for the mobile application users so that user does not need to remember extra login access. Mihat should the developer do to make this happen for the IOS and Android App?
+
+    <details>
+       <summary>Answer</summary>
+
+       更新SCP，无需重建，答案A
+
+    </details>
+
+53. A mobile App developer just made an App in both IOS and Android that has a feature to count step numbers. He has used AWS Cognito to authorize users with a user pool and identity pool to provide access to AWS DynamoDB table. The App uses the DynamoDB table to store user subscriber data and number of steps. Now the developer also needs Cognito to integrate with Google to provide federated authentication for the mobile application users so that user does not need to remember extra login access. What should the developer do to make this happen for the IOS and Android App?
     - [ ] A. Amazon Cognito Identity pools (federated identities) support user authentication through federated identity providers-including Amazon, Facebook, Google, and SAML identity providers. The developer just needs to set up the federated identities for Google access
     - [ ] B. Only Android works for federated identities if Google access is required for AWS Cognito. This can be done by configuring Cognito identity pools with a Google Client ID.
     - [ ] C. Amazon Cognito User pools support user authentication through federated identity providers- including Amazon, Facebook, Google, and SAML identity providers. The developer just needs to set up the federated identities for Google access in Cognito User pool.
     - [ ] D. Only IOS (Objective-C and Swift) works for federated identities if Google access is required for AWS Cognito. This can be done by configuration Cognito identity pools with a Google Client ID. Google federated access does not work for android app.
-54. A big company has a service to process gigantic clickstream data sets which are often the result of holiday shopping traffic on a retail website, or sudden dramatic growth on the data network of a media or social networking site. It is becoming more and more expensive to analyze these clickstream datasets for its on-premise infrastructure. As the sample data set keeps growing, fewer applications are available to provide a timely response. The sewice is using a Hadoop cluster with Cascading. How can they migrate the applications to AWS in the best way?
-    - [ ] A. Put the source data to S3 and migrate the processing service to an AWS EMR hadoop cluster with Cascading. Enable EMR to directly read and quexy data from S3 buckets. Write the output to RDS database
+
+    <details>
+       <summary>Answer</summary>
+
+       需要使用验证池添加验证信息，用户池只是一个用户目录而已，答案A
+
+    </details>
+
+54. A big company has a service to process gigantic clickstream data sets which are often the result of holiday shopping traffic on a retail website, or sudden dramatic growth on the data network of a media or social networking site. It is becoming more and more expensive to analyze these clickstream datasets for its on-premises infrastructure. As the sample data set keeps growing, fewer applications are available to provide a timely response. The service is using a Hadoop cluster with Cascading. How can they migrate the applications to AWS in the best way?
+    - [ ] A. Put the source data to S3 and migrate the processing service to an AWS EMR Hadoop cluster with Cascading. Enable EMR to directly read and query data from S3 buckets. Write the output to RDS database
     - [ ] B. Put the source data to a Kinesis stream and migrate the processing service to AWS lambda to utilize its scaling feature. Enable lambda to directly read and query data from Kinesis stream. Write the output to RDS database
     - [ ] C. Put the source data to a S3 bucket and migrate the processing service to AWS EC2 with auto scaling. Ensure that the auto scaling configuration has proper maximum and minimum number of instances. Monitor the performance in Cloudwatch dashboard. Write the output to DynamoDB table for downstream to process.
     - [ ] D. Put the source data to a Kinesis stream and migrate the processing service to an AWS EMR cluster with Cascading. Enable ENIR to directly read and query data from Kinesis streams. Write the output to Redshift.
-55. An Artificial Intelligence startup company has used lots ofEC2 instances. Some instances use SQL Server database while the others use Oracle. As the data needs to be kept secure, regular snapshots are required. They want SQL Server EBS volume to take snapshot every 12 hours. However for Oracle, it only needs a snapshot evew day. Which option below is the best one that the company should choose without extra charge?
-    - [ ] A. Use free third-party tool such as Clive to Manage EC2 instance lifecycle. It can design various backup policies for EC2 EBS volumes. Add a 12 hours backup policy to SQL Server EBS volumes and a 24 hours backup policy to Oracle EBS volumes.
-    - [ ] B. Add a prefix to the name of both SQL Server and Oracle EBS volumes. In AWS Data Lifecycle Management console, create two management policies based on the name prefix. For example, add a 12 hours backup schedule to EBS volumes with a name starting with sql and add a 24 hours backup schedule to EBS volumes with a name starting with oracle?
-    - [ ] C. Create a dedicate Lambda function to differentiate EC2 EBS volumes and take snapshots. Set up Cloudwatch Events Rules to call the lambda so that the function runs evexy 12 hours for SQL Server and 24 hours for Oracle.
-    - [ ] D. Add different tags for SQL Server and Oracle EBS volumes. In AWS Data Lifecycle Management console, create two management policies based on the tags. Add a 12 hours schedule to SQL Server lifecycle policy and a 24 hours schedule to Oracle lifecycle policy
+
+    <details>
+       <summary>Answer</summary>
+
+       没有存储元数据的需求，所以使用Kinesis和EMR是最佳组合
+
+    </details>
+
+55. An Artificial Intelligence startup company has used lots ofEC2 instances. Some instances use SQL Server database while the others use Oracle. As the data needs to be kept secure, regular snapshots are required. They want SQL Server EBS volume to take snapshot every 12 hours. However, for Oracle, it only needs a snapshot every day. Which option below is the best one that the company should choose without extra charge?
+    - [ ] A. Use free third-party tool such as Clive to Manage EC2 instance lifecycle. It can design various backup policies for EC2 EBS volumes. Add a 12-hour backup policy to SQL Server EBS volumes and a 24-hour backup policy to Oracle EBS volumes.
+    - [ ] B. Add a prefix to the name of both SQL Server and Oracle EBS volumes. In AWS Data Lifecycle Management console, create two management policies based on the name prefix. For example, add a 12-hour backup schedule to EBS volumes with a name starting with SQL and add a 24-hour backup schedule to EBS volumes with a name starting with oracle?
+    - [ ] C. Create a dedicate Lambda function to differentiate EC2 EBS volumes and take snapshots. Set up Cloudwatch Events Rules to call the lambda so that the function runs every 12 hours for SQL Server and 24 hours for Oracle.
+    - [ ] D. Add different tags for SQL Server and Oracle EBS volumes. In AWS Data Lifecycle Management console, create two management policies based on the tags. Add a 12-hour schedule to SQL Server lifecycle policy and a 24 hours schedule to Oracle lifecycle policy
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案D
+
+    </details>
+
 56. API gateway and Lambda non-proxy integrations have been chosen to implement an application by a software engineer. The application is a data analysis tool that returns some statistic results when the HTTP endpoint is called. The lambda needs to communicate with some back-end data services such as Keen.io however there are chances that error happens such as wrong data requested, bad communications, etc. The lambda is written using Java and two exceptions may be returned which are BadRequestException and InternalErrorException. What should the software engineer do to map these two exceptions in API gateway with proper HTTP return codes? For example, BadRequestException and InternalErrorException are mapped to HTTP return codes 400 and 500 respectively. Select 2.
     - [ ] A. Add the corresponding error codes (400 and 500) on the Integration Response in API gateway
     - [ ] B. Add the corresponding error codes (400 and 500) on the Method Response in API gateway.
     - [ ] C. Put the mapping logic into Lambda itself so that when exception happens, error codes are returned at the same time in a JSON body.
     - [ ] D. Add Integration Responses where regular expression patterns are set such as BadRequest or InternalError. Associate them with HTTP status codes
     - [ ] E. Add Method Responses where regular expression patterns are set such as BadRequest or InternalError. Associate them with HTTP status codes 400 and 500.
-57. An IT company owns a web product in AWS that provides discount restaurant information to customers. It has used one S3 Bucket (my bucket) to store restaurant data such as picmres, menus, etc. The product is deployed in VPC subnets. The company's Cloud Architect decides to configure a VPC endpoint for this S3 bucket so that the performance will be enhanced. To be compliance to security rules, it is required that the new VPC endpoint is only used to communicate with this specific S3 Bucket and on the other hand, the S3 bucket only allows the read/write operations coming from this VPC endpoint. Which two options should the Cloud Architect choose to meet the security needs?
+
+    <details>
+       <summary>Answer</summary>
+
+       方法响应用于状态码，继承响应封装错误信息，答案BD
+
+    </details>
+
+57. An IT company owns a web product in AWS that provides discount restaurant information to customers. It has used one S3 Bucket (my bucket) to store restaurant data such as pictures, menus, etc. The product is deployed in VPC subnets. The company's Cloud Architect decides to configure a VPC endpoint for this S3 bucket so that the performance will be enhanced. To be compliance to security rules, it is required that the new VPC endpoint is only used to communicate with this specific S3 Bucket and on the other hand, the S3 bucket only allows the read/write operations coming from this VPC endpoint. Which two options should the Cloud Architect choose to meet the security needs?
     - [ ] A. Use a VPC Endpoint policy for Amazon S3 to restrict access to the S3 Bucket "my bucket" so that the VPC Endpoint is only allowed to perform S3 actions on "my bucket"
     - [ ] B. Modify the security group of the EC2 instance to limit the outbound actions to the VPC Endpoint if the outgoing traffic destination is the S3 bucket "my bucket'".
     - [ ] C. In the S3 bucket "my bucket", add a S3 bucket policy in which all actions are denied if the source IP address is not equal to the EC2 public IP (use "NotIpAddress" condition).
     - [ ] D. For the S3 bucket "my bucket", use a S3 bucket policy that denies all actions if the source VPC Endpoint is no equal to the endpoint ID that is created.s
     - [ ] E. Create a S3 bucket policy in the S3 bucket "my bucket" which denies all actions unless the source IP address is equal to the EC2 public IP (use "lpAddress" condition).
-58. You work for an e-commerce retailer as an AWS Solutions Architect. Your company is looking to improve customer loyalty programs by partnering with other third-panies to offer a more comprehensive selection of customer rewards. You plan to use Amazon Managed Blockchain to implement a blockchain network that allows your company and third-parties to share and validate rewards information quickly and transparently. How do you add members for this blockchain?
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案AD
+
+    </details>
+
+58. You work for an e-commerce retailer as an AWS Solutions Architect. Your company is looking to improve customer loyalty programs by partnering with other third parties to offer a more comprehensive selection of customer rewards. You plan to use Amazon Managed Blockchain to implement a blockchain network that allows your company and third parties to share and validate rewards information quickly and transparently. How do you add members for this blockchain?
     - [ ] A. When Amazon Managed Blockchain is set up, there is an initial member in the AWS account. Then new members can be added in this AWS account without having to send an invitation, or a network invitation can be created for a member in a different AWS account
     - [ ] B. While Amazon Managed Blockchain is configured, there is an initial member in the AWS account. Then new members can be added in this AWS account without having to send an invitation. You cannot add new members for other AWS accounts
-    - [ ] C. When Amazon Managed Blockchain is created, there is no any member in the AWS account. Then new members can be added in this AWS account or other accounts by sending out an an invitation.
-    - [ ] D. When Amazon Managed Blockchain is firstly created, there is no any member in the AWS account. Then new members can be added in this AWS account. For other accounts, they can join this net blockchain network by using the network ID.
+    - [ ] C. When Amazon Managed Blockchain is created, there is not any member in the AWS account. Then new members can be added in this AWS account or other accounts by sending out an invitation.
+    - [ ] D. When Amazon Managed Blockchain is firstly created, there is not any member in the AWS account. Then new members can be added in this AWS account. For other accounts, they can join this net blockchain network by using the network ID.
+
+    <details>
+       <summary>Answer</summary>
+
+       概念题，答案A
+
+    </details>
+
 59. A company has deployed an application to multiple environments in AWS, including production and testing. The company has separate accounts for production and testing, and users are allowed to create additional application users for team members or services, as needed. The Security team has asked the Operations team for better isolation between production and testing with centralized controls on security credentials and improved management of permissions between environments. Which of the following options would MOST securely accomplish this goal?
     - [ ] A. Create a new AWS account to hold user and service accounts, such as an identity account. Create users and groups in the identity account. Create roles with appropriate permissions in the production and testing accounts. Add the identity account to the trust policies for the roles.
-    - [ ] B. Modify permissions in the production and testing accounts to limit creating new IANI users to members of the Operations team. Set a strong IAM password policy on each account. Create new IAM users and groups in each account to limit developer access to just the services required to complete their job function.
+    - [ ] B. Modify permissions in the production and testing accounts to limit creating new IAM users to members of the Operations team. Set a strong IAM password policy on each account. Create new IAM users and groups in each account to limit developer access to just the services required to complete their job function.
     - [ ] C. Create a script that runs on each account that checks user accounts for adherence to a security policy. Disable any user or service accounts that do not comply.
     - [ ] D. Create all user accounts in the production account. Create roles for access in the production account and testing accounts. Grant cross-account access from the production account to the testing account.
-60. The CISO ofa large enterprise with multiple IT departments, each with its own AWS account, wants one central place where AWS permissions for users can be managed and users authentication credentials can be synchronized with the company's existing on-premises solution. Which solution will meet the CISO's requirements?
+
+    <details>
+       <summary>Answer</summary>
+
+       类比我司infosec账户，答案A
+
+    </details>
+
+60. The CISO of a large enterprise with multiple IT departments, each with its own AWS account, wants one central place where AWS permissions for users can be managed and users authentication credentials can be synchronized with the company's existing on-premises solution. Which solution will meet the CISO's requirements?
     - [ ] A. Define AWS IAM roles based on the functional responsibilities of the users in a central account. Create a SAML-based identity management provider. Map users in the on-premises groups to IAM roles. Establish trust relationships between the other accounts and the central account.
-    - [ ] B. Deploy a common set ofAWS IAM users, groups, roles, and policies in all of the AWS accounts using AWS Organizations. Implement federation between the on-premises identity provider and the AWS accounts.
+    - [ ] B. Deploy a common set of AWS IAM users, groups, roles, and policies in all of the AWS accounts using AWS Organizations. Implement federation between the on-premises identity provider and the AWS accounts.
     - [ ] C. Use AWS Organizations in a centralized account to define service control policies (SCPs). Create a SAML-based identity management provider in each account and map users in the on-premises groups to AWS IAM roles.
-    - [ ] D. Perform a thorough analysis of the user base and create AWS IAM users accounts that have the necessaxy permissions. Set up a process to provision and de provision accounts based on data in the on-premises solution.
+    - [ ] D. Perform a thorough analysis of the user base and create AWS IAM users accounts that have the necessary permissions. Set up a process to provision and de provision accounts based on data in the on-premises solution.
+
+    <details>
+       <summary>Answer</summary>
+
+       这题不知道原因，感觉是A
+
+    </details>
+
 61. A large company has increased its utilization ofAWS over time in an unmanaged way. As such, they have a large number of independent AWS accounts across different business units, projects,and environments. The company has created a Cloud Center of Excellence team, which is responsible for managing all aspects of the AWS Cloud, including their AWS accounts. Which of the following should the Cloud Center of Excellence team do to BEST address their requirements in a centralized way? (Select two.)
     - [ ] A. Control all AWS account root user credentials. Assign AWS IAM users in the account of each user who needs to access AWS resources. Follow the policy of least privilege in assignmg permissions to each user.
     - [ ] B. Tag all AWS resources with details about the business unit, project, and environment. Send all AWS Cost and Usage reports to a central Amazon S3 bucket, and use tools such as Amazon Athena and Amazon QuickSight to collect billing details by business unit.
