@@ -76,7 +76,7 @@
 
    </details>
 
-6. A Solutions Architect has created an AWS CloudFormation template for a three-tier application that contains an Auto Scaling group of Amazon EC2 instances running a custom AMI. The Solutions Architect wants to ensure that future updates to the custom AMI can be deployed to a running stack by first updating the template to refer to the new AMI, and then invoking UpdateStack to replace the EC2 instances with instances launched from the new ANIL How can updates to the AMI be deployed to meet these requirements?
+6. A Solutions Architect has created an AWS CloudFormation template for a three-tier application that contains an Auto Scaling group of Amazon EC2 instances running a custom AMI. The Solutions Architect wants to ensure that future updates to the custom AMI can be deployed to a running stack by first updating the template to refer to the new AMI, and then invoking UpdateStack to replace the EC2 instances with instances launched from the new AMI. How can updates to the AMI be deployed to meet these requirements?
    - [ ] A. Create a change set for a new version of the template, view the changes to the running EC2 instances to ensure that the AMI is correctly updated, and then execute the change set.
    - [ ] B. Edit the AWS::AutoScaling::LaunchConfiguration resource in the template, changing its to Replace. DeletionPolicy
    - [ ] C. Edit the AWS::AutoScaling::LaunchConfiguration resource in the template, inserting an attribute. UpdatePolicy
@@ -122,7 +122,7 @@
    - [ ] B. Use weighted routing and configure each record set with a weight of 50. Configure an HTTP health check for each region and attach it to the record set for that region.
    - [ ] C. Use latency-based routing for both record sets. Configure a health check for each region and attach it to the record set for that region.
    - [ ] D. Configure an Amazon CloudWatch alarm for the health checks in us-east-1, and have it invoke an AWS Lambda function that promotes the read replica in eu-west-1.
-   - [ ] E. Configure an Amazon RDS event notifications to react to the failure of the database in us-east-I by invoking an AWS Lambda function that promotes the read replica in eu-west-1.
+   - [ ] E. Configure an Amazon RDS event notifications to react to the failure of the database in us-east-1 by invoking an AWS Lambda function that promotes the read replica in eu-west-1.
 
    <details>
       <summary>Answer</summary>
