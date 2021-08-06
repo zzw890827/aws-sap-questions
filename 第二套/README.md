@@ -1141,102 +1141,279 @@
 
     </details>
 
-81. A company's CISO has asked a Solutions Architect to re-engineer the company's Current CL/CD practices to make sure patch deployments to its application can happen as quickly as possible with minmal downtime if vulnerabilities are discovered, The company must also be able to quickly roll back a change in case of errors. The web application is deployed in a fleet ofAmazon EC2 instances behind an Application Load Balancer. The company is currently using Github to host the application source code and has configured an AWS CodeBuild project to build the application ,The company also intends to use AWS CodePipeline to trigger builds from Github commits using the existing CodeBuild project. What CL/CD configuration meets all of the requirements?
+81. A company's CISO has asked a Solutions Architect to re-engineer the company's Current CL/CD practices to make sure patch deployments to its application can happen as quickly as possible with minimal downtime if vulnerabilities are discovered, the company must also be able to quickly roll back a change in case of errors. The web application is deployed in a fleet of Amazon EC2 instances behind an Application Load Balancer. The company is currently using Github to host the application source code and has configured an AWS CodeBuild project to build the application, The company also intends to use AWS CodePipeline to trigger builds from Github commits using the existing CodeBuild project. What CL/CD configuration meets all the requirements?
     - [ ] A. Configure CodePipeline with a deploy stage using AWS CodeDeploy configured for in-place deployment Monitor the newly deployed code ,and if there are any issues push another code update.
     - [ ] B. Configure CodePipeline with a deploy stage using AWS CodeDeploy configured for blue/green deployments Monitor the newly deployed code, and if there are any issues, trigger a manual rollback using CodeDeploy.
-    - [ ] C. Configure CodePipeline with a deploy stage using AWS Cloudformation to create a pipeline for test and production stacks,Monitor the newly deployed code and if there are any issues ,push another code update.
+    - [ ] C. Configure CodePipeline with a deploy stage using AWS Cloudformation to create a pipeline for test and production stacks, Monitor the newly deployed code and if there are any issues ,push another code update.
     - [ ] D. Configure the CodePipeline with a deploy stage using AWS Opsworks and in-place deployments. Monitor the newly deployed code, and if there are any issues, push another code update.
-82. A company has a web applicaton that securely uploads pictures and videos to an Amazon S3 bucket. The company requires that only authenticated users are allowed to post content. The application generates a presigned URL that is used to upload objects through a browser interface. Most users are reporting slow upload times for objects larger than 100 NIB. What can a Solutions Architect do to improve the performance of these uploads while ensuing only authenticated users are allowed to post content?
-    - [ ] A. Set up an AmazonAPI Gateway with an edge-optimzed API endpoint that has a resource as an S3 service proxy. Configure the PUT method for this resource to expose the S3 putobject operation. Secure the API Gateway using a COGNITO USER POOLS authorizer. Have the browser interface use API Gateway instead of the presigned URL to upload objects .
-    - [ ] B. Set up an Amazon API Gateway with a regional API endpoint that has a resource as an S3 service proxy. Configure the PUT method for this resource to expose the S3 PutObject operation Secure the API Gateway using an AWS Lambda authonzer. Have the browser interface use API Gateway instead of the presigned URL to upload objects.
-    - [ ] C. Enable an S3 Transfer Acceleration endpoint on the S3 bucket. Use the endpoint when generating the presigned URL. Have the browser interface upload the objects to this URL using the S3 multipart upload Apl.
-    - [ ] D. Configure an Amazon Cloudfront distribution for the destination S3 bucket. Enable PUT and POST methods for the Cloudfront cache behavior. Update the Cloudfront origin to use an ongin access identity(OAI) Give the OAI user s3:PutObject permissions in the bucket policy. Have the browser interface upload objects using the CloudFront distribution.
-83. A company has an application that uses Amazon EC2 instances in an Auto Scaling group. The Quality Assurance(QA) department needs to lanunch a large number of short-lived environments to test the application.The applicaton environments are currentiy launched by the Manager of the department using an AWS Cloudformation template.To launch the stack, the Manager uses a role with permission to use Cloudformation,EC2 and Auto Scaling APIs. The Manager wants to allow testers to launch their own envronments,but does not want to grant broad permissions to each user. Which set up would achieve these goals?
-    - [ ] A. Upload the AWS Cloudformaton template to Amazon S3 Give users in the QA deparment permession to assume the Manager's role and add a poicy that restricts the permissions to the template and the resources it creates. Train users to launch the template from the Cloudformation console
-    - [ ] B. Create an AWS Service Catalog product from the environment template. Add a launch constraint to the product with the existing role. Give users in the QA department permission to use AWS Sevice Catalog APIs only. Train users to launch the template from the AWS Service Catalog console.
-    - [ ] C. Upload the AWS Cloudformation template to Amazon S3 Give users in the QA department permission to use Cloudformation and S3 APIs, with conditions that restrict the permissions to the template and the resources it creates. Train users to launch the template from the Cloudformation console.
-    - [ ] D. Create an AWS Elastic Beanstalk application from the environment template .Give users in the QA department permission to use Elastic Beanstalk permissions only. Train users to launch Elastic Beanstalk environments with the Elastic Beanstalk CLI, passing the existing role to the environment as a service role
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，蓝绿部署是最佳实践，答案B
+
+    </details>
+
+82. A company has a web application that securely uploads pictures and videos to an Amazon S3 bucket. The company requires that only authenticated users are allowed to post content. The application generates a pre-signed URL that is used to upload objects through a browser interface. Most users are reporting slow upload times for objects larger than 100 MB. What can a Solutions Architect do to improve the performance of these uploads while ensuing only authenticated users are allowed to post content?
+    - [ ] A. Set up an Amazon API Gateway with an edge-optimized API endpoint that has a resource as an S3 service proxy. Configure the PUT method for this resource to expose the S3 PutObject operation. Secure the API Gateway using a COGNITO USER POOLS authorizer. Have the browser interface use API Gateway instead of the pre-signed URL to upload objects.
+    - [ ] B. Set up an Amazon API Gateway with a regional API endpoint that has a resource as an S3 service proxy. Configure the PUT method for this resource to expose the S3 PutObject operation Secure the API Gateway using an AWS Lambda authonzer. Have the browser interface use API Gateway instead of the pre-signed URL to upload objects.
+    - [ ] C. Enable an S3 Transfer Acceleration endpoint on the S3 bucket. Use the endpoint when generating the pre-signed URL. Have the browser interface upload the objects to this URL using the S3 multipart upload Api.
+    - [ ] D. Configure an Amazon Cloudfront distribution for the destination S3 bucket. Enable PUT and POST methods for the Cloudfront cache behavior. Update the Cloudfront origin to use an origin access identity (OAI) Give the OAI user s3:PutObject permissions in the bucket policy. Have the browser interface upload objects using the CloudFront distribution.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单粗暴，直接开启上传加速就行，答案C
+
+    </details>
+
+83. A company has an application that uses Amazon EC2 instances in an Auto Scaling group. The Quality Assurance (QA) department needs to launch many short-lived environments to test the application. The application environments are currently launched by the Manager of the department using an AWS CloudFormation template. To launch the stack, the Manager uses a role with permission to use CloudFormation, EC2 and Auto Scaling APIs. The Manager wants to allow testers to launch their own environments but does not want to grant broad permissions to each user. Which set up would achieve these goals?
+    - [ ] A. Upload the AWS CloudFormation template to Amazon S3 Give users in the QA department permission to assume the Manager's role and add a policy that restricts the permissions to the template and the resources it creates. Train users to launch the template from the CloudFormation console
+    - [ ] B. Create an AWS Service Catalog product from the environment template. Add a launch constraint to the product with the existing role. Give users in the QA department permission to use AWS Service Catalog APIs only. Train users to launch the template from the AWS Service Catalog console.
+    - [ ] C. Upload the AWS CloudFormation template to Amazon S3 Give users in the QA department permission to use CloudFormation and S3 APIs, with conditions that restrict the permissions to the template and the resources it creates. Train users to launch the template from the CloudFormation console.
+    - [ ] D. Create an AWS Elastic Beanstalk application from the environment template .Give users in the QA department permission to use Elastic Beanstalk permissions only. Train users to launch Elastic Beanstalk environments with the Elastic Beanstalk CLI, passing the existing role to the environment as a service role.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，使用Service Catalog是最佳实践，排除AD，C只给了S3的权限，是不够的，答案B
+
+    </details>
+
 84. A financial services company logs personality identifiable information to its application logs stored in Amazon S3. Due to regulatory compliance requirements, the log files must be encrypted at rest. The Security team has mandated that the company's on-premises hardware security modules (HSMs) be used to generate the CMK material. Which steps should the Solution Architected take to meet these requirements?
     - [ ] A. Create an AWS CloudHSM cluster. Create a new CMK in AWS KMS using AWS CloudHSM as the source for the key material and an origin of AWS-CLOUDHSM. Enable automatic key rotation on the CMK with a duration of 1 year. Configure a bucket policy on the logging bucket the disallow uploads of unencrypted data and requires that the encryption source be AWS KMS.
-    - [ ] B. Provision AN AWS Direct Connect connection, ensuring there is no overlap of the RFC 1918 address space between on-premises hardware and the VPC. Configure an AWS bucket policy on the logging bucket requires all objects to be key material, and create a unique CMK for each logging event.
-    - [ ] C. Create a CNIK in AWS KMS with no key material and an origin of EXTERNAL. Import the key material generated from the on-premises HSMs into the CMK using the public key and import token provided by AWS. Configure a bucket policy on the logging bucket that disallows uploads of non-encrypted data and requires that the encryption source be AWS KNIS.
-    - [ ] D. Create a new CMK in AWS KNIS with AWS-provided key material and an origin of AWS-KMS. Disable this CMK, and overwrite the key material with the material from the on-premises HSM using the public key and import token provided by AWS Re-enable the CNIK. Enable automatic, key rotation on the CMK with a duration of I year. Configure a bucket policy on the logging bucket that disallows uploads of non-encrypted data and requires that the encryption source be AWS KMS.
-85. A company has several teams, and each team has their own Amazon RDS database that totals 100 TB The company is building a dataquery platform for Business Intelligence analysts to generate a weekly business repor
-    - [ ] A. Create a new Amazon Redshift cluster. Create an AWS Glue ETLjob to copy data from the RDS databases to the amazon Redshift cluster Use Amazon Redshift to run the quexy
-    - [ ] B. Create an Amazon EMR cluster with enough core nodes Run an Apache Spark job to copy data from the rds databases to an Hadoop Distributed File System(HDFS). Use a local Apache Hive metastore tomaintain the table definition. Use Spark SQL to run the query
-    - [ ] C. Use an AWS Glue ETLjob to copy all the rds databases to a single Amazon Aurora Postgresql database Run SQL queries on the Aurora Postgresql database
-    - [ ] D. Use an AWS Glue crawler to crawl all the databases and create tables in the AWS Glue Data Catalog.Use an AWS Glue ETLjob to load data from the RDS databases to amazon S3, and use amazon Athena to run the queries.
-86. A company needs to move its on-premises resources to AWS.The current environment consists of 100 virtual machines(VMS) with a total of 40 TB of storage. Most of the VMS can be taken offline because they support functions during business hours only, however some are mission critical. so downtime must be-minimized. The Administrator of the on-premises network provisioned 10 Mbps of intemet bandwidth forthe migration. The on-premises network throughput has reached capacity and would be costly to increase. A Solutions Architect must design a migration solution that can be performed within the next 3months Which method would fulfill these requirements?
-    - [ ] A. Set up a I Gbps AWS Direct Connect connection. Then, provision a private virtual interface, and use AWS Server Migration Service(SMS) to migrate the VMS into Amazon EC2
+    - [ ] B. Provision AN AWS Direct Connect connection, ensuring there is no overlap of the RFC 1918 address space between on-premises hardware and the VPC. Configure an AWS bucket policy on the logging bucket requires all objects to be key material and create a unique CMK for each logging event.
+    - [ ] C. Create a CMK in AWS KMS with no key material and an origin of EXTERNAL. Import the key material generated from the on-premises HSMs into the CMK using the public key and import token provided by AWS. Configure a bucket policy on the logging bucket that disallows uploads of non-encrypted data and requires that the encryption source be AWS KNIS.
+    - [ ] D. Create a new CMK in AWS KMS with AWS-provided key material and an origin of AWS-KMS. Disable this CMK and overwrite the key material with the material from the on-premises HSM using the public key and import token provided by AWS Re-enable the CMK. Enable automatic, key rotation on the CMK with a duration of 1 year. Configure a bucket policy on the logging bucket that disallows uploads of non-encrypted data and requires that the encryption source be AWS KMS.
+
+    <details>
+       <summary>Answer</summary>
+
+       AB都无法使用客户自己创建的密匙，D看着好麻烦，答案C
+
+    </details>
+
+85. A company has several teams, and each team has their own Amazon RDS database that totals 100 TB The company is building a data query platform for Business Intelligence analysts to generate a weekly business report. The new system must run ad-hoc SQL queries. What is the MOST cost-effective solution?
+    - [ ] A. Create a new Amazon Redshift cluster. Create an AWS Glue ETL job to copy data from the RDS databases to the amazon Redshift cluster Use Amazon Redshift to run the query
+    - [ ] B. Create an Amazon EMR cluster with enough core nodes Run an Apache Spark job to copy data from the RDS databases to an Hadoop Distributed File System(HDFS). Use a local Apache Hive MetaStore to maintain the table definition. Use Spark SQL to run the query
+    - [ ] C. Use an AWS Glue ETL job to copy all the RDS databases to a single Amazon Aurora Postgresql database Run SQL queries on the Aurora Postgresql database
+    - [ ] D. Use an AWS Glue crawler to crawl all the databases and create tables in the AWS Glue Data Catalog. Use an AWS Glue ETL job to load data from the RDS databases to amazon S3 and use amazon Athena to run the queries.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. Redshift是数据仓，不支持SQL查询
+       - [ ] B. 使用本地Apache Hive MetaStore需要自己维护，加大了维护成本
+       - [ ] C. 需要使用Lambda去驱动ETL job
+       - [x] D. 同C
+
+    </details>
+
+86. A company needs to move its on-premises resources to AWS. The current environment consists of 100 virtual machines (VMS) with a total of 40 TB of storage. Most of the VMS can be taken offline because they support functions during business hours only, however some are mission critical. so, downtime must be-minimize. The Administrator of the on-premises network provisioned 10 Mbps of internet bandwidth for the migration. The on-premises network throughput has reached capacity and would be costly to increase. A Solutions Architect must design a migration solution that can be performed within the next 3 months Which method would fulfill these requirements?
+    - [ ] A. Set up a 1 Gbps AWS Direct Connect connection. Then, provision a private virtual interface, and use AWS Server Migration Service (SMS) to migrate the VMS into Amazon EC2
     - [ ] B. Use AWS Application Discovery Service to assess each application, and determine how to refactor and optimize each using AWS services or AWS Marketplace solutions
-    - [ ] C. Export the VMS locally, beginning with the most mission-critical servers first Use AWS Transfer for SFTP to securely upload each VM to Amazon S3 after they are exported. Use VM Import/Export to importthe VMS into Amazon EC2
-    - [ ] D. Migrate mssion-crical VMS with AWS SMS Export the other VMs locally and transfer them to Amazone S3 using AWS snowball. Use VM Import/Export to import the VMs into Amazon EC2
-87. A company has a website that enables users to upload videos. Company policy states the uploaded videos must be analyzed for restricted content. An uploaded video is placed in Amazon S3 and a message is pushed to an Amazon SQS queue with the video slocation. A backend application pulls this location from Amazon SQS and analyzes the video. The video analysis s compute-intensive and occurs sporadically during the day. The website scales with demand. The video analysis application runs on a fixed number of instances. Peak demand occurs during the holidays ,so the company must add instances to the application dunng this time ,AII instances used are curreny on-demand Amazon EC2 T2 instances. The company wants to reduce the cost of the current solution. Which of the following solutions is MOST cost-effective?
-    - [ ] A. Keep the website on T 2 instances. Determine the minimum number of website instances required during off-peak times and use Spot Instances to cover them while using Reserved instances to cover peak demand. Use Amazon EC2 R4 and Amazon EC2 R5 Reserved Instances in an Auto Scaling group for the video analysis application
-    - [ ] B. Keep the website on T 2 instances Determine the minimum number of website instances requred during of-peak timesand use Reserved Instances to cover them while using On-Demand instances to cover peak demand. Use Spot Fleet for the video analysis application comprised ofAmazon EC2 C4 and Amazon EC2 C5 Spot Instances
-    - [ ] C. Migrate the website to Aws Elas Beanstalk and Amazon EC2 C4 instances Determine the minmum number of website instances requ ired during off-peak times and use On-Demand Instances to cover them while using Spot capacity to cover peak demand, Use Spot Fleet for the video analysis applicaton comprsed of C4 and Amazon EC2 C5 stances
-    - [ ] D. Migrate the website to Aws Elas Beanstalk and Amazon EC2 C4 instances Determine the minmum number of website instances requ ired during off-peak times and use Reserved Instances to cover them while using On-Demand Instances to cover peak demand ,Use Spoor Fleet for the Video analysis application comprised ofR4 and Amazon EC2 R5 instances.
-88. A company's main intranet page has experienced degraded response times as its user base has increased although there are no reports of users seeing error pages. The application uses Amazon DynamoDB in read-only mode. Amazon DynamoDB latency metrics for successful requests have been in a steady state even during times when users have reported degradation. The Development team has correlated the issue to Provisioned Throughput Exceeded exceptions in the application logs when doing Scan and read operations The team also identified an access pattern of steady spikes of read activity on a distributed set of individual data items. The Chief Technology Officer wants to improve the user experience. Which solutions will meet these requirements with the LEAST amount of changes to the application? (Choose two.)
+    - [ ] C. Export the VMS locally, beginning with the most mission-critical servers first Use AWS Transfer for SFTP to securely upload each VM to Amazon S3 after they are exported. Use VM Import/Export to import the VMS into Amazon EC2
+    - [ ] D. Migrate mission critical VMS with AWS SMS Export the other VMs locally and transfer them to Amazon S3 using AWS snowball. Use VM Import/Export to import the VMs into Amazon EC2.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 应该从关键服务开始迁移
+       - [ ] B. 时间不赶趟
+       - [ ] C. 带宽不够
+       - [x] D. 正确
+
+    </details>
+
+87. A company has a website that enables users to upload videos. Company policy states the uploaded videos must be analyzed for restricted content. An uploaded video is placed in Amazon S3, and a message is pushed to an Amazon SQS queue with the video’s location. A backend application pulls this location from Amazon SQS and analyzes the video. The video analysis s compute-intensive and occurs sporadically during the day. The website scales with demand. The video analysis application runs on a fixed number of instances. Peak demand occurs during the holidays, so the company must add instances to the application during this time, all instances used are current on-demand Amazon EC2 T2 instances. The company wants to reduce the cost of the current solution. Which of the following solutions is MOST cost-effective?
+    - [ ] A. Keep the website on T2 instances. Determine the minimum number of website instances required during off-peak times and use Spot Instances to cover them while using Reserved instances to cover peak demand. Use Amazon EC2 R4 and Amazon EC2 R5 Reserved Instances in an Auto Scaling group for the video analysis application
+    - [ ] B. Keep the website on T2 instances Determine the minimum number of website instances required during of-peak times and use Reserved Instances to cover them while using On-Demand instances to cover peak demand. Use Spot Fleet for the video analysis application comprised of Amazon EC2 C4 and Amazon EC2 C5 Spot Instances
+    - [ ] C. Migrate the website to Aws Elastic Beanstalk and Amazon EC2 C4 instances Determine the minimum number of website instances required during off-peak times and use On-Demand Instances to cover them while using Spot capacity to cover peak demand, Use Spot Fleet for the video analysis application comprised of C4 and Amazon EC2 C5 stances
+    - [ ] D. Migrate the website to Aws Elastic Beanstalk and Amazon EC2 C4 instances Determine the minimum number of website instances required during off-peak times and use Reserved Instances to cover them while using On-Demand Instances to cover peak demand ,Use Spoor Fleet for the Video analysis application comprised ofR4 and Amazon EC2 R5 instances.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案B
+
+    </details>
+
+88. A company's main intranet page has experienced degraded response times as its user base has increased although there are no reports of users seeing error pages. The application uses Amazon DynamoDB in read-only mode. Amazon DynamoDB latency metrics for successful requests have been in a steady state even during times when users have reported degradation. The Development team has correlated the issue to Provisioned Throughput Exceeded exceptions in the application logs when doing Scan and read operations. The team also identified an access pattern of steady spikes of read activity on a distributed set of individual data items. The Chief Technology Officer wants to improve the user experience. Which solutions will meet these requirements with the LEAST number of changes to the application? (Choose two.)
     - [ ] A. Change the data model of the DynamoDB tables to ensure that all Scan and read operations meet DynamoDB best practices of uniform data access, reaching the full request throughput provisioned for the DynamoDB tables.
     - [ ] B. Enable DynamoDB Auto Scaling to manage the throughput capacity as table traffic increases. Set the upper and lower limits to control costs and set a target utilization given the peak usage and how quickly the traffic changes.
     - [ ] C. Provision Amazon ElastiCache for Redis with cluster mode enabled. The cluster should be provisioned with enough shards to spread the application load and provision at least one read replica node for each shard.
     - [ ] D. Implement the DynamoDB Accelerator (DAX) client and provision a DAX cluster with the appropriate node types to sustain the application load. Tune the item and query cache configuration for an optimal user experience.
     - [ ] E. Remove error retries and exponential backoffs in the application code to handle throttling errors.
-89. A company is having issues with a newly deployed sewerless infrastmcture that uses Amazon API Gateway, Amazon Lambda, and Amazon Dynamodb. In a steady state, the application performs as expected. However, during peak load, tens of thousands of simultaneous invocations are needed and user requests fail multiple times before succeeding. The compa1Y has checked the logs for eachcomponent, focusing specifically on Amazon Cloudwatch Logs for Lambda. There are no errors loggeby the services or applications. What might cause this problem?
-    - [ ] A. Lambda has vexy low memoxy assigned, which causes the function to fail at peak load
-    - [ ] B. Lambda is in a subnet that uses a nat gateway to reach out to the internet, and the function instance does not have sufficient Amazon EC2 resources in the VPC to scale with the load
+  
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 貌似没有data model这个东西，DynamoDB本身就是个NoSQL数据库
+       - [x] B. 正确
+       - [ ] C. 与Redis没毛的关系
+       - [x] D. 正确
+       - [ ] E. 直接改程序绝B不是最佳体验
+
+    </details>
+
+89. A company is having issues with a newly deployed serverless infrastructure that uses Amazon API Gateway, Amazon Lambda, and Amazon DynamoDB. In a steady state, the application performs as expected. However, during peak load, tens of thousands of simultaneous invocations are needed, and user requests fail multiple times before succeeding. The compa1Y has checked the logs for each component, focusing specifically on Amazon CloudWatch Logs for Lambda. There are no errors logged by the services or applications. What might cause this problem?
+    - [ ] A. Lambda has vexy low memory assigned, which causes the function to fail at peak load
+    - [ ] B. Lambda is in a subnet that uses a NAT gateway to reach out to the internet, and the function instance does not have sufficient Amazon EC2 resources in the VPC to scale with the load
     - [ ] C. The throttle limit set on API Gateway is very low. During peak load, the additional requests are not making their way through to lambda.
-    - [ ] D. Dynamodb is set up in an auto scaling mode. During peak load, Dynamodb adjusts capacity and throughput behind the scenes, which is causing the temporary downtime. Once the scaling completes the retries go through successfully
-90. A company recenty transformed its legacy infrastmcture provisioning scripts to AWS Cloudformation templates. The newly developed templates are hosted in the company's private Github repositow. Since adopting Cloudformation, the company has encountered several issues with updates to the Cloudformation templates, causing failed executions or creating unstable environments Management isconcemed by the increase in errors and has asked a Solutions Architect to design the automated testingof Cloudformation template updates. What should the Solutions Architect do to meet these requirements?
-    - [ ] A. Use AWS Codepipeline to create a change set from the Cloud Formation templates stored in theprivate Github repository Execute the change set using AWS Code Deploy. Include a Codepipelineaction to test the deployment wit
-    - [ ] B. Mirror the Github repository to Aw Code Commit using AWS Lambda. Use AWS Code Deploy tocreate a change set from Code build odebuild
-    - [ ] D. Mirror the Github repository to Aws Code Commit using AWS Lambda Use AWS Code Build to createa change set from the Cloudformation templates and execute it Have Codebuild test the deployment with testing scripts
-91. An enterprise company wants to implement cost controls for all its accounts in AWS Organizations, which has full features enabled. The company has mapped organizational units(OUs)to its business andit wants to bill these business units for their individual AWS spending. There has been a recent spike inthe company's AWS bill, which is generating atention from the Finance team. A Solutions Architect needsto investigate the cause of the spike while designing a solution that will track AWS costs in Organizations and generate a notification to the required teams if costs from a business unit exceed a specific monetarythreshold. Which solution will meet these requirements?
-    - [ ] A. Use Cost Explorer to troubleshoot the reason for the additional costs. Set up an AWS Lambda functionto monitor the companys AWS bill by each AWS account in an OU Store the threshold amount set by theFinance team in the AWS Systems Manager Parameter Store. Write custom rules in the L ambdafunction to verify any hidden costs for the AWS accounts. Triger a notification from the Lambda functionto an Amazon SNS topic when a budget thres hold is breached.
-    - [ ] B. Use AWS Trusted Advisor to troubleshoot the reason for the additional costs. Set up an AWS Lambdafunction to monitor the companys AWS bill by each AWS account in an OU Store the threshold amountFinance team in the AWS Systems Manager Parameter Store. Write custom rules in theLambda function to verify any hidden costs for the AWS accounts. Trigger an email to the required teamsfrom the Lambda function using Amazon SNS when a budget threshold is breached
-    - [ ] C. Use Cost Explorer to troubleshoot the reason for the additional costs. Create a budget using AWS Budgets with the monetary amount set by the Finance team for each OU by grouping the linked accountsConfigure an Amazon SNS notification to the required teams in the budget.
-    - [ ] D. Use AWS Trusted Advisor to troubleshoot the reason for the additional costs. Create a budget using Aws Budgets with the monetary' amount set by the Finance team for each OU by grouping the linked accounts. Add the Amazon EC2 instance types to be used in the company as a budget filter. Configure anAmazon SNS topic with a subscription for the Finance team email address to receive budget notifications.
-92. A company provides AWS solutions to its users w Aws Cloudformation templates. Users launch the templates in their accounts to have diferent solutions provisioned for them. The users want to improve the deployment strategy for solutions while retaining the ability to do the following: -Add their own features to a solution for their specific deployments -Run unit tests on their changes -Turn features on and off for their deployments. -Automatically update with code changes. -Run security scanning tools for their deployments Which strategies should the Solutions Architect use to meet the requirements?
-    - [ ] A. Allow users to download solution code as Docker images. Use AWS Codebuild and AWS Codepipelinefor the CI/CD pipeline. Use Docker images for different solution features and the AWS CLI to turnfeatures on and off. Use AWS Codedeploy to run unit tests and security scans, and for deploying andupdating a solution with changes.
-    - [ ] B. Allow users to download solution code artifacts. Use AWS Codecommit and AWS Codepipeline for the CL/CD pipeline. Use AWS Amplify plugins for different solution features and user prompts to tum featureson and off. Use AWS Lambda to run unit tests and security scans, and AWS Codebuild for deploying and updating a solution with changes
-    - [ ] C. Allow users to download solution code artifacts in their Amazon S3 buckets. Use Amazon S3 and AWS Codepipeline for the CI/CD pipelines. Use Cloudformation Stacksets for different solution features and to turn features on and off. Use AWS Lambda to run unit tests and security scans, and Cloudformation for deploying and updating a solution with changes
-    - [ ] D. Allow users to download solution code artifacts Use AWS Code Commit and AWS Codepipeline for the CI/CD pipeline Use the AWS Cloud Development Kit constmcts for different solution features, and usethe manifest file to turn features on and off. Use AWS Codebuild to run unit tests and security scans, andfor deploying and updating a solution with changes
+    - [ ] D. DynamoDB is set up in an auto scaling mode. During peak load, DynamoDB adjusts capacity and throughput behind the scenes, which is causing the temporary downtime. Once the scaling completes the retries go through successfully.
+  
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案C
+
+    </details>
+
+90. A company recently transformed its legacy infrastructure provisioning scripts to AWS CloudFormation templates. The newly developed templates are hosted in the company's private GitHub repository. Since adopting CloudFormation, the company has encountered several issues with updates to the CloudFormation templates, causing failed executions or creating unstable environments Management is consumed by the increase in errors and has asked a Solutions Architect to design the automated testing of CloudFormation template updates. What should the Solutions Architect do to meet these requirements?
+    - [ ] A. Use AWS Code Pipeline to create a change set from the CloudFormation templates stored in the private GitHub repository. Execute the change set using AWS CodeDeploy. Include a CodePipeline action to test the deployment with testing scripts run by AWS CodeBuild. Build the CloudFormation templates and execute it. Have CodeDeploy test the deployment with testing scripts run by AWS CloudBuild.
+    - [ ] B. Mirror the GitHub repository to AWS CodeCommit using AWS Lambda. Use AWS CodeDeploy to create a change set from CodeBuild.
+    - [ ] C. Use AWS CodePipeline to create and execute a change set from CloudFormation templates stored in the private GitHub repository. Configure a CodePipeline action to test the deployment with testing scripts run by AWS CodeBuild.
+    - [ ] D. Mirror the GitHub repository to AWS CodeCommit using AWS Lambda Use AWS CodeBuild to create a change set from the CloudFormation templates and execute it Have CodeBuild test the deployment with testing scripts.
+  
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. CodeDeploy不管基础架构的部署
+       - [ ] B. 同A
+       - [x] C. 正确
+       - [ ] D. 需要使用CodePipeline去进行测试而不是CodeBuild
+
+    </details>
+
+91. An enterprise company wants to implement cost controls for all its accounts in AWS Organizations, which has full features enabled. The company has mapped organizational units (OUs)to its business, and it wants to bill these business units for their individual AWS spending. There has been a recent spike in the company's AWS bill, which is generating attention from the Finance team. A Solutions Architect needs to investigate the cause of the spike while designing a solution that will track AWS costs in Organizations and generate a notification to the required teams if costs from a business unit exceed a specific monetary threshold. Which solution will meet these requirements?
+    - [ ] A. Use Cost Explorer to troubleshoot the reason for the additional costs. Set up an AWS Lambda function to monitor the company’s AWS bill by each AWS account in an OU. Store the threshold amount set by the Finance team in the AWS Systems Manager Parameter Store. Write custom rules in the Lambda function to verify any hidden costs for the AWS accounts. Triger a notification from the Lambda function to an Amazon SNS topic when a budget threshold is breached.
+    - [ ] B. Use AWS Trusted Advisor to troubleshoot the reason for the additional costs. Set up an AWS Lambda function to monitor the company’s AWS bill by each AWS account in an OU. Store the threshold amount Finance team in the AWS Systems Manager Parameter Store. Write custom rules in the Lambda function to verify any hidden costs for the AWS accounts. Trigger an email to the required teams from the Lambda function using Amazon SNS when a budget threshold is breached
+    - [ ] C. Use Cost Explorer to troubleshoot the reason for the additional costs. Create a budget using AWS Budgets with the monetary amount set by the Finance team for each OU by grouping the linked accounts. Configure an Amazon SNS notification to the required teams in the budget.
+    - [ ] D. Use AWS Trusted Advisor to troubleshoot the reason for the additional costs. Create a budget using Aws Budgets with the monetary' amount set by the Finance team for each OU by grouping the linked accounts. Add the Amazon EC2 instance types to be used in the company as a budget filter. Configure an Amazon SNS topic with a subscription for the Finance team email address to receive budget notifications.
+  
+    <details>
+       <summary>Answer</summary>
+
+       首先，这里需要使用Cost Explorer，排除BD，尽量使用AWS管理的服务，Lambda还得自己算，答案C
+
+    </details>
+
+92. A company provides AWS solutions to its users w AWS CloudFormation templates. Users launch the templates in their accounts to have different solutions provisioned for them. The users want to improve the deployment strategy for solutions while retaining the ability to do the following: -Add their own features to a solution for their specific deployments -Run unit tests on their changes -Turn features on and off for their deployments. -Automatically update with code changes. -Run security scanning tools for their deployments Which strategies should the Solutions Architect use to meet the requirements?
+    - [ ] A. Allow users to download solution code as Docker images. Use AWS CodeBuild and AWS CodePipeline for the CI/CD pipeline. Use Docker images for different solution features and the AWS CLI to turn features on and off. Use AWS CodeDeploy to run unit tests and security scans, and for deploying and updating a solution with changes.
+    - [ ] B. Allow users to download solution code artifacts. Use AWS CodeCommit and AWS CodePipeline for the CL/CD pipeline. Use AWS Amplify plugins for different solution features and user prompts to tum features on and off. Use AWS Lambda to run unit tests and security scans, and AWS CodeBuild for deploying and updating a solution with changes.
+    - [ ] C. Allow users to download solution code artifacts in their Amazon S3 buckets. Use Amazon S3 and AWS CodePipeline for the CI/CD pipelines. Use CloudFormation Stacksets for different solution features and to turn features on and off. Use AWS Lambda to run unit tests and security scans, and CloudFormation for deploying and updating a solution with changes.
+    - [ ] D. Allow users to download solution code artifacts Use AWS Code Commit and AWS CodePipeline for the CI/CD pipeline Use the AWS Cloud Development Kit constructs for different solution features, and use the manifest file to turn features on and off. Use AWS CodeBuild to run unit tests and security scans, and for deploying and updating a solution with changes.
+  
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. CodeDeploy不负责基础架构的部署
+       - [ ] B. Lambda不用来做单元测试
+       - [ ] C. 同B
+       - [x] D. 正确
+
+    </details>
+
 93. A company is operating a large customer service call center, and stores and processes call recordings with a custom application Approximately 2% of the call recordings are transcribed by an offshore team forquality assurance purposes. These recordings take up to 72 hours to be transcribed. The recordings arestored on an NFS share before they are archived o an offsite location after 90 days. The company uses Linux servers for processing the call recordings and managing the transcription queue. There is also aapplication for the quality assurance staff to review and score call recordings. The company plans toemoohmigrate the system to AWS to reduce storage costs and the time required to transcribe calls. Which set of actions should be taken to meet the company's objectives?
     - [ ] A. Upload the call recordings to Amazon S3 from the call center. Set up an S3 lifecycle policy to move the call recordings to Amazon S3 Glacier after 90 days. Use an AWS Lambda trigger to transcribe the callcordings with Amazon Transcribe. Use Amazon S3, Amazon AP Gateway, and Lambda to host there view and scoring application .
     - [ ] B. Upload the call recordings to Amazon S3 from the call center. Set up an S3 lifecycle policy to move the call recordings to Amazon S3 Glacier after 90 days. Use an AWS Lambda trigger to transcribe the callrecordings with Amazon Mechanical Turk. Use Amazon EC2 instances in an Auto Scaling group behindan Application Load Balancer to host the review and scoring application.
     - [ ] C. Use Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer to host thereview and scoring application Upload the call recordings to this application from the call center and store them on an Amazon EFS mount point. Use AWS Backup to archive the call recordings after 90 days Transcribe the call recordings with Amazon Transcribe.
-    - [ ] D. Upload the call recordings to Amazon S3 from thequeue. Set up an S3 lifecycle policy to move the call recordings to Amazon S3 Glacier after 90 days. Use Amazon EC2 instances in an Auto Scaling group to send the recordings to Amazon Mechanical Turk forranscnption Use the number of objects in the queue as the scaling metric. Use Amazon S3, Amazon APIGateway, and AWS Lambda to host the review and scoring application
-94. A Solutions Architect is building a containerized NET Core application that will run inAWS Fargate The backend of the application requires Microsoft SQL Server with high availability All tiers of the application must be highly available The credentials used for the connection string to SQL Server should not be stored on disk within the .NET Core front-end containers. Which strategies should the Solutions Architect use to meet these requirements'? ify the ARN of the secret in AWS Secrets Manager in the secrets section of the Fargate task definition So the sensitive data can be injected into the ontainers as environment variables stmct the connection string. Set up the. NETCore serviceon startup for reading into the application toing Service Auto Scaling behind an Application Load Balancer in multiple Availability Zone
-    - [ ] B. Create a Multi-az deployment of SQL Server on Amazon RDS. Create a secret in AWS Secrets Manager for the credentials to the RDS database. Create an Amazon ECS task execution role that allows the Fargate task definition to get the secret value for the credentials to the RDS database in Secrets Manager. Specify the ARN of the secret in Secrets Manager in the secrets section of the Fargate task definition so the sensitive data can be injected into the containers as environment variables on startup for reading into the application to construct the connection string Set up the NET Core service in Fargate using Service Auto Scaling behind an Application Load Balancer in multiple Availability Zones
-    - [ ] C. Create an Auto Scaling group to run SQL Server on Amazon EC2. Create a secret in AWS Secrets Manager for the credentials to SQL Server mnning on EC2. Create an Amazon ECS task execution role that allows the Fargate task definition to get the secret value for the credentials to SQL Server on EC2 Specify the ARN of the secret in Secrets Manager in the secrets section of the Fargate task definition Sothe sensitive data can be injected into the containers as environment variables on startup for reading intothe application to construct the connection string Set up the. NET Core service using Service Auto Scaling behind an Application Load Balancer in multiple Availability Zones
-    - [ ] D. Create a Multi-az deployment of SQL Server on Amazon RDS. Create a secret in AWS Secrets Manager for the credentials to the RDS database. Create non-persistent empty storage for the NET Core containers in the Fargate task definition to store the sensitive information. Create an Amazon ECS task execution role that allows the Fargate task definition to get the secret value for the credentials to the RDS database in Secrets Manager. Specify the ARN of the secret in Secrets Manager in the secrets section of the Fargate task definition O he sensitive data can be written to the. NET Core service using Serivce Auto Scaling Behind an Aplication Load Balancer in Multiple Availability ones
-95. A company has an internal AWS Elastic Beanstalk worker environment inside a VPC that must accessan external payment gateway API availableon an HTTPS endpoint on the public internet. Because of security policies, the payment gateways Application team can grant access to only one public IPaddress Which architecture will set up an Elastic Beanstalk environment to access the company's application without making multiple changes on the company's end?
-    - [ ] A. Configure the Elastic Beanstalk application to place Amazon EC2 instances in a private subnet with anoutbound route to a NAT gaay in a public subnet. Associate an Elastic IP address to the NA gateway that can be whitelisted on the payment gateway application side.
-    - [ ] B. Configure the Elastic Beanstalk application to place Amazon EC2 instances in a public subnet with aninternet gateway. Associate an Elastic IP address to the internet gateway that can be whitelisted on thepayment gateway application side
-    - [ ] C. Configure the Elastic Beanstalk application to place Amazon EC2 instances in a private subnet. Set an HTTPS PROXY applicaion parameter to send outbound HTTPS connections to an EC2 proxy server deployed in a public subnet. Associate an Elastic IP address to the EC2 proxy host that can be white listed on the payment gateway application side
-    - [ ] D. Configure the Elastic Beanstalk application to place Amazon EC2 instances in a public subnet. Set the HTTP SPROXY and NO PROXY applicationparameterstosend non-vpc outbound HTTPS connections to an EC2 proxy server deployed in a public subnet. Associate an Elastic IP address to the EC2 proxy host that can be whitelisted on the payment gateway application side
-96. A Solutions Architect is building a solution for updating user metadata that is initiated by web servers. The solution needs to rapidly scale from hundreds to tens of thousands ofjobs in less than 30 seconds. The solution must be asynchronous always avertable and minimize costs. Which strategies should the Solutions Architect use to meet these requirements?
+    - [ ] D. Upload the call recordings to Amazon S3 from thequeue. Set up an S3 lifecycle policy to move the call recordings to Amazon S3 Glacier after 90 days. Use Amazon EC2 instances in an Auto Scaling group to send the recordings to Amazon Mechanical Turk forranscnption Use the number of objects in the queue as the scaling metric. Use Amazon S3, Amazon APIGateway, and AWS Lambda to host the review and scoring application.
+  
+    <details>
+       <summary>Answer</summary>
+
+       Amazon Transcribe是声音变文本服务，答案A
+
+    </details>
+
+94. A Solutions Architect is building a containerized NET Core application that will run in AWS Fargate The backend of the application requires Microsoft SQL Server with high availability All tiers of the application must be highly available. The credentials used for the connection string to SQL Server should not be stored on disk within the .NET Core front-end containers. Which strategies should the Solutions Architect use to meet these requirements? 
+    - [ ] A. Set up SQL Server to run in Fargate with Service Auto Scaling. Create an Amazon ECS task execution role that allows the Fargate task definition to get the secret value for the credential to SQL Server running in Fargate. Specify the ARN of the secret in AWS Secrets Manager in the secrets section of the Fargate task definition So the sensitive data can be injected into the containers as environment variables struct the connection string. Set up the .NET Core service on startup for reading into the application toing Service Auto Scaling behind an Application Load Balancer in multiple Availability Zones.
+    - [ ] B. Create a Multi-AZ deployment of SQL Server on Amazon RDS. Create a secret in AWS Secrets Manager for the credentials to the RDS database. Create an Amazon ECS task execution role that allows the Fargate task definition to get the secret value for the credentials to the RDS database in Secrets Manager. Specify the ARN of the secret in Secrets Manager in the secrets section of the Fargate task definition so the sensitive data can be injected into the containers as environment variables on startup for reading into the application to construct the connection string Set up the .NET Core service in Fargate using Service Auto Scaling behind an Application Load Balancer in multiple Availability Zones.
+    - [ ] C. Create an Auto Scaling group to run SQL Server on Amazon EC2. Create a secret in AWS Secrets Manager for the credentials to SQL Server running on EC2. Create an Amazon ECS task execution role that allows the Fargate task definition to get the secret value for the credentials to SQL Server on EC2 Specify the ARN of the secret in Secrets Manager in the secrets section of the Fargate task definition so the sensitive data can be injected into the containers as environment variables on startup for reading into the application to construct the connection string Set up the. NET Core service using Service Auto Scaling behind an Application Load Balancer in multiple Availability Zones.
+    - [ ] D. Create a Multi-AZ deployment of SQL Server on Amazon RDS. Create a secret in AWS Secrets Manager for the credentials to the RDS database. Create non-persistent empty storage for the .NET Core containers in the Fargate task definition to store the sensitive information. Create an Amazon ECS task execution role that allows the Fargate task definition to get the secret value for the credentials to the RDS database in Secrets Manager. Specify the ARN of the secret in Secrets Manager in the secrets section of the Fargate task definition so the sensitive data can be written to the. NET Core service using Service Auto Scaling Behind an Application Load Balancer in Multiple Availability Zones.
+  
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案B
+
+    </details>
+
+95. A company has an internal AWS Elastic Beanstalk worker environment inside a VPC that must access an external payment gateway API available on an HTTPS endpoint on the public internet. Because of security policies, the payment gateways Application team can grant access to only one public IP address Which architecture will set up an Elastic Beanstalk environment to access the company's application without making multiple changes on the company's end?
+    - [ ] A. Configure the Elastic Beanstalk application to place Amazon EC2 instances in a private subnet with an outbound route to a NAT gateway in a public subnet. Associate an Elastic IP address to the NAT gateway that can be whitelisted on the payment gateway application side.
+    - [ ] B. Configure the Elastic Beanstalk application to place Amazon EC2 instances in a public subnet with an internet gateway. Associate an Elastic IP address to the internet gateway that can be whitelisted on the payment gateway application side.
+    - [ ] C. Configure the Elastic Beanstalk application to place Amazon EC2 instances in a private subnet. Set an HTTPS_PROXY application parameter to send outbound HTTPS connections to an EC2 proxy server deployed in a public subnet. Associate an Elastic IP address to the EC2 proxy host that can be whitelisted on the payment gateway application side.
+    - [ ] D. Configure the Elastic Beanstalk application to place Amazon EC2 instances in a public subnet. Set the HTTP_SPROXY and NO_PROXY application parameters to send non-VPC outbound HTTPS connections to an EC2 proxy server deployed in a public subnet. Associate an Elastic IP address to the EC2 proxy host that can be whitelisted on the payment gateway application side.
+  
+    <details>
+       <summary>Answer</summary>
+
+       使用NAT网关是最佳实践
+
+    </details>
+
+96. A Solutions Architect is building a solution for updating user metadata that is initiated by web servers. The solution needs to rapidly scale from hundreds to tens of thousands of jobs in less than 30 seconds. The solution must be asynchronous always avertable and minimize costs. Which strategies should the Solutions Architect use to meet these requirements?
     - [ ] A. Create an AWS SWF worker that will update user metadata updating web application to start a new workflow for every job.
     - [ ] B. Create an AWS Lambda function that will update user metadata. Create an Amazon SQS queue and configure it as an event source for the Lambda function. Update the web application to send jobs to the queue.
     - [ ] C. Create an AWS Lambda function that will update user metadata. Create AWS Step Functions that will trigger the Lambda function. Update the web application to initiate Step Functions for every job.
-    - [ ] D. Create an Amazon SQS queue. Create an AMI with a worker to check the queue and update user metadata. Configure an Amazon EC2 Auto Scaling group with the new AMI. Update the web application to send jobs to the queu
-97. A company is migrating from on-premises to AWS and has just deployed the frist set of applications that run on Linux. The company will continue to maint-pretraffic from the on-premises hosts to AWS The company wants to reduce the cost of the solution andlans to gradually migrate its entire workload to AWS. Which solution will meet these requirements?
+    - [ ] D. Create an Amazon SQS queue. Create an AMI with a worker to check the queue and update user metadata. Configure an Amazon EC2 Auto Scaling group with the new AMI. Update the web application to send jobs to the queue.
+  
+    <details>
+       <summary>Answer</summary>
+
+       因为是异步执行并且有SQS，所以最佳实践是B
+
+    </details>
+
+97. A company is migrating from on-premises to AWS and has just deployed the first set of applications that run on Linux. The company will continue to maint-pretraffic from the on-premises hosts to AWS The company wants to reduce the cost of the solution and plans to gradually migrate its entire workload to AWS. Which solution will meet these requirements?
     - [ ] A. Establish a VPN connection between on-premises and the VPC. Create IAM roles and permissions to enable AWS Systems Manager Session Manager. Install Systems Manager Agent and enable Systems Manager. Create IAM users and tags based on policy restrictions
-    - [ ] B. Establish a VPN connection between on-premises and the VPC. Create a key pair using the Amazon EC2 console. Use the key pair to deploy the EC2 instances For the on-premises instances, deploy the public keys that match the key pair.
+    - [ ] B. Establish a VPN connection between on-premises and the VPC. Create a key pair using the Amazon EC2 console. Use the key pair to deploy the EC2 instances. For the on-premises instances, deploy the public keys that match the key pair.
     - [ ] C. Establish AWS Direct Connect between on-premises and the VPC. Create IAM roles and permissions to enable AWS Systems Manager Session Manager. Install Systems Manager Agent and enable Systems Manager. Create IAM users and tags based on policy restrictions
-    - [ ] D. Establish AWS Direct Connect between on-premises and the VPC. Configure an Ipsec tunnel. Create IAM roles and permissions to enable AWS Systems Manager Session Manager,lnstall System Manager Agent and eable Systems Manager ,Create IAM Users and tags based on plicy restrictions.
+    - [ ] D. Establish AWS Direct Connect between on-premises and the VPC. Configure an Ipsec tunnel. Create IAM roles and permissions to enable AWS Systems Manager Session Manager. Install System Manager Agent and enable Systems Manager ,Create IAM Users and tags based on policy restrictions.
+  
+    <details>
+       <summary>Answer</summary>
+
+       VPN更省钱一些
+
+    </details>
+
 98. A Solutions Architect needs to design a highly available application that will allow authenticated users to stay connected to the application even when there are underlying failures. Which solution will meet these requirements?
-    - [ ] A. Deploy the application on Amazon EC2 instances Use Amazon Route 53 to forward requests to the EC2 instances Use Amazon Dynamodb to save the authenticated connection details
+    - [ ] A. Deploy the application on Amazon EC2 instances. Use Amazon Route 53 to forward requests to the EC2 instances. Use Amazon DynamoDB to save the authenticated connection details.
     - [ ] B. Deploy the application on Amazon EC2 instances in an Auto Scaling group. Use an internet-facing Application Load Balancer to handle requests. Use Amazon DynamoDB to save the authenticated connection details.
-    - [ ] C. Deploy the application on Amazon EC2 instances in an Auto Scaling group. Use an internet-facingApplication Load Balancer on the front end Use EC2 instances to save the authenticated connection details
-    - [ ] D. Deploy the application on Amazon EC2 instances in an Auto Scaling group. Use an internet-facing Application Load Balancer on the front end Use EC2 instances hosting a MYSQL database to save the authenticated connection details
-99. A Solutions Architect is designing the data storage and retrieval architecture for a new application that a company will be launching soon. The application is designed to ingest millions of small records perminute from devices all around the world. Each record is less than 4 KB in size and needs to be stored ina durable location where it can be retrieved with low latency. The data is ephemeral and the company is required to store the data for 120 days only, after which the data can be deleted. The Solution Architect calculates that, during the course ofa year, the storage requirements would be about 10-15 TB Which storage strategy is the MOST cost-effectiveets the design requirements?
-    - [ ] A. Design the application to store each incoming record as a single. CSV file in an Amazon S3 bucket toa lifecycle policy to delete data older than 120 days
-    - [ ] B. Design the application to store each incoming record in an Amazon Dynamodb table properly configuredfor the scale, Congure the Dynamodb Time to Live(TTL)feature to delete records older than 120 days.
-    - [ ] C. Design the application to store each incoming record in a single table in an Amazon RDS MySQL database,Run a nightly cronjob than executes a query to delete any records order than 120days
-    - [ ] D. Design the application to batch incoming records before writing them to an Amazon S3 bucket. Updatene metadata for the object to contain the list of records in the batch and use the Amazon S3 metadata search feature to retrieve the data. Configure a lifecycle policy to delete the data after 120 days
-100. An enterprise company wants to allow its Developers to purchase third-party software through AWS Marketplace. The company uses an AWS Organizations account structure with full features enabled, and has a shsted services accout in each organization unit (OU) that will be used by Procurement Managers, The Procurement team's poliy indicates that Developers should be able to obtain third-party software from an approved list only Private Marketplace in AWS Marketplace to achieve this requirement, The Procurement team wants administraion of Private Marketplace to be restricted to a roleusers, groups, roies, and account administrators in the company should be denied Private Marketplaceadministrative access. What is the MOST efficient way to design an architecture to meet these requirements?
-    - [ ] A. Create an IAM role named procurement-manager-role in all AWS accounts in the organization. Add the Poweruseraccess managed policy to the role. Apply an inline policy to all IAM users and roles in every AWS account to deny permissions on the AWSPrivateMarketplaceAdminFullAccess managed policy.
-    - [ ] B. Create an IAM role named procurement-manager-role in all AWS accounts in the organization. Add the Administrator Access managed policy to the role. Define a permissions boundary with theAwsprivatemarketplace Access managed policy and attach it to all the Developer roles
+    - [ ] C. Deploy the application on Amazon EC2 instances in an Auto Scaling group. Use an internet-facing Application Load Balancer on the front-end. Use EC2 instances to save the authenticated connection details.
+    - [ ] D. Deploy the application on Amazon EC2 instances in an Auto Scaling group. Use an internet-facing Application Load Balancer on the front-end Use EC2 instances hosting a MYSQL database to save the authenticated connection details.
+  
+    <details>
+       <summary>Answer</summary>
+
+       这里要求即使底层出现故障都没事儿，那么排除CD，A只有一个实例不是HA，答案B
+
+    </details>
+
+99. A Solutions Architect is designing the data storage and retrieval architecture for a new application that a company will be launching soon. The application is designed to ingest millions of small records per minute from devices all around the world. Each record is less than 4 KB in size and needs to be stored in a durable location where it can be retrieved with low latency. The data is ephemeral, and the company is required to store the data for 120 days only, after which the data can be deleted. The Solution Architect calculates that, during a year, the storage requirements would be about 10-15 TB Which storage strategy is the MOST cost-effective the design requirements?
+    - [ ] A. Design the application to store each incoming record as a single CSV file in an Amazon S3 bucket toa lifecycle policy to delete data older than 120 days
+    - [ ] B. Design the application to store each incoming record in an Amazon DynamoDB table properly configured for the scale. Configure the DynamoDB Time to Live (TTL)feature to delete records older than 120 days.
+    - [ ] C. Design the application to store each incoming record in a single table in an Amazon RDS MySQL database. Run a nightly cronjob than executes a query to delete any records order than 120 days.
+    - [ ] D. Design the application to batch incoming records before writing them to an Amazon S3 bucket. Update metadata for the object to contain the list of records in the batch and use the Amazon S3 metadata search feature to retrieve the data. Configure a lifecycle policy to delete the data after 120 days.
+  
+    <details>
+       <summary>Answer</summary>
+
+       使用DynamoDB能满足低延迟，答案B
+
+    </details>
+
+100. An enterprise company wants to allow its Developers to purchase third-party software through AWS Marketplace. The company uses an AWS Organizations account structure with full features enabled, and has a shared services account in each organization unit (OU) that will be used by Procurement Managers, The Procurement team's policy indicates that Developers should be able to obtain third-party software from an approved list only Private Marketplace in AWS Marketplace to achieve this requirement, The Procurement team wants administration of Private Marketplace to be restricted to a role users, groups, roles, and account administrators in the company should be denied Private Marketplace administrative access. What is the MOST efficient way to design an architecture to meet these requirements?
+    - [ ] A. Create an IAM role named procurement-manager-role in all AWS accounts in the organization. Add the Poweruseraccess managed policy to the role. Apply an inline policy to all IAM users and roles in every AWS account to deny permissions on the AWS PrivateMarketplace AdminFullAccess managed policy.
+    - [ ] B. Create an IAM role named procurement-manager-role in all AWS accounts in the organization. Add the Administrator Access managed policy to the role. Define a permissions boundary with the Aws PrivateMarket place Access managed policy and attach it to all the Developer roles
     - [ ] C. Create an IAM role named procurement-manager-role in all the shared services accounts in the organization Add the AWSPrivateMarketplaceAdminFullAccess managed policy to the role. Create an organization root-level SCP to deny permissions to administer Private Marketplace to everyone except the role named procurement-manager-role. Create another organization root-level SCP to deny permissions to create an IAM role named procurement-manager-role to everyone in the organization
-    - [ ] D. Create an IAM role named procurement-manager-role in the AWS accounts that will be used by Developer's. Add the AWSPrivateMarketplaceAdminFullAccess managed policy to the role. Create an SCP in Organizations to deny permissions to administer Private Marketplace to evexyone except the role named procurement-manager-role Apply the SCP to all the shared services accounts in the organization
+    - [ ] D. Create an IAM role named procurement-manager-role in the AWS accounts that will be used by Developer's. Add the AWSPrivateMarketplaceAdminFullAccess managed policy to the role. Create an SCP in Organizations to deny permissions to administer Private Marketplace to everyone except the role named procurement-manager-role Apply the SCP to all the shared services accounts in the organization
+  
+    <details>
+       <summary>Answer</summary>
+
+       还得避免新建其他IAM去假装采购经理，答案C
+
+    </details>
