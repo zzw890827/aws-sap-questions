@@ -1412,9 +1412,9 @@
      - [ ] E. Enable Amazon CloudWatch and create Cloud Watch alarms that route traffic to the disaster recovery site when application latency exceeds the desired threshold
      - [ ] F. Enable Amazon S3 versioning on the source and destination buckets containing static assets to ensure there is a rollback version available in the event of data corruption
   
-    <details>
+     <details>
        <summary>Answer</summary>
 
        简单题，答案ABD
 
-    </details>
+     </details>
