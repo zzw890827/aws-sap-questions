@@ -632,6 +632,8 @@
        - [x] C. 正确 -> [ref](https://aws.amazon.com/cn/blogs/architecture/stream-amazon-cloudwatch-logs-to-a-centralized-account-for-audit-and-analysis/)
        - [ ] D. CloudWatch代理不推记录，需要通过别得方式拉取记录
 
+       ![centrul-logging](img/centrul-logging.png)
+
     </details>
 
 43. A company has a serverless application comprised of Amazon CloudFront, Amazon API Gateway, and AWS Lambda functions. The current deployment process of the application is to create a new version number of the Lambda function and run an AWS CLI script to update. If the new function version has errors, another CLI script reverts by deploying the previous working version of the function. The company would like to decrease the time to deploy new versions of the application logic provided by the Lambda functions, and reduce the time to detect and revert when errors are identified. How can this be accomplished?
