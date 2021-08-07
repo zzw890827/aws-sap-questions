@@ -621,6 +621,13 @@
     - [ ] C. Install the Amazon CloudWatch agent on each of the EC2 Instances. Turn on AWS Compute Optimizer, and let it run for at least 12 hours. Review the recommendations from Compute Optimizer and rightsized the EC2 instances as directed.
     - [ ] D. Sign up for the AWS Enterprise Support plan. Turn on AWS Trusted Advisor Wait 12 hours. Review the recommendations from Trusted Advisor and rightsized the EC2 instances as directed.
 
+    <details>
+       <summary>Answer</summary>
+
+       需要使用AWS Enterprise Support plan才能满足需求，答案D
+
+    </details>
+
 44. Your company has a logging microservice which is used to generate logs when users have entered certain commands in another application. This logging service is implemented via an SQS standard queue that an EC2 instance is listening to. However, you have found that on some occasions, the order of the logs are not maintained. As a result, it becomes harder to use this service to trace users' activities. How should you fix this issue in a simple way?
     - [ ] A. Convert the existing standard queue into a FIFO queue. Add a deduplication ID for the messages that are sent to the queue.
     - [ ] B. Delete the existing standard queue and recreate it as a FIFO queue. As a result, the order for the messages to be received is ensured.
