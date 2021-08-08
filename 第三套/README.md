@@ -288,44 +288,111 @@
     </details>
 
 21. An international company has deployed a multi-tier web application that relies on DynamoDB in a single region. For regulatory reasons they need disaster recovery capability in a separate region with a Recovery Time Objective of 2 hours and a Recovery Point Objective of 24 hours. They should synchronize their data on a regular basis and be able to provision the web application rapidly using CloudFormation. The objective is to minimize changes to the existing web application, control the throughput of DynamoDB used for the synchronization of data, and synchronize only the modified elements. Which design would you choose to meet these requirements?
-    - [ ] A. Use AWS Data Pipeline to schedule a DynamoDB cross region copy once a day, create a "LastUpdated" attribute in your DynamoDB table that would represent the timestamp of the last update and use it as a filter
-    - [ ] B. Use AWS Data Pipeline to schedule an export of the DynamoDB table to S3 in the current region once a day, then schedule another task Immediately after it that will import data from S3 to DynamoDB in the other region
-    - [ ] C. Use EMR and write a custom script to retrieve data from DynamoDB in the current region using a SCAN operation and push it to DynamoDB in the second region
-    - [ ] D. Send also each write into an SQS queue in the second region, use an auto-scaling group behind the SQS queue to replay the write in the second region
-22. Your company currently has a 2-tier web application running in an on-premises data center. You have experienced several infrastructure failures in the past few months resulting in significant financial losses. Your CIO is strongly considering moving the application to AWS. While working on achieving buy-In from the other company executives, he asks you to develop a disaster recovew plan to help improve business continuity in the short term. He specifies a target Recovery Time Objective (RTO) of 4 hours and a Recovery Point Objective (RPO) of I hour or less. He also asks you to implement the solution within 2 weeks. Your database is 200GB in size and you have a 20Mbps Internet connection. How would you do this while minimizing costs?
-    - [ ] A. Create an EBS backed private AMI which includes a fresh install of your application. Develop a CloudFormation template which includes your AMI and the required EC2, AutoScaling, and ELB resources to support deploying the application across Multiple-Availability-Zones. Asynchronously replicate transactions from your on-premises database to a database instance in AWS across a secure VPN connection.
+    - [ ] A. Use AWS Data Pipeline to schedule a DynamoDB cross region copy once a day, create a "LastUpdated" attribute in your DynamoDB table that would represent the timestamp of the last update and use it as a filter.
+    - [ ] B. Use AWS Data Pipeline to schedule an export of the DynamoDB table to S3 in the current region once a day, then schedule another task Immediately after it that will import data from S3 to DynamoDB in the other region.
+    - [ ] C. Use EMR and write a custom script to retrieve data from DynamoDB in the current region using a SCAN operation and push it to DynamoDB in the second region.
+    - [ ] D. Send also each write into an SQS queue in the second region, use an auto-scaling group behind the SQS queue to replay the write in the second region.
+
+    <details>
+       <summary>Answer</summary>
+
+       使用AWS Data Pipeline可以直接复制DynamoDB表，答案A -> [ref](https://aws.amazon.com/cn/blogs/aws/copy-dynamodb-data-between-regions-using-the-aws-data-pipeline/)
+  
+    </details>
+
+22. Your company currently has a 2-tier web application running in an on-premises data center. You have experienced several infrastructure failures in the past few months resulting in significant financial losses. Your CIO is strongly considering moving the application to AWS. While working on achieving buy-In from the other company executives, he asks you to develop a disaster recovery plan to help improve business continuity in the short term. He specifies a target Recovery Time Objective (RTO) of 4 hours and a Recovery Point Objective (RPO) of 1 hour or less. He also asks you to implement the solution within 2 weeks. Your database is 200GB in size and you have a 20Mbps Internet connection. How would you do this while minimizing costs?
+    - [ ] A. Create an EBS backed private AMI which includes a fresh install of your application. Develop a CloudFormation template which includes your AMI and the required EC2 Auto Scaling, and ELB resources to support deploying the application across Multiple-Availability-Zones. Asynchronously replicate transactions from your on-premises database to a database instance in AWS across a secure VPN connection.
     - [ ] B. Deploy your application on EC2 instances within an Auto Scaling group across multiple availability zones. Asynchronously replicate transactions from your on-premises database to a database instance in AWS across a secure VPN connection.
-    - [ ] C. Create an EBS backed private AMI which includes a fresh install ofyour application. Setup a script in your data center to backup the local database every I hour and to encrypt and copy the resulting file to an S3 bucket using multi-part upload.
+    - [ ] C. Create an EBS backed private AMI which includes a fresh install of your application. Setup a script in your data center to back up the local database every I hour and to encrypt and copy the resulting file to an S3 bucket using multi-part upload.
     - [ ] D. Install your application on a compute-optimized EC2 instance capable of supporting the application's average load. Synchronously replicate transactions from your on-premises database to a database instance in AWS across a secure Direct Connect connection.
-23. During a security audit ofa Service team's application, a Solutions Architect discovers that a username and password for an Amazon RDS database and a set ofAWS IAMuser credentials can be viewed in the AWS Lambda function code. The Lambda function uses the username and password to run queries on the database, and it uses the IAM credentials to call AWS services in a separate management account. The Solutions Architect concerned that the credentials could grant inappropriate access to anyone who can view the Lambda code. The management account and the Sewice team's account are in separate AWS Organizations organizational units (OUs). Which combination of changes should the Solutions Architect make to improve the solution's security? (Choose two.)
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，题目RTO是四小时，RPO是一小时，使用CloudFormation就是最佳实践啦，答案A
+  
+    </details>
+
+23. During a security audit o fa Service team's application. A Solutions Architect discovers that a username and password for an Amazon RDS database and a set of AWS IAM user credentials can be viewed in the AWS Lambda function code. The Lambda function uses the username and password to run queries on the database, and it uses the IAM credentials to call AWS services in a separate management account. The Solutions Architect concerned that the credentials could grant inappropriate access to anyone who can view the Lambda code. The management account and the Service team's account are in separate AWS Organizations organizational units (OUs). Which combination of changes should the Solutions Architect make to improve the solution's security? (Choose two.)
     - [ ] A. Configure Lambda to assume a role in the management account with appropriate access to AWS.
     - [ ] B. Configure Lambda to use the stored database credentials in AWS Secrets Manager and enable automatic rotation.
     - [ ] C. Create a Lambda function to rotate the credentials every hour by deploying a new Lambda version with the updated credentials.
     - [ ] D. Use an SCP on the management account's OU to prevent IAM users from accessing resources in the Service team's account.
-    - [ ] E. Enable AWS Shield Advanced on the management account to shield sensitive resources from unauthorized IANI access.
-24. Your company runs a customer facing event registration site. This site is built with a 3-tier architecture with web and application tier servers and a MySQL database. The application requires 6 web tier servers and 6 applie provides high availability?
-    - [ ] A. A web tier deployed across 2 AZs with 3 EC2 (Elastic Compute Cloud) instances in each A2 inside an Auto Scaling Group behind an ELB (elastic load balancer), and an application tier deployed across 2 AZs with 3 EC2 instances In each AZ inside an Auto Scaling Group behind an ELB, and one RDS (Relational Database Service) instance deployed with read replicas in the other AZ.
-    - [ ] B. A web tier deployed across 3 AZs with 2 EC2 (Elastic Compute Cloud) instances in each AZ inside an Auto Scaling Group behind an ELB (elastic load balancer), and an application tier deployed across 3 AZs with 2 EC2 instances In each AZ inside an Auto Scaling Group behind an ELB, and a Multi-AZ RDS (Relational Database Service) deployment.
-    - [ ] C. A web tier deployed across 2 AZs with 3 EC2 (Elastic Compute Cloud) instances in each AZ inside an Auto Scaling Group behind an ELB (elastic load balancer), and an application tier deployed across 2 AZs with 3 EC2 instances in each AZ inside an Auto Scaling Group behind an ELB, and a Multi-AZ RDS (Relational Database Service) deployment
+    - [ ] E. Enable AWS Shield Advanced on the management account to shield sensitive resources from unauthorized IAM access.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [x] A. 正确
+       - [x] B. 正确
+       - [ ] C. 如果能看见代码依然不安全
+       - [ ] D. 光在管理账户上设置SCP显然不够
+       - [ ] E. AWS Shield Advanced压根儿就不管这事儿
+  
+    </details>
+
+24. Your company runs a customer facing event registration site. This site is built with a 3-tier architecture with web and application tier servers and a MySQL database. The application requires 6 web tier servers and 6 application tier servers for normal operation but can run on a minimum of 65% server capacity and a single MYSQL database. When deploying this application in a region with three availability zones (AZS), which architecture provides high availability
+    - [ ] A. A web tier deployed across 2 AZs with 3 EC2 (Elastic Compute Cloud) instances in each A2 inside an Auto Scaling Group behind an ELB (elastic load balancer), and an application tier deployed across 2 AZs with 3 EC2 instances. In each AZ inside an Auto Scaling Group behind an ELB, and one RDS (Relational Database Service) instance deployed with read replicas in the other AZ.
+    - [ ] B. A web tier deployed across 3 AZs with 2 EC2 (Elastic Compute Cloud) instances in each AZ inside an Auto Scaling Group behind an ELB (elastic load balancer), and an application tier deployed across 3 AZs with 2 EC2 instances. In each AZ inside an Auto Scaling Group behind an ELB, and a Multi-AZ RDS (Relational Database Service) deployment.
+    - [ ] C. A web tier deployed across 2 AZs with 3 EC2 (Elastic Compute Cloud) instances in each AZ inside an Auto Scaling Group behind an ELB (elastic load balancer), and an application tier deployed across 2 AZs with 3 EC2 instances in each AZ inside an Auto Scaling Group behind an ELB, and a Multi-AZ RDS (Relational Database Service) deployment.
     - [ ] D. A web tier deployed across 3 AZs with 2 EC2 (Elastic Compute Cloud) instances in each AZ inside an Auto Scaling Group behind an ELB (elastic load balancer), and an application tier deployed across 3 AZs with 2 EC2 instances in each AZ inside an Auto Scaling Group behind an ELB, and one RDS (Relational Database Service) instance deployed with read replicas in the two other AZs.
-25. An administrator is using Amazon CloudFormation to deploy a three tier web application that consists ofa web tier and application tier that will utilize Amazon DynamoDB for storage. When creating the CloudFormation template which of the following would allow the application Instance access to the DynamoDB tables without exposing API credentials?
-    - [ ] A. Create an Identity and Access Management Role that has the required permissions to read and write from the .required DynamoDB table and associate the Role to the application instances by referencing an instance profile.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 需要在三个可用区内部署
+       - [x] B. 正确
+       - [ ] C. 同A
+       - [x] D. RDS不是多可用区部署，所以可用性并不高
+  
+    </details>
+
+25. An administrator is using Amazon CloudFormation to deploy a three-tier web application that consists of a web tier and application tier that will utilize Amazon DynamoDB for storage. When creating the CloudFormation template which of the following would allow the application Instance access to the DynamoDB tables without exposing API credentials?
+    - [ ] A. Create an Identity and Access Management Role that has the required permissions to read and write from the required DynamoDB table and associate the Role to the application instances by referencing an instance profile.
     - [ ] B. Create an Identity and Access Management Role that has the required permissions to read and write from the required DynamoDB table and reference the Role in the instance profile property of the application instance.
     - [ ] C. Use the Parameter section in the CloudFormation template to have the user input Access and Secret keys from an already created IAM user that has the permissions required to read and write from the required DynamoDB table.
     - [ ] D. Create an Identity and Access Management user in the CloudFormation template that has permissions to read and write from the required DynamoDB table, use the GetAtt function to retrieve the Access and Secret keys and pass them to the application instance through user-data.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [x] A. 正确
+       - [ ] B. 不是在配置文件中引用，而是在引用配置文件的时候和角色关联
+       - [ ] C. 不够安全
+       - [ ] D. 不够安全
+  
+    </details>
+
 26. An AWS customer is deploying an application that is composed of an AutoScaling group ofEC2 instances. The customers security policy requires that every outbound connection from these instances to any other sewice within the customers Virtual Private Cloud must be authenticated using a unique X.509 certificate that contains the specific Instance-id. In addition, all X.509 certificates must be signed by the customer's key management service in order to be trusted for authentication. Which of the following configurations will support these requirements?
     - [ ] A. Configure an IAM Role that grants access to an Amazon S3 object containing a signed certificate and configure the Auto Scaling group to launch instances with this role. Have the instances bootstrap get the certificate from Amazon S3 upon first boot.
     - [ ] B. Configure the Auto Scaling group to send an SNS notification of the launch ofa new instance to the tmsted key management service. Have the key management service generate a signed certificate and send it directly to the newly launched instance.
     - [ ] C. Embed a certificate into the Amazon Machine Image that is used by the Auto Scaling group. Have the launched instances generate a certificate signature request with the Instance's assigned instance-id to the key management service for signature.
     - [ ] D. Configure the launched instances to generate a new certificate upon first boot. Have the key management service poll the AutoScaling group for associated instances and send new instances a certificate signature that contains the specific Instance-id.
-27. A company has an application that mns on a fleet of Amazon EC2 instances and stores 70 GB of device data for each instance in Amazon S3. Recently, some of the S3 uploads have been failing. At the same time, the company is seeing an unexpected increase in storage data costs. The application code cannot be modified. What is the MOST efficient way to upload the device data to Amazon S3 while managing storage costs?
-    - [ ] A. Upload device data using a multipart upload. Use the AWS CLI to list incomplete parts to address the failed S3 uploads. Enable the lifecycle policy for the incomplete multipart uploads on the S3 bucket to delete the old uploads
-and prevent new failed uploads from accumulating.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 无法保证生成的证书是唯一的
+       - [x] B. 正确
+       - [ ] C. 同A
+       - [ ] D. 得客户来签名，自己签名的人家不认
+  
+    </details>
+
+27. A company has an application that runs on a fleet of Amazon EC2 instances and stores 70 GB of device data for each instance in Amazon S3. Recently, some of the S3 uploads have been failing. At the same time, the company is seeing an unexpected increase in storage data costs. The application code cannot be modified. What is the MOST efficient way to upload the device data to Amazon S3 while managing storage costs?
+    - [ ] A. Upload device data using a multipart upload. Use the AWS CLI to list incomplete parts to address the failed S3 uploads. Enable the lifecycle policy for the incomplete multipart uploads on the S3 bucket to delete the old uploads and prevent new failed uploads from accumulating.
     - [ ] B. Upload device data using S3 Transfer Acceleration. Use the AWS Management Console to address the failed S3 uploads. Use the Multi-Object Delete operation nightly to delete the old uploads.
     - [ ] C. Upload device data using a multipart upload. Use the AWS Management Console to list incomplete parts to address the failed S3 uploads. Configure a lifecycle policy to archive continuously to Amazon S3 Glacier.
-    - [ ] D. Upload device data using S3 Transfer Acceleration. Use the AWS Management Console to list incomplete parts to address the failed S3 uploads. Enable the lifecycle policy for the incomplete multipart uploads on the S3 bucket t
-o delete the old uploads and prevent new failed uploads from accumulating.
-28. A company is in the process of Implementing AWS Organizations to constrain its developers to use only Amazon EC, Amazon 3, and Amazon Dynamodb. The Developers account resides in a dedicated organizational unit(OU). The Solutions Architect has implemented the a SCP on the Developers account. When this policy is deployed, IAM users in the Developers account are still able to use AWS services that are not listed in the policy. What should the Solutions Architect do to eliminate the Developers ability to use services outside the scope of this policy? The SCP policy is as follow:
+    - [ ] D. Upload device data using S3 Transfer Acceleration. Use the AWS Management Console to list incomplete parts to address the failed S3 uploads. Enable the lifecycle policy for the incomplete multipart uploads on the S3 bucket to delete the old uploads and prevent new failed uploads from accumulating.
+
+    <details>
+       <summary>Answer</summary>
+
+       从题干可以推断出来上传失败的原因是有可能是文件太大，所以使用分段上传，排除BD，只能通过CLI列出上传不完整的部分，答案A
+  
+    </details>
+
+28. A company is in the process of Implementing AWS Organizations to constrain its developers to use only Amazon EC2, Amazon S3, and Amazon Dynamodb. The Developers account resides in a dedicated organizational unit(OU). The Solutions Architect has implemented the a SCP on the Developers account. When this policy is deployed, IAM users in the Developers account are still able to use AWS services that are not listed in the policy. What should the Solutions Architect do to eliminate the Developers ability to use services outside the scope of this policy? The SCP policy is as follow:
 
     ```json
     {
@@ -354,69 +421,185 @@ o delete the old uploads and prevent new failed uploads from accumulating.
     ```
 
     - [ ] A. Create an explicit deny statement for each AWS service that should be constrained.
-    - [ ] B. Remove the FullAWSAccess SCP from the Developer account's OUT
+    - [ ] B. Remove the FullAWSAccess SCP from the Developer account's OU.
     - [ ] C. Modify the FullAWSAccess SCP to explicitly deny all services.
     - [ ] D. Add an explicit deny statement using a wildcard to the end of the SCP.
-29. Your company previously configured a heavily used, dynamically routed VPN connection between your on-premises data center and AWS. You recently provisioned a Direct onnect connection and would like to start using this new connection. After configuring Directconnect settings in the AWS Console, which of the following options will provide the most seamless transition for your users?
-    - [ ] A. Configure your Direct onnect router, update our VP route tables to point to the Direct onnect onnection, configure our VPN connection with a higher BGP priority, and verify network traffic is everaging the Direct Connct connection.
-    - [ ] B. Delete your existing VPN connection to avoid routing oops, configure your Directconnect router with the appropriate settings, and verify network traffic is leveraging Directconnect
-    - [ ] C. Update your VPC route tables to point to the Direct Connect connection, configure your Directconnect router with the appropriate settings, verify network traffic is leveraging Directconnect, and then delete the VPN connection
-    - [ ] D. Configure your Directconnect router with a higher BGP priority than your VPN router, verify network traffic is leveraging Directconnect, and then delete your existing VPN connection
-30. Your team has a tomcat-based java application you need to deploy into development, test and production environments. After some research, you opt to use Elastic Beanstalk due to its tight integration with your developer tools and RDS due to its ease of management. Your QA team lead points out that you need to roll a sanitized set of production data into your environment on a nightly basis. Similarly, other software teams in your org want access to that same restored data via their EC2 instances in your VPC. The optimal setup for persistence and security that meets the above requirements would be the following:
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 给每个服务添加Deny得他妈累死
+       - [x] B. 正确
+       - [ ] C. AWS管理的策略不能被更改
+       - [ ] D. 一看就不专业
+  
+    </details>
+
+29. Your company previously configured a heavily used, dynamically routed VPN connection between your on-premises data center and AWS. You recently provisioned a Direct Connect connection and would like to start using this new connection. After configuring Direct Connect settings in the AWS Console, which of the following options will provide the most seamless transition for your users?
+    - [ ] A. Configure your Direct Connect router, update our VP route tables to point to the Direct Connect Connection, configure our VPN connection with a higher BGP priority, and verify network traffic is leveraging the Direct Connect connection.
+    - [ ] B. Delete your existing VPN connection to avoid routing oops, configure your Direct Connect router with the appropriate settings, and verify network traffic is leveraging Direct Connect.
+    - [ ] C. Update your VPC route tables to point to the Direct Connect connection, configure your Direct Connect router with the appropriate settings, verify network traffic is leveraging Direct Connect, and then delete the VPN connection.
+    - [ ] D. Configure your Direct Connect router with a higher BGP priority than your VPN router, verify network traffic is leveraging Direct Connect, and then delete your existing VPN connection.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 不用更改优先级，Direct Connect的优先级总是最高的
+       - [ ] B. 没改呢就删，好牛逼啊
+       - [x] C. 正确
+       - [ ] D. 同A
+  
+    </details>
+
+30. Your team has a tomcat-based java application you need to deploy into development, test, and production environments. After some research, you opt to use Elastic Beanstalk due to its tight integration with your developer tools and RDS due to its ease of management. Your QA team lead points out that you need to roll a sanitized set of production data into your environment on a nightly basis. Similarly, other software teams in your org want access to that same restored data via their EC2 instances in your VPC. The optimal setup for persistence and security that meets the above requirements would be the following:
     - [ ] A. Create your RDS instance separately and add its IP address to your application's DB connection strings in your code. Alter its security group to allow access to it from hosts within your VPC's IP address block.
-    - [ ] B. Create your RDS instance separately and pass its DNS name to your's DB connection string as an environment variable. Alter its security group to allow access to it from hosts in your application subnets.
+    - [ ] B. Create your RDS instance separately and pass its DNS name to yours DB connection string as an environment variable. Alter its security group to allow access to it from hosts in your application subnets.
     - [ ] C. Create your RDS instance as part of your Elastic Beanstalk definition and alter its security group to allow access to it from hosts in your application subnets.
     - [ ] D. Create your RDS instance separately and pass its DNS name to your app's DB connection string as an environment variable. Create a security group for client machines and add it as a valid source for DB traffic to the security group of the RDS instance itself.
-31. You have a periodic image analysis application that gets some files in input, analyzes them and for each file writes some data in output to a text file. The number of files in input per day is high and concentrated in a few hours of the day. Currently you have a server on EC2 with a large EBS volume that hosts the input data and the results. It takes almost 20 hours per day to complete the process. What sewices could be used to reduce the elaboration time and improve the availability of the solution?
-    - [ ] A. S3 to store VO files, SQS to distribute elaboration commands to a group of hosts working in parallel, Auto Scaling to dynamically size the group of hosts depending on the length of the SQS queue.
-    - [ ] B. S3 to store VO files, SNS to distribute elaboration commands to a group of hosts working in parallel, Auto Scaling to dynamically size the group of hosts depending on the number of SNS notifications.
-    - [ ] C. EBS with Provisioned IOPS (PIOPS) to store 1/0 files, SNS to distribute elaboration commands to a group of hosts working in parallel, Auto Scaling to dynamically size the group of hosts depending on the number of SNS notifications.
-    - [ ] D. EBS with Provisioned IOPS (PIOPS) to store 1/0 files, SQS to distribute elaboration commands to a group of hosts working in parallel. Auto Scaling to dynamically size the group of hosts depending on the length of the SQS queue.
-32. A company experienced a breach of highly confidential personal information due to permissions issues on an Amazon S3 bucket. The Information Security team has tightened the bucket policy to restrict access. Additionally, to be better prepared for future attacks, these requirements must be met:-ldentify remote IP addresses that are accessing the bucket objects. -Receive alerts when the security policy on the bucket is changed. -Remediate the policy changes automatically. Which strategies should the Solutions Architect use?
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. IP可能会变
+       - [ ] B. 客户机不在你的VPC中
+       - [ ] C. 同B
+       - [x] D. 正确
+  
+    </details>
+
+31. You have a periodic image analysis application that gets some files in input, analyzes them and for each file writes some data in output to a text file. The number of files in input per day is high and concentrated in a few hours of the day. Currently you have a server on EC2 with a large EBS volume that hosts the input data and the results. It takes almost 20 hours per day to complete the process. What services could be used to reduce the elaboration time and improve the availability of the solution?
+    - [ ] A. S3 to store I/O files, SQS to distribute elaboration commands to a group of hosts working in parallel, Auto Scaling to dynamically size the group of hosts depending on the length of the SQS queue.
+    - [ ] B. S3 to store I/O files, SNS to distribute elaboration commands to a group of hosts working in parallel, Auto Scaling to dynamically size the group of hosts depending on the number of SNS notifications.
+    - [ ] C. EBS with Provisioned IOPS (PIOPS) to store I/O files, SNS to distribute elaboration commands to a group of hosts working in parallel, Auto Scaling to dynamically size the group of hosts depending on the number of SNS notifications.
+    - [ ] D. EBS with Provisioned IOPS (PIOPS) to store I/O files, SQS to distribute elaboration commands to a group of hosts working in parallel. Auto Scaling to dynamically size the group of hosts depending on the length of the SQS queue.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案A
+  
+    </details>
+
+32. A company experienced a breach of highly confidential personal information due to permissions issues on an Amazon S3 bucket. The Information Security team has tightened the bucket policy to restrict access. Additionally, to be better prepared for future attacks, these requirements must be met: -Identify remote IP addresses that are accessing the bucket objects. -Receive alerts when the security policy on the bucket is changed. -Remediate the policy changes automatically. Which strategies should the Solutions Architect use?
     - [ ] A. Use Amazon CloudWatch Logs with CloudWatch filters to identify remote IP addresses. Use CloudWatch Events rules with AWS Lambda to automatically remediate S3 bucket policy changes. Use Amazon SES with CloudWatch Events rules for alerts.
     - [ ] B. Use Amazon Athena with S3 access logs to identify remote IP addresses. Use AWS Config rules with AWS Systems Manager Automation to automatically remediate S3 bucket policy changes. Use Amazon SNS with AWS Config rules for alerts.
     - [ ] C. Use S3 access logs with Amazon Elasticsearch Service and Kibana to identify remote IP addresses. Use an Amazon Inspector assessment template to automatically remediate S3 bucket policy changes. Use Amazon SNS for alerts.
     - [ ] D. Use Amazon Macie with an S3 bucket to identify access patterns and remote IP addresses. Use AWS Lambda with Macie to automatically remediate S3 bucket policy changes. Use Macie automatic alerting capabilities for alerts.
-33. An organization is planning to host a Wordpress blog as well a joomla CMS on a single instance launched with VPC. The organization wants to have separate domains for each application and assign them using Route 53. The organization may have about ten instances each with two applications as mentioned above. While launching the instance, the organization configured two separate network interfaces (primaw + ENI) and wanted to have two elastic IPs for that instance. It was suggested to use a public IP from AWS instead of an elastic IP as the number of elastic IPs is restricted. What action will you recommend to the organization?
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案B
+  
+    </details>
+
+33. An organization is planning to host a Wordpress blog as well as joomla CMS on a single instance launched with VPC. The organization wants to have separate domains for each application and assign them using Route 53. The organization may have about ten instances each with two applications as mentioned above. While launching the instance, the organization configured two separate network interfaces (primary + ENI) and wanted to have two elastic IPs for that instance. It was suggested to use a public IP from AWS instead of an elastic IP as the number of elastic IPs is restricted. What action will you recommend to the organization?
     - [ ] A. I agree with the suggestion but will prefer that the organization should use separate subnets with each ENI for different public IPs.
     - [ ] B. I do not agree as it is required to have only an elastic IP since an instance has more than one ENI and AWS does not assign a public IP to an instance with multiple ENIs.
     - [ ] C. I do not agree as AWS VPC does not attach a public IP to an ENI; so the user has to use only an elastic IP only.
-    - [ ] D. I agree with the suggestion and it is recommended to use a public IP from AWS since the organization is going to use DNS with Route 53.
+    - [ ] D. I agree with the suggestion, and it is recommended to use a public IP from AWS since the organization is going to use DNS with Route 53.
+
+    <details>
+       <summary>Answer</summary>
+
+       概念题，答案B
+  
+    </details>
+
 34. A Solutions Architect wants to make sure that only AWS users or roles with suitable permissions can access a new Amazon API Gateway endpoint. The Solutions Architect wants an end-to-end view of each request to analyze the latency of the request and create service maps. How can the Solutions Architect design the API Gateway access control and perform request inspections?
     - [ ] A. For the API Gateway method, set the authorization to AWS IAM. Then, give the IAM user or role execute-api:lnvoke permission on the REST API resource. Enable the API caller to sign requests with AWS Signature when accessing the endpoint. Use AWS X-Ray to trace and analyze user requests to API Gateway.
     - [ ] B. For the API Gateway resource, set CORS to enabled and only return the company's domain in Access-Control-Allow-Origin headers. Then, give the IAM user or role execute-api:lnvoke permission on the REST API resource. Use Amazon CloudWatch to trace and analyze user requests to API Gateway.
     - [ ] C. Create an AWS Lambda function as the custom authorizer, ask the API client to pass the key and secret when making the call, and then use Lambda to validate the key/secret pair against the IAM system. Use AWS X-Ray to trace and analyze user requests to API Gateway.
-    - [ ] D. Create a client certificate forAPI Gateway. Distribute the certificate to the AWS users and roles that need to access the endpoint. Enable the API caller to pass the client certificate when accessing the endpoint. Use Amazon CloudWatch to trace and analyze user requests to API Gateway.
-35. A company is mnning a batch analysis eve1Y hour on their main transactional DB. mnning on an RDS MySQL instance to populate their central Data Warehouse running on Redshift During the execution of the batch their transactional applications are vew slow. When the batch completes they need to update the top management dashboard with the new data The dashboard is produced by another system mnning on-premises that is currently started when a manually-sent email notifies that an update is required The on-premises system cannot be modified because is managed by another team. How would you optimize this scenario to solve performance issues and automate the process as much as possible?
-    - [ ] A. Replace RDS with Redshift for the batch analysis and SNS to notify the on-premises system to update the dashboard
-    - [ ] B. Replace ROS with Redsnift for the oaten analysis and SQS to send a message to the onpremises system to update the dashboard
-    - [ ] C. Create an RDS Read Replica for the batch analysis and SNS to notify me on-premises system to update the dashboard
+    - [ ] D. Create a client certificate for API Gateway. Distribute the certificate to the AWS users and roles that need to access the endpoint. Enable the API caller to pass the client certificate when accessing the endpoint. Use Amazon CloudWatch to trace and analyze user requests to API Gateway.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [x] A. 正确
+       - [ ] B. CloudWatch无法分析
+       - [ ] C. 传递密匙是什么鬼
+       - [ ] D. 同B
+
+    </details>
+
+35. A company is running a batch analysis eve1Y hour on their main transactional DB. running on an RDS MySQL instance to populate their central Data Warehouse running on Redshift During the execution of the batch their transactional applications are very slow. When the batch completes, they need to update the top management dashboard with the new data The dashboard is produced by another system running on-premises that is currently started when a manually sent email notifies that an update is required The on-premises system cannot be modified because is managed by another team. How would you optimize this scenario to solve performance issues and automate the process as much as possible?
+    - [ ] A. Replace RDS with Redshift for the batch analysis and SNS to notify the on-premises system to update the dashboard.
+    - [ ] B. Replace RDS with Redshift for the oaten analysis and SQS to send a message to the on premises system to update the dashboard.
+    - [ ] C. Create an RDS Read Replica for the batch analysis and SNS to notify me on-premises system to update the dashboard.
     - [ ] D. Create an RDS Read Replica for the batch analysis and SQS to send a message to the on premises system to update the dashboard.
-36. A company is building a voting system for a popular TV how iewers will watch the performances then visit the show website to vote for their favorite performer. It is expected that in a short period of time after the show has finished the site will receive millions of visitors, the visitors will first login to the site using their "Amazon.com" credentials and then submit their vote. After the voting is completed the page will display the vote totals. The company needs to build the site such that it can handle the rapid influx of traffic while maintaining good performance but also wants to keep costs to a minimum. Which of the design patters below should they use?
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案C
+  
+    </details>
+
+36. A company is building a voting system for a popular TV show, viewers will watch the performances then visit the show website to vote for their favorite performer. It is expected that in a short period of time after the show has finished the site will receive millions of visitors, the visitors will first login to the site using their "Amazon.com" credentials and then submit their vote. After the voting is completed, the page will display the vote totals. The company needs to build the site such that it can handle the rapid influx of traffic while maintaining good performance but also wants to keep costs to a minimum. Which of the design patters below should they use?
     - [ ] A. Use CloudFront and an Elastic Load Balancer in front of an auto-scaled set of web servers, the web servers will first call the Login With Amazon service to authenticate the user, the web servers will process the users vote and store the result into a DynamoDB table using IAM Roles for EC2 Instances to gain permissions to the DynamoDB table.
     - [ ] B. Use CloudFront and an Elastic Load Balancer in front of an auto-scaled set of web servers, the web servers will first call the Login With Amazon service to authenticate the user, the web servers will process the users vote and store the result into an SQS queue using IAM Roles for EC2 Instances to gain permissions to the SQS queue. A set of application servers will then retrieve the items from the queue and store the result into a DynamoDB table.
     - [ ] C. Use CloudFront and an Elastic Load Balancer in front of an auto-scaled set of web servers, the web servers will first call the Login With Amazon service to authenticate the user then process the users vote and store the result into a multi-AZ Relational Database Service instance.
-    - [ ] D. Use CloudFront and the static website hosting feature of S3 with the Javascript SDK to call the Login with Amazon service to authenticate the user, use IAM Roles to gain permissions to a DynamoDB table to store the users vot
+    - [ ] D. Use CloudFront and the static website hosting feature of S3 with the JavaScript SDK to call the Login with Amazon service to authenticate the user, use IAM Roles to gain permissions to a DynamoDB table to store the users vote.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案B，原因未知
+  
+    </details>
+
 37. A software as a service (SaaS) company offers a cloud solution for document management to private law firms and the public sector. A local government client recently mandated that highly confidential documents cannot be stored outside the country. The company CIO asks a Solutions Architect to ensure the application can adapt to this new requirement. The CIO also wants to have a proper backup plan for these documents, as backups are not currently performed. What solution meets these requirements?
     - [ ] A. Tag documents that are not highly confidential as regular in Amazon S3. Create individual S3 buckets for each user. Upload objects to each user's bucket. Set S3 bucket replication from these buckets to a central S3 bucket in a different AWS account and AWS Region. Configure an AWS Lambda function triggered by scheduled events in Amazon CloudWatch to delete objects that are tagged as secret in the S3 backup bucket.
     - [ ] B. Tag documents as either regular or secret in Amazon S3. Create an individual S3 backup bucket in the same AWS account and AWS Region. Create a cross-region S3 bucket in a separate AWS account. Set proper IAM roles to allow cross-region permissions to the S3 buckets. Configure an AWS Lambda function triggered by Amazon CloudWatch scheduled events to copy objects that are tagged as secret to the S3 backup bucket and objects tagged as cross-region S3 bucket.
     - [ ] C. Tag documents as either regular or secret in Amazon S3. Create an individual S3 backup bucket in the same AWS account and AWS Region. Use S3 selective cross-region replication based on object tags to move regular documents to an S3 bucket in a different AWS Region. Configure an AWS Lambda function that triggers when new S3 objects are created in the main bucket to replicate only documents tagged as secret into the S3 bucket in the same AWS Region.
     - [ ] D. Tag highly confidential documents as secret in Amazon S3. Create an individual S3 backup bucket in the same AWS account and AWS Region. Use S3 selective cross-region replication based on object tags to move regular documents to an S3 bucket in a different AWS Region. Create an Amazon CloudWatch Events rule for new S3 objects tagged as secret to trigger an AWS Lambda function to replicate them into a separate bucket in the same AWS Region.
+
+    <details>
+       <summary>Answer</summary>
+
+       指表计高度机密文件就行，答案D
+  
+    </details>
+
 38. You are developing a new mobile application and are considering storing user preferences in AWS. This would provide a more uniform cross-device experience to users using multiple mobile devices to access the application. The preference data for each user is estimated to be 50KB in size. Additionally, 5 million customers are expected to use the application on a regular basis. The solution needs to be cost-effective, highly-available, scalable and secure. How would you design a solution to meet the above requirements?
     - [ ] A. Setup an RDS MySQL instance with multiple read replicas in 2 availability zones to store the user preference data. The mobile application will query the user preferences from the read replicas. Leverage the MySQL user management and access privilege system to manage security and access credentials.
     - [ ] B. Setup an RDS MySQL instance in 2 availability zones to store the user preference data. Deploy a public facing application on a server in front of the database to manage security and access credentials.
     - [ ] C. Store the user preference data in S3. Setup a DynamoDB table with an item for each user and an item attribute pointing to the user's S3 object. The mobile application will retrieve the S3 URL from DynamoDB and then access the S3 object directly. Utilize ST S, Web Identity Federation, and S3 ACLs to authenticate and authorize access.
     - [ ] D. Setup a DynamoDB table with an item for each user having the necessary attributes to hold the user preferences. The mobile application will query the user preferences directly from the DynamoDB table. Utilize STS, Web Identity Federation, and DynamoDB Fine Grained Access Control to authenticate and authorize access.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案D
+  
+    </details>
+
 39. You want to use AWS CodeDeploy to deploy an application to Amazon EC2 instances running within anAmazon Virtual Private Cloud (VPC). What criterion must be met for this to be possible?
     - [ ] A. The AWS CodeDeploy agent installed on the Amazon EC2 instances must be able to access only the public AWS CodeDeploy endpoint.
     - [ ] B. The AWS CodeDeploy agent installed on the Amazon EC2 instances must be able to access only the public Amazon S3 service endpoint.
     - [ ] C. The AWS CodeDeploy agent installed on the Amazon EC2 instances must be able to access the public AWS CodeDeploy and Amazon S3 service endpoints.
     - [ ] D. It is not currently possible to use AWS CodeDeploy to deploy an application to Amazon EC2 instances mnning within an Amazon Virtual Private Cloud (VPC.)
+
+    <details>
+       <summary>Answer</summary>
+
+       概念题，答案C
+  
+    </details>
+
 40. While debugging a backend application for an 10T system that supports globally distributed devices, a Solutions Architect notices that stale data is occasionally being sent to user devices. Devices often share data, and stale data does not cause issues in most cases. However, device operations are disrupted when a device reads the stale data after an update. The global system has multiple identical application stacks deployed in different AWS Regions. If a user device travels out of its home geographic region, it will always connect to the geographically closest AWS Region to write or read data. The same data is available in all supported AWS Regions using an Amazon DynamoDB global table. What change should be made to avoid causing dismptions in device operations?
     - [ ] A. Update the backend to use strongly consistent reads. Update the devices to always write to and read from their home AWS Region.
     - [ ] B. Enable strong consistency globally on a DynamoDB global table. Update the backend to use strongly consistent reads.
     - [ ] C. Switch the backend data store to Amazon Aurora MySQL with cross-region replicas. Update the backend to always write to the master endpoint.
     - [ ] D. Select one AWS Region as a master and perform all writes in that AWS Region only. Update the backend to use strongly consistent reads.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案A，原因未知
+  
+    </details>
+
 41. A company developed a Java application and deployed it to an Apache Tomcat sewer that ntns on Amazon EC2 instances. The company's Engineering team has implemented AWS CloudFormation and Chef Automate to automate the provisioning of and updates to the infrastmcture and configuration of the application in the development, test, and production environments. These implementations have led to significantly improves reliability in releasing changes. The Engineering team reports there are frequent sewice dismptions due to unexpected errors when updating the application of the Apache Tomcat server. Which solution will increase the reliability of all releases?
     - [ ] A. Implement a blue/green deployment methodology.
     - [ ] B. Implement the canary release methodology.
