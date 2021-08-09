@@ -55,7 +55,7 @@
    <details>
       <summary>Answer</summary>
 
-      不知道为啥，答案D
+      在executionRoleArn（选项C）和taskRoleArn（D）之间，只有后者用于与DynamoDB互动。前者用于下载图像或向Cloudwatch写日志
 
    </details>
   

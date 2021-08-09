@@ -1,9 +1,3 @@
-import * as echarts from "echarts";
-
-var chartDom = document.getElementById("main");
-var myChart = echarts.init(chartDom);
-var option;
-
 option = {
   title: {
     left: "center",
@@ -15,6 +9,9 @@ option = {
   },
   yAxis: {
     type: "value",
+    axisLabel: {
+      formatter: "{value}%",
+    },
   },
   series: [
     {
@@ -24,4 +21,32 @@ option = {
   ],
 };
 
-option && myChart.setOption(option);
+///////////////////////////////////////////
+
+option = {
+  title: {
+    left: "center",
+    text: "模拟测试准确率推移",
+  },
+  xAxis: {
+    type: "category",
+    data: ["8/2", "8/4", "8/5", "8/8", "8/9"],
+  },
+  yAxis: {
+    type: "value",
+    axisLabel: {
+      formatter: "{value}%",
+    },
+  },
+  series: [
+    {
+      data: [84, 84, 72, 92, 66.67],
+      type: "line",
+      markLine: {
+        symbol: ["none", "none"],
+        label: { show: false },
+        data: [{ yAxis: 72 }],
+      },
+    },
+  ],
+};
