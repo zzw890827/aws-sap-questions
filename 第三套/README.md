@@ -544,7 +544,7 @@
     <details>
        <summary>Answer</summary>
 
-       答案B，原因未知
+       答案B，理由未知
   
     </details>
 
@@ -596,117 +596,289 @@
     <details>
        <summary>Answer</summary>
 
-       答案A，原因未知
+       答案A，理由未知
   
     </details>
 
-41. A company developed a Java application and deployed it to an Apache Tomcat sewer that ntns on Amazon EC2 instances. The company's Engineering team has implemented AWS CloudFormation and Chef Automate to automate the provisioning of and updates to the infrastmcture and configuration of the application in the development, test, and production environments. These implementations have led to significantly improves reliability in releasing changes. The Engineering team reports there are frequent sewice dismptions due to unexpected errors when updating the application of the Apache Tomcat server. Which solution will increase the reliability of all releases?
+41. A company developed a Java application and deployed it to an Apache Tomcat server that runs on Amazon EC2 instances. The company's Engineering team has implemented AWS CloudFormation and Chef Automate to automate the provisioning of and updates to the infrastructure and configuration of the application in the development, test, and production environments. These implementations have led to significantly improves reliability in releasing changes. The Engineering team reports there are frequent service disruptions due to unexpected errors when updating the application of the Apache Tomcat server. Which solution will increase the reliability of all releases?
     - [ ] A. Implement a blue/green deployment methodology.
     - [ ] B. Implement the canary release methodology.
     - [ ] C. Configure Amazon CloudFront to serve all requests from the cache while deploying the updates.
     - [ ] D. Implement the all at once deployment methodology.
-42. A Developer would like to implement multi-account access for AWS Systems Manager and plans to use two member accounts within their AWS Organization. The Developer has delegated an IAM Role that allows Systems Manager(SSM) Parameter Store and Document resources to be trusted by the member accounts. While testing access from a member account, a user receives"Access Denied" errors when performing any SSM related operations. The Solutions Architect confirms that SSM operations are not denied in any of the Organizations Service Control Policies(SCP). Both member accounts are moved into a test OU which is not associated with any deny SCPs, however the user is still receiving anaccess denied error. What changes should the Solutions Architect make to provide access while maintaining least privileges?
-    - [ ] A. Create a new SCP which allows SSM operations and specify the ARNS for each SSM Parameter Store and Document. Apply the new SCP to the test OU that the member accounts were moved intoo
-    - [ ] B. Create a new SCP that allows full access to AWS resources. Apply the new SCP to the test OU that the member accounts were moved into
-    - [ ] C. Remove both member accounts from the current Organization. Create a new Organization, with the account holding the SSM resources as the new master account and the other account as a member to the new Organization. Create a new SCP whichallows full access to AWS resources
-    - [ ] D. Remove both member accounts from the current Organization. Create a new Organization, with the account holding the SSM resources as the new master account and the other account as a member to the new Organization. Create a new SCP which allows SSM operations and specify the ARNs for each SSM Parameter Store andDocument within the new master account
-43. A company is using multiple AWS accounts and has multiple Devops teams running production and non-production workloads in these accounts. The company would like tocentrally-restrict access to some of the AWS services that the Devops teams do not use. The company decided to use Aws Organizations and successfully invited all AWS accounts intothe Organization. They would like to allow access to sewicesthat are currently in-use and deny a few specific services. Also they would like to administer multiple accounts together as asingle unit. What combination of steps should the Solutions Architect taketo satisty these requirements?(Select THREE)
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案A
+  
+    </details>
+
+42. A Developer would like to implement multi-account access for AWS Systems Manager and plans to use two member accounts within their AWS Organization. The Developer has delegated an IAM Role that allows Systems Manager (SSM) Parameter Store and Document resources to be trusted by the member accounts. While testing access from a member account, a user receives "Access Denied" errors when performing any SSM related operations. The Solutions Architect confirms that SSM operations are not denied in any of the Organizations Service Control Policies (SCP). Both member accounts are moved into a test OU which is not associated with any deny SCPs, however the user is still receiving an access denied error. What changes should the Solutions Architect make to provide access while maintaining least privileges?
+    - [ ] A. Create a new SCP which allows SSM operations and specify the ARNS for each SSM Parameter Store and Document. Apply the new SCP to the test OU that the member accounts were moved into.
+    - [ ] B. Create a new SCP that allows full access to AWS resources. Apply the new SCP to the test OU that the member accounts were moved into.
+    - [ ] C. Remove both member accounts from the current Organization. Create a new Organization, with the account holding the SSM resources as the new master account and the other account as a member to the new Organization. Create a new SCP which allows full access to AWS resources.
+    - [ ] D. Remove both member accounts from the current Organization. Create a new Organization, with the account holding the SSM resources as the new master account and the other account as a member to the new Organization. Create a new SCP which allows SSM operations and specify the ARNs for each SSM Parameter Store and document within the new master account.
+
+    <details>
+       <summary>Answer</summary>
+
+       另起炉灶，C给了全权，排除，答案D
+  
+    </details>
+
+43. A company is using multiple AWS accounts and has multiple DevOps teams running production and non-production workloads in these accounts. The company would like to centrally-restrict access to some of AWS services that the DevOps teams do not use. The company decided to use AWS Organizations and successfully invited all AWS accounts into the Organization. They would like to allow access to services that are currently in-use and deny a few specific services. Also, they would like to administer multiple accounts together as a single unit. What combination of steps should the Solutions Architect take to satisfy these requirements? (Select THREE)
     - [ ] A. Use a Deny list strategy
     - [ ] B. Review the Access Advisor in AWS IAM to determine
-    - [ ] C. Review the AWS Tmsted Advisor report to determine services recently used
-    - [ ] D. Remove the default Fullansaccess Scp
-    - [ ] E. Define organizational units(OUS)and place the memberaccounts in the Ous
-    - [ ] F. Remove the default Denyawsaccess SCP
-44. A company hosts a community forum site using an Application Load Balancer(ALB )and a Docker application hosted in an Amazon ECS cluster. The site data is stored in Amazon RDS for MYSQL and the container image is stored in ECR. The company needs to provide their customers with a disaste recovery SLA with an RTO of no more than 24 hours and RPO of no more than 8 hours. Which of the following solutions is the MOST cost-effective way to meet the requirements?
-    - [ ] A. Use AWS Cloudformation to deploy identical ALB, EC2, ECS and RDS resources in two regions. Schedule RDS snapshots every 8 hours. Use RDS multi-region replication to update the secondary regions copy of the database. In the event of a failure, restore from the latest snapshot, and use an Amazon Route 53 DNS failover policy to automatically redirect customers to the ALB in the secondary region
-    - [ ] B. Store the Docker image in ECR in two regions. Schedule RDS snapshots every 8 hours with snapshots copied to the secondary region. In the event of a failure, use AWS Cloudformation to deploy the AL B, EC2, ECS and RDS resources in the secondary region, restore from the latest snapshot, and update the DNS record to point to the ALB in the secondary region
-    - [ ] C. Use AWS Cloudformation to deploy identical ALB, EC2 ECS, and RDS resources in a secondary region. Schedule hourly RDS MYSQL backups to Amazon S3 and use cross-region replication to replicate data to a bucket in the secondary region. In the event ofa failure, importthe latest Docker image to Amazon ECR in the secondary region, deploy to the EC2 instance,restore the latest MYSQL backup, and update the DNS record to point to the ALB in the secondary region
-    - [ ] D. Deploy a pilot light environment in a secondary region with an ALB and a minimal resourceEC2 deployment for Docker in an AWS Auto Scaling group with a scaling policy to increase instance size and number of nodes. Create a cross-region read replica of the RDS data. In the event ofa failure, promote the replica to primary and update the DNS record to point to the ALB in the secondary region.
-45. A Solutions Architect needs to migrate an on-premises legacy application to AWS. The application ntns on two servers behind a load balancer. The application requires a license file that is associated with the MAC address of the servers network adapter. It takes the software vendor 12 hours to send new license files. The application also uses configuration files with a static IP address to access a database server, host names are not supported Siven these requirements, which combination of steps should be taken to enable highly available architecture for the application servers in AWS?(Select TWO)
-    - [ ] A. Create a pool ofENIs. Request license files from the vendor for the pool, and store the license files in Amazon S3. Create a bootstrap automation script to download a license file and attach the corresponding ENI to an Amazon EC2 instance
-    - [ ] B. Create a pool ofENIs.Request license files from the vendor for the pool, store the license files on an Amazon EC2 instance. Create an AMI from the instance and use this AMI for all future EC2 instances
-    - [ ] C. Create a bootstrap automation script to request a new license file from the vendor. When the response is received, apply the license file to an Amazon EC2 instance
-    - [ ] D. Edit the bootstrap automation script to read the database server IP address from the AWS Systems Manager Parameter Store, and inject the value into the local configuration files
-    - [ ] E. Edit an Amazon EC2 instance to include the database server IP address in the configuration filesand re-create the AMI to use for all future EC2 instances
-46. A company is testing Amazon Elastic File Service(EFS) in its Development VPC, and would like extend this test on-premises.EFS is running in us-east-I and the corporate network is currently connected to this Region through a site-to-site VPN. All on-premises computers and servers are required to hawe all DNS traffic resolved by their on-premises DNS sewers. The on-premises users would like to connect to the EFS using a UNS name Instead of an IP address. What collection of steps must be taken to meet this requirement?(Select TWO)
-    - [ ] A. Create a new Amazon Route 53 Private Hosted Zone with a domain name of awscloud.example.com and associate the Development VPC to this zone. Createa CNAME record and point this to the EFS endpoint.
-    - [ ] B. Create a new Amazon Route 53 Public Hosted Zone with a domain name of awscloud.example.com and associate the Development VPC to this zone. Createa CNAME record and point this to the EFS endpoint
-    - [ ] C. Create a conditional forwarder rule in the on-premises DNS servers to forward requests for awscloud.example.com to the Amazon Route 53 Resolver inbound endpoints
-    - [ ] D. Create a conditional fonvarder rule in the on-premises DNS servers to fonvard requests for awscloud.example.com to the Amazon Route 53 Resolver outbound endpoints
-    - [ ] E. Create a conditional fonvarder rule in the on-premises DNS servers to forward requests for awscloud.example.com to the Amazon-provided DNS server
-47. A group of research institutions are partnering to study 2 PB of genomic data that changes regularly. The primary institution that owns the data is storing it in an Amazon S3 bucket in its AWS account. All of the secondary institutions in the partnership have their own AWS accounts and require read access to the data. The institute that owns the data does not want to pay for the data transfer costs associated with allowing the secondaw institutes access to the data. Which of the following solutions will meet the requirements?
-    - [ ] A. In the primary account, create a cross-account AWS IAM role for each secondaxy account that allows read access to the data. Have the secondary institutions assume the role when accessing the data
-    - [ ] B. In the primary account, create an S3 bucket policy to give read access to each secondary account. Enable Requester Pays on the S3 bucket. Have thesecondary institutions use their own AWS credentials with read permissions to the S3 bucket, when accessing the data
-    - [ ] C. Create an S3 bucket in each of the secondary accounts with a S3 bucket policy that gives write access to the primary account. Periodically synchronize the S3 buckets from the primaxy account to each secondary account. Have the secondary institutions use their own AWS credentials when accessing the data
-    - [ ] D. In the primary account, create a cross-account AWS IAM role for each secondary account that allows read access to the data Enable Requester Payson the S3 bucket. Have the secondary institutions assume the role when accessing the data
-48. A company is planning to deploy a new business analytics applcation that requires 10.000 hours of compute time each month,The compute resources can have fiexiable availablity ,but must be as cost-effective as possible. The company will also provide a reporting service to distribute analytics reports, which needs to run at all times. How should the Solution Architect design a solution that meets these requlrements?
-    - [ ] A. Deploy the reporting service on a spot Fleet. Deploy the analytics ECS with Aw. agae as he compute opon. the analytics applcaton o use a custom metric withService Auto Scaling
-    - [ ] B. Deploy the reporting service on an On-demand Instance Deploy the analytics application as aontainer in AWS Batch with AWS Fargate as the compute option. Set the analytics application to use a custo metric with Service Auto Scaling.
-    - [ ] C. Deploy the reporting service as a container in Amazon ECS with AWS Fargate as the compute optior Deploy the analytics application on a Spot Fleet. Set the analytics application to use a custom metric with Amazon EC2 Auto Scaling applied to the Spot Fleet
-    - [ ] D. Deploy the reporting service as a container in Amazon ECS with AWS Fargate as the compute optionDeploy the analytics application on an On-demand Instance and purchase a reserves Instance with a3-year term. Set the analytics application to use a custom metric with Amazon EC2 Auto Scaling applied to the on-demand Instance
-49. A utility company wants to collect usage data every 5 minutes from its smart meters to facilitate time-of-use metering. When a meter sends data to AWS, the data is sent to Amazon API Gateway, processed by an AWS Lambda function and stored in an Amazon DynamoDB table. During the pilot phase, the Lambda ftnctions took from 3 to 5 seconds to complete As more smart meters are deployed, the Engineers notice the Lambda functions are taking from I to 2 minutes to complete. The functions are also increasing in duration as new types of metrics are collected from the devices. There are many ProvisionedThroughputExceededException errors while performing PUT operations on DynamoDB, and there are also many TooManyRequestsException errors from Lambda. Which combination of changes will resolve these issues? (Choose two.)
+    - [ ] C. Review the AWS Trusted Advisor report to determine services recently used
+    - [ ] D. Remove the default FullAWSAccess SCP
+    - [ ] E. Define organizational units(OUS)and place the member accounts in the OUs
+    - [ ] F. Remove the default DenyAWSaccess SCP
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 默认开启的
+       - [ ] B. Access Advisor是查看最终访问的
+       - [x] C. 正确
+       - [x] D. 正确
+       - [x] E. 正确
+       - [ ] D. 这个是错的
+
+    </details>
+
+44. A company hosts a community forum site using an Application Load Balancer (ALB) and a Docker application hosted in an Amazon ECS cluster. The site data is stored in Amazon RDS for MYSQL, and the container image is stored in ECR. The company needs to provide their customers with a disaster recovery SLA with an RTO of no more than 24 hours and RPO of no more than 8 hours. Which of the following solutions is the MOST cost-effective way to meet the requirements?
+    - [ ] A. Use AWS CloudFormation to deploy identical ALB, EC2, ECS and RDS resources in two regions. Schedule RDS snapshots every 8 hours. Use RDS multi-region replication to update the secondary regions copy of the database. In the event of a failure, restore from the latest snapshot, and use an Amazon Route 53 DNS failover policy to automatically redirect customers to the ALB in the secondary region.
+    - [ ] B. Store the Docker image in ECR in two regions. Schedule RDS snapshots every 8 hours with snapshots copied to the secondary region. In the event of a failure, use AWS CloudFormation to deploy the AL B, EC2, ECS and RDS resources in the secondary region, restore from the latest snapshot, and update the DNS record to point to the ALB in the secondary region.
+    - [ ] C. Use AWS CloudFormation to deploy identical ALB, EC2 ECS, and RDS resources in a secondary region. Schedule hourly RDS MYSQL backups to Amazon S3 and use cross-region replication to replicate data to a bucket in the secondary region. In the event of a failure, import the latest Docker image to Amazon ECR in the secondary region, deploy to the EC2 instance, restore the latest MYSQL backup, and update the DNS record to point to the ALB in the secondary region.
+    - [ ] D. Deploy a pilot light environment in a secondary region with an ALB and a minimal resourceEC2 deployment for Docker in an AWS Auto Scaling group with a scaling policy to increase instance size and number of nodes. Create a cross-region read replica of the RDS data. In the event of a failure, promote the replica to primary and update the DNS record to point to the ALB in the secondary region.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案C，理由未知
+
+    </details>
+
+45. A Solutions Architect needs to migrate an on-premises legacy application to AWS. The application runs on two servers behind a load balancer. The application requires a license file that is associated with the MAC address of the server’s network adapter. It takes the software vendor 12 hours to send new license files. The application also uses configuration files with a static IP address to access a database server, host names are not supported Siven these requirements, which combination of steps should be taken to enable highly available architecture for the application servers in AWS? (Select TWO)
+    - [ ] A. Create a pool of ENIs. Request license files from the vendor for the pool and store the license files in Amazon S3. Create a bootstrap automation script to download a license file and attach the corresponding ENI to an Amazon EC2 instance.
+    - [ ] B. Create a pool of ENIs. Request license files from the vendor for the pool, store the license files on an Amazon EC2 instance. Create an AMI from the instance and use this AMI for all future EC2 instances.
+    - [ ] C. Create a bootstrap automation script to request a new license file from the vendor. When the response is received, apply the license file to an Amazon EC2 instance.
+    - [ ] D. Edit the bootstrap automation script to read the database server IP address from the AWS Systems Manager Parameter Store, and inject the value into the local configuration files.
+    - [ ] E. Edit an Amazon EC2 instance to include the database server IP address in the configuration files and re-create the AMI to use for all future EC2 instances.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案AD
+
+    </details>
+
+46. A company is testing Amazon Elastic File Service (EFS) in its Development VPC and would like to extend this test on-premises. EFS is running in us-east-1 and the corporate network is currently connected to this Region through a site-to-site VPN. All on-premises computers and servers are required to have all DNS traffic resolved by their on-premises DNS servers. The on-premises users would like to connect to the EFS using a DNS name instead of an IP address. What collection of steps must be taken to meet this requirement? (Select TWO)
+    - [ ] A. Create a new Amazon Route 53 Private Hosted Zone with a domain name of awscloud.example.com and associate the Development VPC to this zone. Create a CNAME record and point this to the EFS endpoint.
+    - [ ] B. Create a new Amazon Route 53 Public Hosted Zone with a domain name of awscloud.example.com and associate the Development VPC to this zone. Create a CNAME record and point this to the EFS endpoint.
+    - [ ] C. Create a conditional forwarder rule in the on-premises DNS servers to forward requests for awscloud.example.com to the Amazon Route 53 Resolver inbound endpoints.
+    - [ ] D. Create a conditional forwarder rule in the on-premises DNS servers to forward requests for awscloud.example.com to the Amazon Route 53 Resolver outbound endpoints.
+    - [ ] E. Create a conditional forwarder rule in the on-premises DNS servers to forward requests for awscloud.example.com to the Amazon-provided DNS server.
+
+    <details>
+       <summary>Answer</summary>
+
+       由于使用了VPN，表明不是VPC内部的流量，那么首先排除A，这里我们使用DNS去解析AWS的资源，那么使用进站规则，排除D，E本身是错的，答案BC -> [ref1](https://docs.aws.amazon.com/zh_cn/Route53/latest/DeveloperGuide/resolver.html)，[ref2](https://docs.aws.amazon.com/zh_cn/Route53/latest/DeveloperGuide/AboutHZWorkingWith.html)
+
+    </details>
+
+47. A group of research institutions are partnering to study 2 PB of genomic data that changes regularly. The primary institution that owns the data is storing it in an Amazon S3 bucket in its AWS account. All the secondary institutions in the partnership have their own AWS accounts and require read access to the data. The institute that owns the data does not want to pay for the data transfer costs associated with allowing the secondary institutes access to the data. Which of the following solutions will meet the requirements?
+    - [ ] A. In the primary account, create a cross-account AWS IAM role for each secondary account that allows read access to the data. Have the secondary institutions assume the role when accessing the data.
+    - [ ] B. In the primary account, create an S3 bucket policy to give read access to each secondary account. Enable Requester Pays on the S3 bucket. Have the secondary institutions use their own AWS credentials with read permissions to the S3 bucket, when accessing the data.
+    - [ ] C. Create an S3 bucket in each of the secondary accounts with a S3 bucket policy that gives write access to the primary account. Periodically synchronize the S3 buckets from the primary account to each secondary account. Have the secondary institutions use their own AWS credentials when accessing the data.
+    - [ ] D. In the primary account, create a cross-account AWS IAM role for each secondary account that allows read access to the data Enable Requester Payson the S3 bucket. Have the secondary institutions assume the role when accessing the data.
+
+    <details>
+       <summary>Answer</summary>
+
+       重复题，答案B
+
+    </details>
+
+48. A company is planning to deploy a new business analytics application that requires 10.000 hours of compute time each month. The compute resources can have flexible availability but must be as cost-effective as possible. The company will also provide a reporting service to distribute analytics reports, which needs to always run. How should the Solution Architect design a solution that meets these requirements?
+    - [ ] A. Deploy the reporting service on a spot Fleet. Deploy the analytics ECS with AWS Fargate as the compute option. Set the analytics application to use a custom metric with Service Auto Scaling.
+    - [ ] B. Deploy the reporting service on an On-demand Instance Deploy the analytics application as a container in AWS Batch with AWS Fargate as the compute option. Set the analytics application to use a custom metric with Service Auto Scaling.
+    - [ ] C. Deploy the reporting service as a container in Amazon ECS with AWS Fargate as the compute option. Deploy the analytics application on a Spot Fleet. Set the analytics application to use a custom metric with Amazon EC2 Auto Scaling applied to the Spot Fleet.
+    - [ ] D. Deploy the reporting service as a container in Amazon ECS with AWS Fargate as the compute option. Deploy the analytics application on an On-demand Instance and purchase a reserves Instance with a3-year term. Set the analytics application to use a custom metric with Amazon EC2 Auto Scaling applied to the On-Demand Instance.
+
+    <details>
+       <summary>Answer</summary>
+
+       最便宜的方法就是C啦
+
+    </details>
+
+49. A utility company wants to collect usage data every 5 minutes from its smart meters to facilitate time-of-use metering. When a meter sends data to AWS, the data is sent to Amazon API Gateway, processed by an AWS Lambda function, and stored in an Amazon DynamoDB table. During the pilot phase, the Lambda functions took from 3 to 5 seconds to complete As more smart meters are deployed, the Engineers notice the Lambda functions are taking from I to 2 minutes to complete. The functions are also increasing in duration as new types of metrics are collected from the devices. There are many "ProvisionedThroughputExceededException" errors while performing PUT operations on DynamoDB, and there are also many "TooManyRequestsException" errors from Lambda. Which combination of changes will resolve these issues? (Choose two.)
     - [ ] A. Increase the write capacity units to the DynamoDB table.
     - [ ] B. Increase the memory available to the Lambda functions.
     - [ ] C. Increase the payload size from the smart meters to send more data.
     - [ ] D. Stream the data into an Amazon Kinesis data stream from API Gateway and process the data in batches.
     - [ ] E. Collect data in an Amazon SQS FIFO queue, which triggers a Lambda function to process each message.
-50. A company is developing a new service that will be accessed using TCP on a static port. A Solutions Architect must ensure that the service is highly available, has redundancy across Availabiliy Zones,and is accessible using the DNS name my.service.com,which is publicly accessible.The service must use fixed address assignments SO other companies can add the addresses to their allow lists. Assuming that resources are deployed in multiple Availability Zones in a single Region, which solution will meet these requirements?
-    - [ ] A. Create Amazon EC2 instances with an Elastic IP address for each instance. Create a Network Load Balancer(NLB)and expose the static TCP port. Register EC2 instances with the NLB. Create a new name server record set named my.service.com, and assign the Elastic IP addresses of the EC2 instances to the record set. Provide the Elastic IP addresses of the EC2 instances to the other companies to add to their allow lists.
-    - [ ] B. Create an Amazon ECS cluster and a service definition for the application. Create and assign public IP addresses for the ECS cluster. Create a Network Load Balancer(NLB )and expose the TCP port.Create a target group and assign the ECS cluster name to the NLB. Create a new A record set named my.service.com,and assign the public IP addresses of the ECS cluster to the record set.Provide the public IP addresses of the ECS cluster to the other companies to add to their allow lists.
-    - [ ] C. Create Amazon EC2 instances for the service. Create one Elastic IP address for each Availability Zone. Create a Network Load Balancer(NLB)and expose the assigned TCP port. Assign the Elastic IP addresses to the NLB for each Availability Zone. Create a target group and register the EC2 instances with the NLB.Create a new A(alias)record set named my.service.com,and assign the NLB DNS name to the record set.
-    - [ ] D. Create an Amazon ECS cluster and a service definition for the application. Create and assign public IP address for each host in the cluster. Create an Application Load Balancer(ALB) and expose the static TCP port. Create a target group and assign the ECS service definition name to the ALB. Create a new CNAME record set and associate the public IP addresses to the record set Provide the Elastic IP addresses of the Amazon EC2 instances to the other companies to add to their allow lists.
-51. A company is mnning a web application with On-demand Amazon EC2 instances in Auto Scaling groups that scale dynamically based on custom metrics. After extensive testing, the company dedetermines that the m5.2xlarge instance size is optimal for the workload Application data is stored in db r4.4xlarge Amazon RDS instances that are confirmed to be optimal. The traffic to the web application spikes randomly during the day. What other cost-optimization methods should the company implement to further reduce costs without impacting the reliability of the application?
-    - [ ] A. Double the instance count in the auto Scaling groups and reduce the instance size to m5.large
-    - [ ] B. Reserve capacity for the rds database and the minimum number ofEC2 instances that areconstantly running
-    - [ ] C. Reduce the RDS instance size to db r4xlarge and add five equivalently sized read replicas to provide reliability
-    - [ ] D. Reserve capacity for all EC2 instances and leverage Spot Instance pricing for the rds database.
-52. A company with multiple accounts is currently using a configuration that does not meet the following security governance policies:Prevent ingress from port 22 to any Amazon EC2 instance,Require billing and application tags for resources.Enuypt all Amazon EBS volumesA Solutions Architect wants to provide preventive and detective controls, including notifications about a specific resource, if there are policy deviations. Which solution should the Solutions Architect implement?
-    - [ ] A. Create an AWS Code Commit repository containing policy-compliant AWS Cloudformation templates. Create an AWS Service Catalog portfolio. Import the Cloudformation templates by attaching the Code Commit repository tions, and associate a Cloudwatch alarm to send notifications when the TriggeredRules metric is greater than zero.
-    - [ ] B. Use AWS Service Catalog to build a portfolio with products that are in compliance with the governance policies in a central account. Restrict users across all accounts to Aws Service Catalog products. Share a compliant portfolio to other accounts. Use AWS Config managed rules to detect deviations from the policies. Configure an Amazon Cloudwatch Events rule to send a notification when a deviation occurs
-    - [ ] C. Implement policy-compliant Aws Cloudformation templates for each account, and ensure that all provisioning is completed by Cloudformation. Configure Amazon Inspector to perform regular checks against resources. Perform policy validation and write the assessment output to Amazon CloudwatchLogs. Create a Cloudwatch Logs metric filter to increment a metric when a deviation occurs.Configure a Cloudwatch alarm to send notifications when the configured metric is greater than zero
-    - [ ] D. Restrict users and enforce least privilege access using AWS IAM. Consolidate all AWS CloudTrail logs into a single account. Send the Cloud Trail logs to Amazon Elasticsearch Service(Amazon ES).Implement monitoring, alerting, and reporting using the Kibana dashboard in Amazon ES and with Amazon SINS.
-53. A company is using a HTTP webhook from its source control platorm to perform code vulnerability scanning. The vulnerability scanning is done by an application mnning in Aws Lambda.which is invoked by Amazon API Gateway when the webhook is received. The source control platform requires an HTTP 200 response from the webhook destination within 30 seconds. otherwise the webhook is re-sent. Code vulnerability scanning can take up to 10 minutes to complete, depending on the size of the codebase being scanned. The company wants to ensure that only one vulnerability scan is triggered for each webhook. Which solution would achieve the companyts requirementit?
-    - [ ] A. Change the Apl Gateway integration type to AWS PROXY for the Lambda function. Modify the Lambda code to return an HTTP 200 response as soon as it is invoked ,before continuing to perform the vulnerability scanning.
-    - [ ] B. Create a new Lambda function invoked by API Gateway to write the webhook to an Amazon SQS FIFO queue with message deduplication.then return an HTTP 200 response Trigger the code vulnerability scanner from messages in the SQS FIFO queue
-    - [ ] C. Configure API Gateway to invoke the Lambda function asynchronously. Add an integration response to API Gateway to return an HTTP 200 response once the Lambda function has been invoked
-    - [ ] D. Configure API Gateway to invoke the Lambda function asynchronously. Modify the Lambda code to return an HTTP 200 response as soon as it is invoked.before continuing to perform the vulnerability scanning
-54. A company has a complex web application that leverages Amazon Cloudfront for global scalability and performance. Over time, users report that the web application is slowing down. The company's operations team reports that the Cloudfront cache hit ratio has been dropping steadily.Thle cache metrics report indicates that query strings on some URLS are inconsistently ordered and are specified sometimes in mixed case letters and sometimes in lowercase letters. Which set of actions should the solutions architect take to increase the cache hit ratio as quickly aspossible?
-    - [ ] A. Deploy a Lambda@Edge function to sort parameters by name and force them to be lowercaseSelect the Cloudfront viewer request trigger to invoke the function
-    - [ ] B. Update the Cloudf ront distribution to disable caching based on query string parameters
-    - [ ] C. Deploy a reverse proxy after the load balancer to post process the emitted URLS in the applicationto force the URL strings to be lowercase
-    - [ ] D. Update the Cloudfront distribution to specify casing-insensitive query string processing
+
+    <details>
+       <summary>Answer</summary>
+
+       - [x] A. 正确
+       - [ ] B. TooManyRequestsException说的是请求太多了，增加内存解决不了的
+       - [ ] C. 本身写的能力就不够爱增加大小只是火上浇油
+       - [x] D. 正确
+       - [ ] E. AWS IoT不能跟SQS FIFO联用
+
+    </details>
+
+50. A company is developing a new service that will be accessed using TCP on a static port. A Solutions Architect must ensure that the service is highly available, has redundancy across Availability Zones, and is accessible using the DNS name “my.service.com”, which is publicly accessible. The service must use fixed address assignments SO other companies can add the addresses to their allow lists. Assuming that resources are deployed in multiple Availability Zones in a single Region, which solution will meet these requirements?
+    - [ ] A. Create Amazon EC2 instances with an Elastic IP address for each instance. Create a Network Load Balancer (NLB)and expose the static TCP port. Register EC2 instances with the NLB. Create a new name server record set named “my.service.com” and assign the Elastic IP addresses of the EC2 instances to the record set. Provide the Elastic IP addresses of the EC2 instances to the other companies to add to their allow lists.
+    - [ ] B. Create an Amazon ECS cluster and a service definition for the application. Create and assign public IP addresses for the ECS cluster. Create a Network Load Balancer (NLB) and expose the TCP port. Create a target group and assign the ECS cluster name to the NLB. Create a new A record set named “my.service.com” and assign the public IP addresses of the ECS cluster to the record set. Provide the public IP addresses of the ECS cluster to the other companies to add to their allow lists.
+    - [ ] C. Create Amazon EC2 instances for the service. Create one Elastic IP address for each Availability Zone. Create a Network Load Balancer (NLB)and expose the assigned TCP port. Assign the Elastic IP addresses to the NLB for each Availability Zone. Create a target group and register the EC2 instances with the NLB. Create a new A(alias)record set named “my.service.com” and assign the NLB DNS name to the record set.
+    - [ ] D. Create an Amazon ECS cluster and a service definition for the application. Create and assign public IP address for each host in the cluster. Create an Application Load Balancer (ALB) and expose the static TCP port. Create a target group and assign the ECS service definition name to the ALB. Create a new CNAME record set and associate the public IP addresses to the record set Provide the Elastic IP addresses of the Amazon EC2 instances to the other companies to add to their allow lists.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 要将域流量路由至NLB需要使用A记录 -> [ref](https://docs.aws.amazon.com/zh_cn/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html)
+       - [ ] B. 你不能把ECS集群的名字注册到NLB的目标组中。ECS支持动态端口映射，只要在任务定义中指明目标，就会 "自动 "注册。
+       - [x] C. 正确
+       - [ ] D. 同A
+
+    </details>
+
+51. A company is running a web application with On-demand Amazon EC2 instances in Auto Scaling groups that scale dynamically based on custom metrics. After extensive testing, the company determined that the m5.2xlarge instance size is optimal for the workload. Application data is stored in db r4.4xlarge Amazon RDS instances that are confirmed to be optimal. The traffic to the web application spikes randomly during the day. What other cost-optimization methods should the company implement to further reduce costs without impacting the reliability of the application?
+    - [ ] A. Double the instance count in the auto Scaling groups and reduce the instance size to m5.large.
+    - [ ] B. Reserve capacity for the RDS database and the minimum number ofEC2 instances that are constantly running.
+    - [ ] C. Reduce the RDS instance size to db r4xlarge and add five equivalently sized read replicas to provide reliability.
+    - [ ] D. Reserve capacity for all EC2 instances and leverage Spot Instance pricing for the RDS database.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案B
+
+    </details>
+
+52. A company with multiple accounts is currently using a configuration that does not meet the following security governance policies:Prevent ingress from port 22 to any Amazon EC2 instance,Require billing and application tags for resources. Encrypt all Amazon EBS volumes. A Solutions Architect wants to provide preventive and detective controls, including notifications about a specific resource, if there are policy deviations. Which solution should the Solutions Architect implement?
+    - [ ] A. Create an AWS CodeCommit repository containing policy-compliant AWS CloudFormation templates. Create an AWS Service Catalog portfolio. Import the CloudFormation templates by attaching the CodeCommit repository to the portfolio. Restrict users across all accounts to items from the AWS Service Catalog portfolio. Use AWS Config managed rules to detect deviation from the policies. Configure an Amazon Cloudwatch Events rule for deviations, and associate a CloudWatch alarm to send notifications when the Triggeredrules metric is greater than zero
+    - [ ] B. Use AWS Service Catalog to build a portfolio with products that are in compliance with the governance policies in a central account. Restrict users across all accounts to Aws Service Catalog products. Share a compliant portfolio to other accounts. Use AWS Config managed rules to detect deviations from the policies. Configure an Amazon CloudWatch Events rule to send a notification when a deviation occurs
+    - [ ] C. Implement policy-compliant AWS CloudFormation templates for each account, and ensure that all provisioning is completed by CloudFormation. Configure Amazon Inspector to perform regular checks against resources. Perform policy validation and write the assessment output to Amazon CloudWatch Logs. Create a CloudWatch Logs metric filter to increment a metric when a deviation occurs. Configure a CloudWatch alarm to send notifications when the configured metric is greater than zero
+    - [ ] D. Restrict users and enforce least privilege access using AWS IAM. Consolidate all AWS CloudTrail logs into a single account. Send the Cloud Trail logs to Amazon Elasticsearch Service (Amazon ES). Implement monitoring, alerting, and reporting using the Kibana dashboard in Amazon ES and with Amazon SNS.
+
+    <details>
+       <summary>Answer</summary>
+
+       多账户使用本地产品组合要使用Service Catalog，这里需要注意的是需要分享，答案B -> [ref](https://aws.amazon.com/blogs/mt/use-aws-service-catalog-to-build-a-custom-catalog-of-products-from-aws-marketplace/)
+
+    </details>
+
+53. A company is using a HTTP webhook from its source control platform to perform code vulnerability scanning. The vulnerability scanning is done by an application running in AWS Lambda which is invoked by Amazon API Gateway when the webhook is received. The source control platform requires an HTTP 200 response from the webhook destination within 30 seconds. otherwise, the webhook is re-sent. Code vulnerability scanning can take up to 10 minutes to complete, depending on the size of the codebase being scanned. The company wants to ensure that only one vulnerability scan is triggered for each webhook. Which solution would achieve the company’s requirement?
+    - [ ] A. Change the API Gateway integration type to AWS PROXY for the Lambda function. Modify the Lambda code to return an HTTP 200 response as soon as it is invoked, before continuing to perform the vulnerability scanning.
+    - [ ] B. Create a new Lambda function invoked by API Gateway to write the webhook to an Amazon SQS FIFO queue with message deduplication. Then return an HTTP 200 response Trigger the code vulnerability scanner from messages in the SQS FIFO queue.
+    - [ ] C. Configure API Gateway to invoke the Lambda function asynchronously. Add an integration response to API Gateway to return an HTTP 200 response once the Lambda function has been invoked.
+    - [ ] D. Configure API Gateway to invoke the Lambda function asynchronously. Modify the Lambda code to return an HTTP 200 response as soon as it is invoked. Before continuing to perform the vulnerability scanning.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案B
+
+    </details>
+
+54. A company has a complex web application that leverages Amazon CloudFront for global scalability and performance. Over time, users report that the web application is slowing down. The company's operations team reports that the CloudFront cache hit ratio has been dropping steadily. The cache metrics report indicates that query strings on some URLS are inconsistently ordered and are specified sometimes in mixed case letters and sometimes in lowercase letters. Which set of actions should the solutions architect take to increase the cache hit ratio as quickly as possible?
+    - [ ] A. Deploy a Lambda@Edge function to sort parameters by name and force them to be lowercase. Select the CloudFront viewer request trigger to invoke the function.
+    - [ ] B. Update the CloudFront distribution to disable caching based on query string parameters.
+    - [ ] C. Deploy a reverse proxy after the load balancer to post process the emitted URLS in the application to force the URL strings to be lowercase.
+    - [ ] D. Update the CloudFront distribution to specify casing-insensitive query string processing.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案A
+
+    </details>
+
 55. A company has several Amazon EC2 instances to both public and private subnets within a VPC that is not connected to the corporate network A security group associated with the EC2 instances allows the company to use the Windows remote desktop protocol (RDP) over the internet to access the instances. The security team has noticed connection attempts from unknown sources. The company wants to implement a more secure solution to access the EC2 instances. Which strategy should a solutions architect implement?
     - [ ] A. Deploy a Linux bastion host on the corporate network that has access to all instances in the VPC.
     - [ ] B. Deploy AWS Systems Manager Agent on the EC2 instances. Access the EC2 instances using Session Manager restricting access to users with permission.
     - [ ] C. Deploy a Linux bastion host with an Elastic IP address in the public subnet. Allow access to the bastion host from 0.0.0.0/0.
     - [ ] D. Establish a Site-to-Site VPN connecting the corporate network to the VPC. Update the security groups to allow access from the corporate network only.
-56. A company plans to migrate to AWS. A solutions architect uses AWS Application Discovew Sewice over the fleet and discovers that there is an Oracle data warehouse and several PostgreSQL databases. Which combination of migration patterns will reduce licensing costs and operational overhead? (Choose two.)
+
+    <details>
+       <summary>Answer</summary>
+
+       VPN是避免尝试连接的唯一方法，答案D
+
+    </details>
+
+56. A company plans to migrate to AWS. A solutions architect uses AWS Application Discovery Service over the fleet and discovers that there is an Oracle data warehouse and several PostgreSQL databases. Which combination of migration patterns will reduce licensing costs and operational overhead? (Choose two.)
     - [ ] A. Lift and shift the Oracle data warehouse to Amazon EC2 using AWS DMS.
     - [ ] B. Migrate the Oracle data warehouse to Amazon Redshift using AWS SCT and AWS DMS
     - [ ] C. Lift and shift the PostgreSQL databases to Amazon EC2 using AWS DMS.
     - [ ] D. Migrate the PostgreSQL databases to Amazon RDS for PostgreSQL using AWS DMS.
     - [ ] E. Migrate the Oracle data warehouse to an Amazon EMR managed cluster using AWS DMS.
-57. A company is mnning a two-tier web application on Amazon EC2. The web tier consists of an Application Load Balancer(ALB) backed by a Auto Scaling group of web server instances spanning multiple Availability Zones. The database tier is using Amazon Aurora MYSQL The company's security team has deployed AWS WAF and integrated it with the ALB to prevent SQL injection attacks against the application. Recently, a security breach was reported in which the attacker was able to gain access to an individual web sewer and the companys database from random IP addresses. The security team was eventually able to write a better rule to match the SQL injection technique that the attacker had used. However, this process took about an hour from when the third-party security agent running on theEC2 instances successfully detected the attack Which strategy allowsthe security team to protect the database and overall infrastmcture?
-    - [ ] A. Add an Amazon Cloudfront layer to the existing architecture. Modity the AWS WAF association to integrate with Cloudfront instead of the ALB. Change the web tiers security groups to allow IP addresses from Cloudfront only. Use Lambda@Edge to perform request inspection and block repetitive suspicious requests.
-    - [ ] B. Configure the third-party security agent to invoke an AWS Lambda funtion. The Lambda function should first check the web tier's Autoscaling group to ensure there is more than one running instance and if so, then stop and quarantine the web server instance
-    - [ ] C. Enable Amazon Macie and turn on its integrations with Amazon EC2 and the Aurora MYSQL database. Create a visual dashboard for the security team. Configure automated alerts and define AWS Lambda functions to automatically block detected attacks by modifying security groups within the VPC
-    - [ ] D. Deploy Amazon Guardduty to analyze VPC Flow Logs. Configure an Amazon Eventbridge rule that triggers an AWS Lambda function upon a Guardduty alert. Configure the Lambda function to automatically block detected attacks by modifying security groups within the VPC
-58. A company has a mobile app with users in Europe. When the app is used, it downloads a configuration file that is device and app version-specific. The company has the following architecture:-Configuration files are stored in Amazon S3 in the eu-west-l Region and served to the usersngAmazon Cloudfront -Lambda@Edge is used to extract the device and version information from the app requests. It then updates the requests to load the correct configuration. The company uses the configuration file load time as a key performance metric, and targets are sponse time of 100 ms or less.The app recently launched in the ap-southeast-2 Region ,and the latency for requests from users in Australia is significantly above the 100 ms target. A solution architect needs to recommend a solution. Which solution will reduce latency for users in Australia?
-    - [ ] A. Create an S3 bucket in the ap-southeast-2 Region. Use cross-region replication to synchronize from the bucket in the eu-west-l Region Modity. Lambda@Edge to access Amazon S3 in the Region that is closest to the user
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案BD
+
+    </details>
+
+57. A company is running a two-tier web application on Amazon EC2. The web tier consists of an Application Load Balancer (ALB) backed by an Auto Scaling group of web server instances spanning multiple Availability Zones. The database tier is using Amazon Aurora MYSQL The company's security team has deployed AWS WAF and integrated it with the ALB to prevent SQL injection attacks against the application. Recently, a security breach was reported in which the attacker was able to gain access to an individual web server and the company’s database from random IP addresses. The security team was eventually able to write a better rule to match the SQL injection technique that the attacker had used. However, this process took about an hour from when the third-party security agent running on theEC2 instances successfully detected the attack Which strategy allows the security team to protect the database and overall infrastructure?
+    - [ ] A. Add an Amazon CloudFront layer to the existing architecture. Modify the AWS WAF association to integrate with CloudFront instead of the ALB. Change the web tiers security groups to allow IP addresses from CloudFront only. Use Lambda@Edge to perform request inspection and block repetitive suspicious requests.
+    - [ ] B. Configure the third-party security agent to invoke an AWS Lambda function. The Lambda function should first check the web tier's Autoscaling group to ensure there is more than one running instance and if so, then stop and quarantine the web server instance.
+    - [ ] C. Enable Amazon Macie and turn on its integrations with Amazon EC2 and the Aurora MYSQL database. Create a visual dashboard for the security team. Configure automated alerts and define AWS Lambda functions to automatically block detected attacks by modifying security groups within the VPC.
+    - [ ] D. Deploy Amazon Guard Duty to analyze VPC Flow Logs. Configure an Amazon Event bridge rule that triggers an AWS Lambda function upon a Guard duty alert. Configure the Lambda function to automatically block detected attacks by modifying security groups within the VPC.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案D
+
+    </details>
+
+58. A company has a mobile app with users in Europe. When the app is used, it downloads a configuration file that is device and app version-specific. The company has the following architecture: -Configuration files are stored in Amazon S3 in the eu-west-1 Region and served to the users using Amazon CloudFront. -Lambda@Edge is used to extract the device and version information from the app requests. It then updates the requests to load the correct configuration. The company uses the configuration file load time as a key performance metric and targets a response time of 100ms or less. The app recently launched in the ap-southeast-2 Region, and the latency for requests from users in Australia is significantly above the 100ms target. A solutions architect needs to recommend a solution. Which solution will reduce latency for users in Australia?
+    - [ ] A. Create an S3 bucket in the ap-southeast-2 Region. Use cross-region replication to synchronize from the bucket in the eu-west-1 Region. Modify Lambda@Edge to access Amazon S3 in the Region that is closest to the user.
     - [ ] B. Configure S3 Transfer Acceleration on the bucket. Modify Lambda@Edge to access Amazon S3 using the Transfer Acceleration endpoint in the Region that is closest to the user.
-    - [ ] C. Configure S3 Transfer Acceleration on the bucket. Add the Transfer Acceleration Edge endpoints for Australia and Europe as Cloudfront origins. Modify Lambda@Edge to update the origin of the request to be the Transfer Acceleration endpoint in the Region that is closest to the user
-    - [ ] D. Create an S3 bucket in the ap-southeast-2 Region. Use cross-region replication to synchroniz from the bucket in the eu-west-l Region Create an Amazon. Route 53 hosted zone with latency-based routing configured for both buckets. Modify Lambda@Edge to update the origin of the request to be the Route 53 hosted zone that is closest to the user.
-59. A company operates pipelines across North America and South America. The company assesses pipeline inspection gauges with imagew and ultrasonic sensor data to monitor the condition of its pipelines. The pipelines are in areas with intermittent or unavailable intemet connectivity. The imagew data at each site requires terabytes of storage each month. The company wants a solution to collect the data at each site in monthly intervals and to store the data with high durability. The imagew captured must be preprocessed and uploaded to a central location for persistent storage. Which actions should a solutions architect take to meet these requirements?
-    - [ ] A. Deploy AWS Snowball devices at local sites in a cluster configuration Configure AWS Lambda for preprocessingShip the devices back to the closest AWS Region and store the data in Amazon S3 buckets
-    - [ ] B. Deploy AWS Snowball Edge devices at local sites in a cluster configuration. Configure AWS Lambda for preprocessing. Ship the devices back to the closest AWS Region and store the data in Amazon S3 buckets
-    - [ ] C. Deploy AWS lot Greengrass on eligible hardware across the sites. Configure AWS Lambda on thedevices for preprocessing Upload the processed data to Amazon S3 buckets in AWS Regions closest to the sites
-    - [ ] D. Deploy AWS lot Greengrass on eligible hardware across the sites. Configure AWS Lambda on thedevices for preprocessing. Ship the devices back to the closest AWS Region and store the data in Amazon S3 buckets
+    - [ ] C. Configure S3 Transfer Acceleration on the bucket. Add the Transfer Acceleration Edge endpoints for Australia and Europe as CloudFront origins. Modify Lambda@Edge to update the origin of the request to be the Transfer Acceleration endpoint in the Region that is closest to the user.
+    - [ ] D. Create an S3 bucket in the ap-southeast-2 Region. Use cross-region replication to synchronize from the bucket in the eu-west-1 Region Create an Amazon. Route 53 hosted zone with latency-based routing configured for both buckets. Modify Lambda@Edge to update the origin of the request to be the Route 53 hosted zone that is closest to the user.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案C，理由未知
+
+    </details>
+
+59. A company operates pipelines across North America and South America. The company assesses pipeline inspection gauges with image and ultrasonic sensor data to monitor the condition of its pipelines. The pipelines are in areas with intermittent or unavailable internet connectivity. The image data at each site requires terabytes of storage each month. The company wants a solution to collect the data at each site in monthly intervals and to store the data with high durability. The image captured must be preprocessed and uploaded to a central location for persistent storage. Which actions should a solutions architect take to meet these requirements?
+    - [ ] A. Deploy AWS Snowball devices at local sites in a cluster configuration Configure AWS Lambda for preprocessing. Ship the devices back to the closest AWS Region and store the data in Amazon S3 buckets.
+    - [ ] B. Deploy AWS Snowball Edge devices at local sites in a cluster configuration. Configure AWS Lambda for preprocessing. Ship the devices back to the closest AWS Region and store the data in Amazon S3 buckets.
+    - [ ] C. Deploy AWS lot Greengrass on eligible hardware across the sites. Configure AWS Lambda on the devices for preprocessing Upload the processed data to Amazon S3 buckets in AWS Regions closest to the sites.
+    - [ ] D. Deploy AWS lot Greengrass on eligible hardware across the sites. Configure AWS Lambda on the devices for preprocessing. Ship the devices back to the closest AWS Region and store the data in Amazon S3 buckets.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案D，理由未知
+
+    </details>
+
 60. A company is using multiple AWS accounts. The DNS records are stored in a private hosted zone for Amazon Route 53 in Account A The company's applications and databases are running in Account B- A solutions architect will deploy a two-tier application in a new VPC. To simplify the configuration, the db.example.com CNAME record set for the Amazon RDS endpoint was created in a private hosted zone for Amazon Route 53. During deployment the application failed to start. Troubleshooting revealed that db.example.com is not resolvable on the Amazon EC2 instance. The solutions architect confirmed that the record set was created correctly in Route 53. Which combination of steps should the solutions architect take to resolve this issue? (Choose two.)
     - [ ] A. Deploy the database on a separate EC2 instance in the new VPC. Create a record set for the instance's private IP in the private hosted zone.
     - [ ] B. Use SSH to connect to the application tier EC2 instance. Add an RDS endpoint IP address to the /etc/ resolv conf file.
     - [ ] C. Create an authorization to associate the private hosted zone in Account A with the new VPC in Account B-
     - [ ] D. Create a private hosted zone for the example com domain in Account B- Configure Route 53 replication between AWS accounts.
     - [ ] E. Associate a new VPC in Account B with a hosted zone in Account A. Delete the association authorization in Account A.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案CE -> [ref](https://docs.aws.amazon.com/zh_cn/Route53/latest/DeveloperGuide/hosted-zone-private-associate-vpcs-different-accounts.html)
+
+    </details>
+
 61. A solutions architect is designing a publicly accessible web application that is on an Amazon Cloudfront distribution with anAmazon website endpoint as the origin. When the solution is deployed,the website returns an Error 403 :Access Denied message. Which steps should the solutions architect take to correct the issue?(Select nVC))
     - [ ] A. Remove the S3 block public access option from the S3 bucket
     - [ ] B. Remove the requester pays option from the S3 bucket
