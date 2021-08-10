@@ -59,7 +59,7 @@
 
    </details>
   
-5. A company recently transformed its legacy infrastructure provisioning scripts to AWS CloudFormation templates. The newly developed templates are hosted in the company’s private GitHub repository. Since adopting Cloud Formation, the company has encountered several issues with updates to the CloudFormation templates, causing failed executions or creating unstable environments, Management is concerned by the increase in errors and has asked a Solutions Architect to design the automated testing of CloudFormation template updates. What should the solutions architect do to meet these requirements?
+5. A company recently transformed its legacy infrastructure provisioning scripts to AWS CloudFormation templates. The newly developed templates are hosted in the company’s private GitHub repository. Since adopting CloudFormation, the company has encountered several issues with updates to the CloudFormation templates, causing failed executions or creating unstable environments, Management is concerned by the increase in errors and has asked a Solutions Architect to design the automated testing of CloudFormation template updates. What should the solutions architect do to meet these requirements?
    - [ ] A. Use AWS CodePipeline to create a change set from the CloudFormation templates stored in the private GitHub repository. Execute the change set using AWS CodeDeploy. Include a CodePipeline action to test the deployment with testing scripts run by AWS Code Build.
    - [ ] B. Mirror the GitHub repository to AWS CodeCommit using AWS Lambda. Use AWS CodeDeploy to create a change set from the CloudFormation templates and execute it. Have CodeDeploy test the deployment with testing scripts rebuild.
    - [ ] C. Use AWS CodePipeline to create and execute a change set from the CloudFormation templates stored in the private GitHub repository. Configure a CodePipeline action to test the deployment with testing scripts run by AWS CodeBuild.
@@ -116,7 +116,7 @@
    </details>
 
 9. A company currently has data hosted in an IBM Db2 database. A web application calls an API that runs stored procedures on the database to retrieve user information data that is read-only. This data is historical in nature and changes daily. When a user logs in to the application his data needs to be retrieved within 3 seconds. Each me a user logs in, the stored procedures run. Users log in several times a day to check stock prices. Running this database has become cost-prohibitive due to Db2 CPU licensing. Performance goals are not being met. Timeouts from Db2 are common due to long running queues. Which approach should a Solutions Architect take to migrate this solution to AWS?
-   - [ ] A. Rehost the Db database in Amazon Fargate Migrate all e data Enable caching in Fargate. Refactor the API to use the Fargate Db2 database Implement Amazon API Gateway and enable API caching.
+   - [ ] A. Rehost the Db database in Amazon Fargate. Migrate all e data Enable caching in Fargate. Refactor the API to use the Fargate Db2 database. Implement Amazon API Gateway and enable API caching.
    - [ ] B. Use AWS DMS to migrate data to Amazon DynamoDB using a continuous replication task. Refactor the API to use the DynamoDB data. Implement the refactored API in Amazon API Gateway and enable API.
    - [ ] C. Create a local cache on the mainframe to store query outputs. Use SFTP to sync to Amazon S3 daily. Refactor the API to use Amazon EFS. implement Amazon API Gateway and enable API caching.
    - [ ] D. Extract data daily and copy the data to AWS snowball for storage on Amazon S3 .Sync daily, Refactor the API to use the S3 data, Implement Amazon API Gateway and enable API caching.
@@ -154,6 +154,7 @@
     <details>
        <summary>Answer</summary>
 
+       A&D. AWS Org operating in all features mode, to be able to use SCP with deny list (blacklist).
        OU的正常操作，答案AD
 
     </details>
@@ -326,7 +327,7 @@
        - [x] A. 正确
        - [x] B. 正确
        - [ ] C. 如果能看见代码依然不安全
-       - [ ] D. 光在管理账户上设置SCP显然不够
+       - [ ] D. 不能一棍子全打死
        - [ ] E. AWS Shield Advanced压根儿就不管这事儿
   
     </details>

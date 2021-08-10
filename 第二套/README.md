@@ -728,8 +728,8 @@
     </details>
 
 51. A team has just received a task to build an application that needs to recognize faces in streaming videos. They will get the source videos from a third party which use a container format (MKV). The APP should be able to quickly address faces through the video in real time and save the output in a suitable manner for downstream to process. As recommended by the AWS Solutions Architect colleague, they would like to develop the service using AWS Rekognition. Which below options are needed to accomplish the task? Select 3.
-    - [ ] A. S3 buckets to store the source NIKV videos for AWS Rekognition to process. S3 should be used in this case as it has provided an unlimited, highly available and durable storing space. Make sure that the third party has the write access to S3 buckets.
-    - [ ] B. A Kinesis video stream for sending streaming video to Amazon Rekognition Video. This can be done by using Kinesis*utMedia API in Java SDK. The PutMedia operation writes video data fragments into a Kinesis video stream that Amazon Rekognition Video consumes.
+    - [ ] A. S3 buckets to store the source MKV videos for AWS Rekognition to process. S3 should be used in this case as it has provided an unlimited, highly available and durable storing space. Make sure that the third party has the write access to S3 buckets.
+    - [ ] B. A Kinesis video stream for sending streaming video to Amazon Rekognition Video. This can be done by using KinesisPutMedia API in Java SDK. The PutMedia operation writes video data fragments into a Kinesis video stream that Amazon Rekognition Video consumes.
     - [ ] C. An Amazon Rekognition Video stream processor to manage the analysis of the streaming video. It can be used to start, stop, and manage stream processors according to needs.
     - [ ] D. Use EC2 or Lambda to call Rekognition APIfietectFaces with the source videos saved in S3 bucket. For each face detected, the operation returns face details. These details include a bounding box of the face, a confidence value, and a fixed set of attributes such as facial landmarks, etc.
     - [ ] E. After the APP has utilized Rekognition API to fetch the recognized faces from live videos, use S3 or RDS database to store the output from Rekognition. Another lambda can be used to post-process the result and present to UI.
@@ -746,7 +746,7 @@
     - [ ] A. Update the AWS Organizations feature and then create a Service Control Policies (SCP) to Prevent Users from Disabling AWS CloudTrail. This can be achieved by a deny policy with cloudtrail:StopLogging denied.
     - [ ] B. This can be achieved by Service Control Policies (SCP). The team needs to delete and recreate the AWS Organizations with features?enabled and then use a proper control policy to limit the operation of cloudtrail: StopLogging.
     - [ ] C. In each AWS account in this organization, create an IAM policy to deny cloudtrail:StopLogging for all users including administrators.
-    - [ ] D. Use a Service Control Policies (SCP) to prevent users from disabling AWS CloudTrail. This can be done by a allow policy which denies cloudtrail:StopLogging
+    - [ ] D. Use a Service Control Policies (SCP) to prevent users from disabling AWS CloudTrail. This can be done by a allow policy which denies cloudtrail:StopLogging.
 
     <details>
        <summary>Answer</summary>
@@ -772,7 +772,7 @@
     - [ ] A. Put the source data to S3 and migrate the processing service to an AWS EMR Hadoop cluster with Cascading. Enable EMR to directly read and query data from S3 buckets. Write the output to RDS database
     - [ ] B. Put the source data to a Kinesis stream and migrate the processing service to AWS lambda to utilize its scaling feature. Enable lambda to directly read and query data from Kinesis stream. Write the output to RDS database
     - [ ] C. Put the source data to a S3 bucket and migrate the processing service to AWS EC2 with auto scaling. Ensure that the auto scaling configuration has proper maximum and minimum number of instances. Monitor the performance in Cloudwatch dashboard. Write the output to DynamoDB table for downstream to process.
-    - [ ] D. Put the source data to a Kinesis stream and migrate the processing service to an AWS EMR cluster with Cascading. Enable ENIR to directly read and query data from Kinesis streams. Write the output to Redshift.
+    - [ ] D. Put the source data to a Kinesis stream and migrate the processing service to an AWS EMR cluster with Cascading. Enable EMR to directly read and query data from Kinesis streams. Write the output to Redshift.
 
     <details>
        <summary>Answer</summary>
@@ -783,9 +783,9 @@
 
 55. An Artificial Intelligence startup company has used lots ofEC2 instances. Some instances use SQL Server database while the others use Oracle. As the data needs to be kept secure, regular snapshots are required. They want SQL Server EBS volume to take snapshot every 12 hours. However, for Oracle, it only needs a snapshot every day. Which option below is the best one that the company should choose without extra charge?
     - [ ] A. Use free third-party tool such as Clive to Manage EC2 instance lifecycle. It can design various backup policies for EC2 EBS volumes. Add a 12-hour backup policy to SQL Server EBS volumes and a 24-hour backup policy to Oracle EBS volumes.
-    - [ ] B. Add a prefix to the name of both SQL Server and Oracle EBS volumes. In AWS Data Lifecycle Management console, create two management policies based on the name prefix. For example, add a 12-hour backup schedule to EBS volumes with a name starting with SQL and add a 24-hour backup schedule to EBS volumes with a name starting with oracle?
+    - [ ] B. Add a prefix to the name of both SQL Server and Oracle EBS volumes. In AWS Data Lifecycle Management console, create two management policies based on the name prefix. For example, add a 12-hour backup schedule to EBS volumes with a name starting with SQL and add a 24-hour backup schedule to EBS volumes with a name starting with oracle.
     - [ ] C. Create a dedicate Lambda function to differentiate EC2 EBS volumes and take snapshots. Set up Cloudwatch Events Rules to call the lambda so that the function runs every 12 hours for SQL Server and 24 hours for Oracle.
-    - [ ] D. Add different tags for SQL Server and Oracle EBS volumes. In AWS Data Lifecycle Management console, create two management policies based on the tags. Add a 12-hour schedule to SQL Server lifecycle policy and a 24 hours schedule to Oracle lifecycle policy
+    - [ ] D. Add different tags for SQL Server and Oracle EBS volumes. In AWS Data Lifecycle Management console, create two management policies based on the tags. Add a 12-hour schedule to SQL Server lifecycle policy and a 24 hours schedule to Oracle lifecycle policy.
 
     <details>
        <summary>Answer</summary>
@@ -798,7 +798,7 @@
     - [ ] A. Add the corresponding error codes (400 and 500) on the Integration Response in API gateway
     - [ ] B. Add the corresponding error codes (400 and 500) on the Method Response in API gateway.
     - [ ] C. Put the mapping logic into Lambda itself so that when exception happens, error codes are returned at the same time in a JSON body.
-    - [ ] D. Add Integration Responses where regular expression patterns are set such as BadRequest or InternalError. Associate them with HTTP status codes
+    - [ ] D. Add Integration Responses where regular expression patterns are set such as BadRequest or InternalError. Associate them with HTTP status codes.
     - [ ] E. Add Method Responses where regular expression patterns are set such as BadRequest or InternalError. Associate them with HTTP status codes 400 and 500.
 
     <details>
@@ -813,7 +813,7 @@
     - [ ] B. Modify the security group of the EC2 instance to limit the outbound actions to the VPC Endpoint if the outgoing traffic destination is the S3 bucket "my bucket'".
     - [ ] C. In the S3 bucket "my bucket", add a S3 bucket policy in which all actions are denied if the source IP address is not equal to the EC2 public IP (use "NotIpAddress" condition).
     - [ ] D. For the S3 bucket "my bucket", use a S3 bucket policy that denies all actions if the source VPC Endpoint is no equal to the endpoint ID that is created.s
-    - [ ] E. Create a S3 bucket policy in the S3 bucket "my bucket" which denies all actions unless the source IP address is equal to the EC2 public IP (use "lpAddress" condition).
+    - [ ] E. Create a S3 bucket policy in the S3 bucket "my bucket" which denies all actions unless the source IP address is equal to the EC2 public IP (use "IpAddress" condition).
 
     <details>
        <summary>Answer</summary>
@@ -871,7 +871,11 @@
     <details>
        <summary>Answer</summary>
 
-       简单题，答案AD
+       - [x] A. 根部访问始终是圣杯，需要不惜一切代价加以保护，正确
+       - [ ] B. 虽然这是正确的，但它并不完整。需要使用AWS组织
+       - [ ] C. 这是不需要的。
+       - [x] D. 正确
+       - [ ] E. 虽然这是正确的，但它不像AWS组织那样可以扩展。
 
     </details>
 
@@ -1018,7 +1022,7 @@
     - [ ] A. Create a DynamoDB global table to replicate data between us-east-1 and eu-west-1. Enable continuous backup on the DynamoDB table in us-east-1. Enable versioning on the S3 bucket.
     - [ ] B. Create an AWS Lambda function triggered by Amazon CloudWatch Events to make regular backups of the DynamoDB table. Set up S3 cross-region replication from us-east-1 to eu-west-1. Set up MFA delete on the S3 bucket in us-east-1.
     - [ ] C. Create a DynamoDB global table to replicate data between us-east-1 and eu-west-1. Enable versioning on the S3 bucket. Implement strict ACLs on the S3 bucket.
-    - [ ] D. Create a DynamoDB global table to replicate data between us-east-1 and eu-west-1. Enable continuous backup on the DynamoDB table in us-east-1. Set up S3 cross-region replication from us-east-1 to ell-west-1.
+    - [ ] D. Create a DynamoDB global table to replicate data between us-east-1 and eu-west-1. Enable continuous backup on the DynamoDB table in us-east-1. Set up S3 cross-region replication from us-east-1 to eu-west-1.
 
     <details>
        <summary>Answer</summary>
@@ -1118,7 +1122,7 @@
 
 79. A company has a website that enables users to upload videos. Company policy states that the uploaded videos must be analyzed for restricted content. An uploaded video is placed in Amazon S3, and a message is pushed to an Amazon SQS queue with the video's location. A backend application pulls this location from Amazon SQS and analyzes the video. The video analysis is compute-intensive and occurs sporadically during the day. The website scales with demand. The video analysis application runs on a fixed number of instances. Peak demand occurs during the holidays, so the company must add instances to the application during this time. All instances used are currently on-demand Amazon EC2 T2 instances. The company wants to reduce the cost of the current solution. Which of the following solutions is MOST cost-effective?
     - [ ] . Keep the website on T2 instances. Determine the minimum number of websites instances required during off-peak times and use Spot Instances to cover them while using Reserved instances to cover peak demand. Use EC2 R4 and Amazon EC2 R5 Reserved Instances in an Auto Scaling group for the video analysis application.
-    - [ ] B. Keep the website on T 2 instances. Determine the minimum number of websites instances required during off-peak times and use Reserved instances to cover them while using On-Demand Instances to cover peak demand. Use Spot Fleet for the video analysis application comprised of Amazon EC2 C4 and Amazon EC2 C5 Spot Instances.
+    - [ ] B. Keep the website on T2 instances. Determine the minimum number of websites instances required during off-peak times and use Reserved instances to cover them while using On-Demand Instances to cover peak demand. Use Spot Fleet for the video analysis application comprised of Amazon EC2 C4 and Amazon EC2 C5 Spot Instances.
     - [ ] C. Migrate the website to AWS Elastic Beanstalk and Amazon EC2 C4 instances. Determine the minimum number of website instances required during off-peak times and use On-Demand Instances to cover them while using Spot capacity to cover peak demand. Use Spot Fleet for the video analysis application comprised of C4 and Amazon EC2 C5 instances.
     - [ ] D. Migrate the website to AWS Elastic Beanstalk and Amazon EC2 R4. Instances. Determine the minimum number of website instances required during off-peak times and use Reserved instances to cover them while using On-Demand instances to cover peak demand. Use Spot Fleet for the video analysis application comprised of R4 and Amazon EC2 R5 instances.
 
@@ -1194,14 +1198,14 @@
     <details>
        <summary>Answer</summary>
 
-       AB都无法使用客户自己创建的密匙，D看着好麻烦，答案C
+       `$ aws kms create-key --origin EXTERNAL --region us-east-1` 答案C -> [ref](https://aws.amazon.com/cn/blogs/security/how-to-byok-bring-your-own-key-to-aws-kms-for-less-than-15-00-a-year-using-aws-cloudhsm/)
 
     </details>
 
 85. A company has several teams, and each team has their own Amazon RDS database that totals 100 TB The company is building a data query platform for Business Intelligence analysts to generate a weekly business report. The new system must run ad-hoc SQL queries. What is the MOST cost-effective solution?
-    - [ ] A. Create a new Amazon Redshift cluster. Create an AWS Glue ETL job to copy data from the RDS databases to the amazon Redshift cluster Use Amazon Redshift to run the query
-    - [ ] B. Create an Amazon EMR cluster with enough core nodes Run an Apache Spark job to copy data from the RDS databases to an Hadoop Distributed File System(HDFS). Use a local Apache Hive MetaStore to maintain the table definition. Use Spark SQL to run the query
-    - [ ] C. Use an AWS Glue ETL job to copy all the RDS databases to a single Amazon Aurora Postgresql database Run SQL queries on the Aurora Postgresql database
+    - [ ] A. Create a new Amazon Redshift cluster. Create an AWS Glue ETL job to copy data from the RDS databases to the amazon Redshift cluster. Use Amazon Redshift to run the query.
+    - [ ] B. Create an Amazon EMR cluster with enough core nodes. Run an Apache Spark job to copy data from the RDS databases to an Hadoop Distributed File System(HDFS). Use a local Apache Hive MetaStore to maintain the table definition. Use Spark SQL to run the query
+    - [ ] C. Use an AWS Glue ETL job to copy all the RDS databases to a single Amazon Aurora Postgresql database. Run SQL queries on the Aurora Postgresql database.
     - [ ] D. Use an AWS Glue crawler to crawl all the databases and create tables in the AWS Glue Data Catalog. Use an AWS Glue ETL job to load data from the RDS databases to amazon S3 and use amazon Athena to run the queries.
 
     <details>
@@ -1231,9 +1235,9 @@
     </details>
 
 87. A company has a website that enables users to upload videos. Company policy states the uploaded videos must be analyzed for restricted content. An uploaded video is placed in Amazon S3, and a message is pushed to an Amazon SQS queue with the video’s location. A backend application pulls this location from Amazon SQS and analyzes the video. The video analysis s compute-intensive and occurs sporadically during the day. The website scales with demand. The video analysis application runs on a fixed number of instances. Peak demand occurs during the holidays, so the company must add instances to the application during this time, all instances used are current on-demand Amazon EC2 T2 instances. The company wants to reduce the cost of the current solution. Which of the following solutions is MOST cost-effective?
-    - [ ] A. Keep the website on T2 instances. Determine the minimum number of website instances required during off-peak times and use Spot Instances to cover them while using Reserved instances to cover peak demand. Use Amazon EC2 R4 and Amazon EC2 R5 Reserved Instances in an Auto Scaling group for the video analysis application
-    - [ ] B. Keep the website on T2 instances Determine the minimum number of website instances required during of-peak times and use Reserved Instances to cover them while using On-Demand instances to cover peak demand. Use Spot Fleet for the video analysis application comprised of Amazon EC2 C4 and Amazon EC2 C5 Spot Instances
-    - [ ] C. Migrate the website to Aws Elastic Beanstalk and Amazon EC2 C4 instances Determine the minimum number of website instances required during off-peak times and use On-Demand Instances to cover them while using Spot capacity to cover peak demand, Use Spot Fleet for the video analysis application comprised of C4 and Amazon EC2 C5 stances
+    - [ ] A. Keep the website on T2 instances. Determine the minimum number of website instances required during off-peak times and use Spot Instances to cover them while using Reserved instances to cover peak demand. Use Amazon EC2 R4 and Amazon EC2 R5 Reserved Instances in an Auto Scaling group for the video analysis application.
+    - [ ] B. Keep the website on T2 instances Determine the minimum number of website instances required during of-peak times and use Reserved Instances to cover them while using On-Demand instances to cover peak demand. Use Spot Fleet for the video analysis application comprised of Amazon EC2 C4 and Amazon EC2 C5 Spot Instances.
+    - [ ] C. Migrate the website to Aws Elastic Beanstalk and Amazon EC2 C4 instances Determine the minimum number of website instances required during off-peak times and use On-Demand Instances to cover them while using Spot capacity to cover peak demand, Use Spot Fleet for the video analysis application comprised of C4 and Amazon EC2 C5 stances.
     - [ ] D. Migrate the website to Aws Elastic Beanstalk and Amazon EC2 C4 instances Determine the minimum number of website instances required during off-peak times and use Reserved Instances to cover them while using On-Demand Instances to cover peak demand ,Use Spoor Fleet for the Video analysis application comprised ofR4 and Amazon EC2 R5 instances.
 
     <details>
@@ -1261,9 +1265,9 @@
 
     </details>
 
-89. A company is having issues with a newly deployed serverless infrastructure that uses Amazon API Gateway, Amazon Lambda, and Amazon DynamoDB. In a steady state, the application performs as expected. However, during peak load, tens of thousands of simultaneous invocations are needed, and user requests fail multiple times before succeeding. The compa1Y has checked the logs for each component, focusing specifically on Amazon CloudWatch Logs for Lambda. There are no errors logged by the services or applications. What might cause this problem?
-    - [ ] A. Lambda has vexy low memory assigned, which causes the function to fail at peak load
-    - [ ] B. Lambda is in a subnet that uses a NAT gateway to reach out to the internet, and the function instance does not have sufficient Amazon EC2 resources in the VPC to scale with the load
+89. A company is having issues with a newly deployed serverless infrastructure that uses Amazon API Gateway, Amazon Lambda, and Amazon DynamoDB. In a steady state, the application performs as expected. However, during peak load, tens of thousands of simultaneous invocations are needed, and user requests fail multiple times before succeeding. The company has checked the logs for each component, focusing specifically on Amazon CloudWatch Logs for Lambda. There are no errors logged by the services or applications. What might cause this problem?
+    - [ ] A. Lambda has vexy low memory assigned, which causes the function to fail at peak load.
+    - [ ] B. Lambda is in a subnet that uses a NAT gateway to reach out to the internet, and the function instance does not have sufficient Amazon EC2 resources in the VPC to scale with the load.
     - [ ] C. The throttle limit set on API Gateway is very low. During peak load, the additional requests are not making their way through to lambda.
     - [ ] D. DynamoDB is set up in an auto scaling mode. During peak load, DynamoDB adjusts capacity and throughput behind the scenes, which is causing the temporary downtime. Once the scaling completes the retries go through successfully.
   
@@ -1307,7 +1311,7 @@
     - [ ] A. Allow users to download solution code as Docker images. Use AWS CodeBuild and AWS CodePipeline for the CI/CD pipeline. Use Docker images for different solution features and the AWS CLI to turn features on and off. Use AWS CodeDeploy to run unit tests and security scans, and for deploying and updating a solution with changes.
     - [ ] B. Allow users to download solution code artifacts. Use AWS CodeCommit and AWS CodePipeline for the CL/CD pipeline. Use AWS Amplify plugins for different solution features and user prompts to tum features on and off. Use AWS Lambda to run unit tests and security scans, and AWS CodeBuild for deploying and updating a solution with changes.
     - [ ] C. Allow users to download solution code artifacts in their Amazon S3 buckets. Use Amazon S3 and AWS CodePipeline for the CI/CD pipelines. Use CloudFormation Stacksets for different solution features and to turn features on and off. Use AWS Lambda to run unit tests and security scans, and CloudFormation for deploying and updating a solution with changes.
-    - [ ] D. Allow users to download solution code artifacts Use AWS Code Commit and AWS CodePipeline for the CI/CD pipeline Use the AWS Cloud Development Kit constructs for different solution features, and use the manifest file to turn features on and off. Use AWS CodeBuild to run unit tests and security scans, and for deploying and updating a solution with changes.
+    - [ ] D. Allow users to download solution code artifacts. Use AWS Code Commit and AWS CodePipeline for the CI/CD pipeline Use the AWS Cloud Development Kit constructs for different solution features, and use the manifest file to turn features on and off. Use AWS CodeBuild to run unit tests and security scans, and for deploying and updating a solution with changes.
   
     <details>
        <summary>Answer</summary>
@@ -1332,11 +1336,11 @@
 
     </details>
 
-94. A Solutions Architect is building a containerized NET Core application that will run in AWS Fargate The backend of the application requires Microsoft SQL Server with high availability All tiers of the application must be highly available. The credentials used for the connection string to SQL Server should not be stored on disk within the .NET Core front-end containers. Which strategies should the Solutions Architect use to meet these requirements?
+94. A Solutions Architect is building a containerized .NET Core application that will run in AWS Fargate The backend of the application requires Microsoft SQL Server with high availability All tiers of the application must be highly available. The credentials used for the connection string to SQL Server should not be stored on disk within the .NET Core front-end containers. Which strategies should the Solutions Architect use to meet these requirements?
     - [ ] A. Set up SQL Server to run in Fargate with Service Auto Scaling. Create an Amazon ECS task execution role that allows the Fargate task definition to get the secret value for the credential to SQL Server running in Fargate. Specify the ARN of the secret in AWS Secrets Manager in the secrets section of the Fargate task definition So the sensitive data can be injected into the containers as environment variables struct the connection string. Set up the .NET Core service on startup for reading into the application toing Service Auto Scaling behind an Application Load Balancer in multiple Availability Zones.
     - [ ] B. Create a Multi-AZ deployment of SQL Server on Amazon RDS. Create a secret in AWS Secrets Manager for the credentials to the RDS database. Create an Amazon ECS task execution role that allows the Fargate task definition to get the secret value for the credentials to the RDS database in Secrets Manager. Specify the ARN of the secret in Secrets Manager in the secrets section of the Fargate task definition so the sensitive data can be injected into the containers as environment variables on startup for reading into the application to construct the connection string Set up the .NET Core service in Fargate using Service Auto Scaling behind an Application Load Balancer in multiple Availability Zones.
-    - [ ] C. Create an Auto Scaling group to run SQL Server on Amazon EC2. Create a secret in AWS Secrets Manager for the credentials to SQL Server running on EC2. Create an Amazon ECS task execution role that allows the Fargate task definition to get the secret value for the credentials to SQL Server on EC2 Specify the ARN of the secret in Secrets Manager in the secrets section of the Fargate task definition so the sensitive data can be injected into the containers as environment variables on startup for reading into the application to construct the connection string Set up the. NET Core service using Service Auto Scaling behind an Application Load Balancer in multiple Availability Zones.
-    - [ ] D. Create a Multi-AZ deployment of SQL Server on Amazon RDS. Create a secret in AWS Secrets Manager for the credentials to the RDS database. Create non-persistent empty storage for the .NET Core containers in the Fargate task definition to store the sensitive information. Create an Amazon ECS task execution role that allows the Fargate task definition to get the secret value for the credentials to the RDS database in Secrets Manager. Specify the ARN of the secret in Secrets Manager in the secrets section of the Fargate task definition so the sensitive data can be written to the. NET Core service using Service Auto Scaling Behind an Application Load Balancer in Multiple Availability Zones.
+    - [ ] C. Create an Auto Scaling group to run SQL Server on Amazon EC2. Create a secret in AWS Secrets Manager for the credentials to SQL Server running on EC2. Create an Amazon ECS task execution role that allows the Fargate task definition to get the secret value for the credentials to SQL Server on EC2 Specify the ARN of the secret in Secrets Manager in the secrets section of the Fargate task definition so the sensitive data can be injected into the containers as environment variables on startup for reading into the application to construct the connection string Set up the .NET Core service using Service Auto Scaling behind an Application Load Balancer in multiple Availability Zones.
+    - [ ] D. Create a Multi-AZ deployment of SQL Server on Amazon RDS. Create a secret in AWS Secrets Manager for the credentials to the RDS database. Create non-persistent empty storage for the .NET Core containers in the Fargate task definition to store the sensitive information. Create an Amazon ECS task execution role that allows the Fargate task definition to get the secret value for the credentials to the RDS database in Secrets Manager. Specify the ARN of the secret in Secrets Manager in the secrets section of the Fargate task definition so the sensitive data can be written to the .NET Core service using Service Auto Scaling Behind an Application Load Balancer in Multiple Availability Zones.
   
     <details>
        <summary>Answer</summary>

@@ -30,7 +30,7 @@ option = {
   },
   xAxis: {
     type: "category",
-    data: ["8/2", "8/4", "8/5", "8/8", "8/9"],
+    data: ["8/2", "8/4", "8/5", "8/8", "8/9", "8/10"],
   },
   yAxis: {
     type: "value",
@@ -40,11 +40,11 @@ option = {
   },
   series: [
     {
-      data: [84, 84, 72, 92, 66.67],
+      data: [84, 84, 72, 92, 66.67, 85.33],
       type: "line",
       markLine: {
         symbol: ["none", "none"],
-        label: { show: false },
+        label: { show: true },
         data: [{ yAxis: 72 }],
       },
     },
