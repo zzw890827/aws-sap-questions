@@ -1149,106 +1149,269 @@
 
     </details>
 
-81. A company is using an existing orchestration tool to manage thousands of Amazon EC instances. A recent penetration test found a vulnerability in the companys software stack. This vulnerability has prompted the company to perform a full evaluation of its current production environment. The analysis determined that the followin ulnerabilities exist within the environment: -Operating systems with outdated libraries and known ulner abilities are being used in production. -Relational databases hosted and managed by the company are running unsupported versions with known vulnerabilities -Data stored in databases is not encrypted. The solutions architect intends to use AWS Contig to continuously audit and assess the compliance of the company AWS resource configurations with the company policies and guidelines. What additional steps will enable the company to secure its environments and track resources while adhering to best practices?
-    - [ ] A. Use AWS Application Discovery Service to evaluate all running EC2 instances. Use the AWS CLI to modify each instance, and use EC2 user data to install the AWS Systems Manager Agent during boot. Schedule patching to run as a Systems Manager Maintenance Windows task. Migrate all relational databases to Amazon RDS and enable AWS KMS encryption
-    - [ ] B. Create an AWS Cloudformation emplate for the EC instances Use EC user data in the Cloudformation template to install the AWS Systems Manager Agent, and enable AWS KMS encryption on all Amazon EBS volumes. Have Cloudformation replace all running instances Use Systems Manager Patch Manager to establish a patch baseline and deploy a Systems Manager Maintenance Windows task to execute Aws-runpatchbaseline using the pat
-    - [ ] C. Install the AWS Systems Manager Agent on all existing instances usin the company urrent orchestration tool. Use the Systems Manager Run Command to execute a list of commands to upgrade software on each instance using operating system-specific tools Enable AWS KMS encryption on all Amazon EBS volumes
-    - [ ] D. Install the AWS Systems Manager Agent on all existing instances sin the ompany rent orchestration tool Migrate all relational databases to Amazon RDS and enable AWS KMS encryption. Use Systems Manager Patch Manager to establish a patch baseline and deploy a Systems Manager Maintenance Windows task to execute Aws-runpatchbaseline using the patch baseline
-82. A company has many services running in its on-premises data center. The data center is connected to AWS using AWS Direct Connect(D)and an Ipsec VPN The service data is sensitive and connectivity cannot traverse the internet The company wants to expand into a new market segment and begin offering its services to other companies that are using AWS Which solution will meet these requirements?
-A8. Create a VPC Endpoint Service that accepts TCP trafic, host it behind a Network Load Balancer and make the service available over DX
-    - [ ] B.createavpcendpointservicethatacceptshttporhttpstraffichostitbehindanapplicationLoadBalancer,andmaketheserviceavailableoverDX
-    - [ ] C. Attach an internet gateway to the VPC, and ensure that network access control and security group rules allow the relevant inbound and outbound traffic
-    - [ ] D. Attach a NAI gateway to the VPC, and ensure that network access control and security group rules allow the relevant inbound and outbound traffic
-83. A company has a VPC with two domain controllers running Active Directory in the default configuration. The PC DHCP options set is configured to use the IP addresses of the two domain controllers. There is a VPC interface endpoint defined; but instances within the PC are not able to resolve the private endpoint addresses. Which strategies would resolve this issue?(Choose two
-    - [ ] A. Define an outbound Amazon Route 53 Resolver. Set a conditional forward rule for the Active Directory domain to the Active Directory servers. Update the VPC DHCP options set to Amazonprovideddns
-    - [ ] B. Update the DNS service on the Active Directory servers to forward all non-authoritative queries to the VPC Resolver
-    - [ ] C. Define an inbound Amazon Route 53 Resolver. Set a conditional forward rule for the Active Directory domain to the Active Directory servers. Update the VPC DHCP options set to Amazonprovideddns
-    - [ ] D. Update the DNS service on the client instances to split DNS queries between the Active Directory servers and the VPC Resolver
-    - [ ] E. Update the DNS service on the Active Directory servers to forward all queries to the VPC Resolver
-84. A fitness tracking company serves users around the world, with its primary markets in North America and Asia. The company needs to design an infrastructure for its read-heavy user authorization application with the following requirements Be resilient o problem wt te application in any Reio-wie o a database in a nle Re inread from mltiple Re ions-upport resiliency across application tiers in each Region-support the relational database semantics reflected in the application Which combination of steps should a solutions architect take?(Select TWO)
-    - [ ] A. Use an Amazon Route 53 geoproximiy outing policy combined with a multivalue answer routing policy
-    - [ ] B. Deploy web, application, and MYSQL database servers to Amazon EC2 instances in each Region Set up the application so that reads and writes are local to the Region Create snapshots of the web application, and database servers and store the snapshots in an Amazon S3 bucket in both Regions Set up cross-region replication for the database laye
-    - [ ] C. Use an Amazon Route 53 geolocation routing policy combined with a failover routing policy
-    - [ ] D. Set up web, application, and Amazon RDS for MYSQL instances in each Region Set u the application o that reads are local and writes are partitioned ased on the user Set p a Multi-az failover for the web application and database servers. Set up cross-region replication for the database layer. Set up active-active web and application servers in each Region Deploy an Amazon Aurora global database with clusters in each Region Set up the application to use the in-region Aurora database endpoints. Create snapshots of the web and application servers and store them in an Amazon S3 bucket in both Regions.
-85. A company is planning on hosting its ecommerce platform on AWS ing a multi-tier web application designed for a NOSQ database The company plans to use the us-west-2 Region as its primary Region. The company wants to ensure that copies of the application and data are available in second Region, us-west-l, for disaster recovery. The company wants to keep the time to fail over as low as possible. Failing back to the primary Region should be possible without administrative interaction after the primary service is restored. Which design should the solutions architect use?
-    - [ ] A. Use AWS Cloudformation Stacksets to create the stacks in both Regions with Auto Scaling groups for the web and appliation tiers. Asynchronously replicate static content between Regions using Amazon $3 cross-region repication. Use an Amazon Route 53 DNS failover routing policy to direct users to the secondary site in us-west-l in the event of an outage. Use Amazon Dynamodb global tables for the database tier
-    - [ ] B. Use Aw loudformation tacket o create e acks n o Regions with Auto caln roups for the web and application tiers As ncronously replicate static content between Regions using Amazon S3 cross-region repication. Use an Amazon Route 53 DNS failover routin policy to direct users to the secondary site in us- west-i in the event of an outage Deploy an Amazon Aurora global database for the database tier
-    - [ ] C. Use AWS Service Catalog to deploy the web and application servers in both Regions Asynchronously replicate static content between the two Regions using Amazon S3 cross-region replication. Use Amazon Route 53 health checks to identify a primary Region failure and update the public DNS entry listing to the secondary region in the event of an outage. Use Amazon RDS for MYSQL with cross-region replication for the database tier
-    - [ ] D. Use AWS Cloudformation Sackets to create the stacks in both Regions usin Auto Scaling groups for the web and application tiers. As nchronusly replicate static content between Regions using Amazon S3 cross-region replication. Use Amazon Cloudfront with static files in Amazon $3, and multi-region origins for the front-end web tier. Use Amazon Dynamodb tables in each Region with scheduled backups to Amazon S3
-86. A company wants to host a global web application on AWS. It has the following design requirements: - -The access pattern must allow for fetching data from multiple data sources--minimize the cost of API calls--keep page load times to within 50 ms--provide user authentication and authorization and manage data access for different user-personas(for example, administrator, anager, or engineer)--use a serverless design Which set of strategies should a solutions architect use? A Use Amazon loudon w Amazon o ot he web applation e Amazon API Gaw o ld e alatona w AWS Mbda for e stom arizer Atorze data access by performin user look in Smple ADB Use Amazon Cloudfront with AWS WAF to ost the web application Use AWS Apsyn to build the application APIS.Use AM groups for each user persona. Authorize data access by leveraging Lamgroups in Awsappsync resolvers
-    - [ ] C. Use Amazon Cloudfront with Amazon 3 o ost he web application. Use Awsappsyn o build the application A. Use Amazon ognio groups for each user persona. Authorize data access by leveraging Amazon Cognito groups in AWS Appsync resolvers
-    - [ ] D. Use Aw Direct onnect with Amazon to host the web application. Use Amazon API Gateway to build the application Apl. e Aw ambda for usom autentication and authorization Authorize data access by leveraging IAM role
-87. A startup company recently migrated a large ecommerce website to AWS The website has experienced a 70% increase in sales Sofware engineers are using a private Github repository to manage code. The devops team is using Jenkins for builds and unit testing Thneers need to recnotifications for bad builds and zero downtime during deployments The engineers also need to ensure any changes to production are seamless for users and can be rolled back in the event of a major issue. The software engineers have decided to use AWS Codepipeline to manage their build and deployment process which solution will meet these requirements?
-    - [ ] A. Use Github websockets o trigger the deeline eline Use the Jenkins p u n for Would o ont it stin Send alert o an Amazon SNS topic for any bad builds Deploy inan in-place, all-at once deployment configuration using AWS Codedeplo
-    - [ ] B. Use Github ebooks to trigger e odeppeline pipeline. se the Jenkins plugin for AWS Codebuild to conduct unit testing. Send alerts to an Amazon SNS topic for any bad builds Deploy in a blue green deployment using AWS Codedeploy
-    - [ ] C. Use Github websockets to trigger the Codepipeline pipeline Use Awsx-ray for unit sting and static code analysis. Send alerts to an Amazon SNS topic for any bad builds Deploy in a blue rende ployment using AWS Coded
-    - [ ] D. Use Github ebooks to trigger the Codepieline pipeline Use AWS Ra for unit estin and atic ode analysis endalerts o an Amazon SNS oi for an bad build. Deploy in an in place, It-at-once deployment configuration using AWS Codedeploy
-88. A company has developed a mobile game. The backend for the game runs on several virtual machines located in an on-premises data center. The business logic is exposed using a REST API with multiple functions Play I session data is stored in central file storage Backend services use different API keys for throttling and to distinguish between live and test traffic. The load on the game backend vanes throughout the day. During peak hou Is the server capacity is not sufficient. There are also latency issues when fetching player session data Management has asked a solutions architect to present a cloud architecture that can handle the games varying load and provide low-atency data access. The APT model should not be changed Which solution meets these requirements?
-    - [ ] A. Implement the REST API using a Network Load Balancer(NB ) Run the business logic on an Amazon EC2 instance behind the NB. Store player session data in Amazon Aurora Servere
-    - [ ] B. Implement the REST API using an Ap lication Load Balancer(ALB).Run the business logic in AWS Lambda Store player session data in Amazon Dynamodb with on demand capacity
-Implement the REST AP using Amazon AP Gateway Run the business logic in AWS Lambda Store player session data in Amazon Dynamodb with on-demand capacity
-    - [ ] D. Implement the REST API using AWS Appsync Run the business logic In AWS Lambda Store player session data in Amazon Aurora Serve
-89. A company hosts an application on Amazon EC instance and needs to store files in Amazon S3. The files should never traverse the public internet, and only the application EC2 instances are granted access to a specific Amazon 3 bucket. A solutions architect has created a P endpoint for Amazon 3 and connected the endpoint to the application PC Which additional steps should the solutions architect take to meet these requiremen
-    - [ ] A. Assign an endpoint policy to the endpoint that restricts access to a pecific S3 bucket. Attach a bucket policy to the S bucket that grants access to the VPC endpoint. Add the gateway prefix list to a NACL of the instances to limit access to the application EC2 instances only
-    - [ ] B. Attach a bucket policy to the $3 bucket that grants access to application EC instances only using the aw: Sourceip condition. Update the PC route table so only the application EC2 instances can access the VPC endpoint
-    - [ ] C. Assign an endpoint policy to the VP endpoint that restricts access to a specific 3 bucket At ach a bucket policy o the $3 bucket that grants access to the VP endpoint Assign an AM role to the application EC2 instances and only allow access to this role in the S3 buckets policy.
-    - [ ] D. Assign an endpoint policy to the PC endpoint that restricts access to $3 in the current Region Attach a bucket policy to the $3 bucket that grants access to the VPC private subnets only. Add the gateway prefix list to a NACL to limit access to the application EC2 instances only
-90. A company is migrating its three-tier web application from on-premises to the AWS loud. The company has the following requirements for the migration process: Ingest machine Images from the on-prermises environment -Synchronize changes from the on-promises envionment o the Aw enronment ntil the production cutover - Minmize downtime when ee tin the Production Cutover-mirate the virtual machines root olmes and data volumes which solution will satisfy these requirements with minimal operational overhead?
-    - [ ] A. Use Aw Server Migration Service(MS)to create and launch a replication job for ch er of the application Launch instances from the AMIS created by AWS MS After initial testing, perform a final replication and create new instances from the updated AMIS
-    - [ ] B. Create an AWS CI VM Import/Export script to migrate each virtual machine chele the script to run incrementally to maintain changes in the application aunch instances from the AMIS created by VM Impor/Export. Once testing is done, rerun the script to do a final import and launch the instances from the AMIS
-    - [ ] C. Use AWS Server Migration Service(SMS) o upload the operating system volumes. Use the AWS I import-napshot command for the data volume Launch instances from the AMIS created by AWS SMS and attach the date volumes to the instances. After initial testing, perform a final replication launch new instances from the replicated AMIS, and attach the data volumes to the instances
-    - [ ] D. Use AWS Application Discovery Service and AWS Migration Hub to group the virtual machines as an application. Use the AWS LI M Import Export script to import the virtural machines as AMIS. Schedule the script to runcrementally to maintain changes in the application aunch instances from the AMIS. After initial testing perform a final virtual machine import and launch new instances from the AMIS
-91. A Company has an application that sells tickets Online and experiences bursts of demand every 7 days. The application has a stateless presentation layer running on Amazon EC, an Oracle database to store unstructured data catalog Information, and a backend API layer. The front-end layer uses an Elastic Load Balancer to distribute the load across nine On-demand Instances over three Availability Zones(AZS). The Oracle database is running on a Single EC Instance. The company is experiencing performance issues when running more than two Concurrent campain A Solutions architect must design a solution that meets the following requirements-address Scalability Issues -Increase the level of concurrency-eliminate licensing costsimprove reliability which set of steps should the solutions architect take?
-    - [ ] A. Create an Auto Scaling group for the front end with a combination of On-demand and Spot Instances to reduce costs Convert the Oracle database into a single Amazon RDS reserved DB instance
-    - [ ] B. Create an Auto caling group for the front end with a combination of On-demand and Spotin stances to reduce costs Create two additional copies of the database instance, then distribute the databases in separate Azs
-    - [ ] C. Create an Auto Scaling group for the front end with a combination of On-demand and Spotinstances to reduce costs Convert the tables in the Oracle database into Amazon Dynamodb tables
-    - [ ] D. Convert the On-demand Instances into Spot Instances to reduce costs for the front end Convert the tables in the Oracle database into Amazon Dynamodb tables
-92. A developer reports receiving an Error 403 Access Denied message when they try to download an object from an Amazon S3 bucket. The $3 bucket is accessed using an $3 endpoint inside a VPC, and is encrypted with an AWS KMS key A solutions architect has verified that the developer is assumin e corret AM role in the account that allow the object to be downloaded. The 3 bucketpolicy and the NACL are also valid Which additional step should the solutions architect take to troubleshoot this issue?
-    - [ ] A. Ensure that blocking all public access has not been enabled in the $3 bucket
-    - [ ] B. Verity that the IAM role has permission to decrypt the referenced KMS ke
-    - [ ] C. Verify that the IAM role has the correct trust relationship configured
-    - [ ] D. Check that local firewall rules are not preventing access to the s3 endpoint
-93. A company is elon a blic-fain al an n wn Amazon Co T aplan mmae w an external s em A solutions architect needs to ensure the data is secured during end-to end transit and at rest Which combination of steps will satisfy these requirements? (Select THREE)
-    - [ ] A. Create a public certificate for the required domain in AWS ertificate Manager and deploy it to Cloudfront, an Application Load Balancer, and Amazon EC2 instances
-    - [ ] B. Acquire a public certificate from a third-party vendor and deploy it to Cloudfront, an Applicationload Balancer and Amazon EC2 instances
-    - [ ] C. Provision Amazon EBS encrypted volumes using AWS KMS and ensure explicit encryption of data when writing to Amazon EBS
-    - [ ] D. Provision Amazon EBS encrypted volumes using AWS KMS
-    - [ ] E. Use SSL or encrypt data while communicating with the external system using a VPN
-    - [ ] F. Communicate with the external system using plaintext and use the VPN to encrypt the data in transit
-94. An enterprise companys data science team wants to provide a safe, cost-effective way to provide easy access to Amazon Sagemaker The data scientists have limited AWS knowledge and need to be able to launch a Jupyer notebook instance. The notebook instance needs to have a preconfigured AWS KMS key to encrypt data at rest on the machine learning storage volume without exposing the complex setup requirements Which approach will allow the company to set up a self-service mechanism for the data scientists to launch Jupyter notebooks in its Awsaccounts with the EAST amount of operational overhead?
-    - [ ] A. Create a serverless front end using a static Amazon $3 website to allow the data scientists to request a Jupyter notebook instance by filing out a form. Use Amazon API Gateway to receiver quests from the S3 website and trigger a central Aw ambda function to make an API all to Amazon Sagemaker that will anch a ebook nstance w a preconfigured KMS key for e data ientists. Then call back to the front-end website to display the URL to the notebook instance
-    - [ ] B. Create an AWS Cloudformation template to launch a upyter notebook instance sing the Aw: Sagemaker: Notebooknstance resource type with a preconfigured KMS key. Add a user-friendly name to the Cloudformation template Display the URL to the notebook using the Outputs section Distribute the Cloudformation template to the data scientists using a shared Amazon S3 bucket
-    - [ ] C. Create an Aw Cloudformation template to launch a Ju er notebook instance sin e AWS aemer No e oktane resoure ype w h a preconfigured KMS ke Simplify the parameter names, such as the instance ize, by mapping them to Small, Large, and X-large using the Mappings section n Cloudformation. Display the R to the notebook using the Outputs section, then upload the template into an AWS Service Catalog product in the data scientists portfolio, and share it with thedata scientist's LAM role
-    - [ ] D. reate an AWS C l crit hat he data ce ist can n local rvie se by- inston about the parameers o e provided while eutin the AWS I pt to launch a Jupyter notebook with a preconfigured KMS key Distribute the CII script to the data scientists using a shared Amazons3 bucket
-95. An enterprise company is building an infrastructure services platform for its users. The company has the followin requirements: Provide least privilege access to users when launching AWS infrastructure so users cannot provision unapproved services Use a central account to manage the creation of infrastructure service Provide the ability to distribute infrastructure services to multiple accounts in AWS Organizations -Provide the ability to enforce tags on any infrastructure that is started by users. Which combination of actions using AWS services will meet these requirements?(Choose three)
-    - [ ] A. Develop infrastructure services using AWS Cloud Formation templates. Add the templates to a central Amazon S3 bucket and add THE-IAM roles or users that require access to the S3 bucket policy
-    - [ ] B. Develop infrastructure services using AWS loud Formation template. pload each template as an AWS Service Catalog product to portfolios created in a central AWS account. Share these portfolios with the Organizations structure created for the company
-    - [ ] C. Allow user AM roles o have Awslouformaionfllacess and Amazon3readonly Access permission Add an Organizaions P at the AWS account root user level to deny all services except AWS Cloudformation and Amazon S
-    - [ ] D. Allow user IAM roles to have Service Catalogenduseraccess permissions only. e an automation rpt o mport he ntral portolios o local AWS accounts, copy the Tag Option assign users access and apply launch constrai
-    - [ ] E. Use the AWS Service Catalog Tag Option Library to maintain a list of tags required by the company. Apply the Tag Option to AWS Service Catalog products or portfolios
-    - [ ] F. Use the AWS Cloudformation Resource Tags property to enforce the application of tags to any Cloudformation templates that will be created for users
-96. A media company has a static web application that is generated programmatically The company as a build pipeline that enerate HTM content that is uploaded to an Amazon S3 bucket served by Amazon Cloudfront. The build pipeline ns inside a Build Account. The $3 bucket and lodron dition are n a Distion Accoun Te ild eline loads the les o S3 ing an AM role in the Build Account. The S3 bucket as a bucket policy that only allow louder to read objects in an orin acess ident(CA) Duin etin all atempt to aces e application in te odfront UR result in an HTIP403 Access Denied response What should a solutions architect suggest to the company to allow access the objects in Amazon S3 through Cloudfront?
-    - [ ] A Modify the $3 upload process in the Build Account to add the bucket-owner-full-control AOL to the objects at upload
-    - [ ] B. Create a new cross-account AM role in the Distribution Account with write access to the 83 bucket Modify the build pipeline to assume this role to upload the files to the Distribution Account
-    - [ ] C. Modify the $3 upload process in the Build Account to set the object owner to the Distribution Account
-    - [ ] D. Create a new AM role In the Distribution Account with read access to the 83 bucket. onur loudftont o use his new role a its OA Modify the build pipeline to assume this role when uploading fie from the Build Accou
-97. A Solutions architect is implementin Infrastructure as code for a two-tier web application in an AWS Cloudformation temate. The web frontend application will be deployed on Amazon EC2 instances in an Auto Scaling group. The backend database will be an Amazon RDS for MYSQ DB Instance. The database password will be rotated every 60 days How can the solutions architect MOST securely manage the configuration of the applications database credentials?
-    - [ ] A. Provide the database password as a parameter in the Cloudformation template. Create an initialization rpt in the Auto calin group s launch configuration Userdata property to reference to password parameter using the Ref intrinsic function Store the password on the EC2 instances Reference the parameter for the value of the Masteruserpassword property in the AWS RDS: Instance resource using the Ref intrinsic function
-    - [ ] B. Create a new AWS Secrets Manager secret resource in the Cloudformation template to be used as the database password. onfiure the application to retrieve the password from Secrets Manage when needed Reference the secret resource for the value of the Masteruserpassword property in the AWS RDS: Dblnstance resource using a dynamic reference
-    - [ ] C. Create a new AWS Secrets Manager secret resource in the Cloudformation template to be used as the database password Create an initialization script in the Auto Scaling groups launch configuration Userdata property to reference the secret resource using the Ref intrinsic function Reference the secret resource for the value of the Masteruserpassword property in the AWS RDS: Dninstance resource using the Ref intrinsic function
-    - [ ] D. Create a new AWS Systems Manager Parameter Store parameter in the Cloudformation emplate to be used as the database password Create an intalization script in the Auto Scaling group s launch configuration serdata property to reference the parameter Reference the parameter for the value of the Masteruserpassword property an the AWS RDS: Dbinstance resource using the Fn: Ge Att intrinsic function
-98. A weather service provides high-resolution weather maps from a web application hosted on AWS in the eu-west-l Region The weather maps are updated frequently and stored in Amazon S3 along with static HTML content. The web application is fronted by Amazon Cloudfront: The company recently expanded to serve users in the us-east-1 Region, and these new users report that viewing their respective weather maps is slow from time to time Which combination of steps will resolve the us-east-1 performance issues? (Select TWO)
-    - [ ] A. Configure the AWS Global Accelerator endpoint for the $3 bucket in eu-west-l Configure endpoint groups for TCP ports 80 and 443 in us-east-l
-    - [ ] B. Create a new $3 bucket in us-east-i Configure $3 cross-region replication to synchronize from the $3 bucket in eu-west-1
-    - [ ] C. Use Lambda(@Edge to modify requests from North America to use the S3 Transfer Acceleration endpoint in us-east-1
-    - [ ] D. Use Lambda(@Edge to modify requests from North America to use the S3 bucket in us-east-1
-    - [ ] E. Configure the AWS Global Accelerator endpoint for us-east-1 as an origin on the Cloudfront distribution Use Lambda(@Edge to modify requests from North America to use the new origin
-99. A company is using AWS Cloudformation as its deployment tool for all application. It stages all application binaries and templates within Amazon S3 bucket with versioning enable Developers have access to an Amazon EC2 instance that hosts the integrated development(DE). The Developers download the application inare from$3 to the E instance, make can es, and upload the binaries to an $3 bucket after running the unit locally. The developers want to improve the existing deployment mechanism and implement CI/D using AWS Codepipeline The developers have the following requirements: -Use AWS Code Commit for source control. -Automate unit testing and security scanning. Alert the Developers when unit tests fail -Turn application features on and off, and stomize deployment dynamically as part of CICD. -Have the lead Developer provide approval before deploying an application. Which solution will meet these requirements?
-    - [ ] A. Use AWS Code Build to run unit tests and ecurity cans Use an Amazon Eventbrdge rule to sendamazon NS alerts to the developers when unit tests fail. Write AWS Cloud Development Ki(AWS CDK)constructs for differnt solution features and use a manifest file o turn features on and off in the AWS CD application Use a manual approval stage in the pipeline to allow the lead developer to approve applications
-    - [ ] B. Use AWS ambda to run unit tests and security scans Use Lambda in a subsequent stage in the pipeline to send Amazon SNS alerts to the developers when unit tests fail. Write AWS Amplify plugins for different solution features and utilize user prompts to turn features on and off. Use Amazon SES in the pipeline to allow the lead developer to approve applications
-    - [ ] C. Use enkins to run unit tests and security scans Use an Amazon Eventbridge rule in the pipeline to send Amazon SES alerts to the developers when unit tests fail. Use AWS Cloudformation nested stacks for different solution features and parameters to turn features on and off. Use AWS Lambda in the pipeline to allow the lead developer to approve applications
-    - [ ] D. Use AWS Code Deploy to run unit tests and security cans Use an Amazon Clouwach alarm n the pipeine to end Amazon NS alerts o the developers when unit tests fail. Use Docker images for different solution features and the AWS CLI to turn features on and off Use a manual approval stage in the pipeline to allow the lead developer to approve applications
-100. An ecommerce website running on AWS uses an Amazon RDS for MYSQL DB instance with General Purpose SSD storage. The developers chose an appropriate instance type based on demand, and configured 100 GB f storage with a sufficient amount of free space. The website was running smoothly for a few weeks until a marketing campaign launched. On the second day of the campaign, users reported long wait times and time outs Amazon Cloudwatch metrics indicated that both reads and writes to the DB instance were experiencing lon response time. The Cloud Watch metrics how 50 PU and memory utilization, and sufficient free storage space is still available. The application server logs show no evidence of database connectivity issues. What could be the root cause of the issue with the marketing campaign?
-     - [ ] A. It exhausted the I/O credit balance due to provisioning low disk storage during the setup phase
-     - [ ] B. It caused the data in the tables to change frequently, requiring indexes to be rebuilt to optimize querie
-     - [ ] C. It exhausted the maximum number of allowed connections to the database instance exhausted the network bandwidth available to the RDS for MYSQL DB instance
+81. A company is using an existing orchestration tool to manage thousands of Amazon EC2 instances. A recent penetration test found a vulnerability in the companyג€™s software stack. This vulnerability has prompted the company to perform a full evaluation of its current production environment. The analysis determined that the following vulnerabilities exist within the environment: -Operating systems with outdated libraries and known vulnerabilities are being used in production. -Relational databases hosted and managed by the company are running unsupported versions with known vulnerabilities. -Data stored in databases is not encrypted. The solutions architect intends to use AWS Config to continuously audit and assess the compliance of the companyג€™s AWS resource configurations with the companyג€™s policies and guidelines. What additional steps will enable the company to secure its environments and track resources while adhering to best practices?
+    - [ ] A. Use AWS Application Discovery Service to evaluate all running EC2 instances Use the AWS CLI to modify each instance, and use EC2 user data to install the AWS Systems Manager Agent during boot. Schedule patching to run as a Systems Manager Maintenance Windows task. Migrate all relational databases to Amazon RDS and enable AWS KMS encryption.
+    - [ ] B.  Create an AWS CloudFormation template for the EC2 instances. Use EC2 user data in the CloudFormation template to install the AWS Systems Manager Agent, and enable AWS KMS encryption on all Amazon EBS volumes. Have CloudFormation replace all running instances. Use Systems Manager Patch Manager to establish a patch baseline and deploy a Systems Manager Maintenance Windows task to execute AWS-RunPatchBaseline using the patch baseline.
+    - [ ] C. Install the AWS Systems Manager Agent on all existing instances using the companyג€™s current orchestration tool. Use the Systems Manager Run Command to execute a list of commands to upgrade software on each instance using operating system-specific tools. Enable AWS KMS encryption on all Amazon EBS volumes.
+    - [ ] D. Install the AWS Systems Manager Agent on all existing instances using the companyג€™s current orchestration tool. Migrate all relational databases to Amazon RDS and enable AWS KMS encryption. Use Systems Manager Patch Manager to establish a patch baseline and deploy a Systems Manager Maintenance Windows task to execute AWS-RunPatchBaseline using the patch baseline.
+
+    <details>
+       <summary>Answer</summary>
+
+       这题先排除AC，B的话工程量巨大，答案D
+
+    </details>
+
+82. A company has many services running in its on-premises data center. The data center is connected to AWS using AWS Direct Connect (DX) and an iPSec VPN. The service data is sensitive and connectivity cannot traverse the internet. The company wants to expand into a new market segment and begin offering its services to other companies that are using AWS. Which solution will meet these requirements?
+    - [ ] A. Create a VPC Endpoint Service that accepts TCP trafic, host it behind a Network Load Balancer and make the service available over DX.
+    - [ ] B. Create a VPC Endpoint Service that accepts Http or Https traffic host. It behind an Application Load Balancer and make the service available over DX.
+    - [ ] C. Attach an internet gateway to the VPC, and ensure that network access control and security group rules allow the relevant inbound and outbound traffic.
+    - [ ] D. Attach a NAT gateway to the VPC and ensure that network access control and security group rules allow the relevant inbound and outbound traffic.
+
+    <details>
+       <summary>Answer</summary>
+
+       不能透过互联网，排除CD，ALB不能和DX链接，答案A
+
+    </details>
+
+83. A company has a VPC with two domain controllers running Active Directory in the default configuration. The VPC DHCP options set is configured to use the IP addresses of the two domain controllers. There is a VPC interface endpoint defined; but instances within the VPC are not able to resolve the private endpoint addresses. Which strategies would resolve this issue? (Choose two.)
+    - [ ] A. Define an outbound Amazon Route 53 Resolver. Set a conditional forward rule for the Active Directory domain to the Active Directory servers. Update the VPC DHCP options set to AmazonProvidedDNS.
+    - [ ] B. Update the DNS service on the Active Directory servers to forward all non-authoritative queries to the VPC Resolver.
+    - [ ] C. Define an inbound Amazon Route 53 Resolver. Set a conditional forward rule for the Active Directory domain to the Active Directory servers. Update the VPC DHCP options set to AmazonProvidedDNS.
+    - [ ] D. Update the DNS service on the client instances to split DNS queries between the Active Directory servers and the VPC Resolver.
+    - [ ] E. Update the DNS service on the Active Directory servers to forward all queries to the VPC Resolver.
+
+    <details>
+       <summary>Answer</summary>
+
+       AWS DNS被设置在DHCP选项中。AWS资源会因此而解析其他资源，但会通过一个出站解析器端点将AD域的查询转发给AD服务器。从内部访问AD服务器的用户会被推送到AWS解析器上的非权威性查询。答案AB
+
+    </details>
+
+84. A fitness tracking company serves users around the world, with its primary markets in North America and Asia. The company needs to design an infrastructure for its read-heavy user authorization application with the following requirements: -Be resilient to problem with the application in any Region. -Write to a database in a single Region. -Read from multiple Regions. -Support resiliency across application tiers in each Region. -Support the relational database semantics reflected in the application. Which combination of steps should a solutions architect take? (Choose two)
+    - [ ] A. Use an Amazon Route 53 geoproximity routing policy combined with a multivalue answer routing policy.
+    - [ ] B. Deploy web, application, and MySQL database servers to Amazon EC2 instance in each Region. Set up the application so that reads and writes are local to the Region. Create snapshots of the web, application, and database servers and store the snapshots in an Amazon S3 bucket in both Regions. Set up cross- Region replication for the database layer.
+    - [ ] C. Use an Amazon Route 53 geolocation routing policy combined with a failover routing policy.
+    - [ ] D. Set up web, application, and Amazon RDS for MySQL instances in each Region. Set up the application so that reads are local and writes are partitioned based on the user. Set up a Multi-AZ failover for the web, application, and database servers. Set up cross-Region replication for the database layer.
+    - [ ] E. Set up active-active web and application servers in each Region. Deploy an Amazon Aurora global database with clusters in each Region. Set up the application to use the in-Region Aurora database endpoints. Create snapshots of the web application servers and store them in an Amazon S3 bucket in both Regions.
+
+    <details>
+       <summary>Answer</summary>
+
+       这里使用极光，首先排除BD，E正确，故障转移路由提供了弹性，答案CE
+
+    </details>
+
+85. A company is planning on hosting its ecommerce platform on AWS using a multi-tier web application designed for a NoSQL database. The company plans to use the us-west-2 Region as its primary Region. The company wants to ensure that copies of the application and data are available in second Region, us-west-1, for disaster recovery. The company wants to keep the time to fail over as low as possible. Failing back to the primary Region should be possible without administrative interaction after the primary service is restored. Which design should the solutions architect use?
+    - [ ] A. Use AWS CloudFormation StackSets to create the stacks in both Regions with Auto Scaling groups for the web and application tiers. Asynchronously replicate static content between Regions using Amazon S3 cross-Region replication. Use an Amazon Route 53 DNS failover routing policy to direct users to the secondary site in us-west-1 in the event of an outage. Use Amazon DynamoDB global tables for the database tier.
+    - [ ] B. Use AWS CloudFormation StackSets to create the stacks in both Regions with Auto Scaling groups for the web and application tiers. Asynchronously replicate static content between Regions using Amazon S3 cross-Region replication. Use an Amazon Route 53 DNS failover routing policy to direct users to the secondary site in us-west-1 in the event of an outage Deploy an Amazon Aurora global database for the database tier.
+    - [ ] C. Use AWS Service Catalog to deploy the web and application servers in both Regions Asynchronously replicate static content between the two Regions using Amazon S3 cross-Region replication. Use Amazon Route 53 health checks to identify a primary Region failure and update the public DNS entry listing to the secondary Region in the event of an outage. Use Amazon RDS for MySQL with cross-Region replication for the database tier.
+    - [ ] D. Use AWS CloudFormation StackSets to create the stacks in both Regions using Auto Scaling groups for the web and application tiers. Asynchronously replicate static content between Regions using Amazon S3 cross-Region replication. Use Amazon CloudFront with static files in Amazon S3, and multi-Region origins for the front-end web tier. Use Amazon DynamoDB tables in each Region with scheduled backups to Amazon S3.
+
+    <details>
+       <summary>Answer</summary>
+
+       NoSQL直接排除BC，D没有设置路由，答案A
+
+    </details>
+
+86. A company wants to host a global web application on AWS. It has the following design requirements. -Minimize the of API calls. -The access pattern must allow for latching data from multiple data sources. -Keep page load times to within 50ms. -Provide user authentication and authorization and manage data access for different user personas (for example, administrator, manager, or engineer). -Use a server less design. Which set of strategies should a solution architect use?
+    - [ ] A. Use Amazon CloudFront with Amazon S3 to host the web application Use Amazon API gateway to build the application APIs with AWS Lambda for the custom authorizer Authorize data access by performing user lookup in Simple AD.
+    - [ ] B. Use Amazon CloudFront with AWS WAF to host the web application. Use AWS AppSync to build the application APIs. Use IAM groups for each user persona Authorize data access by leveraging IAM group in AWS AppSync resolvers.
+    - [ ] C. Use Amazon CloudFront with Amazon S3 to host the web application. Use AWS AppSync to build the application APIs. Use Amazon Cognito groups for each user persona Authorize data access by leveraging Amazon Cognito groups in AWS AppSync resolvers.
+    - [ ] D. Use AWS Direct Connect with Amazon S3 to host the web application. Use Amazon API Gateway to build the application APIs. Use AWS Lambda for custom authentication and authorization. Authorize data access by leveraging IAM roles.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案A
+
+    </details>
+
+87. A startup company recently migrated a large ecommerce website to AWS The website has experienced a 70% increase in sales. Software engineers are using a private GitHub repository to manage code. The devops team is using Jenkins for builds and unit testing. The engineers need to receive notifications for bad builds and zero downtime during deployments. The engineers also need to ensure any changes to production are seamless for users and can be rolled back in the event of a major issue. The software engineers have decided to use AWS CodePipeline to manage their build and deployment process. Which solution will meet these requirements?
+    - [ ] A. Use GitHub websockets to trigger the CodePipeline pipeline. Use AWS X-Ray for unit testing and static code analysis. Deploy in an in-place, all-at-once deployment configuration using AWS CodeDeploy.
+    - [ ] B. Use GitHub webhooks to trigger the CodePipeine pipeline. Use the Jenkins plugin for AWS CodeBuild to conduct unit testing. Deploy in a blue/green deployment using AWS CodeDeploy.
+    - [ ] C. Use GitHub websockets to trigger the CodePipeline pipeline. Use AWS X-Ray for unit testing and static code analysis. Send alerts to an Amazon SNS topic for any bad builds. Deploy in a blue/green deployment using AWS CodeDeploy.
+    - [ ] D. Use GitHub websockets to trigger the CodePipeline pipeline. Use AWS X-Ray for unit testing and static code analysis. Deploy in an in-place, all-at-once deployment configuration using AWS CodeDeploy.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案B
+
+    </details>
+
+88. A company has developed a mobile game. The backend for the game runs on several virtual machines located in an on-premises data center. The business logic is exposed using a REST API with multiple functions. Player session data is stored in central file storage. Backend services use different API keys for throttling and to distinguish between live and test traffic. The load on the game backend varies throughout the day. During peak hours, the server capacity is not sufficient. There are also latency issues when fetching player session data. Management has asked a solutions architect to present a cloud architecture that can handle the gameג€™s varying load and provide low-latency data access. The API model should not be changed. Which solution meets these requirements?
+    - [ ] A. Implement the REST API using a Network Load Balancer (NLB). Run the business logic on an Amazon EC2 instance behind the NLB. Store player session data in Amazon Aurora Serverless.
+    - [ ] B. Implement the REST API using an Application Load Balancer (ALB). Run the business logic in AWS Lambda. Store player session data in Amazon DynamoDB with on-demand capacity.
+    - [ ] C. Implement the REST API using Amazon API Gateway. Run the business logic in AWS Lambda. Store player session data in Amazon DynamoDB with on- demand capacity.
+    - [ ] D. Implement the REST API using AWS AppSync. Run the business logic in AWS Lambda. Store player session data in Amazon Aurora Serverless.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案C
+
+    </details>
+
+89. A company hosts an application on Amazon EC2 instance and needs to store files in Amazon S3. The files should never traverse the public internet, and only the application EC2 instances are granted access to a specific Amazon S3 bucket. A solutions architect has created a VPC endpoint for Amazon S3 and connected the endpoint to the application VPC. Which additional steps should the solutions architect take to meet these requirements?
+    - [ ] A. Assign an endpoint policy to the endpoint that restricts access to a specific S3 bucket. Attach a bucket policy to the S3 bucket that grants access to the VPC endpoint. Add the gateway prefix list to a NACL of the instances to limit access to the application EC2 instances only.
+    - [ ] B. Attach a bucket policy to the S3 bucket that grants access to application EC2 instances only using the aws:SourceIp condition. Update the VPC route table so only the application EC2 instances can access the VPC endpoint.
+    - [ ] C. Assign an endpoint policy to the VPC endpoint that restricts access to a specific S3 bucket. Attach a bucket policy to the S3 bucket that grants access to the VPC endpoint. Assign an IAM role to the application EC2 instances and only allow access to this role in the S3 bucket's policy.
+    - [ ] D. Assign an endpoint policy to the VPC endpoint that restricts access to S3 in the current Region. Attach a bucket policy to the S3 bucket that grants access to the VPC private subnets only. Add the gateway prefix list to a NACL to limit access to the application EC2 instances only.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案C
+
+    </details>
+
+90. A company is migrating its three-tier web application from on-premises to the AWS Cloud. The company has the following requirements for the migration process: -Ingest machine images from the on-premises environment. -Synchronize changes from the on-premises environment to the AWS environment until the production cutover. -Minimize downtime when executing the production cutover. -Migrate the virtual machines's root volumes and data volumes. Which solution will satisfy these requirements with minimal operational overhead?
+    - [ ] A. Use AWS Server Migration Service (SMS) to create and launch a replication job for each tier of the application. Launch instances from the AMIs created by AWS SMS. After initial testing, perform a final replication and create new instances from the updated AMIs.
+    - [ ] B. Create an AWS CLI VM Import/Export script to migrate each virtual machine. Schedule the script to run incrementally to maintain changes in the application. Launch instances from the AMIs created by VM Import/Export. Once testing is done, rerun the script to do a final import and launch the instances from the AMIs.
+    - [ ] C. Use AWS Server Migration Service (SMS) to upload the operating system volumes. Use the AWS CLI import-snapshot command for the data volumes. Launch instances from the AMIs created by AWS SMS and attach the data volumes to the instances. After initial testing, perform a final replication, launch new instances from the replicated AMIs, and attach the data volumes to the instances.
+    - [ ] D. Use AWS Application Discovery Service and AWS Migration Hub to group the virtual machines as an application. Use the AWS CLI VM Import/Export script to import the virtual machines as AMIs. Schedule the script to run incrementally to maintain changes in the application. Launch instances from the AMIs. After initial testing, perform a final virtual machine import and launch new instances from the AMIs.
+
+    <details>
+       <summary>Answer</summary>
+
+       SMS用于对实时服务器卷进行自动、实时增量复制。答案A
+
+    </details>
+
+91. A company has an application that sells tickets online and experiences bursts of demand every 7 days. The application has a stateless presentation layer running on Amazon EC2, an Oracle database to store unstructured data catalog information, and a backend API layer. The front-end layer uses an Elastic Load Balancer to distribute the load across nine On-Demand instances over three Availability Zones (AZs). The Oracle database is running on a single EC2 instance. The company is experiencing performance issues when running more than two concurrent campaigns. A solutions architect must design a solution that meets the following requirements: -Address scalability issues. -Increase the level of concurrency. -Eliminate licensing costs. -Improve reliability. Which set of steps should the solutions architect take?
+    - [ ] A. Create an Auto Scaling group for the front end with a combination of On-Demand and Spot Instances to reduce costs. Convert the Oracle database into a single Amazon RDS reserved DB instance.
+    - [ ] B. Create an Auto Scaling group for the front end with a combination of On-Demand and Spot Instances to reduce costs. Create two additional copies of the database instance, then distribute the databases in separate AZs.
+    - [ ] C. Create an Auto Scaling group for the front end with a combination of On-Demand and Spot Instances to reduce costs. Convert the tables in the Oracle database into Amazon DynamoDB tables.
+    - [ ] D. Convert the On-Demand Instances into Spot instances to reduce costs for the front end. Convert the tables in the Oracle database into Amazon DynamoDB tables.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案C
+
+    </details>
+
+92. A developer reports receiving an Error 403: Access Denied message when they try to download an object from an Amazon S3 bucket. The S3 bucket is accessed using an S3 endpoint inside a VPC, and is encrypted with an AWS KMS key. A solution architect has verified that the developer is assuming the correct IAM role in the account that allows the object to be downloaded. The S3 bucket policy and the NACL are also valid. Which additional step should the solutions architect take to troubleshoot this issue?
+    - [ ] A. Ensure that blocking all public access has not been enabled In the S3 bucket.
+    - [ ] B. Verify that the IAM rote has permission to decrypt the referenced KMS key.
+    - [ ] C. Verify that the IAM rote has the correct trust relationship configured.
+    - [ ] D. Check that local firewall rules are not preventing access to the S3 endpoint.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案B
+
+    </details>
+
+93. A company is deploying a public-facing global application on AWS using Amazon CloudFront. The application communicates with an external system. A solutions architect needs to ensure the data is secured during end-to-end transit and at rest. Which combination of steps will satisfy these requirements? (Choose three.)
+    - [ ] A. Create a public certificate for the required domain in AWS Certificate Manager and deploy it to CloudFront, an Application Load Balancer, and Amazon EC2 instances.
+    - [ ] B. Acquire a public certificate from a third-party vendor and deploy it to CloudFront, an Application Load Balancer, and Amazon EC2 instances.
+    - [ ] C. Provision Amazon EBS encrypted volumes using AWS KMS and ensure explicit encryption of data when writing to Amazon EBS.
+    - [ ] D. Provision Amazon EBS encrypted volumes using AWS KMS.
+    - [ ] E. Use SSL or encrypt data while communicating with the external system using a VPN.
+    - [ ] F. Communicate with the external system using plaintext and use the VPN to encrypt the data in transit.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案BDE，对于A，公共ACM不能用于EC2，
+
+    </details>
+
+94. An enterprise company's data science team wants to provide a safe, cost-effective way to provide easy access to Amazon SageMaker. The data scientists have limited AWS knowledge and need to be able to launch a Jupyter notebook instance. The notebook instance needs to have a preconfigured AWS KMS key to encrypt data at rest on the machine learning storage volume without exposing the complex setup requirements. Which approach will allow the company to set up a self-service mechanism for the data scientists to launch Jupyter notebooks in its AWS accounts with the LEAST amount of operational overhead?
+    - [ ] A. Create a serverless front end using a static Amazon S3 website to allow the data scientists to request a Jupyter notebook instance by filling out a form. Use Amazon API Gateway to receive requests from the S3 website and trigger a central AWS Lambda function to make an API call to Amazon SageMaker that will launch a notebook instance with a preconfigured KMS key for the data scientists. Then call back to the front-end website to display the URL to the notebook instance.
+    - B. Create an AWS CloudFormation template to launch a Jupyter notebook instance using the AWS::SageMaker::NotebookInstance resource type with a preconfigured KMS key. Add a user-friendly name to the CloudFormation template. Display the URL to the notebook using the Outputs section. Distribute the CloudFormation template to the data scientists using a shared Amazon S3 bucket.
+    - C. Create an AWS CloudFormation template to launch a Jupyter notebook instance using the AWS::SageMaker::NotebookInstance resource type with a preconfigured KMS key. Simplify the parameter names, such as the instance size, by mapping them to Small, Large, and X-Large using the Mappings section in CloudFormation. Display the URL to the notebook using the Outputs section, then upload the template into an AWS Service Catalog product in the data scientist's portfolio, and share it with the data scientist's IAM role.
+    - D. Create an AWS CLI script that the data scientists can run locally. Provide step-by-step instructions about the parameters to be provided while executing the AWS CLI script to launch a Jupyter notebook with a preconfigured KMS key. Distribute the CLI script to the data scientists using a shared Amazon S3 bucket.
+
+    <details>
+       <summary>Answer</summary>
+
+       自助服务一看就用Service Catalog，答案C -> [ref](https://aws.amazon.com/cn/blogs/mt/enable-self-service-secured-data-science-using-amazon-sagemaker-notebooks-and-aws-service-catalog/)
+
+    </details>
+
+95. An enterprise company is building an infrastructure services platform for its users. The company has the following requirements: -Provide least privilege access to users when launching AWS infrastructure so users cannot provision unapproved services. -Use a central account to manage the creation of infrastructure services. -Provide the ability to distribute infrastructure services to multiple accounts in AWS Organizations. -Provide the ability to enforce tags on any infrastructure that is started by users. Which combination of actions using AWS services will meet these requirements? (Choose three.)
+    - [ ] A. Develop infrastructure services using AWS Cloud Formation templates. Add the templates to a central Amazon S3 bucket and add the-IAM roles or users that require access to the S3 bucket policy.
+    - [ ] B. Develop infrastructure services using AWS Cloud Formation templates. Upload each template as an AWS Service Catalog product to portfolios created in a central AWS account. Share these portfolios with the Organizations structure created for the company.
+    - [ ] C. Allow user IAM roles to have AWSCloudFormationFullAccess and AmazonS3ReadOnlyAccess permissions. Add an Organizations SCP at the AWS account root user level to deny all services except AWS CloudFormation and Amazon S3.
+    - [ ] D. Allow user IAM roles to have ServiceCatalogEndUserAccess permissions only. Use an automation script to import the central portfolios to local AWS accounts, copy the TagOption assign users access and apply launch constraints.
+    - [ ] E. Use the AWS Service Catalog TagOption Library to maintain a list of tags required by the company. Apply the TagOption to AWS Service Catalog products or portfolios.
+    - [ ] F. Use the AWS CloudFormation Resource Tags property to enforce the application of tags to any CloudFormation templates that will be created for users.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案BDE
+
+    </details>
+
+96. A media company has a static web application that is generated programmatically. The company has a build pipeline that generates HTML content that is uploaded to an Amazon S3 bucket served by Amazon CloudFront. The build pipeline runs inside a Build Account. The S3 bucket and CloudFront distribution are in a Distribution Account. The build pipeline uploads the files to Amazon S3 using an IAM role in the Build Account. The S3 bucket has a bucket policy that only allows CloudFront to read objects using an origin access identity (OAI). During testing all attempts to access the application using the CloudFront URL result in an HTTP 403 Access Denied response. What should a solutions architect suggest to the company to allow access the objects in Amazon S3 through CloudFront?
+    - [ ] A. Modify the S3 upload process in the Build Account to add the bucket-owner-full-control ACL to the objects at upload.
+    - [ ] B. Create a new cross-account IAM role in the Distribution Account with write access to the S3 bucket. Modify the build pipeline to assume this role to upload the files to the Distribution Account.
+    - [ ] C. Modify the S3 upload process in the Build Account to set the object owner to the Distribution Account.
+    - [ ] D. Create a new IAM role in the Distribution Account with read access to the S3 bucket. Configure CloudFront to use this new role as its OAI. Modify the build pipeline to assume this role when uploading files from the Build Account.
+
+    <details>
+       <summary>Answer</summary>
+
+       这题答案是A
+
+    </details>
+
+97. A solutions architect is implementing infrastructure as code for a two-tier web application in an AWS CloudFormation template. The web frontend application will be deployed on Amazon EC2 instances in an Auto Scaling group. The backend database will be an Amazon RDS for MySQL DB instance. The database password will be rotated every 60 days. How can the solutions architect MOST securely manage the configuration of the application's database credentials?
+    - [ ] A. Provide the database password as a parameter in the CloudFormation template. Create an initialization script in the Auto Scaling group's launch configuration UserData property to reference the password parameter using the Ref intrinsic function. Store the password on the EC2 instances. Reference the parameter for the value of the MasterUserPassword property in the AWS::RDS::DBInstance resource using the Ref intrinsic function.
+    - [ ] B. Create a new AWS Secrets Manager secret resource in the CloudFormation template to be used as the database password. Configure the application to retrieve the password from Secrets Manager when needed. Reference the secret resource for the value of the MasterUserPassword property in the AWS::RDS::DBInstance resource using a dynamic reference.
+    - [ ] C. Create a new AWS Secrets Manager secret resource in the CloudFormation template to be used as the database password. Create an initialization script in the Auto Scaling group's launch configuration UserData property to reference the secret resource using the Ref intrinsic function. Reference the secret resource for the value of the MasterUserPassword property in the AWS::RDS::DBInstance resource using the Ref intrinsic function.
+    - [ ] D. Create a new AWS Systems Manager Parameter Store parameter in the CloudFormation template to be used as the database password. Create an initialization script in the Auto Scaling group's launch configuration UserData property to reference the parameter. Reference the parameter for the value of the MasterUserPassword property in the AWS::RDS::DBInstance resource using the Fn::GetAtt intrinsic function.
+
+    <details>
+       <summary>Answer</summary>
+
+       UserData很不好维护，直接排除ACD，答案B
+
+    </details>
+
+98. A weather service provides high-resolution weather maps from a web application hosted on AWS in the eu-west-1 Region. The weather maps are updated frequently and stored in Amazon S3 along with static HTML content. The web application is fronted by Amazon CloudFront. The company recently expanded to serve users in the us-east-1 Region, and these new users report that viewing their respective weather maps is slow from time to time. Which combination of steps will resolve the us-east-1 performance issues? (Choose two.)
+    - [ ] A. Configure the AWS Global Accelerator endpoint for the S3 bucket in eu-west-1. Configure endpoint groups for TCP ports 80 and 443 in us-east-1.
+    - [ ] B. Create a new S3 bucket in us-east-1. Configure S3 cross-Region replication to synchronize from the S3 bucket in eu-west-1.
+    - [ ] C. Use Lambda@Edge to modify requests from North America to use the S3 Transfer Acceleration endpoint in us-east-1.
+    - [ ] D. Use Lambda@Edge to modify requests from North America to use the S3 bucket in us-east-1.
+    - [ ] E. Configure the AWS Global Accelerator endpoint for us-east-1 as an origin on the CloudFront distribution. Use Lambda@Edge to modify requests from North America to use the new origin.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案BD -> [ref](https://aws.amazon.com/cn/blogs/apn/using-amazon-cloudfront-with-multi-region-amazon-s3-origins/)
+
+    </details>
+
+99. A company is using AWS CloudFormation as its deployment tool for all application. It stages all application binaries and templates within Amazon S3 bucket with versioning enabled. Developers have access to an Amazon EC2 instance that hosts the integrated development (IDE). The Developers download the application binaries from Amazon S3 to the EC2 instance, make changes, and upload the binaries to an S3 bucket after running the unit tests locally. The developers want to improve the existing deployment mechanism and implement CI/CD using AWS CodePipeline. The developers have the following requirements: -Use AWS CodeCommit for source control. -Automate unit testing and security scanning. -Alert the Developers when unit tests fail. -Turn application features on and off, and customize deployment dynamically as part of CI/CD. -Have the lead Developer provide approval before deploying an application. Which solution will meet these requirements?
+    - [ ] A. Use AWS CodeBuild to run tests and security scans. Use an Amazon EventBridge rule to send Amazon SNS alerts to the Developers when unit tests fail. Write AWS Cloud Developer kit (AWS CDK) constructs for different solution features, and use a manifest file to turn features on and off in the AWS CDK application. Use a manual approval stage in the pipeline to allow the lead Developer to approve applications.
+    - [ ] B. Use AWS Lambda to run unit tests and security scans. Use Lambda in a subsequent stage in the pipeline to send Amazon SNS alerts to the developers when unit tests fail. Write AWS Amplify plugins for different solution features and utilize user prompts to turn features on and off. Use Amazon SES in the pipeline to allow the lead developer to approve applications.
+    - [ ] C. Use Jenkins to run unit tests and security scans. Use an Amazon EventBridge rule in the pipeline to send Amazon SES alerts to the developers when unit tests fail. Use AWS CloudFormation nested stacks for different solution features and parameters to turn features on and off. Use AWS Lambda in the pipeline to allow the lead developer to approve applications.
+    - [ ] D. Use AWS CodeDeploy to run unit tests and security scans. Use an Amazon CloudWatch alarm in the pipeline to send Amazon SNS alerts to the developers when unit tests fail. Use Docker images for different solution features and the AWS CLI to turn features on and off. Use a manual approval stage in the pipeline to allow the lead developer to approve applications.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案A
+
+    </details>
+
+100. An ecommerce website running on AWS uses an Amazon RDS for MySQL DB instance with General Purpose SSD storage. The developers chose an appropriate instance type based on demand, and configured 100 GB of storage with a sufficient amount of free space. The website was running smoothly for a few weeks until a marketing campaign launched. On the second day of the campaign, users reported long wait times and time outs. Amazon CloudWatch metrics indicated that both reads and writes to the DB instance were experiencing long response times. The CloudWatch metrics show 40% to 50% CPU and memory utilization, and sufficient free storage space is still available. The application server logs show no evidence of database connectivity issues. What could be the root cause of the issue with the marketing campaign?
+     - [ ] A. It exhausted the I/O credit balance due to provisioning low disk storage during the setup phase.
+     - [ ] B. It caused the data in the tables to change frequently, requiring indexes to be rebuilt to optimize queries.
+     - [ ] C. It exhausted the maximum number of allowed connections to the database instance.
+     - [ ] D. It exhausted the network bandwidth available to the RDS for MySQL DB instance.
+
+     <details>
+       <summary>Answer</summary>
+
+        答案A，gp2的IOPS太小了。
+
+     </details>
