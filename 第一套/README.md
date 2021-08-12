@@ -1141,11 +1141,11 @@ connection.
 
     </details>
 
-76. As a part of building large applications in the AWS Cloud, the Solutions Architect is required to implement the perimeter security protection. Applications running on AWS have the following endpoints:Application Load Balancer Amazon API Gateway regional endpoint Elastic IP address-based EC2 instances. Amazon S3 hosted websites. Classic Load Balancer The Solutions Architect must design a solution to protect all of the listed web front ends and provide the following security capabilities:DDoS protection SQL injection protection IP address whitelist/blacklist HTTP flood protection Bad bot scraper protection How should the Solutions Architect design the solution?
-    - [ ] A. Deploy AWS WAF and AWS Shield Advanced on all web endpoints. Add AWS WAF rules to enforce the company's requirements.
+76. As a part of building large applications in the AWS Cloud, the Solutions Architect is required to implement the perimeter security protection. Applications running on AWS have the following endpoints: -Application Load Balancer. -Amazon API Gateway regional endpoint. -Elastic IP address-based EC2 instances. -Amazon S3 hosted websites. -Classic Load Balancer. The Solutions Architect must design a solution to protect all of the listed web front ends and provide the following security capabilities: -DDoS protection. -SQL injection protection. -IP address whitelist/blacklist. -HTTP flood protection. -Bad bot scraper protection. How should the Solutions Architect design the solution?
+    - [ ] A. Deploy AWS WAF and AWS Shield Advanced on all web endpoints. Add AWS WAF rules to enforce the companyג€™s requirements.
     - [ ] B. Deploy Amazon CloudFront in front of all the endpoints. The CloudFront distribution provides perimeter protection. Add AWS Lambda-based automation to provide additional security.
-    - [ ] C. Deploy Amazon CloudFront in front of all the endpoints. Deploy AWS WAF and AWS Shield Advanced. Add AWS WAF rules to enforce the company's requirements. Use AWS Lambda to automate and enhance the security posture.
-    - [ ] D. Secure the endpoints by using network ACLs and security groups and adding rules to enforce the company's requirements. Use AWS Lambda to automatically update the rules.
+    - [ ] C. Deploy Amazon CloudFront in front of all the endpoints. Deploy AWS WAF and AWS Shield Advanced. Add AWS WAF rules to enforce the companyג€™s requirements. Use AWS Lambda to automate and enhance the security posture.
+    - [ ] D. Secure the endpoints by using network ACLs and security groups and adding rules to enforce the companyג€™s requirements. Use AWS Lambda to automatically update the rules.
 
     <details>
        <summary>Answer</summary>
@@ -1165,12 +1165,12 @@ connection.
 
        - [x] A. 正确
        - [ ] B. 太昂贵了，非最佳体验
-       - [ ] C. 对等连接无法流向NAT、
+       - [ ] C. 对等连接无法流向NAT
        - [ ] D. PrivcateLink不走外网
 
     </details>
 
-78. A company runs an e-commerce platform with front-end and e-commerce tiers. Both tiers run on LAMP stacks with the front-end instances running behind a load balancing appliance that has a virtual offering on AWS. Currently, the Operations team uses SSH to log in to the instances to maintain patches and address other concerns. The platform has recently been the target of multiple attacks, including A DDoS attack. An SQL injection attack Several successful dictionary attacks on SSH accounts on the web servers. The company wants to improve the security of the e-commerce platform by migrating to AWS. The company's Solutions Architects have decided to use the following approach:Code review the existing application and fix any SQL injection issues. Migrate the web application to AWS and leverage the latest AWS Linux AMI to address initial security patching high availability and minimizing risk?
+78. A company runs an e-commerce platform with front-end and e-commerce tiers. Both tiers run on LAMP stacks with the front-end instances running behind a load balancing appliance that has a virtual offering on AWS. Currently, the Operations team uses SSH to log in to the instances to maintain patches and address other concerns. The platform has recently been the target of multiple attacks, including a DDoS attack. An SQL injection attack Several successful dictionary attacks on SSH accounts on the web servers. The company wants to improve the security of the e-commerce platform by migrating to AWS. The company's Solutions Architects have decided to use the following approach:Code review the existing application and fix any SQL injection issues. Migrate the web application to AWS and leverage the latest AWS Linux AMI to address initial security patching high availability and minimizing risk?
     - [ ] A. Enable SSH access to the Amazon EC2 instances using a security group that limits access to specific IPs. Migrate on-premises MySQL to Amazon RDS Multi-AZ. Install the third-party load balancer from the AWS Marketplace and migrate the existing rules to the load balancer's AWS instances. Enable AWS Shield Standard for DDoS protection.
     - [ ] B. Disable SSH access to the Amazon EC2 instances. Migrate on-premises MySQL to Amazon RDS Multi-AZ. Leverage an Elastic Load Balancer to spread the load and enable AWS Shield Advanced for protection. Add an Amazon CloudFront distribution in front of the website. Enable AWS WAF on the distribution to manage the rules.
     - [ ] C. Enable SSH access to the Amazon EC2 instances through a bastion host secured by limiting access to specific IP addresses. Migrate on-premises MySQL to a self-managed EC2 instance. Leverage an AWS Elastic Load Balancer to spread the load and enable AWS Shield Standard for DDoS protection. Add an Amazon CloudFront distribution in front of the website.
@@ -1441,7 +1441,7 @@ connection.
     <details>
        <summary>Answer</summary>
 
-       使用AWS Organization是最佳实践，答案C
+       使用AWS Organization是最佳实践，答案B
 
     </details>
 

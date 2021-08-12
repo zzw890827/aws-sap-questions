@@ -507,9 +507,9 @@
     <details>
        <summary>Answer</summary>
 
-       - [ ] A. JavaScript不能直接触发Lambda
+       - [x] A. 最便宜
        - [ ] B. Cognito对共享的支持不怎么样
-       - [ ] C. 正确
+       - [ ] C. 这个很贵了
        - [ ] D. AppStream不是用来干Saas的
 
     </details>
@@ -571,7 +571,7 @@
     <details>
        <summary>Answer</summary>
 
-       这题选BE，但是不知道为啥
+       与经典负载平衡器或网络负载平衡器不同，应用负载平衡器不能有传输层（第四层）TCP或SSL/TLS监听器。它只支持HTTP和HTTPS监听器。此外，它不能使用后端认证来验证负载平衡器和后端实例之间的 HTTPS 连接。
 
     </details>
 
