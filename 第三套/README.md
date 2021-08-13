@@ -364,19 +364,19 @@
   
     </details>
 
-26. An AWS customer is deploying an application that is composed of an AutoScaling group ofEC2 instances. The customers security policy requires that every outbound connection from these instances to any other sewice within the customers Virtual Private Cloud must be authenticated using a unique X.509 certificate that contains the specific Instance-id. In addition, all X.509 certificates must be signed by the customer's key management service in order to be trusted for authentication. Which of the following configurations will support these requirements?
+26. An AWS customer is deploying an application mat is composed of an AutoScaling group of EC2 Instances. The customers security policy requires that every outbound connection from these instances to any other service within the customers Virtual Private Cloud must be authenticated using a unique x.509 certificate that contains the specific instance-id. In addition, an x.509 certificates must Designed by the customer's Key management service in order to be trusted for authentication. Which of the following configurations will support these requirements?
     - [ ] A. Configure an IAM Role that grants access to an Amazon S3 object containing a signed certificate and configure the Auto Scaling group to launch instances with this role. Have the instances bootstrap get the certificate from Amazon S3 upon first boot.
-    - [ ] B. Configure the Auto Scaling group to send an SNS notification of the launch ofa new instance to the tmsted key management service. Have the key management service generate a signed certificate and send it directly to the newly launched instance.
-    - [ ] C. Embed a certificate into the Amazon Machine Image that is used by the Auto Scaling group. Have the launched instances generate a certificate signature request with the Instance's assigned instance-id to the key management service for signature.
-    - [ ] D. Configure the launched instances to generate a new certificate upon first boot. Have the key management service poll the AutoScaling group for associated instances and send new instances a certificate signature that contains the specific Instance-id.
+    - [ ] B. Embed a certificate into the AMI that is used by the Auto Scaling group. Have the launched instances generate a certificate signature request with the instance's assigned instance-id to the key management service for signature.
+    - [ ] C. Configure the Auto Scaling group to send an SNS notification of the launch of a new instance to the trusted key management service. Have the Key management service generate a signed certificate and send it directly to the newly launched instance.
+    - [ ] D. Configure the launched instances to generate a new certificate upon first boot. Have the Key management service poll the Auto Scaling group for associated instances and send new instances a certificate signature (hat contains the specific instance-id.
 
     <details>
        <summary>Answer</summary>
 
        - [ ] A. 无法保证生成的证书是唯一的
        - [x] B. 正确
-       - [ ] C. 同A
-       - [ ] D. 得客户来签名，自己签名的人家不认
+       - [ ] C. Auto Scaling不能用于SNS
+       - [ ] D. 新实例在第一次请求前可能没有唯一的证书
   
     </details>
 
@@ -389,8 +389,8 @@
     <details>
        <summary>Answer</summary>
 
-       从题干可以推断出来上传失败的原因是有可能是文件太大，所以使用分段上传，排除BD，只能通过CLI列出上传不完整的部分，答案A
-  
+       最关键的问题是，控制台不能显示你的多部分上传失败的信息。这只能通过SDK/API查看。而且题目中说有很多意外的数据费用，应该是指多部分上传失败造成的存储费用（因为如果你不使用多部分上传，整个文件上传失败的话，就没有这部分费用了）。可以断定，原程序已经为多部分上传写好了代码。不需要额外修改代码。答案A
+
     </details>
 
 28. A company is in the process of Implementing AWS Organizations to constrain its developers to use only Amazon EC2, Amazon S3, and Amazon Dynamodb. The Developers account resides in a dedicated organizational unit(OU). The Solutions Architect has implemented the a SCP on the Developers account. When this policy is deployed, IAM users in the Developers account are still able to use AWS services that are not listed in the policy. What should the Solutions Architect do to eliminate the Developers ability to use services outside the scope of this policy? The SCP policy is as follow:
@@ -436,11 +436,11 @@
   
     </details>
 
-29. Your company previously configured a heavily used, dynamically routed VPN connection between your on-premises data center and AWS. You recently provisioned a Direct Connect connection and would like to start using this new connection. After configuring Direct Connect settings in the AWS Console, which of the following options will provide the most seamless transition for your users?
-    - [ ] A. Configure your Direct Connect router, update our VP route tables to point to the Direct Connect Connection, configure our VPN connection with a higher BGP priority, and verify network traffic is leveraging the Direct Connect connection.
-    - [ ] B. Delete your existing VPN connection to avoid routing oops, configure your Direct Connect router with the appropriate settings, and verify network traffic is leveraging Direct Connect.
-    - [ ] C. Update your VPC route tables to point to the Direct Connect connection, configure your Direct Connect router with the appropriate settings, verify network traffic is leveraging Direct Connect, and then delete the VPN connection.
-    - [ ] D. Configure your Direct Connect router with a higher BGP priority than your VPN router, verify network traffic is leveraging Direct Connect, and then delete your existing VPN connection.
+29. Your company previously configured a heavily used, dynamically routed VPN connection between your on-premises data center and AWS. You recently provisioned a DirectConnect connection and would like to start using the new connection.After configuring DirectConnect settings in the AWS Console, which of the following options win provide the most seamless transition for your users?
+    - [ ] A. Delete your existing VPN connection to avoid routing loops configure your DirectConnect router with the appropriate settings and verity network traffic is leveraging DirectConnect.
+    - [ ] B. Configure your DirectConnect router with a higher BGP priority man your VPN router, verify network traffic is leveraging Directconnect and then delete your existing VPN connection.
+    - [ ] C. Update your VPC route tables to point to the DirectConnect connection configure your DirectConnect router with the appropriate settings verify network traffic is leveraging DirectConnect and then delete the VPN connection.
+    - [ ] D. Configure your DirectConnect router, update your VPC route tables to point to the DirectConnect connection, configure your VPN connection with a higher BGP priority, and verify network traffic is leveraging the DirectConnect connection.
 
     <details>
        <summary>Answer</summary>
@@ -468,11 +468,11 @@
   
     </details>
 
-31. You have a periodic image analysis application that gets some files in input, analyzes them and for each file writes some data in output to a text file. The number of files in input per day is high and concentrated in a few hours of the day. Currently you have a server on EC2 with a large EBS volume that hosts the input data and the results. It takes almost 20 hours per day to complete the process. What services could be used to reduce the elaboration time and improve the availability of the solution?
-    - [ ] A. S3 to store I/O files, SQS to distribute elaboration commands to a group of hosts working in parallel, Auto Scaling to dynamically size the group of hosts depending on the length of the SQS queue.
-    - [ ] B. S3 to store I/O files, SNS to distribute elaboration commands to a group of hosts working in parallel, Auto Scaling to dynamically size the group of hosts depending on the number of SNS notifications.
-    - [ ] C. EBS with Provisioned IOPS (PIOPS) to store I/O files, SNS to distribute elaboration commands to a group of hosts working in parallel, Auto Scaling to dynamically size the group of hosts depending on the number of SNS notifications.
-    - [ ] D. EBS with Provisioned IOPS (PIOPS) to store I/O files, SQS to distribute elaboration commands to a group of hosts working in parallel. Auto Scaling to dynamically size the group of hosts depending on the length of the SQS queue.
+31. You have a periodic image analysis application that gets some files in input, analyzes them and tor each file writes some data in output to a ten file the number of files in input per day is high and concentrated in a few hours of the day. Currently you have a server on EC2 with a large EBS volume that hosts the input data and the results. It takes almost 20 hours per day to complete the process. What services could be used to reduce the elaboration time and improve the availability of the solution?
+    - [ ] A. S3 to store I/O files. SQS to distribute elaboration commands to a group of hosts working in parallel. Auto scaling to dynamically size the group of hosts depending on the length of the SQS queue
+    - [ ] B. EBS with Provisioned IOPS (PIOPS) to store I/O files. SNS to distribute elaboration commands to a group of hosts working in parallel Auto Scaling to dynamically size the group of hosts depending on the number of SNS notifications
+    - [ ] C. S3 to store I/O files, SNS to distribute evaporation commands to a group of hosts working in parallel. Auto scaling to dynamically size the group of hosts depending on the number of SNS notifications
+    - [ ] D. EBS with Provisioned IOPS (PIOPS) to store I/O files SQS to distribute elaboration commands to a group of hosts working in parallel Auto Scaling to dynamically size the group ot hosts depending on the length of the SQS queue.
 
     <details>
        <summary>Answer</summary>
@@ -481,7 +481,7 @@
   
     </details>
 
-32. A company experienced a breach of highly confidential personal information due to permissions issues on an Amazon S3 bucket. The Information Security team has tightened the bucket policy to restrict access. Additionally, to be better prepared for future attacks, these requirements must be met: -Identify remote IP addresses that are accessing the bucket objects. -Receive alerts when the security policy on the bucket is changed. -Remediate the policy changes automatically. Which strategies should the Solutions Architect use?
+32. A company experienced a breach of highly confidential personal information due to permission issues on an Amazon S3 bucket. The Information Security team has tightened the bucket policy to restrict access. Additionally, to be better prepared for future attacks, these requirements must be met: -Identify remote IP addresses that are accessing the bucket objects. -Receive alerts when the security policy on the bucket is changed. -Remediate the policy changes automatically. Which strategies should the Solutions Architect use?
     - [ ] A. Use Amazon CloudWatch Logs with CloudWatch filters to identify remote IP addresses. Use CloudWatch Events rules with AWS Lambda to automatically remediate S3 bucket policy changes. Use Amazon SES with CloudWatch Events rules for alerts.
     - [ ] B. Use Amazon Athena with S3 access logs to identify remote IP addresses. Use AWS Config rules with AWS Systems Manager Automation to automatically remediate S3 bucket policy changes. Use Amazon SNS with AWS Config rules for alerts.
     - [ ] C. Use S3 access logs with Amazon Elasticsearch Service and Kibana to identify remote IP addresses. Use an Amazon Inspector assessment template to automatically remediate S3 bucket policy changes. Use Amazon SNS for alerts.
@@ -490,11 +490,14 @@
     <details>
        <summary>Answer</summary>
 
-       简单题，答案B
-  
+       - 1) To id remote IPs, need to look at S3 access logs. Athena helps in analyzing those logs. [ref](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-s3-access-logs-to-identify-requests.html)
+       - 2) For auto-remediation, use AWS Config with Systems Manager. [ref](https://aws.amazon.com/blogs/mt/aws-config-auto-remediation-s3-compliance/)
+       - 3) For alerting, use SNS with AWS Config. [ref](https://docs.aws.amazon.com/config/latest/developerguide/notifications-for-AWS-Config.html)
+       - 答案B
+
     </details>
 
-33. An organization is planning to host a Wordpress blog as well as joomla CMS on a single instance launched with VPC. The organization wants to have separate domains for each application and assign them using Route 53. The organization may have about ten instances each with two applications as mentioned above. While launching the instance, the organization configured two separate network interfaces (primary + ENI) and wanted to have two elastic IPs for that instance. It was suggested to use a public IP from AWS instead of an elastic IP as the number of elastic IPs is restricted. What action will you recommend to the organization?
+33. An organization is planning to host a Wordpress blog as well as joomla CMS on a single instance launched with VPC. The organization wants to create separate domains for each application using Route 53. The organization may have about ten instances each with these two applications. While launching each instance, the organization configured two separate network interfaces (primary + secondary ENI) with their own Elastic IPs to the instance. The suggestion was to use a public IP from AWS instead of an Elastic IP as the number of elastic IPs allocation per region is restricted in the account. What action will you recommend to the organization?
     - [ ] A. I agree with the suggestion but will prefer that the organization should use separate subnets with each ENI for different public IPs.
     - [ ] B. I do not agree as it is required to have only an elastic IP since an instance has more than one ENI and AWS does not assign a public IP to an instance with multiple ENIs.
     - [ ] C. I do not agree as AWS VPC does not attach a public IP to an ENI; so the user has to use only an elastic IP only.
@@ -508,8 +511,8 @@
     </details>
 
 34. A Solutions Architect wants to make sure that only AWS users or roles with suitable permissions can access a new Amazon API Gateway endpoint. The Solutions Architect wants an end-to-end view of each request to analyze the latency of the request and create service maps. How can the Solutions Architect design the API Gateway access control and perform request inspections?
-    - [ ] A. For the API Gateway method, set the authorization to AWS IAM. Then, give the IAM user or role execute-api:lnvoke permission on the REST API resource. Enable the API caller to sign requests with AWS Signature when accessing the endpoint. Use AWS X-Ray to trace and analyze user requests to API Gateway.
-    - [ ] B. For the API Gateway resource, set CORS to enabled and only return the company's domain in Access-Control-Allow-Origin headers. Then, give the IAM user or role execute-api:lnvoke permission on the REST API resource. Use Amazon CloudWatch to trace and analyze user requests to API Gateway.
+    - [ ] A. For the API Gateway method, set the authorization to AWS_IAM. Then, give the IAM user or role execute-api:Invoke permission on the REST API resource. Enable the API caller to sign requests with AWS Signature when accessing the endpoint. Use AWS X-Ray to trace and analyze user requests to API Gateway.
+    - [ ] B. For the API Gateway resource, set CORS to enabled and only return the company's domain in Access-Control-Allow-Origin headers. Then, give the IAM user or role execute-api:Invoke permission on the REST API resource. Use Amazon CloudWatch to trace and analyze user requests to API Gateway.
     - [ ] C. Create an AWS Lambda function as the custom authorizer, ask the API client to pass the key and secret when making the call, and then use Lambda to validate the key/secret pair against the IAM system. Use AWS X-Ray to trace and analyze user requests to API Gateway.
     - [ ] D. Create a client certificate for API Gateway. Distribute the certificate to the AWS users and roles that need to access the endpoint. Enable the API caller to pass the client certificate when accessing the endpoint. Use Amazon CloudWatch to trace and analyze user requests to API Gateway.
 
@@ -523,11 +526,11 @@
 
     </details>
 
-35. A company is running a batch analysis eve1Y hour on their main transactional DB. running on an RDS MySQL instance to populate their central Data Warehouse running on Redshift During the execution of the batch their transactional applications are very slow. When the batch completes, they need to update the top management dashboard with the new data The dashboard is produced by another system running on-premises that is currently started when a manually sent email notifies that an update is required The on-premises system cannot be modified because is managed by another team. How would you optimize this scenario to solve performance issues and automate the process as much as possible?
+35. A company is running a batch analysis every hour on their main transactional DB, running on an RDS MySQL instance, to populate their central Data Warehouse running on Redshift. During the execution of the batch, their transactional applications are very slow. When the batch completes they need to update the top management dashboard with the new data. The dashboard is produced by another system running on-premises that is currently started when a manually-sent email notifies that an update is required. The on-premises system cannot be modified because is managed by another team. How would you optimize this scenario to solve performance issues and automate the process as much as possible?
     - [ ] A. Replace RDS with Redshift for the batch analysis and SNS to notify the on-premises system to update the dashboard.
-    - [ ] B. Replace RDS with Redshift for the oaten analysis and SQS to send a message to the on premises system to update the dashboard.
+    - [ ] B. Replace RDS with Redshift for the oaten analysis and SQS to send a message to the on-premises system to update the dashboard.
     - [ ] C. Create an RDS Read Replica for the batch analysis and SNS to notify me on-premises system to update the dashboard.
-    - [ ] D. Create an RDS Read Replica for the batch analysis and SQS to send a message to the on premises system to update the dashboard.
+    - [ ] D. Create an RDS Read Replica for the batch analysis and SQS to send a message to the on-premises system to update the dashboard.
 
     <details>
        <summary>Answer</summary>
@@ -551,9 +554,9 @@
 
 37. A software as a service (SaaS) company offers a cloud solution for document management to private law firms and the public sector. A local government client recently mandated that highly confidential documents cannot be stored outside the country. The company CIO asks a Solutions Architect to ensure the application can adapt to this new requirement. The CIO also wants to have a proper backup plan for these documents, as backups are not currently performed. What solution meets these requirements?
     - [ ] A. Tag documents that are not highly confidential as regular in Amazon S3. Create individual S3 buckets for each user. Upload objects to each user's bucket. Set S3 bucket replication from these buckets to a central S3 bucket in a different AWS account and AWS Region. Configure an AWS Lambda function triggered by scheduled events in Amazon CloudWatch to delete objects that are tagged as secret in the S3 backup bucket.
-    - [ ] B. Tag documents as either regular or secret in Amazon S3. Create an individual S3 backup bucket in the same AWS account and AWS Region. Create a cross-region S3 bucket in a separate AWS account. Set proper IAM roles to allow cross-region permissions to the S3 buckets. Configure an AWS Lambda function triggered by Amazon CloudWatch scheduled events to copy objects that are tagged as secret to the S3 backup bucket and objects tagged as cross-region S3 bucket.
+    - [ ] B. Tag documents as either regular or secret in Amazon S3. Create an individual S3 backup bucket in the same AWS account and AWS Region. Create a cross- region S3 bucket in a separate AWS account. Set proper IAM roles to allow cross-region permissions to the S3 buckets. Configure an AWS Lambda function triggered by Amazon CloudWatch scheduled events to copy objects that are tagged as secret to the S3 backup bucket and objects tagged as normal to the cross-region S3 bucket.
     - [ ] C. Tag documents as either regular or secret in Amazon S3. Create an individual S3 backup bucket in the same AWS account and AWS Region. Use S3 selective cross-region replication based on object tags to move regular documents to an S3 bucket in a different AWS Region. Configure an AWS Lambda function that triggers when new S3 objects are created in the main bucket to replicate only documents tagged as secret into the S3 bucket in the same AWS Region.
-    - [ ] D. Tag highly confidential documents as secret in Amazon S3. Create an individual S3 backup bucket in the same AWS account and AWS Region. Use S3 selective cross-region replication based on object tags to move regular documents to an S3 bucket in a different AWS Region. Create an Amazon CloudWatch Events rule for new S3 objects tagged as secret to trigger an AWS Lambda function to replicate them into a separate bucket in the same AWS Region.
+    - [ ] D. Tag highly confidential documents as secret in Amazon S3. Create an individual S3 backup bucket in the same AWS account and AWS Region. Use S3 selective cross-region replication based on object tags to move regular documents to a different AWS Region. Create an Amazon CloudWatch Events rule for new S3 objects tagged as secret to trigger an AWS Lambda function to replicate them into a separate bucket in the same AWS Region.
 
     <details>
        <summary>Answer</summary>
@@ -588,7 +591,7 @@
   
     </details>
 
-40. While debugging a backend application for an 10T system that supports globally distributed devices, a Solutions Architect notices that stale data is occasionally being sent to user devices. Devices often share data, and stale data does not cause issues in most cases. However, device operations are disrupted when a device reads the stale data after an update. The global system has multiple identical application stacks deployed in different AWS Regions. If a user device travels out of its home geographic region, it will always connect to the geographically closest AWS Region to write or read data. The same data is available in all supported AWS Regions using an Amazon DynamoDB global table. What change should be made to avoid causing dismptions in device operations?
+40. While debugging a backend application for an IoT system that supports globally distributed devices, a Solutions Architect notices that stale data is occasionally being sent to user devices. Devices often share data, and stale data does not cause issues in most cases. However, device operations are disrupted when a device reads the stale data after an update. The global system has multiple identical application stacks deployed in different AWS Regions. If a user device travels out of its home geographic region, it will always connect to the geographically closest AWS Region to write or read data. The same data is available in all supported AWS Regions using an Amazon DynamoDB global table. What change should be made to avoid causing disruptions in device operations?
     - [ ] A. Update the backend to use strongly consistent reads. Update the devices to always write to and read from their home AWS Region.
     - [ ] B. Enable strong consistency globally on a DynamoDB global table. Update the backend to use strongly consistent reads.
     - [ ] C. Switch the backend data store to Amazon Aurora MySQL with cross-region replicas. Update the backend to always write to the master endpoint.
@@ -597,7 +600,7 @@
     <details>
        <summary>Answer</summary>
 
-       答案A，理由未知
+       如果你的应用程序需要强一致的读取，它必须在同一个区域执行所有的强一致的读取和写入。DynamoDB不支持跨区域的强一致性读取。因此，如果你写到一个区域并从另一个区域读取，读取的响应可能包括陈旧的数据，不能反映最近在另一个区域完成的写入的结果。答案A
   
     </details>
 
@@ -1110,7 +1113,7 @@
 
     </details>
 
-78. A mobile app has become very popular, and usage has gone from a few hundred to millions of users. Users capture and upload images of activities within a city and provide ratings and recommendations. Data access patters are unpredictable. The current application is hosted on Amazon EC2 instances behind an Application Load Balancer (ALB). The application is experiencing slowdowns and costs are growing rapidly Which changes should a solutions architect make to the application architecture to control costs and improve performance?
+78. A mobile app has become very popular, and usage has gone from a few hundred to millions of users. Users capture and upload images of activities within a city and provide ratings and recommendations. Data access patters are unpredictable. The current application is hosted on Amazon EC2 instances behind an Application Load Balancer (ALB). The application is experiencing slowdowns and costs are growing rapidly. Which changes should a solutions architect make to the application architecture to control costs and improve performance?
     - [ ] A. Create an Amazon CloudFront distribution and place the ALB behind the distribution. Store static content in Amazon S3 in an Infrequent Access storage class.
     - [ ] B. Store static content in an Amazon S3 bucket using the Intelligent Tiering storage class. Use an Amazon CloudFront distribution in front of the S3 bucket and the ALB.
     - [ ] C. Place AWS Global Accelerator in front of the ALB Migrate the static content to Amazon EFS, and then run an AWS Lambda function to resize the images during the migration process.
@@ -1149,11 +1152,11 @@
 
     </details>
 
-81. A company is using an existing orchestration tool to manage thousands of Amazon EC2 instances. A recent penetration test found a vulnerability in the companyג€™s software stack. This vulnerability has prompted the company to perform a full evaluation of its current production environment. The analysis determined that the following vulnerabilities exist within the environment: -Operating systems with outdated libraries and known vulnerabilities are being used in production. -Relational databases hosted and managed by the company are running unsupported versions with known vulnerabilities. -Data stored in databases is not encrypted. The solutions architect intends to use AWS Config to continuously audit and assess the compliance of the companyג€™s AWS resource configurations with the companyג€™s policies and guidelines. What additional steps will enable the company to secure its environments and track resources while adhering to best practices?
+81. A company is using an existing orchestration tool to manage thousands of Amazon EC2 instances. A recent penetration test found a vulnerability in the company's software stack. This vulnerability has prompted the company to perform a full evaluation of its current production environment. The analysis determined that the following vulnerabilities exist within the environment: -Operating systems with outdated libraries and known vulnerabilities are being used in production. -Relational databases hosted and managed by the company are running unsupported versions with known vulnerabilities. -Data stored in databases is not encrypted. The solutions architect intends to use AWS Config to continuously audit and assess the compliance of the company's AWS resource configurations with the company's policies and guidelines. What additional steps will enable the company to secure its environments and track resources while adhering to best practices?
     - [ ] A. Use AWS Application Discovery Service to evaluate all running EC2 instances Use the AWS CLI to modify each instance, and use EC2 user data to install the AWS Systems Manager Agent during boot. Schedule patching to run as a Systems Manager Maintenance Windows task. Migrate all relational databases to Amazon RDS and enable AWS KMS encryption.
     - [ ] B.  Create an AWS CloudFormation template for the EC2 instances. Use EC2 user data in the CloudFormation template to install the AWS Systems Manager Agent, and enable AWS KMS encryption on all Amazon EBS volumes. Have CloudFormation replace all running instances. Use Systems Manager Patch Manager to establish a patch baseline and deploy a Systems Manager Maintenance Windows task to execute AWS-RunPatchBaseline using the patch baseline.
-    - [ ] C. Install the AWS Systems Manager Agent on all existing instances using the companyג€™s current orchestration tool. Use the Systems Manager Run Command to execute a list of commands to upgrade software on each instance using operating system-specific tools. Enable AWS KMS encryption on all Amazon EBS volumes.
-    - [ ] D. Install the AWS Systems Manager Agent on all existing instances using the companyג€™s current orchestration tool. Migrate all relational databases to Amazon RDS and enable AWS KMS encryption. Use Systems Manager Patch Manager to establish a patch baseline and deploy a Systems Manager Maintenance Windows task to execute AWS-RunPatchBaseline using the patch baseline.
+    - [ ] C. Install the AWS Systems Manager Agent on all existing instances using the company's current orchestration tool. Use the Systems Manager Run Command to execute a list of commands to upgrade software on each instance using operating system-specific tools. Enable AWS KMS encryption on all Amazon EBS volumes.
+    - [ ] D. Install the AWS Systems Manager Agent on all existing instances using the company's current orchestration tool. Migrate all relational databases to Amazon RDS and enable AWS KMS encryption. Use Systems Manager Patch Manager to establish a patch baseline and deploy a Systems Manager Maintenance Windows task to execute AWS-RunPatchBaseline using the patch baseline.
 
     <details>
        <summary>Answer</summary>
@@ -1233,7 +1236,7 @@
     - [ ] A. Use GitHub websockets to trigger the CodePipeline pipeline. Use AWS X-Ray for unit testing and static code analysis. Deploy in an in-place, all-at-once deployment configuration using AWS CodeDeploy.
     - [ ] B. Use GitHub webhooks to trigger the CodePipeine pipeline. Use the Jenkins plugin for AWS CodeBuild to conduct unit testing. Deploy in a blue/green deployment using AWS CodeDeploy.
     - [ ] C. Use GitHub websockets to trigger the CodePipeline pipeline. Use AWS X-Ray for unit testing and static code analysis. Send alerts to an Amazon SNS topic for any bad builds. Deploy in a blue/green deployment using AWS CodeDeploy.
-    - [ ] D. Use GitHub websockets to trigger the CodePipeline pipeline. Use AWS X-Ray for unit testing and static code analysis. Deploy in an in-place, all-at-once deployment configuration using AWS CodeDeploy.
+    - [ ] D. Use GitHub webhooks to trigger the CodePipeline pipeline. Use AWS X-Ray for unit testing and static code analysis. Deploy in an in-place, all-at-once deployment configuration using AWS CodeDeploy.
 
     <details>
        <summary>Answer</summary>
@@ -1242,7 +1245,7 @@
 
     </details>
 
-88. A company has developed a mobile game. The backend for the game runs on several virtual machines located in an on-premises data center. The business logic is exposed using a REST API with multiple functions. Player session data is stored in central file storage. Backend services use different API keys for throttling and to distinguish between live and test traffic. The load on the game backend varies throughout the day. During peak hours, the server capacity is not sufficient. There are also latency issues when fetching player session data. Management has asked a solutions architect to present a cloud architecture that can handle the gameג€™s varying load and provide low-latency data access. The API model should not be changed. Which solution meets these requirements?
+88. A company has developed a mobile game. The backend for the game runs on several virtual machines located in an on-premises data center. The business logic is exposed using a REST API with multiple functions. Player session data is stored in central file storage. Backend services use different API keys for throttling and to distinguish between live and test traffic. The load on the game backend varies throughout the day. During peak hours, the server capacity is not sufficient. There are also latency issues when fetching player session data. Management has asked a solutions architect to present a cloud architecture that can handle the game's varying load and provide low-latency data access. The API model should not be changed. Which solution meets these requirements?
     - [ ] A. Implement the REST API using a Network Load Balancer (NLB). Run the business logic on an Amazon EC2 instance behind the NLB. Store player session data in Amazon Aurora Serverless.
     - [ ] B. Implement the REST API using an Application Load Balancer (ALB). Run the business logic in AWS Lambda. Store player session data in Amazon DynamoDB with on-demand capacity.
     - [ ] C. Implement the REST API using Amazon API Gateway. Run the business logic in AWS Lambda. Store player session data in Amazon DynamoDB with on- demand capacity.
@@ -1328,7 +1331,7 @@
     - C. Create an AWS CloudFormation template to launch a Jupyter notebook instance using the AWS::SageMaker::NotebookInstance resource type with a preconfigured KMS key. Simplify the parameter names, such as the instance size, by mapping them to Small, Large, and X-Large using the Mappings section in CloudFormation. Display the URL to the notebook using the Outputs section, then upload the template into an AWS Service Catalog product in the data scientist's portfolio, and share it with the data scientist's IAM role.
     - D. Create an AWS CLI script that the data scientists can run locally. Provide step-by-step instructions about the parameters to be provided while executing the AWS CLI script to launch a Jupyter notebook with a preconfigured KMS key. Distribute the CLI script to the data scientists using a shared Amazon S3 bucket.
 
-    <details>
+    <details>  
        <summary>Answer</summary>
 
        自助服务一看就用Service Catalog，答案C -> [ref](https://aws.amazon.com/cn/blogs/mt/enable-self-service-secured-data-science-using-amazon-sagemaker-notebooks-and-aws-service-catalog/)

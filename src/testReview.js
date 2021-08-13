@@ -168,3 +168,57 @@ option = {
     datasetIndex: 1,
   },
 };
+
+/////////////////////////////////////////////////////
+
+option = {
+  title: {
+    left: "center",
+    text: "第四套题错题情况",
+  },
+  dataset: [
+    {
+      dimensions: ["number", "frequent"],
+      source: [
+        ["226", 1],
+        ["232", 1],
+        ["243", 1],
+        ["244", 1],
+        ["247", 1],
+        ["249", 1],
+        ["252", 1],
+        ["257", 1],
+        ["260", 1],
+        ["267", 1],
+        ["270", 1],
+        ["271", 1],
+        ["275", 1],
+        ["281", 1],
+        ["283", 1],
+        ["290", 1],
+        ["293", 1],
+        ["295", 1],
+        ["296", 1],
+        ["297", 1],
+        ["298", 1],
+        ["299", 1],
+      ],
+    },
+    {
+      transform: {
+        type: "sort",
+        config: { dimension: "frequent", order: "desc" },
+      },
+    },
+  ],
+  xAxis: {
+    type: "category",
+    axisLabel: { interval: 0, rotate: 30 },
+  },
+  yAxis: {},
+  series: {
+    type: "bar",
+    encode: { x: "number", y: "frequent" },
+    datasetIndex: 1,
+  },
+};
