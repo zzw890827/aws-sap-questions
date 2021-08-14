@@ -273,3 +273,272 @@
        为副本开启ALB，启动Robin（均等路由），粘性会话，答案C
 
     </details>
+
+21. A solutions architect is designing a network for a new cloud deployment Each account will need autonomy to modify route tables and make changes. Centralized and controlled egress internet connectivity is also needed. The cloud footprint is expected to grow to thousands of AWS accounts. Which architecture will meet these requirements?
+    - [ ] A. A centralized transit VPC with a VPN connection to a standalone VPC in each account Outbound internet traffic will be controlled by firewall appliances.
+    - [ ] B. A centralized shared VPC with a subnet for each account. Outbound internet traffic will controlled through a fleet of proxy servers.
+    - [ ] C. A shared services VPC to host central assets to include a fleet of firewalls with a route to the internet. Each spoke VPC will peer to the central VPC.
+    - [ ] D. A shared transit gateway to which each VPC will be attached. Outbound internet access will route through a fleet of VPN-attached firewalls.
+
+    <details>
+       <summary>Answer</summary>
+
+       需要使用transit gateway，答案D
+
+    </details>
+
+22. A solutions architect needs to migrate 50 TB of NFS data to Amazon S3. The files are on several NFS file servers on corporate network. These are dense file systems containing tens of millions of small files. The system operators have configured the file interface on an AWS Snowball Edge device and are using a shell script to copy data. Developers report that copying the data to the Snowball Edge device is very slow. The solutions architect suspects this may be related to the overhead of encrypting all the small files and transporting them over the network. Which changes can be made to speed up the data transfer?
+    - [ ] A. Cluster two Snowball Edge devices together to increase the throughput of the devices.
+    - [ ] B. Change the solution to use the S3 Adapter instead of the file interface on the Snowball Edge device.
+    - [ ] C. Increase the number of parallel copy jobs to increase the throughput of the Snowball Edge device.
+    - [ ] D. Connect directly to the USB interface on the Snowball Edge device and copy the files locally.
+
+    <details>
+       <summary>Answer</summary>
+
+       使用文件接口的数据传输率通常在25MB/s和40MB/s之间。如果你需要比这更快的数据传输，请使用Amazon S3 Adapter for Snowball，它的数据传输速率通常在250 MB/s和400 MB/s之间。答案B
+
+    </details>
+
+23. A company hosts a blog post application on AWS using Amazon API Gateway, Amazon DynamoDB, and AWS Lambda. The application currently does not use API keys to authorize requests. The API model is as follows: -`GET/posts/:postid` to get post details. -`GET/users:userid` to get user details. -`GET/comments/:commentid` to get comments details. The company has noticed users are actively discussing topics in the comments section, and the company wants to increase user engagement by marking the comments appears in real time. Which design should be used to reduce comment latency and improve user experience?
+    - [ ] A. Use edge-optimized API with Amazon CloudFront to cache API responses.
+    - [ ] B. Modify the blog application code to request GET comment[commented] every 10 seconds.
+    - [ ] C. Use AWS AppSync and leverage WebSockets to deliver comments.
+    - [ ] D. Change the concurrency limit of the Lambda functions to lower the API response time.
+
+    <details>
+       <summary>Answer</summary>
+
+       AWS AppSync是一项完全管理的服务，支持实时更新。答案C
+
+    </details>
+
+24. An IoT company has rolled out a fleet of sensors for monitoring temperatures in remote locations. Each device connects to AWS IoT Core and sends a message 30 seconds, updating an Amazon DynamoDB table. A System Administrator users AWS IoT to verify the devices are still sending messages to AWS IoT Core: the database is not updating. What should a Solutions Architect check to determine why the database is not being updated?
+    - [ ] A. Verify the AWS IoT Device Shadow service is subscribed to the appropriate topic and is executing the AWS Lambda function.
+    - [ ] B. Verify that AWS IoT monitoring shows that the appropriate AWS IoT rules are being executed, and that the AWS IoT rules are enabled with the correct rule actions.
+    - [ ] C. Check the AWS IoT Fleet indexing service and verify that the thing group has the appropriate IAM role to update DynamoDB.
+    - [ ] D. Verify that AWS IoT things are using MQTT instead of MQTT over WebSocket, then check that the provisioning has the appropriate policy attached.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案是D -> [ref](https://docs.aws.amazon.com/zh_cn/iot/latest/developerguide/iot-rules.html)
+
+    </details>
+
+25. An enterprise company is using a multi-account AWS strategy. There are separate accounts for development staging and production workloads. To control costs and improve governance the following requirements have been defined: -The company must be able to calculate the AWS costs for each project. -The company must be able to calculate the AWS costs for each environment development staging and production. -Commonly deployed IT services must be centrally managed. -Business units can deploy pre-approved IT services only. -Usage of AWS resources in the development account must be limited. Which combination of actions should be taken to meet these requirements? (Choose three.)
+    - [ ] A. Apply environment, cost center, and application name tags to all taggable resources.
+    - [ ] B. Configure custom budgets and define thresholds using Cost Explorer.
+    - [ ] C. Configure AWS Trusted Advisor to obtain weekly emails with cost-saving estimates.
+    - [ ] D. Create a portfolio for each business unit and add products to the portfolios using AWS CloudFormation in AWS Service Catalog.
+    - [ ] E. Configure a billing alarm in Amazon CloudWatch.
+    - [ ] F. Configure SCPs in AWS Organizations to allow services available using AWS.
+
+    <details>
+       <summary>Answer</summary>
+
+       - A - 标记和成本计算
+       - D - 预先批准和控制
+       - F-有限服务
+
+    </details>
+
+26. A company is planning to migrate an existing high performance computing (HPE) solution to the AWS Cloud. The existing solution consists of a 12-node cluster running Linux with high speed interconnectivity developed on a single rack. A solutions architect needs to optimize the performance of the HPE cluster. Which combination of steps will meet these requirements? (Choose two.)
+    - [ ] A. Deploy instances across at least three Availability Zones.
+    - [ ] B. Deploy Amazon EC2 instances in a placement group.
+    - [ ] C. Use Amazon EC2 instances that support Elastic Fabric Adapter (EFA).
+    - [ ] D. Use Amazon EC2 instances that support burstable performance.
+    - [ ] E. Enable CPU hyperthreading.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案BC
+
+    </details>
+
+27. A company hosts a game player-matching service on a public facing, physical, on-premises instance that all users are able to access over the internet. All traffic to the instance uses UDP. The company wants to migrate the service to AWS and provide a high level of security. A solutions architect needs to design a solution for the player-matching service using AWS. Which combination of steps should the solutions architect take to meet these requirements? (Choose three.)
+    - [ ] A. Use a Network Load Balancer (NLB) in front of the player-matching instance. Use a friendly DNS entry in Amazon Route 53 pointing to the NLB’s Elastic IP address.
+    - [ ] B. Use an Application Load Balancer (ALB) in front of the player-matching instance. Use a friendly DNS entry in Amazon Route 53 pointing to the ALB’s internet- facing fully qualified domain name (FQDN).
+    - [ ] C. Define an AWS WAF rule to explicitly drop non-UDP traffic, and associate the rule with the load balancer.
+    - [ ] D. Configure a network ACL rule to block all non-UDP traffic. Associate the network ACL with the subnets that hold the load balancer instances.
+    - [ ] E. Use Amazon CloudFront with an Elastic Load Balancer as an origin.
+    - [ ] F. Enable AWS Shield Advanced on all public-facing resources.
+
+28. A company has multiple AWS accounts and manages these accounts which AWS Organizations. A developer was given IAM user credentials to access AWS resources. The developer should have read-only access to all Amazon S3 buckets in the account. However, when the developer tries to access the S3 buckets from the console, they receive an access denied error message with no bucket listed. A solution architect reviews the permissions and finds that the developerג€™s IAM user is listed as having read-only access to all S3 buckets in the account. Which additional steps should the solutions architect take to troubleshoot the issue? (Choose two.)
+    - [ ] A. Check the bucket policies for all S3 buckets.
+    - [ ] B. Check the ACLs for all S3 buckets.
+    - [ ] C. Check the SCPs set at the organizational units (OUs).
+    - [ ] D. Check for the permissions boundaries set for the IAM user.
+    - [ ] E. Check if an appropriate IAM role is attached to the IAM user.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案CD
+
+    </details>
+
+29. A large company recently experienced an unexpected increase in Amazon RDS and Amazon DynamoDB costs. The company needs to increase visibility into delays of AWS Billing and Cost Management. There are various accounts associated with AWS Organizations, including many development and production accounts. There is no consistent tagging strategy across the organization, but there are guidelines in place that require all infrastructure to be deployed using AWS CloudFormation with consistent tagging. Management requires cost center numbers and project ID numbers for all existing and future DynamoDB tables and RDS distances. Which strategy should the solutions architect provide to meet these requirements?
+    - [ ] A. Use Tag Editor to tag existing resources. Create cost allocation tags to define the cost center and project ID and allow 24 hours for tags to propagate to existing resources.
+    - [ ] B. Use an AWS Config rule to alert the finance team of untagged resources. Create a centralized AWS Lambda based solution to tag untagged RDS databases and DynamoDB resources every hour using a cross-account role.
+    - [ ] C. Use Tag Editor to tag existing resources. Create cost allocation tags to define the cost center and project ID. Use SCPs to restrict resource creation that do not have the cost center and project ID on the resource.
+    - [ ] D. Create cost allocation tags to define the cost center and project ID and allow 24 hours for tags to propagate to existing resources. Update existing federated roles to restrict privileges to provision resources that do not include the cost center and project ID on the resource.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案C -> [ref](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf)
+
+    </details>
+
+30. A company has an application that generates reports and stores them in an Amazon bucket Amazon S3 bucket. When a user accesses their report, the application generates a signed URL to allow the user to download the report. The company's security team has discovered that the files are public and that anyone can download them without authentication. The company has suspended the generation of new reports until the problem is resolved. Which set of action will immediately remediate the security issue without impacting the application's normal workflow?
+    - [ ] A. Create an AWS Lambda function that applies all policy for users who are not authenticated. Create a scheduled event to invoke the Lambda function.
+    - [ ] B. Review the AWS Trusted advisor bucket permissions check and implement the recommend actions.
+    - [ ] C. Run a script that puts a Private ACL on all of the object in the bucket.
+    - [ ] D. Use the Block Public Access feature in Amazon S3 to set the IgnorePublicAcis option to TRUE on the bucket.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案D
+
+    </details>
+
+31. A company hosts a legacy application that runs on an Amazon EC2 instance inside a VPC without internet access. Users access the application with a desktop program installed on their corporate laptops. Communication between the laptops and the VPC flows through AWS Direct Connect (DX). A new requirement states that all data in transit must be encrypted between users and the VPC. Which strategy should a solutions architect use to maintain consistent network performance while meeting this new requirement?
+    - [ ] A. Create a client VPN endpoint and configure the laptops to use an AWS client VPN to connect to the VPC over the internet.
+    - [ ] B. Create a new public virtual interface for the existing DX connection, and create a new VPN that connects to the VPC over the DX public virtual interface.
+    - [ ] C. Create a new Site-to-Site VPN that connects to the VPC over the internet.
+    - [ ] D. Create a new private virtual interface for the existing DX connection, and create a new VPN that connects to the VPC over the DX private virtual interface.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案D
+
+    </details>
+
+32. A solutions architect needs to define a reference architecture for a solution for three-tier applications with web, application, and NoSQL data layers. The reference architecture must meet the following requirements: -High availability within an AWS Region. -Able to fail over in 1 minute to another AWS Region for disaster recovery. -Provide the most efficient solution while minimizing the impact on the user experience. Which combination of steps will meet these requirements? (Choose three.)
+    - [ ] A. Use an Amazon Route 53 weighted routing policy set to 100/0 across the two selected Regions. Set Time to Live (TTL) to 1 hour.
+    - [ ] B. Use an Amazon Route 53 failover routing policy for failover from the primary Region to the disaster recovery Region. Set Time to Live (TTL) to 30 seconds.
+    - [ ] C. Use a global table within Amazon DynamoDB so data can be accessed in the two selected Regions.
+    - [ ] D. Back up data from an Amazon DynamoDB table in the primary Region every 60 minutes and then write the data to Amazon S3. Use S3 cross-Region replication to copy the data from the primary Region to the disaster recovery Region. Have a script import the data into DynamoDB in a disaster recovery scenario. Implement a hot standby model using Auto Scaling groups for the web and application layers across multiple Availability Zones in the Regions. Use zonal Reserved Instances for the minimum number of servers and On-Demand Instances for any additional resources.
+    - [ ] E. Use Auto Scaling groups for the web and application layers across multiple Availability Zones in the Regions. Use Spot Instances for the required resources.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案BCD
+
+    </details>
+
+33. A company runs an application on a fleet of Amazon EC2 instances. The application requires low latency and random access to 100 GB of data. The application must be able to access the data at up to 3.000 IOPS. A Development team has configured the EC2 launch template to provision a 100-GB Provisioned IOPS (PIOPS) Amazon EBS volume with 3 000 IOPS provisioned. A Solutions Architect is tasked with lowering costs without impacting performance and durability.Which action should be taken?
+    - [ ] A. Create an Amazon EFS file system with the performance mode set to Max I/O. Configure the EC2 operating system to mount the EFS file system.
+    - [ ] B. Create an Amazon EFS file system with the throughput mode set to Provisioned. Configure the EC2 operating system to mount the EFS file system.
+    - [ ] C. Update the EC2 launch template to allocate a new 1-TB EBS General Purpose SSO (gp2) volume.
+    - [ ] D. Update the EC2 launch template to exclude the PIOPS volume. Configure the application to use local instance storage.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案C
+
+    </details>
+
+34. A company recently transformed its legacy infrastructure provisioning scripts to AWS CloudFormation templates. The newly developed templates are hosted in the company's private GitHub repository. Since adopting CloudFormation, the company has encountered several issues with updates to the CloudFormation templates, causing execution or creating environment. Management is concerned by the increase in errors and has asked a Solutions Architect to design the automated testing of CloudFormation template updates. What should the Solution Architect do to meet these requirements?
+    - [ ] A. Use AWS CodePipeline to create a change set from the CloudFormation templates stored in the private GitHub repository. Execute the change set using AWS CodeDeploy. Include a CodePipeline action to test the deployment with testing scripts run by AWS CodeBuild.
+    - [ ] B. Mirror the GitHub repository to AWS CodeCommit using AWS Lambda. Use AWS CodeDeploy to create a change set from the CloudFormation templates and execute it. Have CodeDeploy test the deployment with testing scripts run by AWS CodeBuild.
+    - [ ] C. Use AWS CodePipeline to create and execute a change set from the CloudFormation templates stored in the GitHub repository. Configure a CodePipeline action to be deployment with testing scripts run by AWS CodeBuild.
+    - [ ] D. Mirror the GitHub repository to AWS CodeCommit using AWS Lambda. Use AWS CodeBuild to create a change set from the CloudFormation templates and execute it. Have CodeBuild test the deployment with testing scripts.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案C
+
+    </details>
+
+35. A company wants to improve cost awareness for its Amazon EMR platform. The company has allocated budgets for each team's Amazon EMR usage. When a budgetary threshold is reached, a notification should be sent by email to the budget office's distribution list. Teams should be able to view their EMR cluster expenses to date. A solutions architect needs to create a solution that ensures the policy is proactively and centrally enforced in a multi-account environment. Which combination of steps should the solutions architect take to meet these requirements? (Choose two.)
+    - [ ] A. Update the AWS CloudFormation template to include the AWS::Budgets::Budget::resource with the NotificationsWithSubscribers property.
+    - [ ] B. Implement Amazon CloudWatch dashboards for Amazon EMR usage.
+    - [ ] C. Create an EMR bootstrap action that runs at startup that calls the Cost Explorer API to set the budget on the cluster with the GetCostForecast and NotificationsWithSubscribers actions.
+    - [ ] D. Create an AWS Service Catalog portfolio for each team. Add each team's Amazon EMR cluster as an AWS CloudFormation template to their Service Catalog portfolio as a Product.
+    - [ ] E. Create an Amazon CloudWatch metric for billing. Create a custom alert when costs exceed the budgetary threshold.
+
+    <details>
+       <summary>Answer</summary>
+
+       重复题，答案AD
+
+    </details>
+
+36. A company is migrating its on-premises systems to AWS. The user environment consists of the following systems: -Windows and Linux virtual machines running on VMware. -Physical servers running Red Hat Enterprise Linux. The company wants to be able to perform the following steps before migrating to AWS: -Identify dependencies between on-premises systems. -Group systems together into applications to build migration plans. -Review performance data using Amazon Athena to ensure that Amazon EC2 instances are right-sized. How can these requirements be met?
+    - [ ] A. Populate the AWS Application Discovery Service import template with information from an on-premises configuration management database (CMDB). Upload the completed import template to Amazon S3, then import the data into Application Discovery Service.
+    - [ ] B. Install the AWS Application Discovery Service Discovery Agent on each of the on-premises systems. Allow the Discovery Agent to collect data for a period of time.
+    - [ ] C. Install the AWS Application Discovery Service Discovery Connector on each of the on-premises systems and in VMware vCenter. Allow the Discovery Connector to collect data for one week.
+    - [ ] D. Install the AWS Application Discovery Service Discovery Agent on the physical on-premises servers. Install the AWS Application Discovery Service Discovery Connector in VMware vCenter. Allow the Discovery Agent to collect data for a period of time.
+
+    <details>
+       <summary>Answer</summary>
+
+       物理主机用Application Discovery Service Discovery Agent，虚拟机用Application Discovery Service Discovery Connector. 答案D
+
+    </details>
+
+37. A company hosts a web application on AWS in the us-east-1 Region. The application server are distributed across three Availability Zones behind an Application Load Balancer. The database is hosted in MYSQL database on an Amazon EC2 instance. A solutions architect needs to design a cross-Region data recovery solution using AWS services with an RTO of less than 5 minutes and an RPO of less than 1 minute. The solutions architect is deploying application servers in us-west-2, and has configured Amazon Route 53 hearth checks and DNS failover to us-west-2.Which additional step should the solutions architect take?
+    - [ ] A. Migrate the database to an Amazon RDS for MySQL instance with a cross-Region read replica in us-west-2.
+    - [ ] B. Migrate the database to an Amazon Aurora global database with the primary in us-east-1 and the secondary in us-west-2.
+    - [ ] . Migrate the database to an Amazon RDS for MySQL instance with a Multi-AZ deployment.
+    - [ ] . Create a MySQL standby database on an Amazon EC2 instance in us-west-2.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案B
+
+    </details>
+
+38. A company wants to migrate its on-premises data center to the AWS Cloud. This includes thousands of virtualized Linux and Microsoft Windows servers, SAN storage, Java and PHP applications with MYSQL, and Oracle databases. There are many department services hosted either in the same data center or externally. The technical documentation is incomplete and outdated. A solutions architect needs to understand the current environment and estimate the cloud resource costs after the migration. Which tools or services should solutions architect use to plan the cloud migration (Choose three.)
+    - [ ] A. AWS Application Discovery Service
+    - [ ] B. AWS SMS
+    - [ ] C. AWS x-Ray
+    - [ ] D. AWS Cloud Adoption Readness Tool (CART)
+    - [ ] E. Amazon Inspector
+    - [ ] F. AWS Migration Hub
+
+    <details>
+       <summary>Answer</summary>
+
+       - 使用AWS应用发现服务来收集关于正在运行的虚拟机和服务器内正在运行的应用程序的信息。
+       - 使用AWS云采用准备工具（CART）来生成迁移评估报告，以确定组织技能和流程的差距。
+       - 使用AWS Migration Hub来发现和跟踪跨AWS和合作伙伴解决方案的应用程序迁移状态。
+       - 答案ADF
+
+    </details>
+
+39. A company decided to purchase Amazon EC2 Reserved Instances. A solutions architect is tasked with implementing a solution where only the master account in AWS Organizations is able to purchase the Reserved Instances. Current and future member accounts should be blocked from purchasing Reserved Instances. Which solution will meet these requirements?
+    - [ ] A. Create an SCP with the Deny effect on the ec2:PurchaseReservedInstancesOffering action. Attach the SCP to the root of the organization.
+    - [ ] B. Create a new organizational unit (OU) Move all current member accounts to the new OU. Create an SCP with the Deny effect on the ec2:PurchaseReservedInstancesOffering action. Attach the SCP to the new OU.
+    - [ ] C. Create an AWS Config rule event that triggers automation that will terminate any Reserved Instances launched by member accounts.
+    - [ ] D. Create two new organizational units (OUs): OU1 and OU2. Move all member accounts to OU2 and the master account to OU1. Create an SCP with the Allow effect on the ec2:PurchaseReservedInstancesOffering action. Attach the SCP to OU1.
+    <details>
+       <summary>Answer</summary>
+
+       - A. 错误，AWS不建议将SCP附加到组织的根。
+       - B. 正确。
+       - C. 错误，虽然终止了实例但是并不能组织购买。
+       - D. 错误，我们不能使用SCP来执行主账户/管理账户的任何操作。另外，默认权限是fullaccess，为什么我们需要allow:ec2:PurchaseReservedInstancesOffering？
+
+    </details>
+
+40. A solutions architect needs to advise a company on how to migrate its on-premises data processing application to the AWS Cloud. Currently, users upload input files through a web portal. The web server then stores the uploaded files on NAS and messages the processing server over a message queue. Each media file can take up to 1 hour to process. The company has determined that the number of media files awaiting processing is significantly higher during business hours, with the number of files rapidly declining after business hours. What is the MOST cost-effective migration recommendation?
+    - [ ] A. Create a queue using Amazon SQS. Configure the existing web server to publish to the new queue. When there are messages in the queue, invoke an AWS Lambda function to pull requests from the queue and process the files. Store the processed files in an Amazon S3 bucket.
+    - [ ] B. Create a queue using Amazon MQ. Configure the existing web server to publish to the new queue. When there are messages in the queue, create a new Amazon EC2 instance to pull requests from the queue and process the files. Store the processed files in Amazon EFS. Shut down the EC2 instance after the task is complete.
+    - [ ] C. Create a queue using Amazon MQ. Configure the existing web server to publish to the new queue. When there are messages in the queue, invoke an AWS Lambda function to pull requests from the queue and process the files. Store the processed files in Amazon EFS.
+    - [ ] D. Create a queue using Amazon SQS. Configure the existing web server to publish to the new queue. Use Amazon EC2 instances in an EC2 Auto Seating group to pull requests from the queue and process the files. Scale the EC2 instances based on the SQS queue length. Store the processed files in an Amazon S3 bucket.
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案D。
+
+    </details>
