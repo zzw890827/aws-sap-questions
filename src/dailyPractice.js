@@ -20,7 +20,7 @@ option = {
       markLine: {
         symbol: ["none", "none"],
         label: { show: true },
-        data: [{ yAxis: 72 }],
+        data: [{ yAxis: 75 }],
       },
     },
   ],

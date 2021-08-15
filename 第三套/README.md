@@ -366,16 +366,16 @@
 
 26. An AWS customer is deploying an application mat is composed of an AutoScaling group of EC2 Instances. The customers security policy requires that every outbound connection from these instances to any other service within the customers Virtual Private Cloud must be authenticated using a unique x.509 certificate that contains the specific instance-id. In addition, an x.509 certificates must Designed by the customer's Key management service in order to be trusted for authentication. Which of the following configurations will support these requirements?
     - [ ] A. Configure an IAM Role that grants access to an Amazon S3 object containing a signed certificate and configure the Auto Scaling group to launch instances with this role. Have the instances bootstrap get the certificate from Amazon S3 upon first boot.
-    - [ ] B. Embed a certificate into the AMI that is used by the Auto Scaling group. Have the launched instances generate a certificate signature request with the instance's assigned instance-id to the key management service for signature.
-    - [ ] C. Configure the Auto Scaling group to send an SNS notification of the launch of a new instance to the trusted key management service. Have the Key management service generate a signed certificate and send it directly to the newly launched instance.
-    - [ ] D. Configure the launched instances to generate a new certificate upon first boot. Have the Key management service poll the Auto Scaling group for associated instances and send new instances a certificate signature (hat contains the specific instance-id.
+    - [ ] B. Configure the Auto Scaling group to send an SNS notification of the launch of a new instance to the trusted key management service. Have the Key management service generate a signed certificate and send it directly to the newly launched instance.
+    - [ ] C. Embed a certificate into the AMI that is used by the Auto Scaling group. Have the launched instances generate a certificate signature request with the instance's assigned instance-id to the key management service for signature.
+    - [ ] D. Configure the launched instances to generate a new certificate upon first boot. Have the Key management service poll the Auto Scaling group for associated instances and send new instances a certificate signature that contains the specific instance-id.
 
     <details>
        <summary>Answer</summary>
 
        - [ ] A. 无法保证生成的证书是唯一的
-       - [x] B. 正确
-       - [ ] C. Auto Scaling不能用于SNS
+       - [ ] B. 第一次请求很不安全
+       - [x] C. 正确
        - [ ] D. 新实例在第一次请求前可能没有唯一的证书
   
     </details>
@@ -1027,7 +1027,7 @@
     <details>
        <summary>Answer</summary>
 
-       简单题，答案D
+       D. B的问题是，新的OU将在组织的根中创建，因此拒绝配置规则的更改（来自组织的根）也将适用于新的OU。新的 OU 不能有一个拒绝更改配置规则的父级。这将是D的情况。答案D
 
     </details>
 
@@ -1219,7 +1219,7 @@
 
     </details>
 
-86. A company wants to host a global web application on AWS. It has the following design requirements. -Minimize the of API calls. -The access pattern must allow for latching data from multiple data sources. -Keep page load times to within 50ms. -Provide user authentication and authorization and manage data access for different user personas (for example, administrator, manager, or engineer). -Use a server less design. Which set of strategies should a solution architect use?
+86. A company wants to host a global web application on AWS. It has the following design requirements. -Minimize the of API calls. -The access pattern must allow for latching data from multiple data sources. -Keep page load times to within 50ms. -Provide user authentication and authorization and manage data access for different user personas (for example, administrator, manager, or engineer). -Use a serverless design. Which set of strategies should a solution architect use?
     - [ ] A. Use Amazon CloudFront with Amazon S3 to host the web application Use Amazon API gateway to build the application APIs with AWS Lambda for the custom authorizer Authorize data access by performing user lookup in Simple AD.
     - [ ] B. Use Amazon CloudFront with AWS WAF to host the web application. Use AWS AppSync to build the application APIs. Use IAM groups for each user persona Authorize data access by leveraging IAM group in AWS AppSync resolvers.
     - [ ] C. Use Amazon CloudFront with Amazon S3 to host the web application. Use AWS AppSync to build the application APIs. Use Amazon Cognito groups for each user persona Authorize data access by leveraging Amazon Cognito groups in AWS AppSync resolvers.
@@ -1415,6 +1415,6 @@
      <details>
        <summary>Answer</summary>
 
-        答案A，gp2的IOPS太小了。
+       答案A，gp2的IOPS太小了。
 
      </details>
