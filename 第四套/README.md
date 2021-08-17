@@ -1167,3 +1167,200 @@
        简单题，答案D。
 
     </details>
+
+86. A large company runs workloads in VPCS that are deployed of AWS accounts. Each PC consists of public subnets and private subnets that span across multiple Availability Zones NAT gateway are deployed in the public subnets and allow outbond cone o e neet om e private nets A olton achiet s workin n a b-and-spoke design A rivate nets in the poke P must route traffic to the internal through an aggress VPC. The solutions architect already has deployed has deployed a NAT gateway in an egress VPC in a cent al AWS account. Which set of additional steps should the solution architect take to meet these requirements?
+    - [ ] A. Create peering connections between the egress VPC and the spoke VPCS. Configure the required routing to allow access to the internet.
+    - [ ] B. Create a transit gateway and share it with the existing AWS accounts. Attach existing VPCS to the transit gateway. Configure routing to allow access to the internet.
+    - [ ] C. Create a transit gateway in every account Attach the NAI gateway to the gateway configure the required routing to allow access to the internet.
+    - [ ] D. Create an AWS privatelink connection between the egress VPC and the spoke VPC. Configure the require routing to allow access to he internet.
+
+    <details>
+       <summary>Answer</summary>
+
+       中央辐射型VPC用transit gateway，答案B。
+
+    </details>
+
+87. A large company has a business-critical application that runs in a single AWS Region. The application consists of multiple Amazon EC2 instances and an Amazon RDS Multi-AZ DB instance. The EC2 instances run in an Amazon EC2 Auto Scaling group across multiple Availability Zones. A solutions architect is implementing a disaster recovery (DR) plan for the application. The solutions architect has created a pilot light application deployment in a new Region, which is referred to as the DR Region. The DR environment has an Auto Scaling group with a single EC2 instance and a read replica of the RDS DB instance. The solutions architect must automate a failover from the primary application environment to the pilot light environment in the DR Region. Which solution meets these requirements with the MOST operational efficiency?
+    - [ ] A. Publish an application availability metric to Amazon CloudWatch in the DR Region from the application environment in the primary Region. Create a CloudWatch alarm in the DR Region that is invoked when the application availability metric stops being delivered. Configure the CloudWatch alarm to send a notification to an Amazon Simple Notification Service (Amazon SNS) topic in the DR Region. Add an email subscription to the SNS topic that sends messages to the application owner. Upon notification, instruct a systems operator to sign in to the AWS Management Console and initiate failover operations for the application.
+    - [ ] B. Create a cron task that runs every 5 minutes by using one of the application's EC2 instances in the primary Region. Configure the cron task to check whether the application is available. Upon failure, the cron task notifies a systems operator and attempts to restart the application services.
+    - [ ] C. Create a cron task that runs every 5 minutes by using one of the application's EC2 instances in the primary Region. Configure the cron task to check whether the application is available. Upon failure, the cron task modifies the DR environment by promoting the read replica and by adding EC2 instances to the Auto Scaling group.
+    - [ ] D. Publish an application availability metric to Amazon CloudWatch in the DR Region from the application environment in the primary Region. Create a CloudWatch alarm in the DR Region that is invoked when the application availability metric stops being delivered. Configure the CloudWatch alarm to send a notification to an Amazon Simple Notification Service (Amazon SNS) topic in the DR Region. Use an AWS Lambda function that is invoked by Amazon SNS in the DR Region to promote the read replica and to add EC2 instances to the Auto Scaling group.
+
+    <details>
+       <summary>Answer</summary>
+
+       BC用Cronjob不太好，A人工了，答案D。
+
+    </details>
+
+88. A developer reports receiving an Error 403: Access Denied message when they try to download an object from an Amazon S3 bucket. The S3 bucket is accessed using an S3 endpoint inside a VPC, and is encrypted with an AWS KMS key. A solution architect has verified that the developer is assuming the correct IAM role in the account that allows the object to be downloaded. The S3 bucket policy and the NACL are also valid. Which additional step should the solutions architect take to troubleshoot this issue?
+    - [ ] A. Ensure that blocking all public access has not been enabled In the S3 bucket.
+    - [ ] B. Verify that the IAM rote has permission to decrypt the referenced KMS key.
+    - [ ] C. Verify that the IAM rote has the correct trust relationship configured.
+    - [ ] D. Check that local firewall rules are not preventing access to the S3 endpoint.
+
+    <details>
+       <summary>Answer</summary>
+
+       重复题，答案B。
+
+    </details>
+
+89. A company is running web application on Amazon EC2. The web tier consists of an Application Load Balancer (ALB) backed by a Auto Scaling group of web server Instances spanning multiple Availability Zones. The database tier is using Amazon Aurora MySQL. The company's security team has deployed AWS WAF and integrated it with the ALB to prevent SQL injection attacks against the application. Recently, a security breach was reported In which the attacker was able to gain access to an individual web server and the company's database from random IP addresses. The security team was eventually able to write a better rule to match the SQL injection technique that the attacker had used. However, this process took about an hour from when the third-party security agent running on the EC2 instances successfully detected the attack. Which strategy allows the security team to protect the database and overall infrastructure?
+    - [ ] A. Add an Amazon CloudFront layer to the existing architecture Modify the AWS WAF association to integrate with CloudFront instead of the ALB Change the web oar's security groups to allow IP addresses from CloudFront only Use Lambda@Edge 10 perform request Inspection and block repetitive suspicious requests.
+    - [ ] B. Configure the third-party security agent to Invoke an AWS Lambda function The Lambda function should first check the web tier's Auto Scaling group to ensure (here is more than one running Instance; and if so. then stop and quarantine the compromised web server instance
+    - [ ] C. Enable Amazon Macie and turn on its integrations with Amazon EC2 and the Aurora MySQL database Create a visual dashboard for the security team. Con6gi*e automated alerts and define AWS Lambda functions to automatically block detected attacks by modifying security groups within the VPC
+    - [ ] D. Deploy Amazon GuardDuty to analyze VPC Flow Logs. Configure an Amazon EventBridge rule that triggers an AWS Lambda function upon a GuardDuty alert Configure the Lambda function to automatically block detected attacks by modifying security groups within the VPC.
+
+    <details>
+       <summary>Answer</summary>
+
+       重复题，答案D。
+
+    </details>
+
+90. A company is running a containerized application in the AWS Cloud. The application is running by using Amazon Elastic Container Service (Amazon ECS) on a set Amazon EC2 instances. The EC2 instances run in an Auto Scaling group. The company uses Amazon Elastic Container Registry (Amazon ECR) to store its container images. When a new image version is uploaded, the new image version receives a unique tag. The company needs a solution that inspects new image versions for common vulnerabilities and exposures. The solution must automatically delete new image tags that have Critical or High severity findings. The solution also must notify the development team when such a deletion occurs. Which solution meets these requirements?
+    - [ ] A. Configure scan on push on the repository. Use Amazon EventBridge (Amazon CloudWatch Events) to invoke an AWS Step Functions state machine when a scan is complete for images that have Critical or High severity findings. Use the Step Functions state machine to delete the image tag for those images and to notify the development team through Amazon Simple Notification Service (Amazon SNS).
+    - [ ] B. Configure scan on push on the repository. Configure scan results to be pushed to an Amazon Simple Queue Service (Amazon SQS) queue. Invoke an AWS Lambda function when a new message is added to the SOS queue. Use the Lambda function to delete the image tag for images that have Critical or High seventy findings. Notify the development team by using Amazon Simple Email Service (Amazon SES).
+    - [ ] C. Schedule an AWS Lambda function to start a manual image scan every hour. Configure Amazon EventBridge (Amazon CloudWatch Events) to invoke another Lambda function when a scan is complete. Use the second Lambda function to delete the image tag for images that have Critical or High severity findings. Notify the development team by using Amazon Simple Notification Service (Amazon SNS)
+    - [ ] D. Configure periodic image scan on the repository. Configure scan results to be added to an Amazon Simple Queue Service (Amazon SQS) queue. Invoke an AWS Step Functions state machine when a new message is added to the SQS queue. Use the Step Functions state machine to delete the image tag for images that have Critical or High severity findings. Notify the development team by using Amazon Simple Email Service (Amazon SES).
+
+    <details>
+       <summary>Answer</summary>
+
+       答案C。
+
+    </details>
+
+91. A travel company built a web application that uses Amazon Simple Email Service (Amazon SES) to send email notifications to users. The company needs to enable logging to help troubleshoot email delivery issues. The company also needs the ability to do searches that are based on recipient, subject, and time sent. Which combination of steps should a solutions architect take to meet these requirements? (Select TWO.)
+    - [ ] A. Create an Amazon SES configuration set with Amazon Kinesis Data Firehose as the destination. Choose to send logs to an Amazon S3 bucket.
+    - [ ] B. Enable AWS CloudTrail logging. Specify an Amazon S3 bucket as the destination for the logs.
+    - [ ] C. Use Amazon Athena to query the logs in the Amazon S3 bucket for recipient, subject, and time sent.
+    - [ ] D. Create an Amazon CloudWatch log group. Configure Amazon SES to send logs to the log group.
+    - [ ] E. Use Amazon Athena to query the logs in Amazon CloudWatch for recipient, subject, and time sent.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案BC。
+
+    </details>
+
+92. A startup company recently migrated a large ecommerce website to AWS The website has experienced a 70% increase in sales. Software engineers are using a private GitHub repository to manage code. The devops team is using Jenkins for builds and unit testing. The engineers need to receive notifications for bad builds and zero downtime during deployments. The engineers also need to ensure any changes to production are seamless for users and can be rolled back in the event of a major issue. The software engineers have decided to use AWS CodePipeline to manage their build and deployment process. Which solution will meet these requirements?
+    - [ ] A. Use GitHub websockets to trigger the CodePipeline pipeline. Use the Jenkins plugin for AWS Code Build to conduct unit testing. Send alerts to an Amazon SNS topic for any bad builds. Deploy in an in-place all-at-once deployment configuration using AWS CodeDeploy.
+    - [ ] B. Use GitHub webhooks to trigger the CodePipeine pipeline. Use the Jenkins plugin for AWS CodeBuild to conduct unit testing. Deploy in a blue/green deployment using AWS CodeDeploy.
+    - [ ] C. Use GitHub websockets to trigger the CodePipeline pipeline. Use AWS X-Ray for unit testing and static code analysis. Send alerts to an Amazon SNS topic for any bad builds. Deploy in a blue/green deployment using AWS CodeDeploy.
+    - [ ] D. Use GitHub websockets to trigger the CodePipeline pipeline. Use AWS X-Ray for unit testing and static code analysis. Deploy in an in-place, all-at-once deployment configuration using AWS CodeDeploy.
+
+    <details>
+       <summary>Answer</summary>
+
+       重复题，答案B。
+
+    </details>
+
+93. A company has developed a mobile game. The backend for the game runs on several virtual machines located in an on-premises data center. The business logic is exposed using a REST API with multiple functions. Player session data is stored in central file storage. Backend services use different API keys for throttling and to distinguish between live and test traffic. The load on the game backend varies throughout the day. During peak hours, the server capacity is not sufficient. There are also latency issues when fetching player session data. Management has asked a solutions architect to present a cloud architecture that can handle the game's varying load and provide low-latency data access. The API model should not be changed. Which solution meets these requirements?
+    - [ ] A. Implement the REST API using a Network Load Balancer (NLB). Run the business logic on an Amazon EC2 instance behind the NLB. Store player session data in Amazon Aurora Serverless.
+    - [ ] B. Implement the REST API using an Application Load Balancer (ALB). Run the business logic in AWS Lambda. Store player session data in Amazon DynamoDB with on-demand capacity.
+    - [ ] C. Implement the REST API using Amazon API Gateway. Run the business logic in AWS Lambda. Store player session data in Amazon DynamoDB with on- demand capacity.
+    - [ ] D. Implement the REST API using AWS AppSync. Run the business logic in AWS Lambda. Store player session data in Amazon Aurora Serverless.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案C。
+
+    </details>
+
+94. A company uses Amazon S3 to host a web application. Currently, the company uses a continuous integration tool running on an Amazon EC2 instance that builds and deploys the application by uploading it to an S3 bucket. A Solutions Architect needs to enhance the security of the company's platform with the following requirements: -A build process should be run in a separate account from the account hosting the web application. -A build process should have minimal access in the account it operates in. -Long-lived credentials should not be used. As a start, the Development team created two AWS accounts: one for the application named web account process; other is a named build account. Which solution should the Solutions Architect use to meet the security requirements?
+    - [ ] A. In the build account, create a new IAM role, which can be assumed by Amazon EC2 only. Attach the role to the EC2 instance running the continuous integration process. Create an IAM policy to allow s3: PutObject calls on the S3 bucket in the web account. In the web account, create an S3 bucket policy attached to the S3 bucket that allows the build account to use s3:PutObject calls.
+    - [ ] B. In the build account, create a new IAM role, which can be assumed by Amazon EC2 only. Attach the role to the EC2 instance running the continuous integration process. Create an IAM policy to allow s3: PutObject calls on the S3 bucket in the web account. In the web account, create an S3 bucket policy attached to the S3 bucket that allows the newly created IAM role to use s3:PutObject calls.
+    - [ ] C. In the build account, create a new IAM user. Store the access key and secret access key in AWS Secrets Manager. Modify the continuous integration process to perform a lookup of the IAM user credentials from Secrets Manager. Create an IAM policy to allow s3: PutObject calls on the S3 bucket in the web account, and attach it to the user. In the web account, create an S3 bucket policy attached to the S3 bucket that allows the newly created IAM user to use s3:PutObject calls.
+    - [ ] D. In the build account, modify the continuous integration process to perform a lookup of the IAM user credentials from AWS Secrets Manager. In the web account, create a new IAM user. Store the access key and secret access key in Secrets Manager. Attach the PowerUserAccess IAM policy to the IAM user.
+
+    <details>
+       <summary>Answer</summary>
+
+       没有长期的凭证 -> 使用角色。Bucket策略将权限授予角色，而不是账户本身，答案B。-> [ref](https://aws.amazon.com/blogs/security/how-to-restrict-amazon-s3-bucket-access-to-a-specific-iam-role/)
+
+    </details>
+
+95. A large company will be migrating to AWS. The company has 20 business units and anticipates another 10 coming online in the future. Each business unit will need its own IP range and will operate in its own AWS account. There will be a lot of communication between business units with very large data transfers. The company wants to make sure thasqt the proposed solution will minimize data transfer costs and reduce complexity How should a solutions architect design the network to meet these requirements?
+    - [ ] A. Create a transit VPC in a networking account. Within each business unit's AWS account create redundant VPN connections to the transit VPC.
+    - [ ] B. Create a transit gateway in a networking account. Share the transit gateway with each business unit's AWS account. Attach the VPC in each account to the transit gateway.
+    - [ ] C. Create two subnets for each business unit in a networking account. Share the subnets with each business unit's AWS account using AWS Resource Access Manager.
+    - [ ] D. A. Create a VPC for each business unit's AWS account Use VPC peering to route traffic between the VPCs in each account.
+
+    <details>
+       <summary>Answer</summary>
+
+       A最便宜。
+
+    </details>
+
+96. A company hosts a web application on AWS that uses Amazon RDS (or MySQL Multi-AZ DB) instances Usage of the web application has increased recently. Users have indicated that dynamic reports in the application load slowly. Which configuration change will improve application performance while ensuring the database is highly available for data operations?
+    - [ ] A. Add a read replica and configure the application to direct read requests to it.
+    - [ ] B. Create two read replicas in the same Availability Zone as the primary DB instance. Use Amazon Route 53 to evenly distribute read requests to the replicas.
+    - [ ] C. Configure the application to direct read requests to the primary and standby DB instances.
+    - [ ] D. Migrate to Amazon Aurora MySQL with two Aurora Replicas in different Availability Zones Configure the application to direct read requests to the reader endpoint.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案A。
+
+    </details>
+
+97. A company is using AWS Organizations to manage multiple accounts Due to regulatory requirements the company wants to restrict specific member accounts to certain AWS Regions where they are permitted to deploy resources. The resources in the accounts must be tagged enforced based on a group standard and centrally managed with minimal configuration. What should a solutions architect do to meet these requirements?
+    - [ ] A. Create an AWS Config rule in the specific member accounts to limit Regions and apply a tag policy.
+    - [ ] B. From the AWS Billing and Cost Management console in the master account disable Regions for the specific member accounts and apply a tag policy on the root.
+    - [ ] C. Associate the specific member accounts with the root Apply a tag policy and an SCP using conditions to limit Regions.
+    - [ ] D. Associate the specific member accounts with a new OU Apply a tag policy and an SCP using conditions to limit Regions.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案D。
+
+    </details>
+
+98. A company has an application that sends newsletters through email to users The application runs on two Amazon EC2 instances in a VPC The first EC2 instance contains the email application that sends email directly to users. The second EC2 instance contains a MySQL database that is heavily dependent upon relational data. Each EC2 instance is controlled by its own Auto Scaling group with a minimum and maximum of one instance Management wants improved application reliability and support for personalized email. Which set of steps should a solutions architect take to meet these requirements?
+    - [ ] A. Migrate the database to Amazon DynamoDB global tables. Reconfigure the email application to use Amazon Simple Email Service (Amazon SES) to send email.
+    - [ ] B. Migrate the database to an Amazon Aurora MySQL DB cluster with Aurora Replicas. Reconfigure the email application to use Amazon Simple Notification Service (Amazon SNS) to send email.
+    - [ ] C. Increase the minimum number of EC2 instances in the Auto Scaling group to three. Reconfigure the email application to use Amazon Simple Notification Service (Amazon SNS) to send email.
+    - [ ] D. Migrate the database to an Amazon RDS MySQL Multi-AZ DB instance. Reconfigure the email application to use Amazon Pinpoint to send email.
+
+    <details>
+       <summary>Answer</summary>
+
+       Amazon Pinpoint不是用来发邮件的，答案B。
+
+    </details>
+
+99. A company operates an on-premises software-as-a-service (SaaS) solution that ingests several files daily. The company provides multiple public SFTP endpoints to its customers to facilitate the file transfers. The customers add the SFTP endpoint IP addresses to their firewall allow list for outbound traffic. Changes to the SFTP endpoint IP addresses are not permitted. The company wants to migrate the SaaS solution to AWS and decrease the operational overhead of the file transfer service. Which solution meets these requirements?
+    - [ ] A. Register the customer-owned block of IP addresses in the company's AWS account. Create Elastic IP addresses from the address pool and assign them to an AWS Transfer for SFTP endpoint. Use AWS Transfer to store the files in Amazon S3.
+    - [ ] B. Add a subnet containing the customer-owned block of IP addresses to a VPC. Create Elastic IP addresses from the address pool and assign them to an Application Load Balancer (ALB). Launch EC2 instances hosting FTP services in an Auto Scaling group behind the ALB. Store the files in attached Amazon Elastic Block Store (Amazon EBS) volumes.
+    - [ ] C. Register the customer-owned block of IP addresses with Amazon Route 53. Create alias records in Route 53 that point to a Network Load Balancer (NLB). Launch EC2 instances hosting FTP services in an Auto Scaling group behind the NLB. Store the files in Amazon S3.
+    - [ ]  Register the customer-owned block of IP addresses in the company's AWS account. Create Elastic IP addresses from the address pool and assign them to an Amazon S3 VPC endpoint. Enable SFTP support on the S3 bucket.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案A -> [ref](https://aws.amazon.com/cn/premiumsupport/knowledge-center/sftp-enable-elastic-ip-addresses/)
+
+    </details>
+
+100. A multimedia company with a single AWS account is launching an application for a global user base. The application storage and bandwidth requirements are unpredictable. The application will use Amazon EC2 instances behind an Application Load Balancer as the web tier and will use Amazon DynamoDB as the database tier. The environment for the application must meet the following requirements: -Low latency when accessed from any part of the world. -WebSocket support. -End-to-end encryption. -Protection against the latest security threats. -Managed layer 7 DDoS protection. Which actions should the solutions architect take to meet these requirements? (Choose two.)
+     - [ ] A. Use Amazon Route 53 and Amazon CloudFront for content distribution. Use Amazon S3 to store static content.
+     - [ ] B. Use Amazon Route 53 and AWS Transit Gateway for content distribution. Use an Amazon Elastic Block Store (Amazon EBS) volume to store static content.
+     - [ ] C. Use AWS WAF with AWS Shield Advanced to protect the application.
+     - [ ] D. Use AWS WAF and Amazon Detective to protect the application.
+     - [ ] E. Use AWS Shield Standard to protect the application.
+
+     <details>
+       <summary>Answer</summary>
+
+       简单题，答案AC。
+
+     </details>
