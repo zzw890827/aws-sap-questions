@@ -79,7 +79,7 @@
    <details>
       <summary>Answer</summary>
 
-      答案AD -> [ref](https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/aws-resource-budgets-budget.html)
+      答案AD -> [ref1](https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/aws-resource-budgets-budget.html) [ref2](https://docs.aws.amazon.com/zh_cn/servicecatalog/latest/adminguide/catalogs_budgets.html)
 
    </details>
 
@@ -365,6 +365,13 @@
     - [ ] E. Use Amazon CloudFront with an Elastic Load Balancer as an origin.
     - [ ] F. Enable AWS Shield Advanced on all public-facing resources.
 
+    <details>
+       <summary>Answer</summary>
+
+       答案ADF
+
+    </details>
+
 28. A company has multiple AWS accounts and manages these accounts which AWS Organizations. A developer was given IAM user credentials to access AWS resources. The developer should have read-only access to all Amazon S3 buckets in the account. However, when the developer tries to access the S3 buckets from the console, they receive an access denied error message with no bucket listed. A solution architect reviews the permissions and finds that the developerג€™s IAM user is listed as having read-only access to all S3 buckets in the account. Which additional steps should the solutions architect take to troubleshoot the issue? (Choose two.)
     - [ ] A. Check the bucket policies for all S3 buckets.
     - [ ] B. Check the ACLs for all S3 buckets.
@@ -405,7 +412,20 @@
 
     </details>
 
-31. A company is creating a centralized logging service running on Amazon EC2 that will receive and analyze logs from hundreds of AWS accounts. AWS PrivateLink is being used to provide connectivity between the client services and the logging service. In each AWS account with a client an interface endpoint has been created for the logging service and is available. The logging service running on EC2 instances with a Network Load Balancer (NLB) are deployed in different subnets. The clients are unable to submit logs using the VPC endpoint. Which combination of steps should a solutions architect take to resolve this issue? (Select TWO)
+31. A company hosts a legacy application that runs on an Amazon EC2 instance inside a VPC without internet access. Users access the application with a desktop program installed on their corporate laptops. Communication between the laptops and the VPC flows through AWS Direct Connect (DX). A new requirement states that all data in transit must be encrypted between users and the VPC. Which strategy should a solutions architect use to maintain consistent network performance while meeting this new requirement?
+    - [ ] A. Create a client VPN endpoint and configure the laptops to use an AWS client VPN to connect to the VPC over the internet.
+    - [ ] B. Create a new public virtual interface for the existing DX connection, and create a new VPN that connects to the VPC over the DX public virtual interface.
+    - [ ] C. Create a new Site-to-Site VPN that connects to the VPC over the internet.
+    - [ ] D. Create a new private virtual interface for the existing DX connection, and create a new VPN that connects to the VPC over the DX private virtual interface.
+
+    <details>
+       <summary>Answer</summary>
+
+       简单题，答案D
+
+    </details>
+
+32. A company is creating a centralized logging service running on Amazon EC2 that will receive and analyze logs from hundreds of AWS accounts. AWS PrivateLink is being used to provide connectivity between the client services and the logging service. In each AWS account with a client an interface endpoint has been created for the logging service and is available. The logging service running on EC2 instances with a Network Load Balancer (NLB) are deployed in different subnets. The clients are unable to submit logs using the VPC endpoint. Which combination of steps should a solutions architect take to resolve this issue? (Select TWO)
     - [ ] A. Check that the NACL is attached to the logging service subnet to allow communications to and from the NLB subnets. Check that the NACL is attached to the NLB subnet to allow communications to and from the logging service subnets running on EC2 instances.
     - [ ] B. Check that the NACL is attached to the logging service subnets to allow communications to and from the interface endpoint subnets. Check that the NACL is attached to the interface endpoint subnet to allow communications to and from the logging service subnets running on EC2 instances.
     - [ ] C. Check the security group for the logging service running on the EC2 instances to ensure it allows ingress from the NLB subnets.
@@ -416,19 +436,6 @@
        <summary>Answer</summary>
 
        简单题，答案AC
-
-    </details>
-
-32. A company hosts a legacy application that runs on an Amazon EC2 instance inside a VPC without internet access. Users access the application with a desktop program installed on their corporate laptops. Communication between the laptops and the VPC flows through AWS Direct Connect (DX). A new requirement states that all data in transit must be encrypted between users and the VPC. Which strategy should a solutions architect use to maintain consistent network performance while meeting this new requirement?
-    - [ ] A. Create a client VPN endpoint and configure the laptops to use an AWS client VPN to connect to the VPC over the internet.
-    - [ ] B. Create a new public virtual interface for the existing DX connection, and create a new VPN that connects to the VPC over the DX public virtual interface.
-    - [ ] C. Create a new Site-to-Site VPN that connects to the VPC over the internet.
-    - [ ] D. Create a new private virtual interface for the existing DX connection, and create a new VPN that connects to the VPC over the DX private virtual interface.
-
-    <details>
-       <summary>Answer</summary>
-
-       简单题，答案D
 
     </details>
 
@@ -502,8 +509,8 @@
 38. A company hosts a web application on AWS in the us-east-1 Region. The application server are distributed across three Availability Zones behind an Application Load Balancer. The database is hosted in MYSQL database on an Amazon EC2 instance. A solutions architect needs to design a cross-Region data recovery solution using AWS services with an RTO of less than 5 minutes and an RPO of less than 1 minute. The solutions architect is deploying application servers in us-west-2, and has configured Amazon Route 53 hearth checks and DNS failover to us-west-2.Which additional step should the solutions architect take?
     - [ ] A. Migrate the database to an Amazon RDS for MySQL instance with a cross-Region read replica in us-west-2.
     - [ ] B. Migrate the database to an Amazon Aurora global database with the primary in us-east-1 and the secondary in us-west-2.
-    - [ ] . Migrate the database to an Amazon RDS for MySQL instance with a Multi-AZ deployment.
-    - [ ] . Create a MySQL standby database on an Amazon EC2 instance in us-west-2.
+    - [ ] C. Migrate the database to an Amazon RDS for MySQL instance with a Multi-AZ deployment.
+    - [ ] D. Create a MySQL standby database on an Amazon EC2 instance in us-west-2.
 
     <details>
        <summary>Answer</summary>

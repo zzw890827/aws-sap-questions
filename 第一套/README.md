@@ -508,7 +508,8 @@
     <details>
        <summary>Answer</summary>
 
-       这道题有点难，答案是D
+       因为它同时分发静态和动态内容。你应该有两个缓存行为。所以选项B和C被排除了。现在在A和D之间，Host HTTP headers是必须的，而且你不能删除。所以唯一有效的选项是D -> [ref](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/understanding-the-cache-key.html
+)
 
     </details>
 
@@ -646,7 +647,7 @@
        <summary>Answer</summary>
 
        - [ ] A. API Gateway也需要指向新的Lambda
-       - [x] B. 正确
+       - [x] B. 正确 -> [ref](https://docs.aws.amazon.com/zh_cn/serverless-application-model/latest/developerguide/automating-updates-to-serverless-apps.html)
        - [ ] C. 同A
        - [ ] D. 不是自动的
 
