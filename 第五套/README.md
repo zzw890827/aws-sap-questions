@@ -458,3 +458,435 @@
        答案B [ref](https://docs.aws.amazon.com/zh_cn/waf/latest/developerguide/waf-rule-statement-type-rate-based.html)
 
     </details>
+
+36. A company's site reliability engineer is performing a review of Amazon FSx for Windows File Server deployments within an account that the company acquired. Company policy states that all Amazon FSx file systems must be configured to be highly available across Availability Zones. During the review, the site reliability engineer discovers that one of the Amazon FSx file systems used a deployment type of Single-AZ 2. A solutions architect needs to minimize downtime while aligning this Amazon FSx file system with company policy. What should the solutions architect do to meet these requirements?
+    - [ ] A. Reconfigure the deployment type to Multi-AZ for this Amazon FSx file system.
+    - [ ] B. Create a new Amazon FSx file system with a deployment type of Multi-AZ. Use AWS DataSync to transfer data to the new Amazon FSx file system. Point users to the new location.
+    - [ ] C. Create a second Amazon FSx file system with a deployment type of Single-AZ 2. Use AWS DataSync to keep the data in sync. Switch users to the second Amazon FSx file system in the event of failure.
+    - [ ] D. Use the AWS Management Console to take a backup of the Amazon FSx file system. Create a new Amazon FSx file system with a deployment type of Multi-AZ. Restore the backup to the new Amazon FSx file system. Point users to the new location.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案D。
+
+    </details>
+
+37. A company has several applications running in an on-premises data center. The data center runs a mix of Windows and Linux VMs managed by VMware vCenter. A solution architect needs to create a plan to migrate the application to AWS. However, the solution architect discovers that the documentation for the applications is not up to date and that there are no complete infrastructure diagrams. The company's developers lack time to discuss their applications and current usage with the solutions architect. What should the solutions architect do the gather the required information?
+    - [ ] A. Deploy the AWS server migration service (AWS SMS) connector using the OVA image on the VMware cluster to collect configuration data from the VMs.
+    - [ ] B. Use the AWS Migration Portfolio Assessment (MPA) tool to connect to each of the VMs to collect the configuration and utilization data.
+    - [ ] C. Install the AWS Application Discovery Service on each of the VMs to collect the configuration and utilization data.
+    - [ ] D. Register the on-premises VMs with the AWS Migration Hub to collect configuration and utilization data.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案C。
+
+    </details>
+
+38. A company wants to use Amazon WorkSpaces in combination with the client devices to replace aging desktops. Employees use the desktops to access applications that work with clinical trial data. Corporate security policy states that access to the applications must be restricted to only company branch office locations. The company is considering adding an additional branch in the next 6 months. Which solution meets these requirements with the Most operational efficiency?
+    - [ ] A. Create an IP access control group rule with the list of public addresses from the branch offices. Associate the IPaccess control group with the WorkSpaces directory.
+    - [ ] B. Use AWS Firewall Manager to create a web ACL rule with an IPSET with the list of public addresses from the branch office locations. Associate the web ACL with the WorkSpaces directory.
+    - [ ] C. USE AWS Certificate Manager (ACM) to issue trusted device certificates to the machine deployed in the branch office locations. Enable restricted access on the WorkSpaces directory.
+    - [ ] D. Create a custom WorkSpaces image with Windows Firewall configured to restrict configured access to the public address of the branch offices. Use the image to deploy the Workspace.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案C。
+
+    </details>
+
+39. A company has multiple business units. Each business unit has its own AWS account and runs a single website within that account. The company also has a single logging account Logs from each business unit website are aggregated into a single Amazon 53 bucket in the logging account The S3 bucket policy provides each business unit with access to write data into the bucket and requires data lo be encrypted The company needs to encrypt togs uploaded into the bucket using a single AWS Key Management Service (AWS KMS) CMK. The CMK that protects the data must be rotated once every 365 days Which strategy is the MOST operationally efficient for the company to use to meet these requirements?
+    - [ ] A. Create a customer managed CMK in the logging account Update the CMK key policy to provide access to the logging account only. Manually rotate the CMK every 355 days
+    - [ ] B. Create a customer managed CMK in the logging account Update the CMK key policy to provide access to the logging account and business unit accounts Enable automatic rotation of the CMK
+    - [ ] C. Use an AWS managed CMK in the logging account Update the CMK key policy to provide access to the logging account and business unit accounts Manually rotate the CMK every 365 days
+    - [ ] D. Use an AWS managed CMK in the logging account. Update the CMK key policy to provide access to the logging account only Enable automatic rotation of the CMK.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案D。
+
+    </details>
+
+40. Which statement describes the access that this policy provides to the user? The following AWS Identity and Access Management (IAM) customer managed policy has been attached to an IAM user:
+
+    ```json
+    {
+      "Version":"2012-10-17",
+      "Statement": [
+         {
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": [
+               "arn:aws:s3:::prod-data",
+               "arn:aws:s3:::prod-data/*"
+            ]
+         },
+         {
+            "Effect": "Deny",
+            "NotAction": "s3:*",
+            "NotResource": [
+               "arn:aws:s3:::prod-data",
+               "arn:aws:s3:::prod-data/*"
+            ]
+         }
+      ]
+    }
+
+    ```
+
+    - [ ] A. The policy grants access to all Amazon S3 actions, including all actions in the prod-data S3 bucket.
+    - [ ] B. This policy denies access to all Amazon S3 actions, excluding all actions in the prod-data S3 bucket.
+    - [ ] C. This policy denies access to the Amazon S3 bucket and objects not having prod-data in the bucket name.
+    - [ ] D. This policy grants access to all Amazon S3 actions in the prod-data S3 bucket, but explicitly denies access to all other AWS services.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案D -> [ref1](https://docs.aws.amazon.com/zh_cn/IAM/latest/UserGuide/reference_policies_elements_notaction.html) -> [ref2](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_notresource.html)
+
+    </details>
+
+41. A company is using AWS Organizations to manage 15 AWS accounts. A solutions architect wants to run advanced analytics on the companyג€™s cloud expenditures. The cost data must be gathered and made available from an analytics account. The analytics application runs in a VPC and must receive the raw cost data each night to run the analytics. The solutions architect has decided to use the Cost Explorer API to fetch the raw data and store the data in Amazon S3 in JSON format. Access to the raw cost data must be restricted to the analytics application. The solutions architect has already created an AWS Lambda function to collect data by using the Cost Explorer API. Which additional actions should the solutions architect take to meet these requirements?
+    - [ ] A. Create an IAM role in the Organizations master account with permissions to use the Cost Explorer API, and establish trust between the role and the analytics account. Update the Lambda function role and add sts:AssumeRole permissions. Assume the role in the master account from the Lambda function code by using the AWS Security Token Service (AWS STS) AssumeRole API call. Create a gateway endpoint for Amazon S3 in the analytics VPC. Create an S3 bucket policy that allows access only from the S3 endpoint.
+    - [ ] B. Create an IAM role in the analytics account with permissions to use the Cost Explorer API. Update the Lambda function and assign the new role. Create a gateway endpoint for Amazon S3 in the analytics VPC. Create an S3 bucket policy that allows access only from the analytics VPC by using the aws:SourceVpc condition.
+    - [ ] C. Create an IAM role in the Organizations master account with permissions to use the Cost Explorer API, and establish trust between the role and the analytics account. Update the Lambda function role and add sts:AssumeRole permissions. Assume the role in the master account from the Lambda function code by using the AWS Security Token Service (AWS STS) AssumeRole API call. Create an interface endpoint for Amazon S3 in the analytics VPC. Create an S3 bucket policy that allows access only from the analytics VPC private CIDR range by using the aws:SourceIp condition.
+    - [ ] D. Create an IAM role in the analytics account with permissions to use the Cost Explorer API. Update the Lambda function and assign the new role. Create an interface endpoint for Amazon S3 in the analytics VPC. Create an S3 bucket policy that allows access only from the S3 endpoint.
+  
+    <details>
+       <summary>Answer</summary>
+
+       答案A。
+
+    </details>
+
+42. A new application s running on Amazon Elastic Container Service (Amazon ECS) with AWS Fargate. The application uses an Amazon Aurora MySQL database. The application and the database run in the same subnets of a VPC with distinct security groups that are configured. The password for the database is stored in AWS Secrets Manager and is passed to the application through the DB_PASSWORD environment variable. The hostname of the database is passed to the application through the DB_HOST environment variable. The application is failing to access the database. Which combination of actions should a solutions architect take to resolve this error? (Select THREE.)
+    - [ ] A. Ensure that the container has the environment variable with name "DB_PASSWORD" specified with a "ValueFrom" and the ARN of the secret.
+    - [ ] B. Ensure that the container has the environment variable with name "DB_PASSWORD" specified with a "ValueFrom" and the secret name of the secret.
+    - [ ] C. Ensure that the Fargate service security group allows inbound network traffic from the Aurora MYSQL database on the MYSQL TCP port 3306.
+    - [ ] D. Ensure that the Aurora MYSQL database security group allows inbound network traffic from the Fargate service on the MYSQL TCP port 3306.
+    - [ ] E. Ensure that the container has the environment variable with name "DB_HOST" specified with the hostname of a DB instance endpoint.
+    - [ ] F. Ensure that the container has the environment variable with name "DB_HOST" specified with the hostname of the DB cluster endpoint.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案BDE。
+
+    </details>
+
+43. A company has deployed its corporate website in a VPC on two Amazon EC2 instances behind an Application Load Balancer (ALB). The EC2 instances are deployed in private subnets. The ALB is in a public subnet. A route to an internet gateway exists in the public subnet route table. The company has deployed an Amazon CloudFront distribution with the ALB as the origin. The company’s security team recently identified that malicious traffic is accessing the ALB directly. The company must deploy security controls to prevent common attack techniques, including cross-site scripting, and to protect against volumetric denials of service. Which strategy should a solutions architect recommend meeting these requirements?
+    - [ ] A. Migrate the ALB to a private subnet. Associate an AWS WAF web ACL with the ALB. Update inbound rules on the ALB security group to allow traffic on port 443 only from CloudFront IP addresses.
+    - [ ] B. Associate an AWS WAF web ACL with the CloudFront distribution. Configure an origin access identity (OA) on the ALB to drop access attempts that do not originate from CloudFront.
+    - [ ] C. Associate an AWS WAF web ACL with the CloudFront distribution. Configure CloudFront to add a custom header to the requests that are sent to the ALB. Configure advanced routing on the ALB to only forward requests that include the custom header that is set by CloudFront.
+    - [ ] D. Associate an AWS WAF web ACL with the CloudFront distribution. Configure AWS WAF to add a custom header to the requests that are sent to the ALB. Configure advanced routing on the ALB to only forward requests that include the custom header that is set by CloudFront.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案D。
+
+    </details>
+
+44. A company has a media metadata extraction pipeline running on AWS. Notifications containing a reference to a file m Amazon S3 are sent to an Amazon Simple Notification Service (Amazon SNS) topic The pipeline consists of a number of AWS Lambda functions that are subscribed to the SNS topic The Lambda functions extract the S3 file and write metadata to an Amazon RDS PostgreSQL DB instance Users report that updates to the metadata are sometimes slow to appear 01 are lost During these times, the CPU utilization on the database is high and the number of failed Lambda invocations increases Which combination of actions should a solutions architect take to help resolve this issue? (Select TWO)
+    - [ ] A. Enable message delivery status on the SNS topic Configure the SNS topic delivery policy to enable retries with exponential backoff
+    - [ ] B. Create an Amazon Simple Queue Service (Ama7on SQS) FIFO queue and subscribe the queue to the SNS topic Configure the Lambda functions to consume messages from the SQS queue
+    - [ ] C. Create an RDS proxy tor the RDS instance Update the Lambda functions to connect to the RDS instance using the proxy
+    - [ ] D. Enable the RDS Data API for the RDS instance. Update the Lambda functions to connect to the RDS instance using the Data API
+    - [ ] E. Create an Amazon Simple Queue Service (Amazon SQS) standard queue for each Lambda function and subscribe the queues to the SNS topic. Configure the Lambda functions to consume messages from their respective SQS queue
+
+    <details>
+       <summary>Answer</summary>
+
+       答案CE。
+
+    </details>
+
+45. A company is planning to host a three tier application in the AWS Cloud The application layer will use Amazon EC2 in an Auto Scaling group A custom EC2 role named AppServer will be created and associated with the application instances The entire application stack will be deployed using AWS Cloud Formation The company's security team requires encryption of all AMI snapshots and Amazon Plastic Block Store (Amazon TBS) volumes with an AWS Key Management Service (AWS KMS> CMK Which action will deploy the stack correctly after the AMI snapshot is encrypted with the KMS key?
+    - [ ] A. Update the KMS key policy to provide the required permissions to the AppServer role.
+    - [ ] B. Update the KMS key policy to provide the required permissions to the AWSServiceRoleForAutoScalir>g service-linked role.
+    - [ ] C. Update the AppServer role to have the required permissions to access the KMS key.
+    - [ ] D. Update the CloudFormation stack role to have the required permissions to access the KMS key.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案D。
+
+    </details>
+
+46. An AWS customer has a web application that runs on premises. The web application fetches data from a third-party API that is behind a firewall. The third party accepts only one public CIDR block in each clientג€™s allow list. The customer wants to migrate their web application to the AWS Cloud. The application will be hosted on a set of Amazon EC2 instances behind an Application Load Balancer (ALB) in a VPC. The ALB is located in public subnets. The EC2 instances are located in private subnets. NAT gateways provide internet access to the private subnets. How should a solutions architect ensure that the web application can continue to call the third-party API after the migration?
+    - [ ] A. Associate a block of customer-owned public IP addresses to the VPC. Enable public IP addressing for public subnets in the VPC.
+    - [ ] B. Register a block of customer-owned public IP addresses in the AWS account. Create Elastic IP addresses from the address block and assign them to the NAT gateways in the VPC.
+    - [ ] C. Create Elastic IP addresses from the block of customer-owned IP addresses. Assign the static Elastic IP addresses to the ALB.
+    - [ ] D. Register a block of customer-owned public IP addresses in the AWS account. Set up AWS Global Accelerator to use Elastic IP addresses from the address block. Set the ALB as the accelerator endpoint.
+
+    <details>
+       <summary>Answer</summary>
+
+       当EC2实例通过互联网到达第三方API时，它们的私有IP地址将被NAT网关的公共IP地址所掩盖，答案B。
+
+    </details>
+
+47. A company has a data lake in Amazon S3 that needs to be accessed by hundreds of applications across many AWS accounts. The company's information security policy states that the S3 bucket must not be accessed over the public internet and that each application should have the minimum permissions necessary to function. To meet these requirements, a solutions architect plans to use an S3 access point that is restricted to specific VPCs for each application. Which combination of steps should the solutions architect take to implement this solution? (Choose two.)
+    - [ ] A. Create an S3 access point for each application in the AWS account that owns the S3 bucket. Configure each access point to be accessible only from the application's VPC. Update the bucket policy to require access from an access point.
+    - [ ] B. Create an interface endpoint for Amazon S3 in each application's VPC. Configure the endpoint policy to allow access to an S3 access point. Create a VPC gateway attachment for the S3 endpoint.
+    - [ ] C. Create a gateway endpoint for Amazon S3 in each application's VPC. Configure the endpoint policy to allow access to an S3 access point. Specify the route table that is used to access the access point.
+    - [ ] D. Create an S3 access point for each application in each AWS account and attach the access points to the S3 bucket. Configure each access point to be accessible only from the application's VPC. Update the bucket policy to require access from an access point.
+    - [ ] E. Create a gateway endpoint for Amazon S3 in the data lake's VPC. Attach an endpoint policy to allow access to the S3 bucket. Specify the route table that is used to access the bucket.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案AC -> [ref](https://aws.amazon.com/cn/blogs/storage/managing-amazon-s3-access-with-vpc-endpoints-and-s3-access-points/)
+
+    </details>
+
+48. A company is running an Apache Hadoop cluster on Amazon EC2 instances. The Hadoop cluster stores approximately 100 TB of data for weekly operational reports and allows occasional access for data scientists to retrieve data. The company needs to reduce the cost and operational complexity for storing and serving this data. Which solution meets these requirements in the MOST cost-effective manner?
+    - [ ] A. Move the Hadoop cluster from EC2 instances to Amazon EMR. Allow data access patterns to remain the same.
+    - [ ] B. Write a script that resizes the EC2 instances to a smaller instance type during downtime and resizes the instances to a larger instance type before the reports are created.
+    - [ ] C. Move the data to Amazon S3 and use Amazon Athena to query the data for reports. Allow the data scientists to access the data directly in Amazon S3.
+    - [ ] D. Migrate the data to Amazon DynamoDB and modify the reports to fetch data from DynamoDB. Allow the data scientists to access the data directly in DynamoDB.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案A。
+
+    </details>
+
+49. A government agency is building a forms submission portal using AWS to allow citizen to submit and retrieve sensitive documents. The solution was built using serverless architecture, with the front-end code developed using HTML and JavaScript and the backend architecture using Amazon API Gateway and Amazon S3. The portal must meet the following security requirements: -Requests to the backend infrastructure should be allowed only if they originate from a specific country. -Requests to the backend infrastructure should prevent brute attacks from individual IP addresses by not allowing more than 3000 requests per minutes for 10 requests per seconds for each IP address. -All access attempts to the backend infrastructure must be logged. Which steps should a solution architect take to meet these requirements? (Select Two.)
+    - [ ] A. Configure the API Gateway API with a custom rule condition that allow APIs to be called from the authorized country only. Then enable default method throttling, setting the rate limit in 10 requests per seconds.
+    - [ ] B. Create an AWS WAP web ACL with a custom condition that allows access attempts from the authorized country only, and a rate-based rule with a rate-based rule with rate limit 3000 requests per 5 minutes. Then associate the web ACL with the API Gateway API.
+    - [ ] C. Configure Amazon Cloud with a geographical restriction that allows access attempts from the authorized country only, and a rate-based rule with a rate limit of 3000 requests per 5 minutes. Then Add the API Gateway API as a custom origin.
+    - [ ] D. Configure the AWS WAF web ACL to log to an Amazon Kinesis Data Firehose delivery with Amazon Elasticsearch Service (Amazon ES) as the destination. Configure API Gateway to log to an Amazon CloudWatch Logs group.
+    - [ ] E. Configure the AWS WAF web ACL to an Amazon CloudWatch Logs group. Configure API Gateway to log to an Amazon Cloudwatch Logs group.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案BE。
+
+    </details>
+
+50. A company uses multiple AWS accounts in a single AWS Region. A solution architect is designing a solution to consolidate logs generated by Elastic Load Balancers (ELBs)in the AppDev, AppTest and AppProd accounts. The logs should be stored in an existing Amazon S3 bucket named s3-eib-logs in the central AWS accounts. The central account is used for log consolidation only does not have ELBs deployed. ELB logs must be encrypted at rest. Which combination of steps should the solutions architect take to build the solution? (Select Two.)
+    - [ ] A. Update the S3 bucket policy for s3-elb-logs bucket to allow the s3 PutBucketLogging action for the central AWS account ID.
+    - [ ] B. Update the S3 bucket policy for s3-elb-logs bucket to allow the s3 PutObject and s3:DeleteObject actions for the AppDev, App Test and AppProd account IDs.
+    - [ ] C. Update the S3 bucket policy for the s3-elb-logs bucket to allow the s3:PutObject action for the AppDev, AppTest and AppProd account IDs.
+    - [ ] D. Enable access logging for the ELBs. Set the S3 location to the s3-elb-logs bucket.
+    - [ ] E. Enable Amazon S3 default encryption using server-side encryption with s3 managed encryption keys (SSE-S3) for the s3-elb-logs s3 bucket.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案CE。
+
+    </details>
+
+51. A company is collecting a large amount of data from a fleet of IoT devices. Data is stored as Optimized ROW Columnar (ORC) files in the Hadoop Distributed File System (HDFS) on a persistent Amazon EMR cluster. The company's data analytics team queries the data by using SQL in APache Presto deployed on the same EMR cluster. Queries scan large amounts of data, always run for less 15 minutes, and run only between 5 PM and 10 PM. The company is concerned about the high cost associated with the current solution. A solution architect must propose the most cost-effective solution that will allow SQL data queries. Which solution will meet these requirements?
+    - [ ] A. Store data in Amazon S3 Amazon Redshift Spectrum to query data.
+    - [ ] B. Store data in Amazon S3. Use the AWS Glue Data Catalog and Amazon Athena to query data.
+    - [ ] C. Store data in EMR File System (EMRFS) Use Presto in Amazon EMR to query data.
+    - [ ] D. Store data in Amazon Redshift Use Amazon Redshift to query data.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案D。
+
+    </details>
+
+52. A company recently completed a large-scale migration to AWS. Development teams that support various business units have their own accounts in AWS Organizations. A central cloud team is responsible for controlling which services and resources can be accessed, and for creating operational strategies for all teams within the company. Some teams are approaching their account service quotas. The cloud team needs to create an automated and operationally efficient solution to proactively monitor service quotas. Monitoring should occur every 15 minutes and send alerts when a team exceeds 80% utilization. Which solution will meet these requirements?
+    - [ ] A. Create a scheduled AWS Config rule to trigger an AWS Lambda function to call the GetServiceQuota API. If any service utilization is above 80%, publish a message to an Amazon Simple Notification Service (Amazon SNS) topic to alert the cloud team. Create an AWS CloudFormation template and deploy the necessary resources to each account.
+    - [ ] B. Create an Amazon EventBridge (Amazon CloudWatch Events) rule that triggers an AWS Lambda function to refresh the AWS Trusted Advisor service limits checks and retrieve the most current utilization and service limit data. If the current utilization is above 80%, publish a message to an Amazon Simple Notification Service (Amazon SNS) topic to alert the cloud team. Create AWS CloudFormation StackSets that deploy the necessary resources to all Organizations accounts.
+    - [ ] C. Create an Amazon CloudWatch alarm that triggers an AWS Lambda function to call the Amazon CloudWatch GetInsightRuleReport API to retrieve the most current utilization and service limit data. If the current utilization is above 80%, publish an Amazon Simple Email Service (Amazon SES) notification to alert the cloud team. Create AWS CloudFormation StackSets that deploy the necessary resources to all Organizations accounts.
+    - [ ] D. Create an Amazon EventBridge (Amazon CloudWatch Events) rule that triggers an AWS Lambda function to refresh the AWS Trusted Advisor service limits checks and retrieve the most current utilization and service limit data. If the current utilization is above 80%, use Amazon Pinpoint to send an alert to the cloud team. Create an AWS CloudFormation template and deploy the necessary resources to each account.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案B -> [ref](https://docs.aws.amazon.com/zh_cn/solutions/latest/limit-monitor/architecture.html)
+
+    </details>
+
+53. A company recently deployed a new application that runs on a group of Amazon EC2 Linux instances in a VPC. In a peered VPC, the company launched an EC2 Linux instance that serves as a bastion host. The security group of the application instances allows access only on TCP port 22 from the private IP of the bastion host. The security group of the bastion host allows access to TCP port 22 from 0.0.0.0/0 so that system administrators can use SSH to remotely log in to the application instances from several branch offices. While looking through operating system logs on the bastion host, a cloud engineer notices thousands of failed SSH logins to the bastion host from locations around the world. The cloud engineer wants to change how remote access is granted to the application instances and wants to meet the following requirements: -Eliminate brute-force SSH login attempts. -Retain a log of commands run during an SSH session. -Retain the ability to forward ports. Which solution meets these requirements for remote access to the application instances?
+    - [ ] A. Configure the application instances to communicate with AWS Systems Manager. Grant access to the system administrators to use Session Manager to establish a session with the application instances. Terminate the bastion host.
+    - [ ] B. Update the security group of the bastion host to allow traffic from only the public IP addresses of the branch offices.
+    - [ ] C. Configure an AWS Client VPN endpoint and provision each system administrator with a certificate to establish a VPN connection to the application VPC. Update the security group of the application instances to allow traffic from only the Client VPN IPv4 CIDR. Terminate the bastion host.
+    - [ ] D. Configure the application instances to communicate with AWS Systems Manager. Grant access to the system administrators to issue commands to the application instances by using Systems Manager Run Command. Terminate the bastion host.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案A。
+
+    </details>
+
+54. A company runs an application in Amazon VPC. The application requires that all traffic to there different third party networks be encrypted. The network traffic between the application and the third party networks is expected to be no more than 500 Mbps for each connection. To facilitate network connectivity, a solutions architect has created a transit gateway and attached the application VPC. Which set of actions should he solutions architect perform to complete the solution while MINIMIZING costs?
+    - [ ] A. Use AWS Certificate Manager (ACM) to generate three public/private key pairs. Install the private keys on a public facing Application Load Balancer (ALB). Have each third party network connect to the ALB using HTTPS/TLS. Update the transit gateway route table to route traffic between the application and the third party networks through the ALB
+    - [ ] B. Create an AWS Direct Connect connection between each third-party network and a Direct Connect gateway. Associate the Direct connect gateway. Associate the Direct Connect gateway with the transit gateway Encrypt the Direct Connect connection with each third party network using a different encryption key.
+    - [ ] C. Use AWS Marketplace to deploy three different public facing Amazon EC2 instances mnning software VPN appliances. Establish VPN connections between each appliance and the third party networks. Update the transit gateway route table to send encrypted traffic to each third-party network using the appropriate VPN appliance.
+    - [ ] D. Create a transit gateway VPN attachment to each third-party network. Use separate preshared keys for each VPN attachment. Share those keys with the third-party networks. Update the transit gateway route table by creating a separate route to each third-party network using the appropriate transit gateway attachment.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案A。
+
+    </details>
+
+55. A company needs to create and manage multiple AWS accounts for several departments from a central location. The security team requires read-only access to all accounts from its own AWS account. The company is using AWS Organizations and created an account for the security team. How should a solutions architect meet these requirements?
+    - [ ] A. Use the OrganizationAccountAceessRole IAM role to create a new IAM policy with read-only access in each member account. Establish a trust relationship between the IAM policy in each member account and the security account. Ask the security team to use the IAM policy to gain access.
+    - [ ] B. Use the OrganizationAccountAccessRole IAM role to create a new IAM role-win read only access in each member account. Establish a trust relationship between the IAM role in each member account and the security account. Ask the security team to use the IAM role to gain access.
+    - [ ] C. Ask the security team to use AWS Security Token Service (AWS STS) to call the AssumeRole API for the OrganizationAccountAccessRole IAM role in the master account from the security account. Use the generated temporary credentials to gain access.
+    - [ ] D. Ask the security team to use AWS Security Token Service (AWS STS) to call the AssumeRole API for the OrganizationAccountAccessRole IAM role in the member account from the security account. Use the generated temporary credentials to gain access.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案D。
+
+    </details>
+
+56. A company has grown through numerous mergers and acquisitions. Due to increasing AWS usage costs, management wants each business unit to submit monthly cost reports with costs allocated to specific projects through the AWS Billing and Cost Management console. A resource tagging strategy involving BusinessUnit and Project tags is already defined. Which combination of steps should each business unit take to meet these requirements? (Select Two.)
+    - [ ] A. Create an AWS Cost and Usage Report rule to group resources by the BusinessUnit and Project tags. Create a budget in AWS Budget and attach the cost and usage rule to it.
+    - [ ] B. Activate the Project tag for cost allocation. Create a budget in AWS Budget in AWS Budgets for each project with a resource filter using the Project tag.
+    - [ ] C. Create a budget in AWS Budgets for each project with a resource filter using the BusinessUnit tag.
+    - [ ] D. Create an AWS Budgets report for each business unit to be sent as an email notification to the finance team monthly. Attach the budget for each of the business unit's projects to the report.
+    - [ ] E. Create an AWS Budget report for each business unit to be sent as an email notification to the finance team monthly. Configure a tag filter on the AWS Budget report to automatically add budget that include resources with a matching BusinessUnit tag.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案AD。
+
+    </details>
+
+57. A car rental company has built a serverless REST API to provide data to its mobile app. The app consists of an Amazon API Gateway API with a Regional endpoint, AWS Lambda functions, and an Amazon Aurora MySQL Serverless DB cluster. The company recently opened the API to mobile apps of partners. A significant increase in the number of requests resulted, causing sporadic database memory errors. Analysis of the API traffic indicates that clients are making multiple HTTP GET requests for the same queries in a short period of time. Traffic is concentrated during business hours, with spikes around holidays and other events. The company needs to improve its ability to support the additional usage while minimizing the increase in costs associated with the solution. Which strategy meets these requirements?
+    - [ ] A. Convert the API Gateway Regional endpoint to an edge-optimized endpoint. Enable caching in the production stage.
+    - [ ] B. Implement an Amazon ElastiCache for Redis cache to store the results of the database calls. Modify the Lambda functions to use the cache.
+    - [ ] C. Modify the Aurora Serverless DB cluster configuration to increase the maximum amount of available memory.
+    - [ ] D. Enable throttling in the API Gateway production stage. Set the rate and burst values to limit the incoming calls.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案B -> [ref](https://aws.amazon.com/cn/blogs/database/latency-reduction-of-hybrid-architectures-with-amazon-elasticache/)
+
+    </details>
+
+58. A company is developing a web application that runs on Amazon EC2 instances in an Auto Scaling group behind a public-facing Application Load Balancer (ALB). Only users from a specific country are allowed to access the application. The company needs the ability to log the access requests that have been blocked. The solution should require the least possible maintenance. Which solution meets these requirements?
+    - [ ] A. Create an IPSet containing a list of IP ranges that belong to the specified country. Create an AWS WAF web ACL. Configure a rule to block any requests that do not originate from an IP range in the IPSet. Associate the rule with the web ACL. Associate the web ACL with the ALB.
+    - [ ] B. Create an AWS WAF web ACL. Configure a rule to block any requests that do not originate from the specified country. Associate the rule with the web ACL. Associate the web ACL with the ALB.
+    - [ ] C. Configure AWS Shield to block any requests that do not originate from the specified country. Associate AWS Shield with the ALB.
+    - [ ] D. Create a security group rule that allows ports 80 and 443 from IP ranges that belong to the specified country. Associate the security group with the ALB.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案B。
+
+    </details>
+
+59. A company uses AWS Organizations to manage more than 1,000 AWS accounts. The company has creates a new developer organization. There are 540 developer member in that must be moved to the new developer organization. All accounts are set up with all the required information so that each account can be operated as a standalone account. Which combination of steps should a solutions architect take to move all of the developer accounts to the new developer organization? (Select THREE)
+    - [ ] A. Call the MoveAccount operation in the Organizations API from the old organization's master account to migrate the developer accounts to the new developer organization
+    - [ ] B. From the master account, remove each developer account from the old organization us ng the RemoveAccountFromOrganization operation in the Organizations API
+    - [ ] C. From each developer account, remove the account from the old organization using the RemoveAccountFromOrganization operation In the Organization APL
+    - [ ] D. Sign in to the new developer organization's master account and create a placeholder member account that acts as a target for the developer account migration.
+    - [ ] E. Call the InviteAccountToOrganization operation in the Organizations API from the new developer organization's master account to send invitations to the developer accounts.
+    - [ ] F. Have each developer sign in to their account and confirm to join the new developer organization.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案AEF。
+
+    </details>
+
+60. A development team has created a new flight tracker application that provides near-real-time data to users. The application has a front end that consists of an Application Load Balancer (ALB) in front of two large Amazon EC2 instances in a single Availability Zone. Data is stored in a single Amazon RDS MySQL DB instance. An Amazon Route 53 DNS record points to the ALB. Management wants the development team to improve the solution to achieve maximum reliability with the least amount of operational overhead. Which set of actions should the team take?
+    - [ ] A. Create RDS MySQL read replicas. Deploy the application to multiple AWS Regions. Use a Route 53 latency-based routing policy to route to the application.
+    - [ ] B. Configure the DB instance as Multi-AZ. Deploy the application to two additional EC2 instances in different Availability Zones behind an ALB.
+    - [ ] C. Replace the DB instance with Amazon DynamoDB global tables. Deploy the application in multiple AWS Regions. Use a Route 53 latency-based routing policy to route to the application.
+    - [ ] D. Replace the DB instance with Amazon Aurora with Aurora Replicas. Deploy the application to multiple smaller EC2 instances across multiple Availability Zones in an Auto Scaling group behind an ALB.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案A。
+
+    </details>
+
+61. A company is using AWS Organizations to manage multiple AWS accounts. For security purposes, the company requires the creation of an Amazon Simple Notification Service (Amazon SNS) topic that enables integration with a third-party alerting system in all the Organizations member accounts. A solutions architect used an AWS CloudFormation template to create the SNS topic and stack sets to automate the deployment of CloudFormation stacks. Trusted access has been enabled in Organizations. What should the solutions architect do to deploy the CloudFormation StackSets in all AWS accounts?
+    - [ ] A. Create a stack set in the Organizations member accounts. Use service-managed permissions. Set deployment options to deploy to an organization. Use CloudFormation StackSets drift detection.
+    - [ ] B. Create stacks in the Organizations member accounts. Use self-service permissions. Set deployment options to deploy to an organization. Enable the CloudFormation StackSets automatic deployment.
+    - [ ] C. Create a stack set in the Organizations master account. Use service-managed permissions. Set deployment options to deploy to the organization. Enable CloudFormation StackSets automatic deployment.
+    - [ ] D. Create stacks in the Organizations master account. Use service-managed permissions. Set deployment options to deploy to the organization. Enable CloudFormation StackSets drift detection.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案C -> [ref](https://aws.amazon.com/cn/blogs/aws/use-cloudformation-stacksets-to-provision-resources-across-multiple-aws-accounts-and-regions/)
+
+    </details>
+
+62. A company runs an application in the cloud that consists ofa database and a website. Users can post data to the website, have the data processed, and have the data sent back to them in an email Data is stored is a MySQL database running on an Amazon EC2 Instance. The database is ntnning in a VPC with two private subnets. The website is running on Apache Tomcat in a single EC2 instance in a different VPC with one public subnet. There is a single VPC peering connection between the database and website VPC The website has suffered several outages during the last month due to high traffic. Which actions should a solutions architect take to increase the reliability of the application? (Select THREE.)
+    - [ ] A. Place the Tomcat server in an Auto Scaling group with multiple EC2 instances behind an Application Load Balancer
+    - [ ] B. Provision an additional VPC peering connection
+    - [ ] C. Migrate the MySQL database to Amazon Aurora with one Aurora Replica
+    - [ ] D. Provision two NAT gateways in the database VPC
+    - [ ] E. Move the Tomcat server to the database VQC
+    - [ ] F. Create an additional public subnet in a different Availability Zone in the website VPC.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案ACE。
+
+    </details>
+
+63. A company wants to provide desktop as a service (DaaS) to a number of employees using Amazon WorkSpaces. WorkSpaces will need to access files and services hosted on premises with authorization based on the companyג€™s Active Directory. Network connectivity will be provided through an existing AWS Direct Connect connection. The solution has the following requirements: -Credentials from Active Directory should be used to access on-premises files and services. -Credentials from Active Directory should not be stored outside the company. -End users should have single sign-on (SSO) to on-premises files and services once connected to WorkSpaces. Which strategy should the solutions architect use for end user authentication?
+    - [ ] A. Create an AWS Directory Service for Microsoft Active Directory (AWS Managed Microsoft AD) directory within the WorkSpaces VPC. Use the Active Directory Migration Tool (ADMT) with the Password Export Server to copy users from the on-premises Active Directory to AWS Managed Microsoft AD. Set up a one- way trust allowing users from AWS Managed Microsoft AD to access resources in the on-premises Active Directory. Use AWS Managed Microsoft AD as the directory for WorkSpaces.
+    - [ ] B. Create a service account in the on-premises Active Directory with the required permissions. Create an AD Connector in AWS Directory Service to be deployed on premises using the service account to communicate with the on-premises Active Directory. Ensure the required TCP ports are open from the WorkSpaces VPC to the on-premises AD Connector. Use the AD Connector as the directory for WorkSpaces.
+    - [ ] C. Create a service account in the on-premises Active Directory with the required permissions. Create an AD Connector in AWS Directory Service within the WorkSpaces VPC using the service account to communicate with the on-premises Active Directory. Use the AD Connector as the directory for WorkSpaces.
+    - [ ] D. Create an AWS Directory Service for Microsoft Active Directory (AWS Managed Microsoft AD) directory in the AWS Directory Service within the WorkSpaces VPC. Set up a one-way trust allowing users from the on-premises Active Directory to access resources in the AWS Managed Microsoft AD. Use AWS Managed Microsoft AD as the directory for WorkSpaces. Create an identity provider with AWS Identity and Access Management (IAM) from an on-premises ADFS server. Allow users from this identity provider to assume a role with a policy allowing them to run WorkSpaces.
+
+    <details>
+       <summary>Answer</summary>
+
+       - [ ] A. 出公司范围了
+       - [ ] B. 不开TCP端口
+       - [x] C. 正确
+       - [ ] D. one-way trust不支持SSO
+
+    </details>
+
+64. A company is mnning an application in a single VPC on an Amazon EC2 instance with Amazon RDS as the datastore. The application does not support encryption in transit Security guidelines do not allow SSH access to any resource within the VPC The Application has issues throughout the day which causes outages in the production environment. The issues are not present in nonproduction environments Application logs have been given to a vendor to troubleshoot the application. The vendor also requires IP packets for its analysis. Which solution allows for the IP packets to be extracted for troubleshooting?
+    - [ ] A. Create a VPC traffic mirror source on the application instance's elastic network interface with a filter that captures all traffic. Configure the traffic mirror target to use an Amazon S3 bucket Start the traffic mirror session and download the packet capture from Amazon S3. Provide the packet capture to the vendor.
+    - [ ] B. Create a VPC traffic mirror source on the application instance's elastic network interface with a filter that captures all traffic Launch a new EC2 instance and configure the traffic minor target to use the elastic network interface of the new EC2 instance. Start the traffic mirror session and download the packet capture from the new EC2 instance using AWS Systems Manager Provide the packet capture to the vendor.
+    - [ ] C. Enable VPC Flow Logs on the application instance's elastic network interface and send them to Amazon CloudWatch Logs Download the CloudWatch logs and provide them to me vendor
+    - [ ] D. Enable VPC Flow Logs on the VPC to capture traffic flows on from the application instance and the RDS instance and send them to Amazon CloudWatch Logs Download the CloudWatch logs and provide them to the vendor
+
+    <details>
+       <summary>Answer</summary>
+
+       答案D。
+
+    </details>
+
+65. A company needs to store and process image data that will be uploaded from mobile devices using a custom mobile app. Usage peaks between 8 AM and 5 PM on weekdays, with thousands of uploads per minute. The app is rarely used at any other time. A user is notified when image processing is complete. Which combination of actions should a solutions architect take to ensure image processing can scale to handle the load? (Choose three.)
+    - [ ] A. Upload files from the mobile software directly to Amazon S3. Use S3 event notifications to create a message in an Amazon MQ queue.
+    - [ ] B. Upload files from the mobile software directly to Amazon S3. Use S3 event notifications to create a message in an Amazon Simple Queue Service (Amazon SQS) standard queue.
+    - [ ] C. Invoke an AWS Lambda function to perform image processing when a message is available in the queue.
+    - [ ] D. Invoke an S3 Batch Operations job to perform image processing when a message is available in the queue.
+    - [ ] E. Send a push notification to the mobile app by using Amazon Simple Notification Service (Amazon SNS) when processing is complete.
+    - [ ] F. Send a push notification to the mobile app by using Amazon Simple Email Service (Amazon SES) when processing is complete.
+
+    <details>
+       <summary>Answer</summary>
+
+       答案BCE。
+
+    </details>
