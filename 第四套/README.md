@@ -421,7 +421,7 @@
     <details>
        <summary>Answer</summary>
 
-       简单题，答案D
+       简单题，答案B -> [ref](https://aws.amazon.com/premiumsupport/knowledge-center/create-vpn-direct-connect/)
 
     </details>
 
