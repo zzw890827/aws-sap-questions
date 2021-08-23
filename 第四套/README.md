@@ -1054,7 +1054,7 @@
 
 77. An online magazine will launch its latest edition this month. This edition will be the first to be distributed globally. The magazine's dynamic website currently uses an Application Load Balance in front of the web tier, a fleet of Amazon EC2 instances for web and application servers, and Amazon Aurora MySQL. Portions of the website include static content and almost all traffic is read-only. The magazine is exporting a significant spike in internet traffic when the new edition is launched. Optimal performance is a top priority for the week following the launch. Which combination of steps should a solutions architect take to reduce system response times for a global audience? (Select Two.)
     - [ ] A. Use logical cross-Region replication to replicate the Aurora MySQL database to a secondary Region. Replace the web servers with Amazon S3. Deploy S3 buckets in cross-Region replication mode.
-    - [ ] B. Ensure the web and application tiers are each in Auto Scaling groups. Introduce an AWS Direct Connect connection. Deploy the web and application liars in regions across the world.
+    - [ ] B. Ensure the web and application tiers are each in Auto Scaling groups. Introduce an AWS Direct Connect connection. Deploy the web and application tiers in regions across the world.
     - [ ] C. Migrate the database from Amazon Aurora to Amazon RDS tor MySQL. Ensure all three of the application tiers-web. application, and database-are in private subnets.
     - [ ] D. Use an Aurora global database for physical cross-Region replication. Use Amazon S3 with cross-Region replication tor static content and resources. Deploy the web and application tiers in regions across the world.
     - [ ] E. Introduce Amazon Route 53 with latency-based routing and Amazon CloudFront distributions. Ensure the web and application tiers are each in Auto Scaling groups.
@@ -1098,7 +1098,7 @@
     - [ ] A. Create a new VPC for outbound traffic to the internet. Connect the existing transit gateway to the new VPC. Configure a new NAT gateway. Create an Auto Scaling group of Amazon EC2 Instances that run an open-source internet proxy for rule-based filtering across all Availability Zones in the Region. Modify all default routes to point to the proxy’s Auto Scaling group.
     - [ ] B. Create a new VPC for outbound traffic to the internet. Connect the existing transit gateway to the new VPC. Configure a new NAT gateway. Use an AWS Network Firewall for rule-based filtering. Create Network Firewall Endpoints In each Availability Zone. Modify all default routes to point to the Network Firewall endpoint.
     - [ ] C. Create an AWS Network Firewall for rule-based filtering in each AWS account. Modify all default routes to point to the Network Firewall firewalls in each account.
-    - [ ] D. In each AWS account, create an Auto Scaling group of network-optimized Amazon EC2 instances hat run an open-source internet proxy for ule-based filtering. Modify all default routes to point to the proxy Auto Scaling group.
+    - [ ] D. In each AWS account, create an Auto Scaling group of network-optimized Amazon EC2 instances that run an open-source internet proxy for rule-based filtering. Modify all default routes to point to the proxy Auto Scaling group.
 
     <details>
        <summary>Answer</summary>
@@ -1319,11 +1319,11 @@
 
     </details>
 
-97. A company is using AWS Organizations to manage multiple accounts Due to regulatory requirements the company wants to restrict specific member accounts to certain AWS Regions where they are permitted to deploy resources. The resources in the accounts must be tagged enforced based on a group standard and centrally managed with minimal configuration. What should a solutions architect do to meet these requirements?
+97. A company is using AWS Organizations to manage multiple accounts. Due to regulatory requirements the company wants to restrict specific member accounts to certain AWS Regions where they are permitted to deploy resources. The resources in the accounts must be tagged enforced based on a group standard and centrally managed with minimal configuration. What should a solutions architect do to meet these requirements?
     - [ ] A. Create an AWS Config rule in the specific member accounts to limit Regions and apply a tag policy.
     - [ ] B. From the AWS Billing and Cost Management console in the master account disable Regions for the specific member accounts and apply a tag policy on the root.
     - [ ] C. Associate the specific member accounts with the root Apply a tag policy and an SCP using conditions to limit Regions.
-    - [ ] D. Associate the specific member accounts with a new OU Apply a tag policy and an SCP using conditions to limit Regions.
+    - [ ] D. Associate the specific member accounts with a new OU. Apply a tag policy and an SCP using conditions to limit Regions.
 
     <details>
        <summary>Answer</summary>
