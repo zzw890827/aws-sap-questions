@@ -46,3 +46,36 @@ option = {
     },
   ],
 };
+
+///////////////////////////
+
+option = {
+  title: {
+    left: "center",
+    text: "第一套题库正确率推移",
+  },
+  tooltip: {
+    trigger: "axis",
+  },
+  xAxis: {
+    type: "category",
+    data: ["第一回", "第二回", "第三回"],
+  },
+  yAxis: {
+    type: "value",
+    axisLabel: {
+      formatter: "{value}%",
+    },
+  },
+  series: [
+    {
+      data: [84.0, 84.0, 80.00],
+      type: "line",
+      markLine: {
+        symbol: ["none", "none"],
+        label: { show: true },
+        data: [{ yAxis: 75 }],
+      },
+    },
+  ],
+};

@@ -90,20 +90,12 @@
 - 468, 472, 477, 488, 489, 492, 499, 501, 503, 504, 508, 511
 - 正确率82.35%
 
-## 图表
+## 测试一（第一套题Q1~第一套题Q75）
 
-![01](./img/testReview1.png)
+![第一套题正确率](./img/correctRate1.png)
 
-![02](./img/testReview2.png)
+![第一套错题集](./img/testReview1.png)
 
-![03](./img/testReview3.png)
-
-![04](./img/testReview4.png)
-
-![05](./img/testReview5.png)
-
-![06](img/testReview6.png)
-
-![07](img/testReview7.png)
+## 总体正确率
 
 ![08](./img/correctRate.png)
