@@ -686,11 +686,11 @@
 
     </details>
 
-51. A company is collecting a large amount of data from a fleet of IoT devices. Data is stored as Optimized ROW Columnar (ORC) files in the Hadoop Distributed File System (HDFS) on a persistent Amazon EMR cluster. The company's data analytics team queries the data by using SQL in APache Presto deployed on the same EMR cluster. Queries scan large amounts of data, always run for less 15 minutes, and run only between 5 PM and 10 PM. The company is concerned about the high cost associated with the current solution. A solution architect must propose the most cost-effective solution that will allow SQL data queries. Which solution will meet these requirements?
+51. A company is collecting a large amount of data from a fleet of IoT devices. Data is stored as Optimized ROW Columnar (ORC) files in the Hadoop Distributed File System (HDFS) on a persistent Amazon EMR cluster. The company's data analytics team queries the data by using SQL in Apache Presto deployed on the same EMR cluster. Queries scan large amounts of data, always run for less 15 minutes, and run only between 5 PM and 10 PM. The company is concerned about the high cost associated with the current solution. A solution architect must propose the most cost-effective solution that will allow SQL data queries. Which solution will meet these requirements?
     - [ ] A. Store data in Amazon S3 Amazon Redshift Spectrum to query data.
     - [ ] B. Store data in Amazon S3. Use the AWS Glue Data Catalog and Amazon Athena to query data.
-    - [ ] C. Store data in EMR File System (EMRFS) Use Presto in Amazon EMR to query data.
-    - [ ] D. Store data in Amazon Redshift Use Amazon Redshift to query data.
+    - [ ] C. Store data in EMR File System (EMRFS). Use Presto in Amazon EMR to query data.
+    - [ ] D. Store data in Amazon Redshift. Use Amazon Redshift to query data.
 
     <details>
        <summary>Answer</summary>
