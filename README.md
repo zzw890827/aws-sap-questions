@@ -77,6 +77,4 @@
 
 ![第2套错题集](./img/testReview2.png)
 
-## 总体正确率
-
-![08](./img/correctRate.png)
+## 测试3（第2套题Q51~第3套题Q25）
