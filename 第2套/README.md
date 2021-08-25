@@ -78,7 +78,7 @@
 
 6. A Solutions Architect has created an AWS CloudFormation template for a three-tier application that contains an Auto Scaling group of Amazon EC2 instances running a custom AMI. The Solutions Architect wants to ensure that future updates to the custom AMI can be deployed to a running stack by first updating the template to refer to the new AMI, and then invoking `UpdateStack` to replace the EC2 instances with instances launched from the new AMI. How can updates to the AMI be deployed to meet these requirements?
    - [ ] A. Create a change set for a new version of the template, view the changes to the running EC2 instances to ensure that the AMI is correctly updated, and then execute the change set.
-   - [ ] B. Edit the `AWS::AutoScaling::LaunchConfiguration` resource in the template, changing its `DeletionPolicy` to replace. 
+   - [ ] B. Edit the `AWS::AutoScaling::LaunchConfiguration` resource in the template, changing its `DeletionPolicy` to replace.
    - [ ] C. Edit the `AWS::AutoScaling::LaunchConfiguration` resource in the template, inserting an `UpdatePolicy` attribute.
    - [ ] D. Create a new stack from the updated template. Once it is successfully deployed, modify the DNS records to point to the new stack and delete the old stack.
 
@@ -565,7 +565,7 @@
     - [ ] A. Configure read replicas for Amazon RDS MySQL and use the single reader endpoint in the web application to reduce the load on the backend database tier.
     - [ ] B. Configure the target group health check to point at a simple HTML page instead of a product catalog page and the Amazon Route 53 health check against the product page to evaluate full application functionality. Configure Amazon CloudWatch alarms to notify administrators when the site fails.
     - [ ] C. Configure the target group health check to use a TCP check of the Amazon EC2 web server and the Amazon Route 53 health check against the product page to evaluate full application functionality. Configure Amazon CloudWatch alarms to notify administrators when the site fails.
-    - [ ] D. Configure an Amazon CloudWatch alarm for Amazon RDS with an action to recover a high-load, impaired RDS instance in the database tier.
+    - [ ] D. Configure an Amazon CloudWatch alarm for Amazon RDS with an action to recover a igh-load, impaired RDS instance in the database tier.
     - [ ] E. Configure an Amazon ElastiCache cluster and place it between the web application and RDS MySQL instances to reduce the load on the backend database tier.
 
     <details>
