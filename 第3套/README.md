@@ -86,16 +86,16 @@
    </details>
   
 7. A company is migrating its applications on AWS. The applications will be deployed to AWS accounts owned by business units. The company has several teams of Developers who are responsible for the development and maintenance of all applications. The company is expecting rapid growth in the number of users. The company’s Chief Technology Officer has the following requirements -Developers must launch the AWS infrastructure using AWS CloudFormation -Developers must not be able to create resources outside of CloudFormation -The solution must be able to scale to hundreds of accounts; Which of the following would meet these requirements? (Select TWO)
-   - [ ] A. Using CloudFormation, create an IAM role that can be assumed by Cloud Formation that has permissions to Create all the resources the company needs. Use CloudFormation stack sets to deploy this template to each AWS Account
+   - [ ] A. Using CloudFormation, create an IAM role that can be assumed by Cloud Formation that has permissions to Create all the resources the company needs. Use CloudFormation stack sets to deploy this template to each AWS Account.
    - [ ] B. In a central account, create an IAM role that can be assumed by developers and attach a policy that allows interaction with CloudFormation. Modify the Assume Policy Document action to follow the IAM to be passed to CloudFormation
-   - [ ] C. Using Cloud Formation, create an IAM role that can be assumed by Developers, and attach policies that allow interaction with and passing a role on CloudFormation. Attach an inline policy to deny access all other AWS services. Use CloudFormation Stack Sets to deploy this template to each AWS account.
+   - [ ] C. Using CloudFormation, create an IAM role that can be assumed by Developers, and attach policies that allow interaction with and passing a role on CloudFormation. Attach an inline policy to deny access all other AWS services. Use CloudFormation Stack Sets to deploy this template to each AWS account.
    - [ ] D. Using CloudFormation, create an IAM role for each Developer, and attach policies that allow interaction with CloudFormation. Use Cloud CloudFormation Stack Sets to deploy this template to each AWS account.
-   - [ ] E. In a central AWS account, create an IAM role that can be assumed by Cloud Formation that has permissions to create the resources the company requires. Create a Cloud Formation stack policy that allows the IAM role to manage resources. Use CloudFormation Stack Sets to deploy the CloudFormation stack policy to each AWS account.
+   - [ ] E. In a central AWS account, create an IAM role that can be assumed by CloudFormation that has permissions to create the resources the company requires. Create a Cloud Formation stack policy that allows the IAM role to manage resources. Use CloudFormation Stack Sets to deploy the CloudFormation stack policy to each AWS account.
 
    <details>
       <summary>Answer</summary>
 
-      这题不懂，答案AE
+      这题不懂，答案AC
 
    </details>
   
@@ -179,10 +179,10 @@
   
     </details>
 
-13. A financial company is using a high-performance compute cluster running on Amazon EC2 instances to perform market simulations A DNS record must be created in an Amazon Route 53 private hosted zone when instances start The DNS record must be removed after instances are terminated. Currently the company uses a combination of Amazon CloudWatch Events and AWS Lambda to create the DNS record. The solution worked well in testing with small clusters, but in production with clusters containing thousands of instances the company sees the following error in the Lambda logs: -HTTP 400 error (Bad request). -The response header also includes a status code element with a value of "Throttling" and a status message element with a value of "Rate exceeded". Which combination of steps should the Solutions Architect take to resolve these issues? (Select THREE)
+13. A financial company is using a high-performance compute cluster running on Amazon EC2 instances to perform market simulations A DNS record must be created in an Amazon Route 53 private hosted zone when instances start The DNS record must be removed after instances are terminated. Currently the company uses a combination of Amazon CloudWatch Events and AWS Lambda to create the DNS record. The solution worked well in testing with small clusters, but in production with clusters containing thousands of instances the company sees the following error in the Lambda logs: -HTTP 400 error (Bad request). -The response header also includes a status code element with a value of `Throttling` and a status message element with a value of `Rate exceeded`. Which combination of steps should the Solutions Architect take to resolve these issues? (Select THREE)
     - [ ] A. Configure an Amazon SQS FIFO queue and configure a CloudWatch Events rule to use this queue as a target. Remove the Lambda target from the CloudWatch Events rule.
     - [ ] B. Configure an Amazon Kinesis data stream and configure a CloudWatch Events rule to use this queue as a target. Remove the Lambda target from the CloudWatch Events rule.
-    - [ ] C. Update the CloudWatch Events rule to trigger on Amazon EC2 “Instance Launch Successful” and “Instance Terminate Successful” events for the auto scaling group by the cluster.
+    - [ ] C. Update the CloudWatch Events rule to trigger on Amazon EC2 `Instance Launch Successful` and `Instance Terminate Successful` events for the auto scaling group by the cluster.
     - [ ] D. Configure a Lambda function to retrieve messages from an amazon SQS queue. Modify the Lambda function to retrieve a maximum of 10 messages, then batch the messages by Amazon Route 53 API call type and submit. Delete the messages from the SQS queue after successful API calls.
     - [ ] E. Configure an Amazon SQS standard queue and configure the existing CloudWatch Events rule to use this queue as a target. Remove the Lambda target from the CloudWatch Events rule.
     - [ ] F. Configure a Lambda function to read data from the amazon Kinesis data stream and configure the batch window to 5 minutes. Modify the function to make a single API call to Amazon route 53 with all records read from the Kinesis data.
@@ -217,7 +217,7 @@
     <details>
        <summary>Answer</summary>
 
-       答案AC
+       答案CE
   
     </details>
 
@@ -230,7 +230,7 @@
     <details>
        <summary>Answer</summary>
 
-       答案D
+       答案C
   
     </details>
 
@@ -256,7 +256,7 @@
     <details>
        <summary>Answer</summary>
 
-       这里不用管默认SCP，让他留在根上就好，答案D
+       禁止所有的AWS服务器只能通过白名单方法实现。这意味着你将不得不从根部移除AWS管理的SCP。在你的组织的根上白名单SCP可以确保任何新账户都会应用这些设置。SCP从不授予访问权，但可以允许你利用AWS服务。有了这个基线设置，在一个单独的SCP中授予一套新的AWS服务，将其附加到你的组织中的新账户，在这里符合最小的操作开销。答案D
   
     </details>
 
