@@ -76,10 +76,10 @@
 
    </details>
 
-6. A Solutions Architect has created an AWS CloudFormation template for a three-tier application that contains an Auto Scaling group of Amazon EC2 instances running a custom AMI. The Solutions Architect wants to ensure that future updates to the custom AMI can be deployed to a running stack by first updating the template to refer to the new AMI, and then invoking UpdateStack to replace the EC2 instances with instances launched from the new AMI. How can updates to the AMI be deployed to meet these requirements?
+6. A Solutions Architect has created an AWS CloudFormation template for a three-tier application that contains an Auto Scaling group of Amazon EC2 instances running a custom AMI. The Solutions Architect wants to ensure that future updates to the custom AMI can be deployed to a running stack by first updating the template to refer to the new AMI, and then invoking `UpdateStack` to replace the EC2 instances with instances launched from the new AMI. How can updates to the AMI be deployed to meet these requirements?
    - [ ] A. Create a change set for a new version of the template, view the changes to the running EC2 instances to ensure that the AMI is correctly updated, and then execute the change set.
-   - [ ] B. Edit the AWS::AutoScaling::LaunchConfiguration resource in the template, changing its to Replace. DeletionPolicy
-   - [ ] C. Edit the AWS::AutoScaling::LaunchConfiguration resource in the template, inserting an attribute. UpdatePolicy
+   - [ ] B. Edit the `AWS::AutoScaling::LaunchConfiguration` resource in the template, changing its `DeletionPolicy` to replace. 
+   - [ ] C. Edit the `AWS::AutoScaling::LaunchConfiguration` resource in the template, inserting an `UpdatePolicy` attribute.
    - [ ] D. Create a new stack from the updated template. Once it is successfully deployed, modify the DNS records to point to the new stack and delete the old stack.
 
    <details>
@@ -89,7 +89,7 @@
 
    </details>
 
-7. A Solutions Architect is designing a multi-account structure that has 10 existing accounts. The design must meet the following requirements:Consolidate all accounts into one organization. Allow full access to the Amazon EC2 service from the master account and the secondary accounts. Minimize the effort required to add additional secondary accounts. Which combination of steps should be included in the solution? (Choose two.)
+7. A Solutions Architect is designing a multi-account structure that has 10 existing accounts. The design must meet the following requirements: -Consolidate all accounts into one organization. -Allow full access to the Amazon EC2 service from the master account and the secondary accounts. -Minimize the effort required to add additional secondary accounts. Which combination of steps should be included in the solution? (Choose two.)
    - [ ] A. Create an organization from the master account. Send invitations to the secondary accounts from the master account. Accept the invitations and create an OU.
    - [ ] B. Create an organization from the master account. Send a join request to the master account from each secondary account. Accept the requests and create an OU.
    - [ ] C. Create a VPC peering connection between the master account and the secondary accounts. Accept the request for the VPC peering connection.
@@ -118,7 +118,7 @@
    </details>
 
 9. A company deployed a three-tier web application in two regions:us-east-1 and eu-west-1. The application must be active in both regions at the same time. The database tier of the application uses a single Amazon RDS Aurora database globally, with a master in us-east-1 and a read replica in eu-west-1. Both regions are connected by a VPN The company wants to ensure that the application remains available even in the event of a region-level failure of all the application's components. It is acceptable for the application to be in read-only mode for up to 1 hour. The company plans to configure two Amazon Route 53 record sets, one for each of the regions. How should the company complete the configuration to meet its requirements while providing the lowest latency for the application end-users? (Choose two.)
-   - [ ] A. Use failover routing and configure the us-east-1 record set as primary and the eu-west-1 record set as secondary. Configure an HTTP health check for the web application in us-east-1, and associate it to the us-east-1 record set.
+   - [ ] A. Use failover routing and configure the us-east-1 record set as primary and the eu-west-1 record set as secondary. Configure an HTTP health check for the web application in us-east-1 and associate it to the us-east-1 record set.
    - [ ] B. Use weighted routing and configure each record set with a weight of 50. Configure an HTTP health check for each region and attach it to the record set for that region.
    - [ ] C. Use latency-based routing for both record sets. Configure a health check for each region and attach it to the record set for that region.
    - [ ] D. Configure an Amazon CloudWatch alarm for the health checks in us-east-1, and have it invoke an AWS Lambda function that promotes the read replica in eu-west-1.
@@ -154,7 +154,7 @@
 11. A company has a large on-premises Apache Hadoop cluster with a 20 PB HDFS database. The cluster is growing every quarter by roughly 200 instances and 1 PB The company's goals are to enable resiliency for its Hadoop data, limit the impact of losing cluster nodes, and significantly reduce costs. The current cluster runs 24/7 and supports a variety of analysis workloads, including interactive queries and batch processing. Which solution would meet these requirements with the LEAST expense and down time?
     - [ ] A. Use AWS Snowmobile to migrate the existing cluster data to Amazon S3. Create a persistent Amazon EMR cluster initially sized to handle the interactive workload based on historical data from the on-premises cluster. Store the data on EMRFS. Minimize costs using Reserved Instances for master and core nodes and Spot Instances for task nodes, and auto scale task nodes based on Amazon CloudWatch metrics. Create job-specific, optimized clusters for batch workloads that are similarly optimized.
     - [ ] B. Use AWS Snowmobile to migrate the existing cluster data to Amazon S3. Create a persistent Amazon EMR cluster of similar size and configuration to the current cluster. Store the data on EMRFS. Minimize costs by using Reserved Instances. As the workload grows each quarter, purchase additional Reserved Instances, and add to the cluster.
-    - [ ] C. Use AWS Snowball to migrate the existing cluster data to Amazon S3. Create a persistent Amazon EMR cluster initially sized to handle the interactive workloads based on historical data from the on-premises cluster. Store the on ENIRFS. Minimize costs using Reserved Instances for master and core nodes and Spot Instances for task nodes, and auto scale task nodes based on Amazon CloudWatch metrics. Create job-specific, optimized clusters for batch workloads that are similarly optimized.
+    - [ ] C. Use AWS Snowball to migrate the existing cluster data to Amazon S3. Create a persistent Amazon EMR cluster initially sized to handle the interactive workloads based on historical data from the on-premises cluster. Store the on EMRFS. Minimize costs using Reserved Instances for master and core nodes and Spot Instances for task nodes, and auto scale task nodes based on Amazon CloudWatch metrics. Create job-specific, optimized clusters for batch workloads that are similarly optimized.
     - [ ] D. Use AWS Direct Connect to migrate the existing cluster data to Amazon S3. Create a persistent Amazon EMR cluster initially sized to handle the interactive workload based on historical data from the on-premises cluster. Store the data on EMRFS. Minimize costs using Reserved Instances for master and core nodes and Spot Instances for task nodes, and auto scale task nodes based on Amazon CloudWatch metrics. Create job-specific, optimized clusters for batch workloads that are similarly optimized.
 
     <details>
@@ -402,12 +402,12 @@
 
     </details>
 
-28. A company has been using a third-party provider for its content delivery network and recently decided to switch to Amazon CloudFront the Development team wants to maximize performance for the global user base. The company uses a content management system (CMS) that serves both static and dynamic content. The CMS is both md an Application Load Balancer (ALB) which is set as the default origin for the distribution. Static assets are sewed from an Amazon S3 bucket. The Origin Access Identity (OAI) was created property d the S3 bucket policy has been updated to allow the GetObject action from the OAI, but static assets are receiving a 404 error. Which combination of steps should the Solutions Architect take to fix the error? (Select TWO.)
-    - [ ] A. Add another origin to the CloudFront distribution for the static assets
-    - [ ] B. Add a path based rule to the ALB to forward requests for the static assets
-    - [ ] C. Add an RTMP distribution to allow caching of both static and dynamic content
-    - [ ] D. Add a behavior to the CloudFront distribution for the path pattern and the origin of the static assets
-    - [ ] E. Add a host header condition to the ALB listener and forward the header from CloudFront to add traffic to the allow list
+28. A company has been using a third-party provider for its content delivery network and recently decided to switch to Amazon CloudFront the Development team wants to maximize performance for the global user base. The company uses a content management system (CMS) that serves both static and dynamic content. The CMS is both md an Application Load Balancer (ALB) which is set as the default origin for the distribution. Static assets are sewed from an Amazon S3 bucket. The Origin Access Identity (OAI) was created property d the S3 bucket policy has been updated to allow the `GetObject` action from the OAI, but static assets are receiving a 404 error. Which combination of steps should the Solutions Architect take to fix the error? (Select TWO.)
+    - [ ] A. Add another origin to the CloudFront distribution for the static assets.
+    - [ ] B. Add a path based rule to the ALB to forward requests for the static assets.
+    - [ ] C. Add an RTMP distribution to allow caching of both static and dynamic content.
+    - [ ] D. Add a behavior to the CloudFront distribution for the path pattern and the origin of the static assets.
+    - [ ] E. Add a host header condition to the ALB listener and forward the header from CloudFront to add traffic to the allow list.
 
     <details>
        <summary>Answer</summary>
@@ -430,7 +430,7 @@
     </details>
 
 30. A Solutions Architect is migrating a 10 TB PostgreSQL database to Amazon RDS for PostgreSQL. The company's internet link is 50 MB with a VPN in the Amazon VPC, and the Solutions Architect needs to migrate the data and synchronize the changes before the cutover. The cutover must take place within an 8-day period. What is the LEAST complex method of migrating the database securely and reliably?
-    - [ ] A. Order an AWS Snowball device and copy the database using the AWS DMS. When the database is available in Amazon 3, use AWS DMS to load it to Amazon RDS, and configure a job to synchronize changes before the cutover.
+    - [ ] A. Order an AWS Snowball device and copy the database using the AWS DMS. When the database is available in Amazon S3, use AWS DMS to load it to Amazon RDS, and configure a job to synchronize changes before the cutover.
     - [ ] B. Create an AWS DMS job to continuously replicate the data from on premises to AWS. Cutover to Amazon RDS after the data is synchronized.
     - [ ] C. Order an AWS Snowball device and copy a database dump to the device. After the data has been copied to Amazon S3, import it to the Amazon RDS instance. Set up log shipping over a VPN to synchronize changes before the cutover.
     - [ ] D. Order an AWS Snowball device and copy the database by using the AWS Schema Conversion Tool. When the data is available in Amazon S3, use AWS DMS to load it to Amazon RDS, and configure a job to synchronize changes before the cutover.
@@ -467,7 +467,7 @@
        - [ ] A. Amazon Kinesis Data Analytics是做数据分析而不是错误识别的
        - [ ] B. X-Ray用于检测网络的
        - [ ] C. Logstash是将数据加载到Elasticsearch中而不是S3
-       - [ ] D. 正确
+       - [x] D. 正确
   
     </details>
 
@@ -571,7 +571,7 @@
     <details>
        <summary>Answer</summary>
 
-       与经典负载平衡器或网络负载平衡器不同，应用负载平衡器不能有传输层（第四层）TCP或SSL/TLS监听器。它只支持HTTP和HTTPS监听器。此外，它不能使用后端认证来验证负载平衡器和后端实例之间的 HTTPS 连接。
+       与经典负载平衡器或网络负载平衡器不同，应用负载平衡器不能有传输层（第四层）TCP或SSL/TLS监听器。它只支持HTTP和HTTPS监听器。此外，它不能使用后端认证来验证负载平衡器和后端实例之间的 HTTPS 连接，答案BE。
 
     </details>
 
@@ -682,7 +682,7 @@
 
     </details>
 
-48. A supermarket chain had a big data analysis system deployed in AWS. The system has the raw data such as clickstream or process logs in S3. Am3.large EC2 instance transformed the data to other formats and saved it to another S3 bucket. Amazon Redshift analyzed the data afterwards. Your team oversees improving the system using AWS Glue which is a fully managed ETL (extract, transform, and load) service. Which tasks can AWS Glue simplify during re-establishing the big data system? (Select TWO)
+48. A supermarket chain had a big data analysis system deployed in AWS. The system has the raw data such as clickstream or process logs in S3. An `m3.large` EC2 instance transformed the data to other formats and saved it to another S3 bucket. Amazon Redshift analyzed the data afterwards. Your team oversees improving the system using AWS Glue which is a fully managed ETL (extract, transform, and load) service. Which tasks can AWS Glue simplify during re-establishing the big data system? (Select TWO)
     - [ ] A. AWS Glue contains a crawler that connects to the S3 bucket and scans the dataset. Then the service creates metadata tables in the data catalog.
     - [ ] B. AWS Glue automatically generates in Java to extract data from the source and transform the data to match the target schema.
     - [ ] C. Be default, AWS Glue creates a scheduler to trigger the activated tasks every minute.
