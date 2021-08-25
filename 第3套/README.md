@@ -468,11 +468,11 @@
   
     </details>
 
-31. You have a periodic image analysis application that gets some files in input, analyzes them and tor each file writes some data in output to a ten file the number of files in input per day is high and concentrated in a few hours of the day. Currently you have a server on EC2 with a large EBS volume that hosts the input data and the results. It takes almost 20 hours per day to complete the process. What services could be used to reduce the elaboration time and improve the availability of the solution?
-    - [ ] A. S3 to store I/O files. SQS to distribute elaboration commands to a group of hosts working in parallel. Auto scaling to dynamically size the group of hosts depending on the length of the SQS queue
-    - [ ] B. EBS with Provisioned IOPS (PIOPS) to store I/O files. SNS to distribute elaboration commands to a group of hosts working in parallel Auto Scaling to dynamically size the group of hosts depending on the number of SNS notifications
-    - [ ] C. S3 to store I/O files, SNS to distribute evaporation commands to a group of hosts working in parallel. Auto scaling to dynamically size the group of hosts depending on the number of SNS notifications
-    - [ ] D. EBS with Provisioned IOPS (PIOPS) to store I/O files SQS to distribute elaboration commands to a group of hosts working in parallel Auto Scaling to dynamically size the group ot hosts depending on the length of the SQS queue.
+31. You have a periodic image analysis application that gets some files in input, analyzes them and for each file writes some data in output to a I/O file. The number of files in input per day is high and concentrated in a few hours of the day. Currently you have a server on EC2 with a large EBS volume that hosts the input data and the results. It takes almost 20 hours per day to complete the process. What services could be used to reduce the elaboration time and improve the availability of the solution?
+    - [ ] A. S3 to store I/O files. SQS to distribute elaboration commands to a group of hosts working in parallel. Auto scaling to dynamically size the group of hosts depending on the length of the SQS queue.
+    - [ ] B. EBS with Provisioned IOPS (PIOPS) to store I/O files. SNS to distribute elaboration commands to a group of hosts working in parallel. Auto Scaling to dynamically size the group of hosts depending on the number of SNS notifications
+    - [ ] C. S3 to store I/O files, SNS to distribute evaporation commands to a group of hosts working in parallel. Auto scaling to dynamically size the group of hosts depending on the number of SNS notifications.
+    - [ ] D. EBS with Provisioned IOPS (PIOPS) to store I/O files. SQS to distribute elaboration commands to a group of hosts working in parallel. Auto Scaling to dynamically size the group of hosts depending on the length of the SQS queue.
 
     <details>
        <summary>Answer</summary>
@@ -497,10 +497,11 @@
 
     </details>
 
-33. An organization is planning to host a Wordpress blog as well as joomla CMS on a single instance launched with VPC. The organization wants to create separate domains for each application using Route 53. The organization may have about ten instances each with these two applications. While launching each instance, the organization configured two separate network interfaces (primary + secondary ENI) with their own Elastic IPs to the instance. The suggestion was to use a public IP from AWS instead of an Elastic IP as the number of elastic IPs allocation per region is restricted in the account. What action will you recommend to the organization?
+33. An organization is planning to host a Wordpress blog as well as Joomla CMS on a single instance launched with VPC. The organization wants to create separate domains for each application using Route 53. The organization may have about ten instances each with these two applications. While launching each instance, the organization configured two separate network interfaces (primary + secondary ENI) with their own Elastic IPs to the instance. The suggestion was to use a public IP from AWS instead of an Elastic IP as the number of elastic IPs allocation per region is restricted in the account. What action will you recommend to the organization?
+
     - [ ] A. I agree with the suggestion but will prefer that the organization should use separate subnets with each ENI for different public IPs.
     - [ ] B. I do not agree as it is required to have only an elastic IP since an instance has more than one ENI and AWS does not assign a public IP to an instance with multiple ENIs.
-    - [ ] C. I do not agree as AWS VPC does not attach a public IP to an ENI; so the user has to use only an elastic IP only.
+    - [ ] C. I do not agree as AWS VPC does not attach a public IP to an ENI; so, the user must use only an elastic IP only.
     - [ ] D. I agree with the suggestion, and it is recommended to use a public IP from AWS since the organization is going to use DNS with Route 53.
 
     <details>
@@ -526,10 +527,10 @@
 
     </details>
 
-35. A company is running a batch analysis every hour on their main transactional DB, running on an RDS MySQL instance, to populate their central Data Warehouse running on Redshift. During the execution of the batch, their transactional applications are very slow. When the batch completes they need to update the top management dashboard with the new data. The dashboard is produced by another system running on-premises that is currently started when a manually-sent email notifies that an update is required. The on-premises system cannot be modified because is managed by another team. How would you optimize this scenario to solve performance issues and automate the process as much as possible?
+35. A company is running a batch analysis every hour on their main transactional DB, running on an RDS MySQL instance, to populate their central Data Warehouse running on Redshift. During the execution of the batch, their transactional applications are very slow. When the batch completes, they need to update the top management dashboard with the new data. The dashboard is produced by another system running on-premises that is currently started when a manually sent email notifies that an update is required. The on-premises system cannot be modified because is managed by another team. How would you optimize this scenario to solve performance issues and automate the process as much as possible?
     - [ ] A. Replace RDS with Redshift for the batch analysis and SNS to notify the on-premises system to update the dashboard.
     - [ ] B. Replace RDS with Redshift for the oaten analysis and SQS to send a message to the on-premises system to update the dashboard.
-    - [ ] C. Create an RDS Read Replica for the batch analysis and SNS to notify me on-premises system to update the dashboard.
+    - [ ] C. Create an RDS Read Replica for the batch analysis and SNS to notify the on-premises system to update the dashboard.
     - [ ] D. Create an RDS Read Replica for the batch analysis and SQS to send a message to the on-premises system to update the dashboard.
 
     <details>
@@ -539,10 +540,10 @@
   
     </details>
 
-36. A company is building a voting system for a popular TV show, viewers will watch the performances then visit the show website to vote for their favorite performer. It is expected that in a short period of time after the show has finished the site will receive millions of visitors, the visitors will first login to the site using their "Amazon.com" credentials and then submit their vote. After the voting is completed, the page will display the vote totals. The company needs to build the site such that it can handle the rapid influx of traffic while maintaining good performance but also wants to keep costs to a minimum. Which of the design patters below should they use?
-    - [ ] A. Use CloudFront and an Elastic Load Balancer in front of an auto-scaled set of web servers, the web servers will first call the Login With Amazon service to authenticate the user, the web servers will process the users vote and store the result into a DynamoDB table using IAM Roles for EC2 Instances to gain permissions to the DynamoDB table.
-    - [ ] B. Use CloudFront and an Elastic Load Balancer in front of an auto-scaled set of web servers, the web servers will first call the Login With Amazon service to authenticate the user, the web servers will process the users vote and store the result into an SQS queue using IAM Roles for EC2 Instances to gain permissions to the SQS queue. A set of application servers will then retrieve the items from the queue and store the result into a DynamoDB table.
-    - [ ] C. Use CloudFront and an Elastic Load Balancer in front of an auto-scaled set of web servers, the web servers will first call the Login With Amazon service to authenticate the user then process the users vote and store the result into a multi-AZ Relational Database Service instance.
+36. A company is building a voting system for a popular TV show, viewers will watch the performances then visit the show website to vote for their favorite performer. It is expected that in a short period of time after the show has finished the site will receive millions of visitors, the visitors will first login to the site using their `Amazon.com` credentials and then submit their vote. After the voting is completed, the page will display the vote totals. The company needs to build the site such that it can handle the rapid influx of traffic while maintaining good performance but also wants to keep costs to a minimum. Which of the design patters below should they use?
+    - [ ] A. Use CloudFront and an Elastic Load Balancer in front of an auto-scaled set of web servers, the web servers will first call the Login with Amazon service to authenticate the user, the web servers will process the users vote and store the result into a DynamoDB table using IAM Roles for EC2 Instances to gain permissions to the DynamoDB table.
+    - [ ] B. Use CloudFront and an Elastic Load Balancer in front of an auto-scaled set of web servers, the web servers will first call the Login with Amazon service to authenticate the user, the web servers will process the users vote and store the result into an SQS queue using IAM Roles for EC2 Instances to gain permissions to the SQS queue. A set of application servers will then retrieve the items from the queue and store the result into a DynamoDB table.
+    - [ ] C. Use CloudFront and an Elastic Load Balancer in front of an auto-scaled set of web servers, the web servers will first call the Login with Amazon service to authenticate the user then process the users vote and store the result into a multi-AZ Relational Database Service instance.
     - [ ] D. Use CloudFront and the static website hosting feature of S3 with the JavaScript SDK to call the Login with Amazon service to authenticate the user, use IAM Roles to gain permissions to a DynamoDB table to store the users vote.
 
     <details>
@@ -635,7 +636,7 @@
     - [ ] B. Review the Access Advisor in AWS IAM to determine
     - [ ] C. Review the AWS Trusted Advisor report to determine services recently used
     - [ ] D. Remove the default FullAWSAccess SCP
-    - [ ] E. Define organizational units(OUS)and place the member accounts in the OUs
+    - [ ] E. Define organizational units (OUS)and place the member accounts in the OUs
     - [ ] F. Remove the default DenyAWSaccess SCP
 
     <details>
@@ -652,7 +653,7 @@
 
 44. A company hosts a community forum site using an Application Load Balancer (ALB) and a Docker application hosted in an Amazon ECS cluster. The site data is stored in Amazon RDS for MYSQL, and the container image is stored in ECR. The company needs to provide their customers with a disaster recovery SLA with an RTO of no more than 24 hours and RPO of no more than 8 hours. Which of the following solutions is the MOST cost-effective way to meet the requirements?
     - [ ] A. Use AWS CloudFormation to deploy identical ALB, EC2, ECS and RDS resources in two regions. Schedule RDS snapshots every 8 hours. Use RDS multi-region replication to update the secondary regions copy of the database. In the event of a failure, restore from the latest snapshot, and use an Amazon Route 53 DNS failover policy to automatically redirect customers to the ALB in the secondary region.
-    - [ ] B. Store the Docker image in ECR in two regions. Schedule RDS snapshots every 8 hours with snapshots copied to the secondary region. In the event of a failure, use AWS CloudFormation to deploy the AL B, EC2, ECS and RDS resources in the secondary region, restore from the latest snapshot, and update the DNS record to point to the ALB in the secondary region.
+    - [ ] B. Store the Docker image in ECR in two regions. Schedule RDS snapshots every 8 hours with snapshots copied to the secondary region. In the event of a failure, use AWS CloudFormation to deploy the ALB, EC2, ECS and RDS resources in the secondary region, restore from the latest snapshot, and update the DNS record to point to the ALB in the secondary region.
     - [ ] C. Use AWS CloudFormation to deploy identical ALB, EC2 ECS, and RDS resources in a secondary region. Schedule hourly RDS MYSQL backups to Amazon S3 and use cross-region replication to replicate data to a bucket in the secondary region. In the event of a failure, import the latest Docker image to Amazon ECR in the secondary region, deploy to the EC2 instance, restore the latest MYSQL backup, and update the DNS record to point to the ALB in the secondary region.
     - [ ] D. Deploy a pilot light environment in a secondary region with an ALB and a minimal resourceEC2 deployment for Docker in an AWS Auto Scaling group with a scaling policy to increase instance size and number of nodes. Create a cross-region read replica of the RDS data. In the event of a failure, promote the replica to primary and update the DNS record to point to the ALB in the secondary region.
 
@@ -706,9 +707,9 @@
 
 48. A company is planning to deploy a new business analytics application that requires 10.000 hours of compute time each month. The compute resources can have flexible availability but must be as cost-effective as possible. The company will also provide a reporting service to distribute analytics reports, which needs to always run. How should the Solution Architect design a solution that meets these requirements?
     - [ ] A. Deploy the reporting service on a spot Fleet. Deploy the analytics ECS with AWS Fargate as the compute option. Set the analytics application to use a custom metric with Service Auto Scaling.
-    - [ ] B. Deploy the reporting service on an On-demand Instance Deploy the analytics application as a container in AWS Batch with AWS Fargate as the compute option. Set the analytics application to use a custom metric with Service Auto Scaling.
+    - [ ] B. Deploy the reporting service on an On-demand Instance. Deploy the analytics application as a container in AWS Batch with AWS Fargate as the compute option. Set the analytics application to use a custom metric with Service Auto Scaling.
     - [ ] C. Deploy the reporting service as a container in Amazon ECS with AWS Fargate as the compute option. Deploy the analytics application on a Spot Fleet. Set the analytics application to use a custom metric with Amazon EC2 Auto Scaling applied to the Spot Fleet.
-    - [ ] D. Deploy the reporting service as a container in Amazon ECS with AWS Fargate as the compute option. Deploy the analytics application on an On-demand Instance and purchase a reserves Instance with a3-year term. Set the analytics application to use a custom metric with Amazon EC2 Auto Scaling applied to the On-Demand Instance.
+    - [ ] D. Deploy the reporting service as a container in Amazon ECS with AWS Fargate as the compute option. Deploy the analytics application on an On-demand Instance and purchase a reserves Instance with a 3-year term. Set the analytics application to use a custom metric with Amazon EC2 Auto Scaling applied to the On-Demand Instance.
 
     <details>
        <summary>Answer</summary>
@@ -717,12 +718,12 @@
 
     </details>
 
-49. A utility company wants to collect usage data every 5 minutes from its smart meters to facilitate time-of-use metering. When a meter sends data to AWS, the data is sent to Amazon API Gateway, processed by an AWS Lambda function, and stored in an Amazon DynamoDB table. During the pilot phase, the Lambda functions took from 3 to 5 seconds to complete As more smart meters are deployed, the Engineers notice the Lambda functions are taking from I to 2 minutes to complete. The functions are also increasing in duration as new types of metrics are collected from the devices. There are many "ProvisionedThroughputExceededException" errors while performing PUT operations on DynamoDB, and there are also many "TooManyRequestsException" errors from Lambda. Which combination of changes will resolve these issues? (Choose two.)
-    - [ ] A. Increase the write capacity units to the DynamoDB table.
-    - [ ] B. Increase the memory available to the Lambda functions.
-    - [ ] C. Increase the payload size from the smart meters to send more data.
-    - [ ] D. Stream the data into an Amazon Kinesis data stream from API Gateway and process the data in batches.
-    - [ ] E. Collect data in an Amazon SQS FIFO queue, which triggers a Lambda function to process each message.
+49. A utility company wants to collect usage data every 5 minutes from its smart meters to facilitate time-of-use metering. When a meter sends data to AWS, the data is sent to Amazon API Gateway, processed by an AWS Lambda function, and stored in an Amazon DynamoDB table. During the pilot phase, the Lambda functions took from 3 to 5 seconds to complete as more smart meters are deployed, the Engineers notice the Lambda functions are taking from I to 2 minutes to complete. The functions are also increasing in duration as new types of metrics are collected from the devices. There are many `ProvisionedThroughputExceededException` errors while performing PUT operations on DynamoDB, and there are also many `TooManyRequestsException` errors from Lambda. Which combination of changes will resolve these issues? (Choose two.)
+      - [ ] A. Increase the write capacity units to the DynamoDB table.
+      - [ ] B. Increase the memory available to the Lambda functions.
+      - [ ] C. Increase the payload size from the smart meters to send more data.
+      - [ ] D. Stream the data into an Amazon Kinesis data stream from API Gateway and process the data in batches.
+      - [ ] E. Collect data in an Amazon SQS FIFO queue, which triggers a Lambda function to process each message.
 
     <details>
        <summary>Answer</summary>
@@ -1143,7 +1144,7 @@
     - [ ] A. Create a quorum signing application hosted on multiple Amazon EC2 instances behind an Application Load Balancer to allow an officer to initiate a quorum request. Require officers to log in to the application with their federated identity credentials. Each officer will then use the application to approve the quorum signing request. Configure the application to use AWS STS to sign the CloudHSM quorum token on behalf of the officers. Once at least three officers have approved the quorum signing request use EC2 IAM service roles to administer CloudHSM with the signed quorum token.
     - [ ] B. Create a static website on Amazon S3 integrated with Amazon API Gateway to allow an officer to initiate a quorum request. Use Amazon SNS to notify the officers of a quorum request. Allow the officers to download the CloudHSM quorum token, sign the token offline, and upload the signed token through the website. Use Amazon DynamoDB to store the quorum token and additional officer responses with their signed quorum tokens. Configure an AWS Step Functions workflow to orchestrate officer notifications, count signed tokens in Amazon DynamoDB, and notify the initiating officer once at least three officers have stoned the token. Use the signed quorum token to administer CloudHSM.
     - [ ] C. Create a status website on Amazon S3 integrated with Amazon API Gateway to allow an officer to imuate a quorum request. Use the website to redirect the officers to sign in to CloudHSM with their federated Identity credentials. Once at least three officers are signed in to CloudHSM, initiate a synchronous quorum token signing process. Use the stoned quorum token to administer CloudHSM.
-    - [ ] D. Create an Amazon Cognito-authenticated Amazon API Gateway API endpoint with an AWS Lambda proxy integration. Allow an officer to create a CloudHSM quorum token and post it to the API Gateway. API after signing in with Amazon Cognito. Configure the Lambda function to perform a signing procedure on the quorum token using the officer's Amazon Cognito IAM role, and store the signed token in Amazon DynamoDB. Once at least three officers have signed the quorum token, allow a POST method to administer CloudHSM with the signed token.
+    - [ ] D. Create an Amazon Cognito-authenticated Amazon API Gateway API endpoint with an AWS Lambda proxy integration. Allow an officer to create a CloudHSM quorum token and post it to the API Gateway API after signing in with Amazon Cognito. Configure the Lambda function to perform a signing procedure on the quorum token using the officer's Amazon Cognito IAM role and store the signed token in Amazon DynamoDB. Once at least three officers have signed the quorum token, allow a POST method to administer CloudHSM with the signed token.
 
     <details>
        <summary>Answer</summary>
@@ -1153,8 +1154,8 @@
     </details>
 
 81. A company is using an existing orchestration tool to manage thousands of Amazon EC2 instances. A recent penetration test found a vulnerability in the company's software stack. This vulnerability has prompted the company to perform a full evaluation of its current production environment. The analysis determined that the following vulnerabilities exist within the environment: -Operating systems with outdated libraries and known vulnerabilities are being used in production. -Relational databases hosted and managed by the company are running unsupported versions with known vulnerabilities. -Data stored in databases is not encrypted. The solutions architect intends to use AWS Config to continuously audit and assess the compliance of the company's AWS resource configurations with the company's policies and guidelines. What additional steps will enable the company to secure its environments and track resources while adhering to best practices?
-    - [ ] A. Use AWS Application Discovery Service to evaluate all running EC2 instances Use the AWS CLI to modify each instance, and use EC2 user data to install the AWS Systems Manager Agent during boot. Schedule patching to run as a Systems Manager Maintenance Windows task. Migrate all relational databases to Amazon RDS and enable AWS KMS encryption.
-    - [ ] B.  Create an AWS CloudFormation template for the EC2 instances. Use EC2 user data in the CloudFormation template to install the AWS Systems Manager Agent, and enable AWS KMS encryption on all Amazon EBS volumes. Have CloudFormation replace all running instances. Use Systems Manager Patch Manager to establish a patch baseline and deploy a Systems Manager Maintenance Windows task to execute AWS-RunPatchBaseline using the patch baseline.
+    - [ ] A. Use AWS Application Discovery Service to evaluate all running EC2 instances. Use the AWS CLI to modify each instance and use EC2 user data to install the AWS Systems Manager Agent during boot. Schedule patching to run as a Systems Manager Maintenance Windows task. Migrate all relational databases to Amazon RDS and enable AWS KMS encryption.
+    - [ ] B. Create an AWS CloudFormation template for the EC2 instances. Use EC2 user data in the CloudFormation template to install the AWS Systems Manager Agent and enable AWS KMS encryption on all Amazon EBS volumes. Have CloudFormation replace all running instances. Use Systems Manager Patch Manager to establish a patch baseline and deploy a Systems Manager Maintenance Windows task to execute AWS-RunPatchBaseline using the patch baseline.
     - [ ] C. Install the AWS Systems Manager Agent on all existing instances using the company's current orchestration tool. Use the Systems Manager Run Command to execute a list of commands to upgrade software on each instance using operating system-specific tools. Enable AWS KMS encryption on all Amazon EBS volumes.
     - [ ] D. Install the AWS Systems Manager Agent on all existing instances using the company's current orchestration tool. Migrate all relational databases to Amazon RDS and enable AWS KMS encryption. Use Systems Manager Patch Manager to establish a patch baseline and deploy a Systems Manager Maintenance Windows task to execute AWS-RunPatchBaseline using the patch baseline.
 
@@ -1220,9 +1221,9 @@
     </details>
 
 86. A company wants to host a global web application on AWS. It has the following design requirements. -Minimize the of API calls. -The access pattern must allow for latching data from multiple data sources. -Keep page load times to within 50ms. -Provide user authentication and authorization and manage data access for different user personas (for example, administrator, manager, or engineer). -Use a serverless design. Which set of strategies should a solution architect use?
-    - [ ] A. Use Amazon CloudFront with Amazon S3 to host the web application Use Amazon API gateway to build the application APIs with AWS Lambda for the custom authorizer Authorize data access by performing user lookup in Simple AD.
-    - [ ] B. Use Amazon CloudFront with AWS WAF to host the web application. Use AWS AppSync to build the application APIs. Use IAM groups for each user persona Authorize data access by leveraging IAM group in AWS AppSync resolvers.
-    - [ ] C. Use Amazon CloudFront with Amazon S3 to host the web application. Use AWS AppSync to build the application APIs. Use Amazon Cognito groups for each user persona Authorize data access by leveraging Amazon Cognito groups in AWS AppSync resolvers.
+    - [ ] A. Use Amazon CloudFront with Amazon S3 to host the web application. Use Amazon API gateway to build the application APIs with AWS Lambda for the custom authorizer. Authorize data access by performing user lookup in Simple AD.
+    - [ ] B. Use Amazon CloudFront with AWS WAF to host the web application. Use AWS AppSync to build the application APIs. Use IAM groups for each user persona. Authorize data access by leveraging IAM group in AWS AppSync resolvers.
+    - [ ] C. Use Amazon CloudFront with Amazon S3 to host the web application. Use AWS AppSync to build the application APIs. Use Amazon Cognito groups for each user persona. Authorize data access by leveraging Amazon Cognito groups in AWS AppSync resolvers.
     - [ ] D. Use AWS Direct Connect with Amazon S3 to host the web application. Use Amazon API Gateway to build the application APIs. Use AWS Lambda for custom authentication and authorization. Authorize data access by leveraging IAM roles.
 
     <details>

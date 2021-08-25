@@ -96,3 +96,36 @@ option = {
     },
   ],
 };
+
+///////////////////////
+
+option = {
+  title: {
+    left: "center",
+    text: "测试4正确率推移",
+  },
+  tooltip: {
+    trigger: "axis",
+  },
+  xAxis: {
+    type: "category",
+    data: ["第一回", "第二回", "第三回"],
+  },
+  yAxis: {
+    type: "value",
+    axisLabel: {
+      formatter: "{value}%",
+    },
+  },
+  series: [
+    {
+      data: [70.7, 93.3, 74.7],
+      type: "line",
+      markLine: {
+        symbol: ["none", "none"],
+        label: { show: true },
+        data: [{ yAxis: 75 }],
+      },
+    },
+  ],
+};
