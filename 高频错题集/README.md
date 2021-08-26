@@ -573,3 +573,96 @@
        第443题，答案D。
 
     </details>
+
+44. A solution architect works for a government agency that has strict recovery requirement. All Amazon Elastic Block Store (Amazon EBS) snapshots are required to be saved in at least two additional AWS Regions. The agency also is required to maintain the lowest possible operational overhead. Which solution meets These requirements?
+    - [ ] A. Configure a policy in Amazon Data lifecycle Manager (Amazon DLM) to run once daily to copy the EBS snapshots to the additional Regions.
+    - [ ] B. Use Amazon EventBridge (Amazon CloudWatch events) to schedule an AWS Lambda function to copy the EBS snapshots to the additional Regions.
+    - [ ] C. Set up AWS Backup to create the EBS snapshots. Configure Amazon S3 cross-Region replicator to copy the EBS snapshots to the additional Regions
+    - [ ] D. Schedule Amazon EC2 Image Builder to run once daily to create an AMI and copy the AMI to the additional Regions.
+
+    <details>
+       <summary>Answer</summary>
+
+       第472题，答案B。
+
+    </details>
+
+45. A company stores customer data in an Amazon S3 bucket with S3 Versioning enabled in the us-west-2 Region. The S3 bucket is encrypted with an AWS Key Management Service (AWS KMS) customer managed CMK. A compliance policy states that redundant copies of all S3 objects must be stored in the us-east-2 Region. The S3 buckets are allowed to stay in the same AWS account. Which combination of steps will meet these requirements with the LEAST operational effort? (Select THREE.)
+    - [ ] A. Configure an AWS Lambda function that copies objects to the us-east-2 bucket and is triggered when objects are created in the us-west-2 bucket.
+    - [ ] B. Create a destination S3 bucket in us-east-2 with S3 Versioning enabled.
+    - [ ] C. Set up S3 Cross-Region Replication between the two S3 buckets.
+    - [ ] D. Create and assign an S3 bucket policy that allows reading from the source S3 bucket.
+    - [ ] E. Create and assign to Amazon S3 an IAM role with a policy that allows reading from the source S3 bucket and replication to the destination S3 bucket.
+    - [ ] F. Create a destination S3 bucket in us-east-2.
+
+    <details>
+       <summary>Answer</summary>
+
+       第477题，答案BCD。
+
+    </details>
+
+46. A software development company has multiple engineers who are working remotely. The company is running Active Directory Domain Services (AD DS) on anAmazon EC2 instance. The company's security policy states that all internal, nonpublic sewices that are deployed in a VPC must be accessible through a VPN. Multi-factor authentication (MFA) must be used for access to a VPN. What should a solutions architect do to meet these requirements?
+    - [ ] A. Create an AWS Site-to-Site VPN connection. Configure integration between a VPN and AD DS. Use an Amazon Workspaces client with MFA support enabled to establish a VPN connection.
+    - [ ] B. Create an AWS Client endpoint. Create an AD Connector directory for integration with AD DS. Enable MFA for AD Connector. Use AWS Client VPN to establish a VPN connection.
+    - [ ] C. Create multiple AWS Site-to-Site VPN connections by using AWS CloudHub. Configure integration between AWS VPN CloudHub and AD DS. Use AWS Copilot to establish a VPN connection.
+    - [ ] D. Create an Amazon WorkLink endpoint. Configure integration between Amazon WorkLink and AD DS. Enable MFA in Amazon WorkLink. Use AWS Client VPN to establish a VPN co nection.
+
+    <details>
+       <summary>Answer</summary>
+
+       第489题，答案B。
+
+    </details>
+
+47. A company is running a serverless application that consists of several AWS Lambda functions and Amazon DynamoDB tables. The company has created new functionality that requires the Lambda functions to access an Amazon Neptune DB cluster. The Neptune DB cluster is in three subnets in a VPC. Which of the possible solutions will allow the Lambda functions to access the Neptune DB cluster and DynamoDB tables? (Select TWO.)
+    - [ ] A. Create three public subnets in the Neptune VPC, and route traffic through an internet gateway. Host the Lambda functions in the three new public subnets.
+    - [ ] B. Create three private subnets in the Neptune VPC, and route internet traffic through a NAT gateway. Host the Lambda functions in the three new private subnets.
+    - [ ] C. Host the Lambda functions outside the VPC. Create a VPC endpoint for the Neptune database and have the Lambda functions access Neptune over the VPC endpoint.
+    - [ ] D. Create three private subnets in the Neptune VPC. Host the Lambda functions in the three new isolated subnets. Create a VPC endpoint for DynamoDB. and route DynamoDB traffic to the VPC endpoint.
+
+    <details>
+       <summary>Answer</summary>
+
+       第501题，答案CD。
+
+    </details>
+
+48. A company is running multiple workloads in the AWS Cloud. The company has separate units for software development. The company uses AWS Organizations and federation with SAML to give permissions to developers to manage resources in their AWS accounts. The development units each deploy their production workloads into a common production account. Recently, an incident occurred in the production account in which members of a development unit terminated an EC2 instance that belonged to a different development unit. A solutions architect must create a solution that prevents a similar incident from happening in the future. The solution also must allow developers the possibility to manage the instances used for their workloads. Which strategy will meet these requirements?
+    - [ ] A. Create separate OUs in AWS Organizations for each development unit. Assign the created OUs to the company AWS accounts. Create separate SCPs with a deny action and a StringNotEquals condition for the DevelopmentUnit resource tag that matches the development unit name. Assign the SCP to the corresponding OU.
+    - [ ] B. Pass an attribute for DevelopmentUnit as an AWS Security Token Service (AWS STS) session tag during SAML federation. Update the AM policy for the developers‘ assumed IAM role with a deny action and a StringNotEquals condition for the DevelopmentUnit resource tag and aws:PrincipalTag/DevelopmentUnit.
+    - [ ] C. Pass an attribute for DevelopmentUnit as an AWS Security Token Service (AWS STS) session tag curing SAML federation. Create an SCP with an allow action and a StringEquals condition for the DevelopmentUnit resource tag and aws:PrincipalTag/DevelopmentUnit. Assign the SCP to the root OU.
+    - [ ] D. Create separate IAM policies for each development unit. For every IAM policy, add an allow action and a StringEquals condition for the DevelopmentUnit resource tag and the development unit name. During SAML federation, use AWS Security Token Service (AWS STS) to assign the IAM policy and match the development unit name to the assumed IAM role.
+
+    <details>
+       <summary>Answer</summary>
+
+       第503题，答案D。
+
+    </details>
+
+49. A financial company is building a system to generate monthly, immutable bank account statements (or its users). Statements are stored in Amazon S3. Users should have immediate access to their monthly statements for up to 2 years. Some users access their statements frequently, whereas others rarely access their statements. The company's security and compliance policy require that the statements be retained for at least 7 years. What is the MOST cost-effective solution to meet the company's needs?
+    - [ ] A. Create an S3 bucket with Object Lock disabled. Store statements in S3 Standard. Define an S3 Lifecycle policy to transition the data to S3 Standard-Infrequent Access (S3 Standard-IA) after 30 days. Define another S3 Lifecycle policy to move the data to S3 Glacier Deep Archive after 2 years. Attach an S3 Glacier Vault Lock policy with deny delete permissions for archives less than 7 years old.
+    - [ ] B. Create an S3 bucket with versioning enabled. Store statements in S3 Intelligent-Tiering. Use same-Region replication to replicate objects to a backup S3 bucket. Define an S3 Lifecycle policy for the backup S3 bucket to move the data to S3 Glacier. Attach an S3 Glacier Vault Lock policy with deny delete permissions for archives less than 7 years old.
+    - [ ] C. Create an S3 bucket with Object Lock enabled. Store statements in S3 Intelligent-Tiering. Enable compliance mode with a default retention period of 2 years. Define an S3 Lifecycle policy to move the data to S3 Glacier after 2 years. Attach an S3 Glacier Vault Lock policy with deny delete permissions for archives less than 7 years old.
+    - [ ] D. Create an S3 bucket with versioning disabled. Store statements in S3 One Zone-Infrequent Access (S3 One Zone-IA). Define an S3 Lifecycle policy to move the data to S3 Glacier Deep Archive after 2 years. Attach an S3 Glader Vault Lock policy with deny delete permissions for archives less than 7 years old.
+
+    <details>
+       <summary>Answer</summary>
+
+       第508题，答案C。
+
+    </details>
+
+50. A company has a policy that all Amazon EC2 instances that are running a database must exist within the same subnets in a shared VPC. Administrators must follow security compliance requirements and are not allowed to directly log in to the shared account. All company accounts are members of the same organization in AWS Organizations. The number of accounts will rapidly increase as the company grows. A solutions architect uses AWS Resource Access Manager to create a resource share in the shared account. What is the MOST operationally efficient configuration to meet these requirements?
+    - [ ] A. Add the VPC to the resource share. Add the account IDs as principals.
+    - [ ] B. Add all subnets within the VPC to the resource share. Add the account IDs as principals.
+    - [ ] C. Add all subnets within the VPC to the resource share. Add the organization as a principal.
+    - [ ] D. Add the VPC to the resource share. Add the organization as a principal.
+
+    <details>
+       <summary>Answer</summary>
+
+       第511题，答案C。
+
+    </details>

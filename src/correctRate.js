@@ -195,3 +195,36 @@ option = {
     },
   ],
 };
+
+///////////////////////
+
+option = {
+  title: {
+    left: "center",
+    text: "测试7正确率推移",
+  },
+  tooltip: {
+    trigger: "axis",
+  },
+  xAxis: {
+    type: "category",
+    data: ["第一回", "第二回", "第三回"],
+  },
+  yAxis: {
+    type: "value",
+    axisLabel: {
+      formatter: "{value}%",
+    },
+  },
+  series: [
+    {
+      data: [51.5, 82.4, 79.4],
+      type: "line",
+      markLine: {
+        symbol: ["none", "none"],
+        label: { show: true },
+        data: [{ yAxis: 75 }],
+      },
+    },
+  ],
+};
