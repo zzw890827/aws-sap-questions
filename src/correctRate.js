@@ -162,3 +162,36 @@ option = {
     },
   ],
 };
+
+///////////////////////
+
+option = {
+  title: {
+    left: "center",
+    text: "测试6正确率推移",
+  },
+  tooltip: {
+    trigger: "axis",
+  },
+  xAxis: {
+    type: "category",
+    data: ["第一回", "第二回", "第三回"],
+  },
+  yAxis: {
+    type: "value",
+    axisLabel: {
+      formatter: "{value}%",
+    },
+  },
+  series: [
+    {
+      data: [58.7, 77.3, 72],
+      type: "line",
+      markLine: {
+        symbol: ["none", "none"],
+        label: { show: true },
+        data: [{ yAxis: 75 }],
+      },
+    },
+  ],
+};

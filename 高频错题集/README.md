@@ -428,3 +428,148 @@
        第364题，答案A。
 
     </details>
+
+33. A large company will be migrating to AWS. The company has 20 business units and anticipates another 10 coming online in the future. Each business unit will need its own IP range and will operate in its own AWS account. There will be a lot of communication between business units with very large data transfers. The company wants to make sure that the proposed solution will minimize data transfer costs and reduce complexity. How should a solutions architect design the network to meet these requirements?
+    - [ ] A. Create a transit VPC in a networking account. Within each business unit's AWS account create redundant VPN connections to the transit VPC.
+    - [ ] B. Create a transit gateway in a networking account. Share the transit gateway with each business unit's AWS account. Attach the VPC in each account to the transit gateway.
+    - [ ] C. Create two subnets for each business unit in a networking account. Share the subnets with each business unit's AWS account using AWS Resource Access Manager.
+    - [ ] D. Create a VPC for each business unit's AWS account Use VPC peering to route traffic between the VPCs in each account.
+  
+    <details>
+       <summary>Answer</summary>
+
+       第395题，答案A。
+
+    </details>
+
+34. A large payroll company recently merged with a small staffing company. The unified company now has multiple business units, each with its own existing AWS account. A solutions architect must ensure that the company can centrally manage the billing and access policies for all the AWS accounts. The solutions architect configures AWS Organizations by sending an invitation to all member accounts of the company from a centralized management account. What should the solutions architect do next to meet these requirements?
+    - [ ] A. Create the OrganizationAccountAccess IAM group in each member account. Include the necessary IAM roles for each administrator.
+    - [ ] B. Create the OrganizationAccountAccessPolicy IAM policy in each member account. Connect the member accounts to the management account by using cross-account access.
+    - [ ] C. Create the OrganizationAccountAccessRole IAM role in each member account. Grant permission to the management account to assume the IAM role.
+    - [ ] D. Create the OrganizationAccountAccessRole IAM role in the management account. Attach the Administrator Access AWS managed policy to the IAM role. Assign the IAM role to the administrators in each member account.
+  
+    <details>
+       <summary>Answer</summary>
+
+       第402题，答案C。
+
+    </details>
+
+35. A company is developing and hosting several projects in the AWS cloud. The projects are developed across multiple AWS accounts under the same organization in AWS Organizations. The company requires the cost for cloud infrastructure to be allocated to the owning project. The team responsible for all of the AWS accounts has discovered that several Amazon EC2 instances are lacking the Project tag used for cost allocation. Which actions should a solutions architect take to resolve the problem and prevent it from happening in the future? (Select THREE.)
+    - [ ] A. Create an AWS Config rule in each account to find resources with missing tags.
+    - [ ] B. Create an SCP in the organization with a deny action for ec2: RunInstances if the Project tag is missing.
+    - [ ] C. Use Amazon Inspector in the organization to find resources with missing tags.
+    - [ ] D. Create an IAM policy in each account with a deny action for ec: RunInstances if the Project tag is missing.
+    - [ ] E. Create an AWS Config aggregator for the organization to collect a list of EC2 instances with the missing Project tag.
+    - [ ] F. Use AWS Security Hub to aggregate a list of EC2 instances with the missing Project tag.
+  
+    <details>
+       <summary>Answer</summary>
+
+       第407题，答案ACD。
+
+    </details>
+
+36. A large company is running a popular web application. The application runs on several Amazon EC2 Linux instances in an Auto Scaling group in a private subnet. An Application Load Balancer is targeting the instances in the Auto Scaling group in the private subnet. AWS Systems Manager Session Manager is configured, and AWS Systems Manager Agent is running on all the EC2 instances. The company recently released a new version of the application. Some EC2 instances are now being marked as unhealthy and are being terminated. As a result, the application is running at reduced capacity. A solutions architect tries to determine the root cause by analyzing Amazon CloudWatch logs that are collected from the application, but the logs are inconclusive. How should the solutions architect gain access to an EC2 instance to troubleshoot the issue?
+    - [ ] A. Suspend the Auto Scaling group's HealthCheck scaling process. Use Session Manager to log in to an instance that is marked as unhealthy.
+    - [ ] B. Enable EC2 instance termination protection. Use Session Manager to log in to an instance that is marked as unhealthy.
+    - [ ] C. Set the termination policy to OldestInstance on the Auto Scaling group. Use Session Manager to log in to an instance that is marked an unhealthy.
+    - [ ] D. Suspend the Auto Scaling group's Terminate process. Use Session Manager to log in to an instance that is marked as unhealthy.
+  
+    <details>
+       <summary>Answer</summary>
+
+       第412题，答案D。
+
+    </details>
+
+37. A company is serving files to its customers through an SFTP server that is accessible over the internet. The SFTP server is running on a single Amazon EC2 instance with an Elastic IP address attached Customers connect to the SFTP server through its Elastic IP address and use SSH for authentication. The EC2 instance also has an attached security group that allows access from all customer IP addresses. A solutions architect must implement a solution to improve availability minimize the complexity of infrastructure management and minimize the disruption to customers who access files. The solution must not change the way customers connect. Which solution will meet these requirements?
+    - [ ] A. Disassociate the Elastic IP address from me EC2 instance. Create an Amazon S3 bucket to be used for SFTP file hosting. Create an AWS Transfer Family server Configure the Transfer Family server with a publicly accessible endpoint. Associate the SFTP Elastic IP address with the new endpoint. Point the Transfer Family server to the S3 bucket. Sync all files from the SFTP server to the S3 bucket.
+    - [ ] B. Disassociate the Elastic IP address from the EC2 instance. Create an Amazon S3 bucket to be used for SFTP file hosting. Create an AWS Transfer Family server. Configure the Transfer Family server with a VPC-hosted internet-facing endpoint. Associate the FTP Elastic IP address with the new endpoint. Attach the security group with customer IP addresses to the new endpoint. Point the Transfer Family server to the S3 bucket. Sync all files from the SFTP server to the S3 bucket.
+    - [ ] C. Disassociate the Elastic IP address from the EC2 instance. Create a new Amazon Elastic File System (Amazon EFS) file system to be used for SFTP file hosting. Create an AWS Fargate task definition to run an SFTP server. Specify the EFS file system as a mount in the task definition. Create a Fargate service by sing the task definition and place a Network Load Balancer (NLB) in front of the service. When configuring the service, attach the security group with customer IP addresses to the tasks that run the SFTP server. Associate the Elastic IP address with the NLB. Sync all files from the SFTP server to the S3 bucket.
+    - [ ] D. Disassociate the Elastic IP address from the EC2 instance. Create a multi-attach Amazon Elastic Block Store (Amazon EBS) volume to be used to SFTP file hosting. Crate a Network Load Balancer (NLB) with the Elastic IP address attached. Create an Auto Scaling group with EC2 instances that run an SFTP server. Define in the Auto Scaling group that instances that are launched should attach the new multi-attach EBS volume. Configure the Auto Scaling group to automatically add instances behind the NLB. Configure the Auto Scaling group to use the security group that allows customer IP addresses for the EC2 instances that the Auto Scaling group launches. Sync all files from the SFTP server to the new multi-attach EBS volume.
+  
+    <details>
+       <summary>Answer</summary>
+
+       第414题，答案A。
+
+    </details>
+
+38. A company manages an on-premises data ingestion application that receives metrics from loT devices in JSON format. The data is collected transformed and stored m a data warehouse for analysis. The current infrastructure has several performance issues at peak loads due to insufficient compute capacity causing some of the data ingestion to be dropped. The company wants to migrate the application to AWS. The solution must support its current analytics tool that connects to the data warehouse with a Java Database Connectivity (JDBC) driver. The company requires a resilient and cost-effective solution that will address the performance issues. Which solution will meet these requirements?
+    - [ ] A. Re-platform the application. Create an Application Load Balancer and an Amazon EC2 instance with Auto Scaling to host the application to ingest and transform the data. Create an Amazon RDS PostgreSQL Multi-AZ DB instance in a private subnet to store data. Use Amazon QuickSight to generate reports and visualize data.
+    - [ ] B. Re-platform the application. Use Amazon API Gateway to handle data ingestion. Use AWS Lambda to transform the data. Create an Amazon Aurora PostgreSQL DB cluster with an Aurora Replica in two private subnets to store data. Use Amazon QuickSight to generate reports and visualize data.
+    - [ ] C. Re-architect the application. Load the data into Amazon S3. Use AWS Glue to transform the data. Store the table schema in an AWS Glue Data Catalog. Use Amazon Athena to query the data.
+    - [ ] D. Re-architect the application. Load the data into Amazon S3. Use Amazon EMR to transform the data. Create an external schema in an AWS Glue Data Catalog. Use Amazon Redshift Spectrum to query the data.
+  
+    <details>
+       <summary>Answer</summary>
+
+       第417题，答案A。
+
+    </details>
+
+39. A solutions architect is designing a solution that consists of a fleet of Amazon EC2 Reserved Instances (RIs) in an Auto Scaling group that will grow over time as usage increases. The solution needs to maintain 80% RI coverage to maintain cost control with an alert to the DevOps team using an email distribution list when coverage drops below 30% The solution must also include the ability to generate a report to easily track and manage coverage. The company has a policy that allows only one workload for each AWS account. Which set of steps should the solutions architect take to create the report and alert the DevOps team?
+    - [ ] A. Create an Amazon Simple Notification Service (Amazon SNS) topic and subscribe the DevOps email distribution list. Enable cost allocation tags and ensure instances populate a customer-managed cost allocation tag at startup. Use the AWS Billing and Cost Management console to create a budget for RI coverage, fitter using the customer-managed cost allocation tag and set the threshold to 80% and link to the SNS topic created in me alert configuration.
+    - [ ] B. Create an Amazon Simple Notification Service (Amazon SNS) topic and subscribe the DevOps email distribution list. Use the Cost Explorer console to configure the report for RI utilization set the utilization target to 30% and link to the SNS topic created in the alert configuration.
+    - [ ] C. Use the AWS Billing and Cost Management console to create a reservation budget for RI utilization. Set the utilization to 80% and enter the email distribution list in the alert configuration.
+    - [ ] D. Enable cost allocation tags and ensure instances populate a customer-managed cost allocation tag at startup. Use the Cost Explorer console to configure the report for RI coverage, filter using the customer-managed cost allocation tag and set the threshold to 80% and enter the email distribution list in the alert configuration.
+  
+    <details>
+       <summary>Answer</summary>
+
+       第424题，答案B。
+
+    </details>
+
+40. A company maintains a restaurant review website. The website is a single-page application where files are stored m Amazon S3 and delivered using Amazon CloudFront. The company receives several fake postings every day that are manually removed The security team has identified that most of the fake posts are from Dots with IP addresses that have a bad reputation within the same global region. The team needs to create a solution to help restrict the bots from accessing the website. Which strategy should a solutions architect use?
+    - [ ] A. Use AWS Firewall Manager to control the CloudFront distribution security settings. Create a geographical block rule and associate it with Firewall Manager.
+    - [ ] B. Associate an AWS WAF web ACL with the CloudFront distribution. Select the managed Amazon IP reputation rule group for the web ACL with a deny action.
+    - [ ] C. Use AWS Firewall Manager to control the CloudFront distribution security settings. Select the managed Amazon IP reputation rule group and associate it with Firewall Manager with a deny action.
+    - [ ] D. Associate an AWS WAF web ACL with the CloudFront distribution. Create a rule group for the web ACL with a geographical match statement with a deny action.
+  
+    <details>
+       <summary>Answer</summary>
+
+       第428题，答案B。
+
+    </details>
+
+41. An online retail company hosts its stateful web-based application and MYSQL database in an on-premises data center on a single server. The company wants to increase its customer base by conducting more marketing campaigns and promotions. In preparation, the company wants to migrate its application and database to AWS to increase the reliability of its architecture. Which solution should provide the HIGHEST level of reliability?
+    - [ ] A. Migrate the database to an Amazon RDS MYSQL Multi-AZ DB instance. Deploy the application in an Auto Scaling group on Amazon EC2 instances behind an Application Load Balancer. Store sessions in Amazon Neptune.
+    - [ ] B. Migrate the database to Amazon Aurora MySQL. Deploy the application in an Auto Scaling group on Amazon EC2 instances behind an Application Load Balancer. Store sessions in an Amazon Elasticache fo Redis replication group.
+    - [ ] C. Migrate the database to Amazon DocumentDB (with MongoDB compatibility ). Deploy the application in an Auto Scaling group on Amazon EC2 instances behind a Network Load Balancer. Store sessions in Amazon Kinesis Data Firehose
+    - [ ] D. Migrate the database to an Amazon RDS MariaDB Multi-AZ DB instance. Deploy the application in an Auto Scaling group on Amazon EC2 instances behind an Application Load Balancer. Store sessions in Amazon Elasticache for Memcached.
+  
+    <details>
+       <summary>Answer</summary>
+
+       第431题，答案A。
+
+    </details>
+
+42. A startup company hosts a fleet of Amazon EC2 instances in private subnets using the latest Amazon Linux 2 AMI The company's engineers rely heavily on SSH access to the instances for troubleshooting. The company's existing architecture includes the following: -A VPC with private and public subnets, and a NAT gateway. -Site-to-Site VPN for connectivity with the on-premises environment -EC2 security groups with direct SSH access from the on-premises environment. The company needs to increase security controls around SSH access and provide auditing of commands executed by the engineers. Which strategy should a solutions architect use?
+    - [ ] A. Install and configure EC2 Instance Connect on the fleet of EC2 instances. Remove all security group rules attached to EC2 instances that allow inbound TCP on port 22. Advise the engineers to remotely access the instances by using the EC2 Instance Connect CLI.
+    - [ ] B. Update the EC2 security groups to only allow inbound TCP on port 22 to the IP addresses of the engineer's devices. Install the Amazon CloudWatch agent on all EC2 instances and send operating system audit logs to CloudWatch Logs.
+    - [ ] C. Update the EC2 security groups to only allow Inbound TCP on port 22 to the IP addresses of the engineer's devices. Enable AWS Config for EC2 security group resource changes. Enable AWS Firewall Manager and apply a security group policy that automatically remediates changes to rules.
+    - [ ] D. Create an IAM role with the `AmazonSSMManaged InstanceCoremanaged` policy attached. Attach the IAM role to all the EC2 instances. Remove all security group rules attached to the EC2 instances that allow inbound TCP on port 22. Have the engineers install the AWS Systems Manager Session Manager plugin lor their devices and remotely access the instances by using the start-session API call from Systems Manager.
+
+    <details>
+       <summary>Answer</summary>
+
+       第432题，答案C。
+
+    </details>
+
+43. A company has deployed its corporate website in a VPC on two Amazon EC2 instances behind an Application Load Balancer (ALB). The EC2 instances are deployed in private subnets. The ALB is in a public subnet. A route to an internet gateway exists in the public subnet route table. The company has deployed an Amazon CloudFront distribution with the ALB as the origin. The company’s security team recently identified that malicious traffic is accessing the ALB directly. The company must deploy security controls to prevent common attack techniques, including cross-site scripting, and to protect against volumetric denials of service. Which strategy should a solutions architect recommend meeting these requirements?
+    - [ ] A. Migrate the ALB to a private subnet. Associate an AWS WAF web ACL with the ALB. Update inbound rules on the ALB security group to allow traffic on port 443 only from CloudFront IP addresses.
+    - [ ] B. Associate an AWS WAF web ACL with the CloudFront distribution. Configure an origin access identity (OA) on the ALB to drop access attempts that do not originate from CloudFront.
+    - [ ] C. Associate an AWS WAF web ACL with the CloudFront distribution. Configure CloudFront to add a custom header to the requests that are sent to the ALB. Configure advanced routing on the ALB to only forward requests that include the custom header that is set by CloudFront.
+    - [ ] D. Associate an AWS WAF web ACL with the CloudFront distribution. Configure AWS WAF to add a custom header to the requests that are sent to the ALB. Configure advanced routing on the ALB to only forward requests that include the custom header that is set by CloudFront.
+
+    <details>
+       <summary>Answer</summary>
+
+       第443题，答案D。
+
+    </details>

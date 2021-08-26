@@ -1097,7 +1097,7 @@
 
 80. A solutions architect at a large company needs to set up network security for outbound traffic to the internet from all AWS accounts within an organization in AWS Organizations. The organization has more than 100 AWS accounts, and the accounts route to each other by using a centralized AWS Transit Gateway. Each account has both an internet gateway and a NAT gateway for outbound traffic to the internet. The company deploys resources only deployed into a single AWS Region. The company needs the ability to add centrally managed rule-based filtering on all outbound traffic to the internet for all AWS accounts in the organization. The peak load of outbound traffic will not exceed 2 GB in each Availability Zone Which solution meets these requirements?
     - [ ] A. Create a new VPC for outbound traffic to the internet. Connect the existing transit gateway to the new VPC. Configure a new NAT gateway. Create an Auto Scaling group of Amazon EC2 Instances that run an open-source internet proxy for rule-based filtering across all Availability Zones in the Region. Modify all default routes to point to the proxy’s Auto Scaling group.
-    - [ ] B. Create a new VPC for outbound traffic to the internet. Connect the existing transit gateway to the new VPC. Configure a new NAT gateway. Use an AWS Network Firewall for rule-based filtering. Create Network Firewall Endpoints In each Availability Zone. Modify all default routes to point to the Network Firewall endpoint.
+    - [ ] B. Create a new VPC for outbound traffic to the internet. Connect the existing transit gateway to the new VPC. Configure a new NAT gateway. Use an AWS Network Firewall for rule-based filtering. Create Network Firewall Endpoints in each Availability Zone. Modify all default routes to point to the Network Firewall endpoint.
     - [ ] C. Create an AWS Network Firewall for rule-based filtering in each AWS account. Modify all default routes to point to the Network Firewall firewalls in each account.
     - [ ] D. In each AWS account, create an Auto Scaling group of network-optimized Amazon EC2 instances that run an open-source internet proxy for rule-based filtering. Modify all default routes to point to the proxy Auto Scaling group.
 
@@ -1167,7 +1167,7 @@
     - [ ] A. Doubles the provisioned read capacity of the DynamoDB table.
     - [ ] B. Duplicate the DynamoDB table. Configure the running copy of the application to select at random which table it accesses.
     - [ ] C. Set the DynamoDB table to on-demand mode.
-    - [ ] D. Add DynamoDB Accelerator (DAX)to the table.
+    - [ ] D. Add DynamoDB Accelerator (DAX) to the table.
 
     <details>
        <summary>Answer</summary>
@@ -1176,9 +1176,9 @@
 
     </details>
 
-86. A large company runs workloads in VPCS that are deployed of AWS accounts. Each VPC consists of public subnets and private subnets that span across multiple Availability Zones. NAT gateways are deployed in the public subnets and allow outbound connection traffic from the private nets. A solution architect is working on a hub-and-spoke design. A private net in the poke VPC must route traffic to the internal through an aggress VPC. The solutions architect already has deployed a NAT gateway in an egress VPC in a central AWS account. Which set of additional steps should the solution architect take to meet these requirements?
-    - [ ] A. Create peering connections between the egress VPC and the spoke VPCS. Configure the required routing to allow access to the internet.
-    - [ ] B. Create a transit gateway and share it with the existing AWS accounts. Attach existing VPCS to the transit gateway. Configure routing to allow access to the internet.
+86. A large company runs workloads in VPCs that are deployed of AWS accounts. Each VPC consists of public subnets and private subnets that span across multiple Availability Zones. NAT gateways are deployed in the public subnets and allow outbound connection traffic from the private nets. A solution architect is working on a hub-and-spoke design. A private net in the spoke VPC must route traffic to the internal through an eggress VPC. The solutions architect already has deployed a NAT gateway in an egress VPC in a central AWS account. Which set of additional steps should the solution architect take to meet these requirements?
+    - [ ] A. Create peering connections between the egress VPC and the spoke VPCs. Configure the required routing to allow access to the internet.
+    - [ ] B. Create a transit gateway and share it with the existing AWS accounts. Attach existing VPCs to the transit gateway. Configure routing to allow access to the internet.
     - [ ] C. Create a transit gateway in every account. Attach the NAT gateway to the gateway. Configure the required routing to allow access to the internet.
     - [ ] D. Create an AWS PrivateLink connection between the egress VPC and the spoke VPC. Configure the require routing to allow access to the internet.
 
@@ -1189,7 +1189,7 @@
 
     </details>
 
-87. A large company has a business-critical application that runs in a single AWS Region. The application consists of multiple Amazon EC2 instances and an Amazon RDS Multi-AZ DB instance. The EC2 instances run in an Amazon EC2 Auto Scaling group across multiple Availability Zones. A solutions architect is implementing a disaster recovery (DR) plan for the application. The solutions architect has created a pilot light application deployment in a new Region, which is referred to as the DR Region. The DR environment has an Auto Scaling group with a single EC2 instance and a read replica of the RDS DB instance. The solutions architect must automate a failover from the primary application environment to the pilot light environment in the DR Region. Which solution meets these requirements with the MOST operational efficiency?
+87. A large company has a business-critical application that runs in a single AWS Region. The application consists of multiple Amazon EC2 instances and an Amazon RDS Multi-AZ DB instance. The EC2 instances run in an Amazon EC2 Auto Scaling group across multiple Availability Zones. A solutions architect is implementing a disaster recovery (DR) plan for the application. The solutions architect has created a pilot light application deployment in a new Region, which is referred to as the DR Region. The DR environment has an Auto Scaling group with a single EC2 instance and a read replica of the RDS DB instance. The solutions architect must automate a failover from the primary application environment to the pilot-light environment in the DR Region. Which solution meets these requirements with the MOST operational efficiency?
     - [ ] A. Publish an application availability metric to Amazon CloudWatch in the DR Region from the application environment in the primary Region. Create a CloudWatch alarm in the DR Region that is invoked when the application availability metric stops being delivered. Configure the CloudWatch alarm to send a notification to an Amazon Simple Notification Service (Amazon SNS) topic in the DR Region. Add an email subscription to the SNS topic that sends messages to the application owner. Upon notification, instruct a systems operator to sign into the AWS Management Console and initiate failover operations for the application.
     - [ ] B. Create a cron task that runs every 5 minutes by using one of the application's EC2 instances in the primary Region. Configure the cron task to check whether the application is available. Upon failure, the cron task notifies a systems operator and attempts to restart the application services.
     - [ ] C. Create a cron task that runs every 5 minutes by using one of the application's EC2 instances in the primary Region. Configure the cron task to check whether the application is available. Upon failure, the cron task modifies the DR environment by promoting the read replica and by adding EC2 instances to the Auto Scaling group.
@@ -1323,7 +1323,7 @@
 97. A company is using AWS Organizations to manage multiple accounts. Due to regulatory requirements the company wants to restrict specific member accounts to certain AWS Regions where they are permitted to deploy resources. The resources in the accounts must be tagged enforced based on a group standard and centrally managed with minimal configuration. What should a solutions architect do to meet these requirements?
     - [ ] A. Create an AWS Config rule in the specific member accounts to limit Regions and apply a tag policy.
     - [ ] B. From the AWS Billing and Cost Management console in the master account disable Regions for the specific member accounts and apply a tag policy on the root.
-    - [ ] C. Associate the specific member accounts with the root Apply a tag policy and an SCP using conditions to limit Regions.
+    - [ ] C. Associate the specific member accounts with the root. Apply a tag policy and an SCP using conditions to limit Regions.
     - [ ] D. Associate the specific member accounts with a new OU. Apply a tag policy and an SCP using conditions to limit Regions.
 
     <details>
