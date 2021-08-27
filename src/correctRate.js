@@ -43,7 +43,7 @@ option = {
   },
   xAxis: {
     type: "category",
-    data: ["第一回", "第二回", "第三回", "第四回"],
+    data: ["第一回", "第二回", "第三回", "第四回", "第五回"],
   },
   yAxis: {
     type: "value",
@@ -53,12 +53,18 @@ option = {
   },
   series: [
     {
-      data: [72.0, 92.0, 89.3, 68],
+      data: [72.0, 92.0, 89.3, 68, 85.3],
       type: "line",
       markLine: {
         symbol: ["none", "none"],
         label: { show: true },
         data: [{ yAxis: 75 }],
+      },
+      markPoint: {
+        data: [
+          { type: "max", name: "最大值" },
+          { type: "min", name: "最小值" },
+        ],
       },
     },
   ],
