@@ -27,6 +27,12 @@ option = {
         label: { show: true },
         data: [{ yAxis: 75 }],
       },
+      markPoint: {
+        data: [
+          { type: "max", name: "最大值" },
+          { type: "min", name: "最小值" },
+        ],
+      },
     },
   ],
 };
@@ -99,6 +105,12 @@ option = {
         label: { show: true },
         data: [{ yAxis: 75 }],
       },
+      markPoint: {
+        data: [
+          { type: "max", name: "最大值" },
+          { type: "min", name: "最小值" },
+        ],
+      },
     },
   ],
 };
@@ -131,6 +143,12 @@ option = {
         symbol: ["none", "none"],
         label: { show: true },
         data: [{ yAxis: 75 }],
+      },
+      markPoint: {
+        data: [
+          { type: "max", name: "最大值" },
+          { type: "min", name: "最小值" },
+        ],
       },
     },
   ],
@@ -165,6 +183,12 @@ option = {
         label: { show: true },
         data: [{ yAxis: 75 }],
       },
+      markPoint: {
+        data: [
+          { type: "max", name: "最大值" },
+          { type: "min", name: "最小值" },
+        ],
+      },
     },
   ],
 };
@@ -198,6 +222,12 @@ option = {
         label: { show: true },
         data: [{ yAxis: 75 }],
       },
+      markPoint: {
+        data: [
+          { type: "max", name: "最大值" },
+          { type: "min", name: "最小值" },
+        ],
+      },
     },
   ],
 };
@@ -230,6 +260,12 @@ option = {
         symbol: ["none", "none"],
         label: { show: true },
         data: [{ yAxis: 75 }],
+      },
+      markPoint: {
+        data: [
+          { type: "max", name: "最大值" },
+          { type: "min", name: "最小值" },
+        ],
       },
     },
   ],
