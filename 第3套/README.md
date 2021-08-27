@@ -436,11 +436,11 @@
   
     </details>
 
-29. Your company previously configured a heavily used, dynamically routed VPN connection between your on-premises data center and AWS. You recently provisioned a DirectConnect connection and would like to start using the new connection.After configuring DirectConnect settings in the AWS Console, which of the following options win provide the most seamless transition for your users?
-    - [ ] A. Delete your existing VPN connection to avoid routing loops configure your DirectConnect router with the appropriate settings and verity network traffic is leveraging DirectConnect.
-    - [ ] B. Configure your DirectConnect router with a higher BGP priority man your VPN router, verify network traffic is leveraging Directconnect and then delete your existing VPN connection.
-    - [ ] C. Update your VPC route tables to point to the DirectConnect connection configure your DirectConnect router with the appropriate settings verify network traffic is leveraging DirectConnect and then delete the VPN connection.
-    - [ ] D. Configure your DirectConnect router, update your VPC route tables to point to the DirectConnect connection, configure your VPN connection with a higher BGP priority, and verify network traffic is leveraging the DirectConnect connection.
+29. Your company previously configured a heavily used, dynamically routed VPN connection between your on-premises data center and AWS. You recently provisioned a DirectConnect connection and would like to start using the new connection. After configuring DirectConnect settings in the AWS Console, which of the following options win provide the most seamless transition for your users?
+    - [ ] A. Delete your existing VPN connection to avoid routing loops. Configure your DirectConnect router with the appropriate settings and verity network traffic is leveraging DirectConnect.
+    - [ ] B. Configure your DirectConnect router with a higher BGP priority man your VPN router. Verify network traffic is leveraging DirectConnect and then delete your existing VPN connection.
+    - [ ] C. Update your VPC route tables to point to the DirectConnect connection. Configure your DirectConnect router with the appropriate settings. Verify network traffic is leveraging DirectConnect and then delete the VPN connection.
+    - [ ] D. Configure your DirectConnect router. Update your VPC route tables to point to the DirectConnect connection. Configure your VPN connection with a higher BGP priority and verify network traffic is leveraging the DirectConnect connection.
 
     <details>
        <summary>Answer</summary>
@@ -529,7 +529,7 @@
 
 35. A company is running a batch analysis every hour on their main transactional DB, running on an RDS MySQL instance, to populate their central Data Warehouse running on Redshift. During the execution of the batch, their transactional applications are very slow. When the batch completes, they need to update the top management dashboard with the new data. The dashboard is produced by another system running on-premises that is currently started when a manually sent email notifies that an update is required. The on-premises system cannot be modified because is managed by another team. How would you optimize this scenario to solve performance issues and automate the process as much as possible?
     - [ ] A. Replace RDS with Redshift for the batch analysis and SNS to notify the on-premises system to update the dashboard.
-    - [ ] B. Replace RDS with Redshift for the oaten analysis and SQS to send a message to the on-premises system to update the dashboard.
+    - [ ] B. Replace RDS with Redshift for the batch analysis and SQS to send a message to the on-premises system to update the dashboard.
     - [ ] C. Create an RDS Read Replica for the batch analysis and SNS to notify the on-premises system to update the dashboard.
     - [ ] D. Create an RDS Read Replica for the batch analysis and SQS to send a message to the on-premises system to update the dashboard.
 
@@ -632,12 +632,12 @@
     </details>
 
 43. A company is using multiple AWS accounts and has multiple DevOps teams running production and non-production workloads in these accounts. The company would like to centrally-restrict access to some of AWS services that the DevOps teams do not use. The company decided to use AWS Organizations and successfully invited all AWS accounts into the Organization. They would like to allow access to services that are currently in-use and deny a few specific services. Also, they would like to administer multiple accounts together as a single unit. What combination of steps should the Solutions Architect take to satisfy these requirements? (Select THREE)
-    - [ ] A. Use a Deny list strategy
-    - [ ] B. Review the Access Advisor in AWS IAM to determine
-    - [ ] C. Review the AWS Trusted Advisor report to determine services recently used
-    - [ ] D. Remove the default FullAWSAccess SCP
-    - [ ] E. Define organizational units (OUS)and place the member accounts in the OUs
-    - [ ] F. Remove the default DenyAWSaccess SCP
+    - [ ] A. Use a Deny list strategy.
+    - [ ] B. Review the Access Advisor in AWS IAM to determine services recently used.
+    - [ ] C. Review the AWS Trusted Advisor report to determine services recently used.
+    - [ ] D. Remove the default FullAWSAccess SCP.
+    - [ ] E. Define organizational units (OUS)and place the member accounts in the OUs.
+    - [ ] F. Remove the default DenyAWSaccess SCP.
 
     <details>
        <summary>Answer</summary>
@@ -1117,7 +1117,7 @@
 78. A mobile app has become very popular, and usage has gone from a few hundred to millions of users. Users capture and upload images of activities within a city and provide ratings and recommendations. Data access patters are unpredictable. The current application is hosted on Amazon EC2 instances behind an Application Load Balancer (ALB). The application is experiencing slowdowns and costs are growing rapidly. Which changes should a solutions architect make to the application architecture to control costs and improve performance?
     - [ ] A. Create an Amazon CloudFront distribution and place the ALB behind the distribution. Store static content in Amazon S3 in an Infrequent Access storage class.
     - [ ] B. Store static content in an Amazon S3 bucket using the Intelligent Tiering storage class. Use an Amazon CloudFront distribution in front of the S3 bucket and the ALB.
-    - [ ] C. Place AWS Global Accelerator in front of the ALB Migrate the static content to Amazon EFS, and then run an AWS Lambda function to resize the images during the migration process.
+    - [ ] C. Place AWS Global Accelerator in front of the ALB. Migrate the static content to Amazon EFS, and then run an AWS Lambda function to resize the images during the migration process.
     - [ ] D. Move the application code to AWS Fargate containers and swap out the EC2 instances with the Fargate containers.
 
     <details>
@@ -1249,7 +1249,7 @@
 88. A company has developed a mobile game. The backend for the game runs on several virtual machines located in an on-premises data center. The business logic is exposed using a REST API with multiple functions. Player session data is stored in central file storage. Backend services use different API keys for throttling and to distinguish between live and test traffic. The load on the game backend varies throughout the day. During peak hours, the server capacity is not sufficient. There are also latency issues when fetching player session data. Management has asked a solutions architect to present a cloud architecture that can handle the game's varying load and provide low-latency data access. The API model should not be changed. Which solution meets these requirements?
     - [ ] A. Implement the REST API using a Network Load Balancer (NLB). Run the business logic on an Amazon EC2 instance behind the NLB. Store player session data in Amazon Aurora Serverless.
     - [ ] B. Implement the REST API using an Application Load Balancer (ALB). Run the business logic in AWS Lambda. Store player session data in Amazon DynamoDB with on-demand capacity.
-    - [ ] C. Implement the REST API using Amazon API Gateway. Run the business logic in AWS Lambda. Store player session data in Amazon DynamoDB with on- demand capacity.
+    - [ ] C. Implement the REST API using Amazon API Gateway. Run the business logic in AWS Lambda. Store player session data in Amazon DynamoDB with on-demand capacity.
     - [ ] D. Implement the REST API using AWS AppSync. Run the business logic in AWS Lambda. Store player session data in Amazon Aurora Serverless.
 
     <details>
@@ -1328,9 +1328,9 @@
 
 94. An enterprise company's data science team wants to provide a safe, cost-effective way to provide easy access to Amazon SageMaker. The data scientists have limited AWS knowledge and need to be able to launch a Jupyter notebook instance. The notebook instance needs to have a preconfigured AWS KMS key to encrypt data at rest on the machine learning storage volume without exposing the complex setup requirements. Which approach will allow the company to set up a self-service mechanism for the data scientists to launch Jupyter notebooks in its AWS accounts with the LEAST amount of operational overhead?
     - [ ] A. Create a serverless front end using a static Amazon S3 website to allow the data scientists to request a Jupyter notebook instance by filling out a form. Use Amazon API Gateway to receive requests from the S3 website and trigger a central AWS Lambda function to make an API call to Amazon SageMaker that will launch a notebook instance with a preconfigured KMS key for the data scientists. Then call back to the front-end website to display the URL to the notebook instance.
-    - B. Create an AWS CloudFormation template to launch a Jupyter notebook instance using the AWS::SageMaker::NotebookInstance resource type with a preconfigured KMS key. Add a user-friendly name to the CloudFormation template. Display the URL to the notebook using the Outputs section. Distribute the CloudFormation template to the data scientists using a shared Amazon S3 bucket.
-    - C. Create an AWS CloudFormation template to launch a Jupyter notebook instance using the AWS::SageMaker::NotebookInstance resource type with a preconfigured KMS key. Simplify the parameter names, such as the instance size, by mapping them to Small, Large, and X-Large using the Mappings section in CloudFormation. Display the URL to the notebook using the Outputs section, then upload the template into an AWS Service Catalog product in the data scientist's portfolio, and share it with the data scientist's IAM role.
-    - D. Create an AWS CLI script that the data scientists can run locally. Provide step-by-step instructions about the parameters to be provided while executing the AWS CLI script to launch a Jupyter notebook with a preconfigured KMS key. Distribute the CLI script to the data scientists using a shared Amazon S3 bucket.
+    - [ ] B. Create an AWS CloudFormation template to launch a Jupyter notebook instance using the AWS::SageMaker::NotebookInstance resource type with a preconfigured KMS key. Add a user-friendly name to the CloudFormation template. Display the URL to the notebook using the Outputs section. Distribute the CloudFormation template to the data scientists using a shared Amazon S3 bucket.
+    - [ ] C. Create an AWS CloudFormation template to launch a Jupyter notebook instance using the AWS::SageMaker::NotebookInstance resource type with a preconfigured KMS key. Simplify the parameter names, such as the instance size, by mapping them to Small, Large, and X-Large using the Mappings section in CloudFormation. Display the URL to the notebook using the Outputs section, then upload the template into an AWS Service Catalog product in the data scientist's portfolio and share it with the data scientist's IAM role.
+    - [ ] D. Create an AWS CLI script that the data scientists can run locally. Provide step-by-step instructions about the parameters to be provided while executing the AWS CLI script to launch a Jupyter notebook with a preconfigured KMS key. Distribute the CLI script to the data scientists using a shared Amazon S3 bucket.
 
     <details>  
        <summary>Answer</summary>
