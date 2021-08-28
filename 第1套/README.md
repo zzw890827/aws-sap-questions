@@ -559,10 +559,10 @@
     </details>
 
 38. A Solutions Architect must design a highly available, stateless, REST service. The service will require multiple persistent storage layers for service object meta information and the delivery of content. Each request needs to be authenticated and securely processed. There is a requirement to keep costs as low as possible. How can these requirements be met?
-    - [ ] A. Use AWS Fargate to host a container that runs a self-contained REST service. Set up an Amazon ECS service that is fronted by an Application Load Balancer (ALB). Use a custom authenticator to control access to the APL Store request meta information in Amazon DynamoDB with Auto Scaling and static content in a secured S3 bucket. Make secure signed requests for Amazon S3 objects and proxy the data through the REST service interface.
-    - [ ] B. Use AWS Fargate to host a container that runs a self-contained REST service. Set up an ECS service that is fronted by a cross-zone ALB. Use an Amazon Cognito user pool to control access to the APL Store request meta information in DynamoDB with Auto Scaling and static content in a secured S3 bucket. Generate presigned URLs when returning references to content stored in Amazon S3.
+    - [ ] A. Use AWS Fargate to host a container that runs a self-contained REST service. Set up an Amazon ECS service that is fronted by an Application Load Balancer (ALB). Use a custom authenticator to control access to the API Store request meta information in Amazon DynamoDB with Auto Scaling and static content in a secured S3 bucket. Make secure signed requests for Amazon S3 objects and proxy the data through the REST service interface.
+    - [ ] B. Use AWS Fargate to host a container that runs a self-contained REST service. Set up an ECS service that is fronted by a cross-zone ALB. Use an Amazon Cognito user pool to control access to the API Store request meta information in DynamoDB with Auto Scaling and static content in a secured S3 bucket. Generate pre-signed URLs when returning references to content stored in Amazon S3.
     - [ ] C. Set up Amazon API Gateway and create the required API resources and methods. Use an Amazon Cognito user pool to control access to the API. Configure the methods to use AWS Lambda proxy integrations and process each resource with a unique AWS Lambda function. Store request meta information in DynamoDB with Auto Scaling and static content in a secured S3 bucket. Generate presigned URLs when returning references to content stored in Amazon S3.
-    - [ ] D. Set up Amazon API Gateway and create the required API resources and methods. Use an Amazon API Gateway custom authorizer to control access to the APL Configure the methods to use AWS Lambda custom integrations and process each resource with a unique Lambda function. Store request meta information in an Amazon ElastiCache Multi-AZ cluster and static content in a secured S3 bucket. Generate presigned URLs when returning references to content stored in Amazon S3.
+    - [ ] D. Set up Amazon API Gateway and create the required API resources and methods. Use an Amazon API Gateway custom authorizer to control access to the API. Configure the methods to use AWS Lambda custom integrations and process each resource with a unique Lambda function. Store request meta information in an Amazon ElastiCache Multi-AZ cluster and static content in a secured S3 bucket. Generate presigned URLs when returning references to content stored in Amazon S3.
 
     <details>
        <summary>Answer</summary>
@@ -832,11 +832,11 @@
 
     </details>
 
-55. A company has an Amazon EC2 deployment that has the following architecture: -An application tier that contains 8 m4.xlarge instances -A Classic Load Balancer -Amazon S3 as a persistent data store After one of the EC2 instances fails, users report very slow processing of their requests. A Solutions Architect must recommend design changes to maximize system reliability. The solution must minimize costs. What should the Solution Architect recommend?
-    - [ ] A. Migrate the existing EC2 instances to a serverless deployment using AWS Lambda functions
-    - [ ] B. Change the Classic Load Balancer to an Application Load Balancer
-    - [ ] C. Replace the application tier with m4.large instances in an Auto Scaling group
-    - [ ] D. Replace the application tier with 4 m4.2xlarge instances
+55. A company has an Amazon EC2 deployment that has the following architecture: -An application tier that contains 8 m4.xlarge instances -A Classic Load Balancer -Amazon S3 as a persistent data store. After one of the EC2 instances fails, users report very slow processing of their requests. A Solutions Architect must recommend design changes to maximize system reliability. The solution must minimize costs. What should the Solution Architect recommend?
+    - [ ] A. Migrate the existing EC2 instances to a serverless deployment using AWS Lambda functions.
+    - [ ] B. Change the Classic Load Balancer to an Application Load Balancer.
+    - [ ] C. Replace the application tier with m4.large instances in an Auto Scaling group.
+    - [ ] D. Replace the application tier with 4 m4.2xlarge instances.
 
     <details>
        <summary>Answer</summary>
@@ -918,10 +918,10 @@
     </details>
 
 61. A company is migrating its on-premises build artifact server to an AWS solution. The current system consists of an Apache HTTP server that serves artifacts to clients on the local network, restricted by the perimeter firewall. The artifact consumers are largely built automation scripts that download artifacts via anonymous HTTP, which the company will be unable to modify within its migration timetable. The company decides to move the solution to Amazon S3 static website hosting. The artifact consumers will be migrated to Amazon EC2 instances located within both public and private subnets in a virtual private cloud (VPC). Which solution will permit the artifact consumers to download artifacts without modifying the existing automation scripts?
-    - [ ] A. Create a NAT gateway within a public subnet of the VPC. Add a default route pointing to the NAT gateway into the route table associated with the subnets containing consumers. Configure the bucket policy to allow the `s3:ListBucket` and `s3:GetObject` actions using the condition `IpAddress` and the condition key `aws:SourceIp` matching the elastic IP address if the NAT gateway.
-    - [ ] B. Create a VPC endpoint and add it to the route table associated with subnets containing consumers. Configure the bucket policy to allow s3:ListBucket and s3:GetObject actions using the condition and the condition key `aws:sourceVpce` matching the identification of the VPC `StringEquals` endpoint.
-    - [ ] C. Create an IAM role and instance profile for Amazon EC2 and attach it to the instances that consume build artifacts. Configure the bucket policy to allow the `s3:ListBucket` and `s3:GetObjects` actions for the principal matching the IAM role created.
-    - [ ] D. Create a VPC endpoint and add it to the route table associated with subnets containing consumers. Configure the bucket policy to allow `s3:ListBucket` and s3:GetObject actions using the condition and the condition key `aws:Sourcelp` matching the VPC CIDR blo
+    - [ ] A. Create a NAT gateway within a public subnet of the VPC. Add a default route pointing to the NAT gateway into the route table associated with the subnets containing consumers. Configure the bucket policy to allow the s3:ListBucket and s3:GetObject actions using the condition IpAddress and the condition key aws:SourceIp matching the elastic IP address if the NAT gateway.
+    - [ ] B. Create a VPC endpoint and add it to the route table associated with subnets containing consumers. Configure the bucket policy to allow s3:ListBucket and s3:GetObject actions using the condition and the condition key aws:sourceVpce matching the identification of the VPC StringEquals endpoint.
+    - [ ] C. Create an IAM role and instance profile for Amazon EC2 and attach it to the instances that consume build artifacts. Configure the bucket policy to allow the s3:ListBucket and s3:GetObjects actions for the principal matching the IAM role created.
+    - [ ] D. Create a VPC endpoint and add it to the route table associated with subnets containing consumers. Configure the bucket policy to allow s3:ListBucket and s3:GetObject actions using the condition and the condition key aws:Sourcelp matching the VPC CIDR block.
 
     <details>
        <summary>Answer</summary>
@@ -950,7 +950,7 @@
     - [ ] A. Provision another 1 Gbps Direct Connect connection and create new VIFs to each of the VPCs. Configure the VIFs in a load balancing fashion using BGP.
     - [ ] B. Set up VPN tunnels from the data center to each VPC. Terminate each VPN tunnel at the virtual private gateway (VGW) of the respective VPC and set up BGP for route management.
     - [ ] C. Set up a new point-to-point Multiprotocol Label Switching (MPLS) connection to the AWS Region that's being used. Configure BGP to use this new circuit as passive, so that no traffic flows through this unless the AWS Direct Connect fails.
-    - [ ] D. Create a public VIF on the Direct Connect connection and set up a VPN tunnel which will terminate on the virtual private gateway (VGW) of the respective VPC using the public V IF. Use BGP to handle the failover to the VPN connection.
+    - [ ] D. Create a public VIF on the Direct Connect connection and set up a VPN tunnel which will terminate on the virtual private gateway (VGW) of the respective VPC using the public VIF. Use BGP to handle the failover to the VPN connection.
 
     <details>
        <summary>Answer</summary>
@@ -1098,7 +1098,7 @@
 
 73. A company has a data center that must be migrated to AWS as quickly as possible. The data center has a 500 Mbps AWS Direct Connect link and a separate, fully available 1 Gbps ISP connection. A Solutions Architect must transfer 20 TB of data from the data center to an Amazon S3 bucket. What is the FASTEST way transfer the data?
     - [ ] A. Upload the data to the S3 bucket using the existing DX link.
-    - [ ] B. Send the data to AWS using the AWS Import'Export service.
+    - [ ] B. Send the data to AWS using the AWS Import/Export service.
     - [ ] C. Upload the data using an 80 TB AWS Snowball device.
     - [ ] D. Upload the data to the S3 bucket using S3 Transfer Acceleration.
 
