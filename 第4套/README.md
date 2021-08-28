@@ -1067,7 +1067,7 @@
 
     </details>
 
-78. A company has a web-based application deployed in the ap-southheast-2 Region behind an Application Load Balancer ALB). AWS Certificate Manager (ACM) has issued a TLS certificate for `example.com`. This certificate is deployed to the ALB. There is a record set in Amazon Route 53 for `example.com` associated to the ALB. Due to increased load on the application, the company wants to use Amazon CloudFront. This transition cannot cause application downtime. Which combination of actions can achieve this? (Choose Three.)
+78. A company has a web-based application deployed in the ap-southheast-2 Region behind an Application Load Balancer (ALB). AWS Certificate Manager (ACM) has issued a TLS certificate for `example.com`. This certificate is deployed to the ALB. There is a record set in Amazon Route 53 for `example.com` associated to the ALB. Due to increased load on the application, the company wants to use Amazon CloudFront. This transition cannot cause application downtime. Which combination of actions can achieve this? (Choose Three.)
     - [ ] A. Create a new ACM certificate in the ap-southeast-2 Region for `origin-example.com` and `example.com`. Associate this certificate to the existing ALB Add a DNS entry in Route 53 for `origin.exampte.com` associated with the existing ALB.
     - [ ] B. Create a CloudFront distribution and use the existing certificate associated with the ALB in the ap-southaast-2 Region. Set `origin-example com` as the custom origin.
     - [ ] C. Create a new ACM certificate in the us-east-1 Region for `example.com`. Create a CloudFront distribution and use the ACM certificate in the us-east-1 Region. Set origin `example.com` as the custom origin.
