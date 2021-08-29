@@ -10,17 +10,18 @@ option = {
   },
   xAxis: {
     type: "category",
-    data: ["第一回", "第二回", "第三回", "第四回"],
+    data: ["第一回", "第二回", "第三回", "第四回", "第五回"],
   },
   yAxis: {
     type: "value",
+    scale: true,
     axisLabel: {
       formatter: "{value}%",
     },
   },
   series: [
     {
-      data: [84.0, 84.0, 80.0, 78.7],
+      data: [84.0, 84.0, 80.0, 78.7, 93.3],
       type: "line",
       markLine: {
         symbol: ["none", "none"],
@@ -53,6 +54,7 @@ option = {
   },
   yAxis: {
     type: "value",
+    scale: true,
     axisLabel: {
       formatter: "{value}%",
     },
@@ -92,6 +94,7 @@ option = {
   },
   yAxis: {
     type: "value",
+    scale: true,
     axisLabel: {
       formatter: "{value}%",
     },
@@ -131,6 +134,7 @@ option = {
   },
   yAxis: {
     type: "value",
+    scale: true,
     axisLabel: {
       formatter: "{value}%",
     },
@@ -170,6 +174,7 @@ option = {
   },
   yAxis: {
     type: "value",
+    scale: true,
     axisLabel: {
       formatter: "{value}%",
     },
@@ -209,6 +214,7 @@ option = {
   },
   yAxis: {
     type: "value",
+    scale: true,
     axisLabel: {
       formatter: "{value}%",
     },
@@ -248,6 +254,7 @@ option = {
   },
   yAxis: {
     type: "value",
+    scale: true,
     axisLabel: {
       formatter: "{value}%",
     },
