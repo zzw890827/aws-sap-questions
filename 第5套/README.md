@@ -1244,7 +1244,7 @@
 
 92. A company has two VPCs within the same AWS account that are connected through a transit gateway. A solutions architect adds a new subnet to one of the VPCs. Resources that are hosted in the new subnet are not able to communicate with resources in the other VPC. What should the solutions architect do to allow network traffic communication?
     - [ ] A. Configure the new subnet to propagate to the appropriate transit gateway route table. Associate the new subnet with the appropriate VPC route able.
-    - [ ] B. Create a new static route within the tran it gateway route table. Associate the new subnet with the appropriate VPC route table.
+    - [ ] B. Create a new static route within the transit gateway route table. Associate the new subnet with the appropriate VPC route table.
     - [ ] C. Update the transit gateway attachment to include the new subnet. Define a new static route within the transit gateway route table.
     - [ ] D. Update the transit gateway attachment to include the new subnet. Associate the new subnet with the appropriate VPC route table.
 
@@ -1311,7 +1311,7 @@
     - [ ] A. Create a new Amazon FSx for Windows File Server fie system. Configure AWS DataSync with are location for the on-premises file share and are location for the new Amazon FSx file system. Create a new DataSync task to copy the data from the on-premises file share location to the Amazon FSx file system.
     - [ ] B. Create an S3 bucket for the application. Copy the data from the on-promises storage to the S3 bucket.
     - [ ] C. Deploy an AWS Server Migration Service (AWS SMS) VM to the on-premises environment. Use AWS SMS to migrate the fie storage sender from on premises to an Amazon EC2 instance.
-    - [ ] D. Create an S3 bucket for the application. Deploy a new AWS Storage Gateway file gateway on an on-premises VM. Create a now file share that stores data in the S3 bucket and is associated with the file gateway. Copy the data from the on-premises storage to the new file gateway endpoint.
+    - [ ] D. Create an S3 bucket for the application. Deploy a new AWS Storage Gateway file gateway on an on-premises VM. Create a nw file share that stores data in the S3 bucket and is associated with the file gateway. Copy the data from the on-premises storage to the new file gateway endpoint.
 
     <details>
        <summary>Answer</summary>
