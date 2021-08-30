@@ -945,3 +945,29 @@
        第211题，答案D。
 
     </details>
+
+71. An AWS customer is deploying an application mat is composed of an AutoScaling group of EC2 Instances. The customers security policy requires that every outbound connection from these instances to any other service within the customers Virtual Private Cloud must be authenticated using a unique x.509 certificate that contains the specific instance-id. In addition, an x.509 certificates must Designed by the customer's Key management service in order to be trusted for authentication. Which of the following configurations will support these requirements?
+    - [ ] A. Configure an IAM Role that grants access to an Amazon S3 object containing a signed certificate and configure the Auto Scaling group to launch instances with this role. Have the instances bootstrap get the certificate from Amazon S3 upon first boot.
+    - [ ] B. Configure the Auto Scaling group to send an SNS notification of the launch of a new instance to the trusted key management service. Have the Key management service generate a signed certificate and send it directly to the newly launched instance.
+    - [ ] C. Embed a certificate into the AMI that is used by the Auto Scaling group. Have the launched instances generate a certificate signature request with the instance's assigned instance-id to the key management service for signature.
+    - [ ] D. Configure the launched instances to generate a new certificate upon first boot. Have the Key management service poll the Auto Scaling group for associated instances and send new instances a certificate signature that contains the specific instance-id.
+
+    <details>
+       <summary>Answer</summary>
+
+       第226题，答案C。
+
+    </details>
+
+72. A company is running a batch analysis every hour on their main transactional DB, running on an RDS MySQL instance, to populate their central Data Warehouse running on Redshift. During the execution of the batch, their transactional applications are very slow. When the batch completes, they need to update the top management dashboard with the new data. The dashboard is produced by another system running on-premises that is currently started when a manually sent email notifies that an update is required. The on-premises system cannot be modified because is managed by another team. How would you optimize this scenario to solve performance issues and automate the process as much as possible?
+    - [ ] A. Replace RDS with Redshift for the batch analysis and SNS to notify the on-premises system to update the dashboard.
+    - [ ] B. Replace RDS with Redshift for the batch analysis and SQS to send a message to the on-premises system to update the dashboard.
+    - [ ] C. Create an RDS Read Replica for the batch analysis and SNS to notify the on-premises system to update the dashboard.
+    - [ ] D. Create an RDS Read Replica for the batch analysis and SQS to send a message to the on-premises system to update the dashboard.
+
+    <details>
+       <summary>Answer</summary>
+
+       第235题，答案C。
+
+    </details>
