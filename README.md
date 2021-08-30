@@ -24,19 +24,19 @@
 
 ![测试4错题集](./img/testReview4.png)
 
-## 测试5（第4套Q300~第4套Q375）
+## 测试5（第4套Q1~第4套75）
 
 ![测试5正确率](./img/correctRate5.png)
 
 ![测试5错题集](./img/testReview5.png)
 
-## 测试6（第4套Q376~第5套Q450）
+## 测试6（第4套Q76~第5套Q50）
 
 ![测试6正确率](./img/correctRate6.png)
 
 ![测试6错题集](./img/testReview6.png)
 
-## 测试7（第5套Q451~第5套Q518）
+## 测试7（第5套Q51~第5套Q118）
 
 ![测试7正确率](./img/correctRate7.png)
 
