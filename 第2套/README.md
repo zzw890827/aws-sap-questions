@@ -777,7 +777,7 @@
     <details>
        <summary>Answer</summary>
 
-       没有存储元数据的需求，所以使用Kinesis和EMR是最佳组合
+       没有存储元数据的需求，所以使用Kinesis和EMR是最佳组合, 答案D。
 
     </details>
 
@@ -1358,7 +1358,7 @@
     <details>
        <summary>Answer</summary>
 
-       使用NAT网关是最佳实践
+       使用NAT网关是最佳实践，答案A。
 
     </details>
 
