@@ -971,3 +971,47 @@
        第235题，答案C。
 
     </details>
+
+73. A company hosts a game player-matching service on a public facing, physical, on-premises instance that all users are able to access over the internet. All traffic to the instance uses UDP. The company wants to migrate the service to AWS and provide a high level of security. A solutions architect needs to design a solution for the player-matching service using AWS. Which combination of steps should the solutions architect take to meet these requirements? (Choose three.)
+    - [ ] A. Use a Network Load Balancer (NLB) in front of the player-matching instance. Use a friendly DNS entry in Amazon Route 53 pointing to the NLB’s Elastic IP address.
+    - [ ] B. Use an Application Load Balancer (ALB) in front of the player-matching instance. Use a friendly DNS entry in Amazon Route 53 pointing to the ALB’s internet- facing fully qualified domain name (FQDN).
+    - [ ] C. Define an AWS WAF rule to explicitly drop non-UDP traffic, and associate the rule with the load balancer.
+    - [ ] D. Configure a network ACL rule to block all non-UDP traffic. Associate the network ACL with the subnets that hold the load balancer instances.
+    - [ ] E. Use Amazon CloudFront with an Elastic Load Balancer as an origin.
+    - [ ] F. Enable AWS Shield Advanced on all public-facing resources.
+
+    <details>
+       <summary>Answer</summary>
+
+       第327题，答案ADF。
+
+    </details>
+
+74. A company has multiple AWS accounts and manages these accounts which AWS Organizations. A developer was given IAM user credentials to access AWS resources. The developer should have read-only access to all Amazon S3 buckets in the account. However, when the developer tries to access the S3 buckets from the console, they receive an access denied error message with no bucket listed. A solution architect reviews the permissions and finds that the developer’s IAM user is listed as having read-only access to all S3 buckets in the account. Which additional steps should the solutions architect take to troubleshoot the issue? (Choose two.)
+    - [ ] A. Check the bucket policies for all S3 buckets.
+    - [ ] B. Check the ACLs for all S3 buckets.
+    - [ ] C. Check the SCPs set at the organizational units (OUs).
+    - [ ] D. Check for the permissions boundaries set for the IAM user.
+    - [ ] E. Check if an appropriate IAM role is attached to the IAM user.
+
+    <details>
+       <summary>Answer</summary>
+
+       第328题，答案CD。
+
+    </details>
+
+75. A company is launching a web-based application in multiple regions around the world. The application consists of both static content stored in a private Amazon S3 bucket and dynamic content hosted in Amazon ECS containers content behind an Application Load Balancer (ALB). The company requires that the static and dynamic application content be accessible through Amazon CloudFront only. Which combination of steps should a solutions architect recommend to restrict direct content access to CloudFront? (Choose three.)
+    - [ ] A. Create a web ACL in AWS WAF with a rule to validate the presence of a custom header and associate the web ACL with the ALB.
+    - [ ] B. Create a web ACL in AWS WAF with a rule to validate the presence of a custom header and associate the web ACL with the CloudFront distribution.
+    - [ ] C. Configure CloudFront to add a custom header to origin requests.
+    - [ ] D. Configure the ALB to add a custom header to HTTP requests.
+    - [ ] E. Update the S3 bucket ACL to allow access from the CloudFront distribution only.
+    - [ ] F. Create a CloudFront Origin Access Identity (OAI) and add it to the CloudFront distribution. Update the S3 bucket policy to allow access to the OAI only.
+
+    <details>
+       <summary>Answer</summary>
+
+       第345题，答案ACF。
+
+    </details>
