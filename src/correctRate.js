@@ -250,7 +250,7 @@ option = {
   },
   xAxis: {
     type: "category",
-    data: ["第一回", "第二回", "第三回", "第四回"],
+    data: ["第一回", "第二回", "第三回", "第四回", "第五回"],
   },
   yAxis: {
     type: "value",
@@ -261,7 +261,7 @@ option = {
   },
   series: [
     {
-      data: [51.5, 82.4, 79.4, 85.3],
+      data: [51.5, 82.4, 79.4, 85.3, 86.8],
       type: "line",
       markLine: {
         symbol: ["none", "none"],
