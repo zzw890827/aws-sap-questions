@@ -753,7 +753,7 @@
     </details>
 
 56. A company has grown through numerous mergers and acquisitions. Due to increasing AWS usage costs, management wants each business unit to submit monthly cost reports with costs allocated to specific projects through the AWS Billing and Cost Management console. A resource tagging strategy involving BusinessUnit and Project tags is already defined. Which combination of steps should each business unit take to meet these requirements? (Select Two.)
-    - [x] A. Create an AWS Cost and Usage Report rule to group resources by the BusinessUnit and Project tags. Create a budget in AWS Budget and attach the cost and usage rule to it.
+    - [ ] A. Create an AWS Cost and Usage Report rule to group resources by the BusinessUnit and Project tags. Create a budget in AWS Budget and attach the cost and usage rule to it.
     - [ ] B. Activate the Project tag for cost allocation. Create a budget in AWS Budget in AWS Budgets for each project with a resource filter using the Project tag.
     - [ ] C. Create a budget in AWS Budgets for each project with a resource filter using the BusinessUnit tag.
     - [ ] D. Create an AWS Budgets report for each business unit to be sent as an email notification to the finance team monthly. Attach the budget for each of the business unit's projects to the report.
@@ -1508,7 +1508,7 @@
      - [ ] C. Create an Amazon Route 53 hosted zone and a record set for each read replica with a TTL and a weighted routing policy.
      - [ ] D. Create an Application Load Balancer (ALB) and put the read replicas behind the ALB.
      - [ ] E. Configure an Amazon CloudWatch alarm to detect a failed read replica. Set the alarm to directly invoke an AWS Lambda function to delete its Route 53 record set.
-     - [x] F. Configure an Amazon Route 53 health check for each read replica using its endpoint.
+     - [ ] F. Configure an Amazon Route 53 health check for each read replica using its endpoint.
 
      <details>
        <summary>Answer</summary>
@@ -1519,7 +1519,7 @@
 
 113. A company wants to deploy an AWS WAF solution to manage AWS WAF rules across multiple AWS accounts. The accounts are managed under different OUs in AWS Organizations. Administrators must be able to add or remove accounts or OUs from managed AWS WAF rule sets as needed. Administrators also must have the ability to automatically update and remediate noncompliant AWS WAF rules in all accounts. Which solution meets these requirements with the EAST amount of operational overhead?
      - [ ] A. Use AWS Firewall Manager to manage AWS WAF rules across accounts in the organization. Use an AWS Systems Manager Parameter Store parameter to store account numbers and OUs to manage. Update the parameter as needed to add or remove accounts or OUs. Use an Amazon EventBridge (Amazon CloudWatch Events) rule to identify any changes to the parameter and to invoke an AWS Lambda function to update the security policy in the Firewall Manager administrative account.
-     - [ ] B. Deploy an organization-wide AWS Config rule that requires all resources in the selected OUS to associate the AWS WAF rules. Deploy automated remediation actions by using AWS Lambda to fix noncompliant resources. Deploy AWS WAF rules by using an AWS CloudFormation stack set to target the same OU where the AWS Config rule is applied.
+     - [ ] B. Deploy an organization-wide AWS Config rule that requires all resources in the selected OUS to associate the AWS WAF rules. Deploy automated remediation actions by using AWS Lambda to fi  noncompliant resources. Deploy AWS WAF rules by using an AWS CloudFormation stack set to target the same OU where the AWS Config rule is applied.
      - [ ] C. Create AWS WAF rules in the management account of the organization. Use AWS Lambda environment variables to store account numbers and OUS to manage. Update environment variables as needed to add or remove accounts or OUS. Create cross-account IAM roles in member accounts. Assume the roles by using AWS Security Token Service (AWS STS) in the Lambda function to create and update AWS WAF rules in the member accounts.
      - [ ] D. Use AWS Control Tower to manage AWS WAF rules across accounts in the organization. Use AWS Key Management Service (AWS KMS) to store account members and OU to manage. Update AWS KMS as needed to add or move accounts or OU. Create AM users in member accounts. Allow AWS Control Tower in the management account to use the access key and secret access key to create and update AWS WAF rules in the member accounts.
 
@@ -1574,7 +1574,7 @@
      - [ ] B. Configure an S3 Lifecycle object expiration rule that is based on the contract's expiration date.
      - [ ] C. Write a script to perform a conditional delete on all the affected DynamoDB records.
      - [ ] D. Temporarily suspend versioning on the S3 bucket. Create and invoke an AWS Lambda function that deletes affected objects. Reactivate versioning when the operation is complete.
-     - [x] E. Write a script to delete objects from Amazon S3. Specify in each request a NoncurrentVersionExpiration property with a NoncurrentDays attribute set to 0.
+     - [ ] E. Write a script to delete objects from Amazon S3. Specify in each request a NoncurrentVersionExpiration property with a NoncurrentDays attribute set to 0.
 
      <details>
        <summary>Answer</summary>
@@ -1587,7 +1587,7 @@
      - [ ] A. Create an AWS CloudFormation template that provisions a VPC and the required subnets. Deploy the template to each AWS account.
      - [ ] B. Create an AWS CloudFormation template that provisions a VPC and the required subnets. Deploy the template to a shared services account. Share the subnets by using AWS Resource Access Manager.
      - [ ] C. Use AWS Transit Gateway along with an AWS Site-to-Site VPN for connectivity to the on-premises network. Share the transit gateway by using AWS Resource Access Manager.
-     - [x] D. Use AWS Site-to-Site VPN for connectivity to the on-premises network.
+     - [ ] D. Use AWS Site-to-Site VPN for connectivity to the on-premises network.
      - [ ] E. Use AWS Direct Connect for connectivity to the on-premises network.
 
      <details>
