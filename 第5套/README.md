@@ -691,7 +691,7 @@
     - [ ] A. Store data in Amazon S3 Amazon Redshift Spectrum to query data.
     - [ ] B. Store data in Amazon S3. Use the AWS Glue Data Catalog and Amazon Athena to query data.
     - [ ] C. Store data in EMR File System (EMRFS). Use Presto in Amazon EMR to query data.
-    - [x] D. Store data in Amazon Redshift. Use Amazon Redshift to query data.
+    - [ ] D. Store data in Amazon Redshift. Use Amazon Redshift to query data.
 
     <details>
        <summary>Answer</summary>
@@ -702,7 +702,7 @@
 
 52. A company recently completed a large-scale migration to AWS. Development teams that support various business units have their own accounts in AWS Organizations. A central cloud team is responsible for controlling which services and resources can be accessed, and for creating operational strategies for all teams within the company. Some teams are approaching their account service quotas. The cloud team needs to create an automated and operationally efficient solution to proactively monitor service quotas. Monitoring should occur every 15 minutes and send alerts when a team exceeds 80% utilization. Which solution will meet these requirements?
     - [ ] A. Create a scheduled AWS Config rule to trigger an AWS Lambda function to call the GetServiceQuota API. If any service utilization is above 80%, publish a message to an Amazon Simple Notification Service (Amazon SNS) topic to alert the cloud team. Create an AWS CloudFormation template and deploy the necessary resources to each account.
-    - [x] B. Create an Amazon EventBridge (Amazon CloudWatch Events) rule that triggers an AWS Lambda function to refresh the AWS Trusted Advisor service limits checks and retrieve the most current utilization and service limit data. If the current utilization is above 80%, publish a message to an Amazon Simple Notification Service (Amazon SNS) topic to alert the cloud team. Create AWS CloudFormation StackSets that deploy the necessary resources to all Organizations accounts.
+    - [ ] B. Create an Amazon EventBridge (Amazon CloudWatch Events) rule that triggers an AWS Lambda function to refresh the AWS Trusted Advisor service limits checks and retrieve the most current utilization and service limit data. If the current utilization is above 80%, publish a message to an Amazon Simple Notification Service (Amazon SNS) topic to alert the cloud team. Create AWS CloudFormation StackSets that deploy the necessary resources to all Organizations accounts.
     - [ ] C. Create an Amazon CloudWatch alarm that triggers an AWS Lambda function to call the Amazon CloudWatch GetInsightRuleReport API to retrieve the most current utilization and service limit data. If the current utilization is above 80%, publish an Amazon Simple Email Service (Amazon SES) notification to alert the cloud team. Create AWS CloudFormation StackSets that deploy the necessary resources to all Organizations accounts.
     - [ ] D. Create an Amazon EventBridge (Amazon CloudWatch Events) rule that triggers an AWS Lambda function to refresh the AWS Trusted Advisor service limits checks and retrieve the most current utilization and service limit data. If the current utilization is above 80%, use Amazon Pinpoint to send an alert to the cloud team. Create an AWS CloudFormation template and deploy the necessary resources to each account.
 
@@ -714,7 +714,7 @@
     </details>
 
 53. A company recently deployed a new application that runs on a group of Amazon Linux 2 instances in a VPC. In a peered VPC, the company launched an EC2 Linux instance that serves as a bastion host. The security group of the application instances allows access only on TCP port 22 from the private IP of the bastion host. The security group of the bastion host allows access to TCP port 22 from 0.0.0.0/0 so that system administrators can use SSH to remotely log in to the application instances from several branch offices. While looking through operating system logs on the bastion host, a cloud engineer notices thousands of failed SSH logins to the bastion host from locations around the world. The cloud engineer wants to change how remote access is granted to the application instances and wants to meet the following requirements: -Eliminate brute-force SSH login attempts. -Retain a log of commands run during an SSH session. -Retain the ability to forward ports. Which solution meets these requirements for remote access to the application instances?
-    - [x] A. Configure the application instances to communicate with AWS Systems Manager. Grant access to the system administrators to use Session Manager to establish a session with the application instances. Terminate the bastion host.
+    - [ ] A. Configure the application instances to communicate with AWS Systems Manager. Grant access to the system administrators to use Session Manager to establish a session with the application instances. Terminate the bastion host.
     - [ ] B. Update the security group of the bastion host to allow traffic from only the public IP addresses of the branch offices.
     - [ ] C. Configure an AWS Client VPN endpoint and provision each system administrator with a certificate to establish a VPN connection to the application VPC. Update the security group of the application instances to allow traffic from only the Client VPN IPv4 CIDR. Terminate the bastion host.
     - [ ] D. Configure the application instances to communicate with AWS Systems Manager. Grant access to the system administrators to issue commands to the application instances by using Systems Manager Run Command. Terminate the bastion host.
@@ -727,7 +727,7 @@
     </details>
 
 54. A company runs an application in Amazon VPC. The application requires that all traffic to three different third-party networks be encrypted. The network traffic between the application and the third-party networks is expected to be no more than 500 Mbps for each connection. To facilitate network connectivity, a solutions architect has created a transit gateway and attached the application VPC. Which set of actions should the solutions architect perform to complete the solution while MINIMIZING costs?
-    - [x] A. Use AWS Certificate Manager (ACM) to generate three public/private key pairs. Install the private keys on a public facing Application Load Balancer (ALB). Have each third-party network connect to the ALB using HTTPS/TLS. Update the transit gateway route table to route traffic between the application and the third-party networks through the ALB
+    - [ ] A. Use AWS Certificate Manager (ACM) to generate three public/private key pairs. Install the private keys on a public facing Application Load Balancer (ALB). Have each third-party network connect to the ALB using HTTPS/TLS. Update the transit gateway route table to route traffic between the application and the third-party networks through the ALB
     - [ ] B. Create an AWS Direct Connect connection between each third-party network and a Direct Connect gateway. Associate the Direct connect gateway. Associate the Direct Connect gateway with the transit gateway Encrypt the Direct Connect connection with each third-party network using a different encryption key.
     - [ ] C. Use AWS Marketplace to deploy three different public facing Amazon EC2 instances running software VPN appliances. Establish VPN connections between each application and the third-party networks. Update the transit gateway route table to send encrypted traffic to each third-party network using the appropriate VPN appliance.
     - [ ] D. Create a transit gateway VPN attachment to each third-party network. Use separate pre-shared keys for each VPN attachment. Share those keys with the third-party networks. Update the transit gateway route table by creating a separate route to each third-party network using the appropriate transit gateway attachment.
@@ -743,7 +743,7 @@
     - [ ] A. Use the OrganizationAccountAceessRole IAM role to create a new IAM policy with read-only access in each member account. Establish a trust relationship between the IAM policy in each member account and the security account. Ask the security team to use the IAM policy to gain access.
     - [ ] B. Use the OrganizationAccountAccessRole IAM role to create a new IAM role-win read only access in each member account. Establish a trust relationship between the IAM role in each member account and the security account. Ask the security team to use the IAM role to gain access.
     - [ ] C. Ask the security team to use AWS Security Token Service (AWS STS) to call the AssumeRole API for the OrganizationAccountAccessRole IAM role in the master account from the security account. Use the generated temporary credentials to gain access.
-    - [x] D. Ask the security team to use AWS Security Token Service (AWS STS) to call the AssumeRole API for the OrganizationAccountAccessRole IAM role in the member account from the security account. Use the generated temporary credentials to gain access.
+    - [ ] D. Ask the security team to use AWS Security Token Service (AWS STS) to call the AssumeRole API for the OrganizationAccountAccessRole IAM role in the member account from the security account. Use the generated temporary credentials to gain access.
 
     <details>
        <summary>Answer</summary>
@@ -756,7 +756,7 @@
     - [x] A. Create an AWS Cost and Usage Report rule to group resources by the BusinessUnit and Project tags. Create a budget in AWS Budget and attach the cost and usage rule to it.
     - [ ] B. Activate the Project tag for cost allocation. Create a budget in AWS Budget in AWS Budgets for each project with a resource filter using the Project tag.
     - [ ] C. Create a budget in AWS Budgets for each project with a resource filter using the BusinessUnit tag.
-    - [x] D. Create an AWS Budgets report for each business unit to be sent as an email notification to the finance team monthly. Attach the budget for each of the business unit's projects to the report.
+    - [ ] D. Create an AWS Budgets report for each business unit to be sent as an email notification to the finance team monthly. Attach the budget for each of the business unit's projects to the report.
     - [ ] E. Create an AWS Budget report for each business unit to be sent as an email notification to the finance team monthly. Configure a tag filter on the AWS Budget report to automatically add budget that include resources with a matching BusinessUnit tag.
 
     <details>
@@ -768,7 +768,7 @@
 
 57. A car rental company has built a serverless REST API to provide data to its mobile app. The app consists of an Amazon API Gateway API with a Regional endpoint, AWS Lambda functions, and an Amazon Aurora MySQL Serverless DB cluster. The company recently opened the API to mobile apps of partners. A significant increase in the number of requests resulted, causing sporadic database memory errors. Analysis of the API traffic indicates that clients are making multiple HTTP GET requests for the same queries in a short period of time. Traffic is concentrated during business hours, with spikes around holidays and other events. The company needs to improve its ability to support the additional usage while minimizing the increase in costs associated with the solution. Which strategy meets these requirements?
     - [ ] A. Convert the API Gateway Regional endpoint to an edge-optimized endpoint. Enable caching in the production stage.
-    - [x] B. Implement an Amazon ElastiCache for Redis cache to store the results of the database calls. Modify the Lambda functions to use the cache.
+    - [ ] B. Implement an Amazon ElastiCache for Redis cache to store the results of the database calls. Modify the Lambda functions to use the cache.
     - [ ] C. Modify the Aurora Serverless DB cluster configuration to increase the maximum amount of available memory.
     - [ ] D. Enable throttling in the API Gateway production stage. Set the rate and burst values to limit the incoming calls.
 
@@ -781,7 +781,7 @@
 
 58. A company is developing a web application that runs on Amazon EC2 instances in an Auto Scaling group behind a public-facing Application Load Balancer (ALB). Only users from a specific country are allowed to access the application. The company needs the ability to log the access requests that have been blocked. The solution should require the least possible maintenance. Which solution meets these requirements?
     - [ ] A. Create an IPSet containing a list of IP ranges that belong to the specified country. Create an AWS WAF web ACL. Configure a rule to block any requests that do not originate from an IP range in the IPSet. Associate the rule with the web ACL. Associate the web ACL with the ALB.
-    - [x] B. Create an AWS WAF web ACL. Configure a rule to block any requests that do not originate from the specified country. Associate the rule with the web ACL. Associate the web ACL with the ALB.
+    - [ ] B. Create an AWS WAF web ACL. Configure a rule to block any requests that do not originate from the specified country. Associate the rule with the web ACL. Associate the web ACL with the ALB.
     - [ ] C. Configure AWS Shield to block any requests that do not originate from the specified country. Associate AWS Shield with the ALB.
     - [ ] D. Create a security group rule that allows ports 80 and 443 from IP ranges that belong to the specified country. Associate the security group with the ALB.
 
@@ -793,12 +793,12 @@
     </details>
 
 59. A company uses AWS Organizations to manage more than 1,000 AWS accounts. The company has created a new developer organization. There are 540 developer members in that must be moved to the new developer organization. All accounts are set up with all the required information so that each account can be operated as a standalone account. Which combination of steps should a solutions architect take to move all the developer accounts to the new developer organization? (Select THREE)
-    - [x] A. Call the `MoveAccount` operation in the Organizations API from the old organization's master account to migrate the developer accounts to the new developer organization.
+    - [ ] A. Call the `MoveAccount` operation in the Organizations API from the old organization's master account to migrate the developer accounts to the new developer organization.
     - [ ] B. From the master account, remove each developer account from the old organization using the `RemoveAccountFromOrganization` operation in the Organizations API.
     - [ ] C. From each developer account, remove the account from the old organization using the `RemoveAccountFromOrganizatio`n operation in the Organization API.
     - [ ] D. Sign in to the new developer organization's master account and create a placeholder member account that acts as a target for the developer account migration.
-    - [x] E. Call the `InviteAccountToOrganization` operation in the Organizations API from the new developer organization's master account to send invitations to the developer accounts.
-    - [x] F. Have each developer sign into their account and confirm to join the new developer organization.
+    - [ ] E. Call the `InviteAccountToOrganization` operation in the Organizations API from the new developer organization's master account to send invitations to the developer accounts.
+    - [ ] F. Have each developer sign into their account and confirm to join the new developer organization.
 
     <details>
        <summary>Answer</summary>
@@ -811,7 +811,7 @@
     - [ ] A. Create RDS MySQL read replicas. Deploy the application to multiple AWS Regions. Use a Route 53 latency-based routing policy to route to the application.
     - [ ] B. Configure the DB instance as Multi-AZ. Deploy the application to two additional EC2 instances in different Availability Zones behind an ALB.
     - [ ] C. Replace the DB instance with Amazon DynamoDB global tables. Deploy the application in multiple AWS Regions. Use a Route 53 latency-based routing policy to route to the application.
-    - [x] D. Replace the DB instance with Amazon Aurora with Aurora Replicas. Deploy the application to multiple smaller EC2 instances across multiple Availability Zones in an Auto Scaling group behind an ALB.
+    - [ ] D. Replace the DB instance with Amazon Aurora with Aurora Replicas. Deploy the application to multiple smaller EC2 instances across multiple Availability Zones in an Auto Scaling group behind an ALB.
 
     <details>
        <summary>Answer</summary>
@@ -823,7 +823,7 @@
 61. A company is using AWS Organizations to manage multiple AWS accounts. For security purposes, the company requires the creation of an Amazon Simple Notification Service (Amazon SNS) topic that enables integration with a third-party alerting system in all the Organizations member accounts. A solutions architect used an AWS CloudFormation template to create the SNS topic and stack sets to automate the deployment of CloudFormation stacks. Trusted access has been enabled in Organizations. What should the solutions architect do to deploy the CloudFormation StackSets in all AWS accounts?
     - [ ] A. Create a stack set in the Organizations member accounts. Use service-managed permissions. Set deployment options to deploy to an organization. Use CloudFormation StackSets drift detection.
     - [ ] B. Create stacks in the Organizations member accounts. Use self-service permissions. Set deployment options to deploy to an organization. Enable the CloudFormation StackSets automatic deployment.
-    - [x] C. Create a stack set in the Organizations master account. Use service-managed permissions. Set deployment options to deploy to the organization. Enable CloudFormation StackSets automatic deployment.
+    - [ ] C. Create a stack set in the Organizations master account. Use service-managed permissions. Set deployment options to deploy to the organization. Enable CloudFormation StackSets automatic deployment.
     - [ ] D. Create stacks in the Organizations master account. Use service-managed permissions. Set deployment options to deploy to the organization. Enable CloudFormation StackSets drift detection.
 
     <details>
@@ -834,11 +834,11 @@
     </details>
 
 62. A company runs an application in the cloud that consists of a database and a website. Users can post data to the website, have the data processed, and have the data sent back to them in an email. Data is stored is a MySQL database running on an Amazon EC2 Instance. The database is running in a VPC with two private subnets. The website is running on Apache Tomcat in a single EC2 instance in a different VPC with one public subnet. There is a single VPC peering connection between the database and website VPC. The website has suffered several outages during the last month due to high traffic. Which actions should a solutions architect take to increase the reliability of the application? (Select THREE.)
-    - [x] A. Place the Tomcat server in an Auto Scaling group with multiple EC2 instances behind an Application Load Balancer.
+    - [ ] A. Place the Tomcat server in an Auto Scaling group with multiple EC2 instances behind an Application Load Balancer.
     - [ ] B. Provision an additional VPC peering connection.
-    - [x] C. Migrate the MySQL database to Amazon Aurora with one Aurora Replica.
+    - [ ] C. Migrate the MySQL database to Amazon Aurora with one Aurora Replica.
     - [ ] D. Provision two NAT gateways in the database VPC.
-    - [x] E. Move the Tomcat server to the database VPC.
+    - [ ] E. Move the Tomcat server to the database VPC.
     - [ ] F. Create an additional public subnet in a different Availability Zone in the website VPC.
 
     <details>
@@ -851,7 +851,7 @@
 63. A company wants to provide desktop as a service (DaaS) to a number of employees using Amazon WorkSpaces. WorkSpaces will need to access files and services hosted on premises with authorization based on the companyג€™s Active Directory. Network connectivity will be provided through an existing AWS Direct Connect connection. The solution has the following requirements: -Credentials from Active Directory should be used to access on-premises files and services. -Credentials from Active Directory should not be stored outside the company. -End users should have single sign-on (SSO) to on-premises files and services once connected to WorkSpaces. Which strategy should the solutions architect use for end user authentication?
     - [ ] A. Create an AWS Directory Service for Microsoft Active Directory (AWS Managed Microsoft AD) directory within the WorkSpaces VPC. Use the Active Directory Migration Tool (ADMT) with the Password Export Server to copy users from the on-premises Active Directory to AWS Managed Microsoft AD. Set up a one- way trust allowing users from AWS Managed Microsoft AD to access resources in the on-premises Active Directory. Use AWS Managed Microsoft AD as the directory for WorkSpaces.
     - [ ] B. Create a service account in the on-premises Active Directory with the required permissions. Create an AD Connector in AWS Directory Service to be deployed on premises using the service account to communicate with the on-premises Active Directory. Ensure the required TCP ports are open from the WorkSpaces VPC to the on-premises AD Connector. Use the AD Connector as the directory for WorkSpaces.
-    - [x] C. Create a service account in the on-premises Active Directory with the required permissions. Create an AD Connector in AWS Directory Service within the WorkSpaces VPC using the service account to communicate with the on-premises Active Directory. Use the AD Connector as the directory for WorkSpaces.
+    - [ ] C. Create a service account in the on-premises Active Directory with the required permissions. Create an AD Connector in AWS Directory Service within the WorkSpaces VPC using the service account to communicate with the on-premises Active Directory. Use the AD Connector as the directory for WorkSpaces.
     - [ ] D. Create an AWS Directory Service for Microsoft Active Directory (AWS Managed Microsoft AD) directory in the AWS Directory Service within the WorkSpaces VPC. Set up a one-way trust allowing users from the on-premises Active Directory to access resources in the AWS Managed Microsoft AD. Use AWS Managed Microsoft AD as the directory for WorkSpaces. Create an identity provider with AWS Identity and Access Management (IAM) from an on-premises ADFS server. Allow users from this identity provider to assume a role with a policy allowing them to run WorkSpaces.
 
     <details>
@@ -868,7 +868,7 @@
     - [ ] A. Create a VPC traffic mirror source on the application instance's elastic network interface with a filter that captures all traffic. Configure the traffic mirror target to use an Amazon S3 bucket. Start the traffic mirror session and download the packet capture from Amazon S3. Provide the packet capture to the vendor.
     - [ ] B. Create a VPC traffic mirror source on the application instance's elastic network interface with a filter that captures all traffic. Launch a new EC2 instance and configure the traffic minor target to use the elastic network interface of the new EC2 instance. Start the traffic mirror session and download the packet capture from the new EC2 instance using AWS Systems Manager. Provide the packet capture to the vendor.
     - [ ] C. Enable VPC Flow Logs on the application instance's elastic network interface and send them to Amazon CloudWatch Logs. Download the CloudWatch logs and provide them to me vendor.
-    - [x] D. Enable VPC Flow Logs on the VPC to capture traffic flows on from the application instance and the RDS instance and send them to Amazon CloudWatch Logs. Download the CloudWatch logs and provide them to the vendor.
+    - [ ] D. Enable VPC Flow Logs on the VPC to capture traffic flows on from the application instance and the RDS instance and send them to Amazon CloudWatch Logs. Download the CloudWatch logs and provide them to the vendor.
 
     <details>
        <summary>Answer</summary>
@@ -879,10 +879,10 @@
 
 65. A company needs to store and process image data that will be uploaded from mobile devices using a custom mobile app. Usage peaks between 8 AM and 5 PM on weekdays, with thousands of uploads per minute. The app is rarely used at any other time. A user is notified when image processing is complete. Which combination of actions should a solutions architect take to ensure image processing can scale to handle the load? (Choose three.)
     - [ ] A. Upload files from the mobile software directly to Amazon S3. Use S3 event notifications to create a message in an Amazon MQ queue.
-    - [x] B. Upload files from the mobile software directly to Amazon S3. Use S3 event notifications to create a message in an Amazon Simple Queue Service (Amazon SQS) standard queue.
-    - [x] C. Invoke an AWS Lambda function to perform image processing when a message is available in the queue.
+    - [ ] B. Upload files from the mobile software directly to Amazon S3. Use S3 event notifications to create a message in an Amazon Simple Queue Service (Amazon SQS) standard queue.
+    - [ ] C. Invoke an AWS Lambda function to perform image processing when a message is available in the queue.
     - [ ] D. Invoke an S3 Batch Operations job to perform image processing when a message is available in the queue.
-    - [x] E. Send a push notification to the mobile app by using Amazon Simple Notification Service (Amazon SNS) when processing is complete.
+    - [ ] E. Send a push notification to the mobile app by using Amazon Simple Notification Service (Amazon SNS) when processing is complete.
     - [ ] F. Send a push notification to the mobile app by using Amazon Simple Email Service (Amazon SES) when processing is complete.
 
     <details>
@@ -893,11 +893,11 @@
     </details>
 
 66. A software company hosts an application on AWS with resources in multiple AWS accounts and Regions. The application runs on a group of Amazon EC2 instances in an application VPC located in the us-east-1 Region with an IPv4 CIDR block of 10.10.0.0/16. In a different AWS account, a shared services VPC is located in the us-east-2 Region with an IPv4 CIDR block of 10.10.10.0/24. When a cloud engineer uses AWS CloudFormation to attempt to peer the application VPC with the shared services VPC, an error message indicates a peering failure. Which factors could cause this error? (Choose two.)
-    - [x] A. The IPv4 CIDR ranges of the two VPCs overlap.
+    - [ ] A. The IPv4 CIDR ranges of the two VPCs overlap.
     - [ ] B. The VPCs are not in the same Region.
     - [ ] C. One or both accounts do not have access to an Internet gateway.
     - [ ] D. One of the VPCs was not shared through AWS Resource Access Manager.
-    - [x] E. The IAM role in the peer accepter account does not have the correct permissions.
+    - [ ] E. The IAM role in the peer accepter account does not have the correct permissions.
 
     <details>
        <summary>Answer</summary>
@@ -909,7 +909,7 @@
 67. A company needs to implement a patching process for its servers. The on-premises servers and Amazon EC2 instances use a variety of tools to perform patching. Management requires a single report showing the patch status of all the servers and instances. Which set of actions should a solutions architect take to meet these requirements?
     - [ ] A. Use AWS Systems Manager to manage patches on the on-premises servers and EC2 instances. Use Systems Manager to generate patch compliance reports.
     - [ ] B. Use AWS OpsWorks to manage patches on the on-premises servers and EC2 instances. Use Amazon QuickSight integration with OpsWorks to generate patch compliance reports.
-    - [x] C. Use an Amazon EventBridge (Amazon CloudWatch Events) rule to apply patches by scheduling an AWS Systems Manager patch remediation job. Use Amazon Inspector to generate patch compliance reports.
+    - [ ] C. Use an Amazon EventBridge (Amazon CloudWatch Events) rule to apply patches by scheduling an AWS Systems Manager patch remediation job. Use Amazon Inspector to generate patch compliance reports.
     - [ ] D. Use AWS OpsWorks to manage patches on the on-premises servers and EC2 instances. Use AWS X-RAY to post the patch status to AWS Systems Manage OpsCenter to generate patch compliance reports.
 
     <details>
@@ -922,8 +922,8 @@
 68. A solutions architect is designing an application to accept timesheet entries from employees on their mobile devices. Timesheets will be submitted weekly, with most of the submissions occurring on Friday. The data must be stored in a format that allows payroll administrators to run monthly reports. The infrastructure must be highly available and scale to match the rate of incoming data and reporting requests. Which combination of steps meets these requirements while minimizing operational overhead? (Select TWO.)
     - [ ] A. Deploy the application to Amazon EC2 On-Demand Instances with load balancing across multiple Availability Zones. Use scheduled Amazon EC2 Auto Scaling to add capacity before the high volume of submissions on Fridays.
     - [ ] B. Deploy the application in a container using Amazon Elastic Container Service (Amazon ECS) with load balancing across multiple Availability Zones. Use scheduled Service Auto Scaling to add capacity before the high volume of submissions on Fridays.
-    - [x] C. Deploy the application front end to an Amazon S3 bucket served by Amazon CloudFront. Deploy the application backend using Amazon API Gateway with an AWS Lambda proxy integration.
-    - [x] D. Store the timesheet submission data in Amazon Redshift. Use Amazon QuickSight to generate the reports using Amazon Redshift as the data source.
+    - [ ] C. Deploy the application front end to an Amazon S3 bucket served by Amazon CloudFront. Deploy the application backend using Amazon API Gateway with an AWS Lambda proxy integration.
+    - [ ] D. Store the timesheet submission data in Amazon Redshift. Use Amazon QuickSight to generate the reports using Amazon Redshift as the data source.
     - [ ] E. Store the timesheet submission data in Amazon S3. Use Amazon Athena and Amazon QuickSight to generate the reports using Amazon S3 as the data source.
 
     <details>
@@ -934,7 +934,7 @@
     </details>
 
 69. A company that is developing a mobile game is making game assets available in two AWS Regions. Game assets are served from a set of Amazon EC2 instances behind an Application Load Balancer (ALB) in each Region. The company requires game assets to be fetched from the closest Region. If game assets become unavailable in the closest Region, they should be fetched from the other Region. What should a solutions architect do to meet these requirements?
-    - [x] A. Create an Amazon CloudFront distribution. Create an origin group with one origin for each ALB. Set one of the origins as primary.
+    - [ ] A. Create an Amazon CloudFront distribution. Create an origin group with one origin for each ALB. Set one of the origins as primary.
     - [ ] B. Create an Amazon Route 53 health check for each ALB. Create a Route 53 failover routing record pointing to the two ALBs. Set the Evaluate Target Health value to Yes.
     - [ ] C. Create two Amazon CloudFront distributions, each with one ALB as the origin. Create an Amazon Route 53 failover routing record pointing to the two CloudFront distributions. Set the Evaluate Target Health value to Yes.
     - [ ] D. Create an Amazon Route 53 health check for each ALB. Create a Route 53 latency alias record pointing to the two ALBs. Set the Evaluate Target Health value to Yes.
@@ -953,7 +953,7 @@
     - [ ] A. Use AWS Budgets. Create an alarm for when the cost of Athena usage reaches the budgeted amount for the month. Configure AWS Budgets actions to deactivate Athena until the end of the month.
     - [ ] B. Use Cost Explorer to create an alert for when the cost of Athena usage reaches the budgeted amount for the month. Configure Cost Explorer to publish notifications to an Amazon Simple Notification Service (Amazon SNS) topic.
     - [ ] C. Use AWS Trusted Advisor to track the cost of Athena usage. Configure an Amazon EventBridge rule to deactivate Athena until the end of the month whenever the cost reaches the budgeted amount for the month.
-    - [x] D. Use Athena workgroups to set a limit on the amount of data that can be scanned. Set a limit that is appropriate for the monthly budget and the current pricing for Athena.
+    - [ ] D. Use Athena workgroups to set a limit on the amount of data that can be scanned. Set a limit that is appropriate for the monthly budget and the current pricing for Athena.
 
     <details>
        <summary>Answer</summary>
@@ -966,7 +966,7 @@
     - [ ] A. Create an S3 CreateObject event notification to copy the file to Amazon Elastic Block Store (Amazon EBS). Use AWS DataSync in sync the files between EBS volumes in multiple Regions. Use an Amazon EC2 Auto Scaling group in multiple Regions to attach the EBS volumes. Process the files and store the results in a DynamoDB global table in multiple Regions. Configure the S3 bucket with an S3 Lifecycle policy to move the files to S3 Glacier after I year.
     - [ ] B. Create an S3 CreateObject event notification to copy the file to Amazon Elastic File System (Amazon EFS). Use AWS DataSync to sync the files between EFS volumes in multiple Regions. Use an AWS Lambda function to process the EFS files and store the results in a DynamoDB global table in multiple Regions. Configure the S3 buckets with an S3 Lifecycle policy to move the files to S3 Glacier after I year.
     - [ ] C. Copy the files to an S3 bucket in another Regio by using cross-Region replication. Create an S3 CreateObject event notification on the original bucket to push S3 file paths into Amazon EventBridge (Amazon coudWatch Events). Use an AWS Lambda function to poll EventBridge (ClloudWatch Events) to process each file and save the results in a DynamoDB table in each Region. Configure both S3 buckets to use the S3 Standard-infrequent Access (S3 Standard-IA) storage class and an S3 lifecycle policy to delete the files after I year
-    - [x] D. Copy the files to an S3 bucket in another Region by using cross-Region replication. Create an S3 CreateObject event notification on the original bucket to execute an AWS Lambda function to process each file and store the results in a DynamoDB global table in multiple Regions. Configure both S3 buckets to use the S3 Standard-infrequent Access (S3 Standard-IA) storage class and an S3 Lifecycle policy to delete the files after 1 year.
+    - [ ] D. Copy the files to an S3 bucket in another Region by using cross-Region replication. Create an S3 CreateObject event notification on the original bucket to execute an AWS Lambda function to process each file and store the results in a DynamoDB global table in multiple Regions. Configure both S3 buckets to use the S3 Standard-infrequent Access (S3 Standard-IA) storage class and an S3 Lifecycle policy to delete the files after 1 year.
 
     <details>
        <summary>Answer</summary>
@@ -977,7 +977,7 @@
 
 72. A solution architect works for a government agency that has strict recovery requirement. All Amazon Elastic Block Store (Amazon EBS) snapshots are required to be saved in at least two additional AWS Regions. The agency also is required to maintain the lowest possible operational overhead. Which solution meets These requirements?
     - [ ] A. Configure a policy in Amazon Data lifecycle Manager (Amazon DLM) to run once daily to copy the EBS snapshots to the additional Regions.
-    - [x] B. Use Amazon EventBridge (Amazon CloudWatch events) to schedule an AWS Lambda function to copy the EBS snapshots to the additional Regions.
+    - [ ] B. Use Amazon EventBridge (Amazon CloudWatch events) to schedule an AWS Lambda function to copy the EBS snapshots to the additional Regions.
     - [ ] C. Set up AWS Backup to create the EBS snapshots. Configure Amazon S3 cross-Region replicator to copy the EBS snapshots to the additional Regions
     - [ ] D. Schedule Amazon EC2 Image Builder to run once daily to create an AMI and copy the AMI to the additional Regions.
 
@@ -989,7 +989,7 @@
     </details>
 
 73. A company is running a web application on Amazon EC2 instances in a production AWS account. The company requires all logs generated from the web application to be copied to a central AWS account for analysis and archiving. The company's AWS accounts are currently managed independently. Logging agents are configured on the EC2 instances to upload the log files to an Amazon S3 bucket in the central AWS account. A solution architect needs to provide access for a solution that will allow the production account to store log files in the central account. The central account also needs to have read access to the log files. What should the solutions architect do to meet these requirements?
-    - [x] A. Create a cross-account role in the central account. Assume the role from the production account when the logs are being copies.
+    - [ ] A. Create a cross-account role in the central account. Assume the role from the production account when the logs are being copies.
     - [ ] B. Create a policy on the S3 bucket with the production account ID as the principal. Allow S3 access from a delegated user.
     - [ ] C. Create a policy on the S3 bucket with access from only the CIDR range of the EC2 instances in the production account. Use the production account ID as the principal.
     - [ ] D. Create a cross-account role in the production account. Assume the role from the production account when the logs are being copies.
@@ -1003,9 +1003,9 @@
 
 74. A solutions architect is evaluating the reliability of a recently migrated application running on AWS. The front end is hosted on Amazon S3 and accelerated by Amazon CloudFront. The application layer is running in a stateless Docker container on an Amazon EC2 On-Demand Instance with an Elastic IP address. The storage layer is a MongoDB database running on an EC2 Reserved Instance in the same Availability Zone as the application layer. Which combination of steps should the solutions architect take to eliminate single points of failure with minimal application code changes? (Choose two.)
     - [ ] A. Create a REST API in Amazon API Gateway and use AWS Lambda functions as the application layer.
-    - [x] B. Create an Application Load Balancer and migrate the Docker container to AWS Fargate.
+    - [ ] B. Create an Application Load Balancer and migrate the Docker container to AWS Fargate.
     - [ ] C. Migrate the storage layer to Amazon DynamoDB.
-    - [x] D. Migrate the storage layer to Amazon DocumentDB (with MongoDB compatibility).
+    - [ ] D. Migrate the storage layer to Amazon DocumentDB (with MongoDB compatibility).
     - [ ] E. Create an Application Load Balancer and move the storage layer to an EC2 Auto Scaling group.
 
     <details>
@@ -1016,7 +1016,7 @@
     </details>
 
 75. A financial company with multiple departments wants to expand its on-premises environment to the AWS Cloud. The company must retain centralized access control using an existing on-premises Active Directory (AD) service. Each department should be allowed to create AWS accounts with preconfigured networking and should have access to only a specific list of approved services. Departments are not permitted to have account administrator permissions. What should a solutions architect do to meet these security requirements?
-    - [x] A. Configure AWS Identity and Access Management (IAM) with a SAML identity provider (IdP) linked to the on-premises Active Directory, and create a role to grant access. Configure AWS Organizations with SCPs and create new member accounts. Use AWS CloudFormation templates to configure the member account networking.
+    - [ ] A. Configure AWS Identity and Access Management (IAM) with a SAML identity provider (IdP) linked to the on-premises Active Directory, and create a role to grant access. Configure AWS Organizations with SCPs and create new member accounts. Use AWS CloudFormation templates to configure the member account networking.
     - [ ] B. Deploy an AWS Control Tower landing zone. Create an AD Connector linked to the on-premises Active Directory. Change the identity source in AWS Single Sign-On to use Active Directory. Allow department administrators to use Account Factory to create new member accounts and networking. Grant the departments AWS power user permissions on the created accounts.
     - [ ] C. Deploy an Amazon Cloud Directory. Create a two-way trust relationship with the on-premises Active Directory, and create a role to grant access. Set up an AWS Service Catalog to use AWS CloudFormation templates to create the new member accounts and networking. Use IAM roles to allow access to approved AWS services.
     - [ ] D. Configure AWS Directory Service for Microsoft Active Directory with AWS Single Sign-On. Join the service to the on-premises Active Directory. Use AWS CloudFormation to create new member accounts and networking. Use IAM roles to allow access to approved AWS services.
@@ -1029,7 +1029,7 @@
     </details>
 
 76. A company runs a software-as-a-service (SaaS) application on AWS. The application consists of AWS Lambda functions and an Amazon RDS for MySQL Multi-AZ database. During market events the application has a much higher workload than normal. Users notice slow response times during the peak period because of many database connections. The company needs to improve the scalable performance and availability of the database. Which solution meets these requirements?
-    - [x] A. Create an Amazon CloudWatch alarm action that triggers a Lambda function to add an Amazon RDS for MySQL read replica when resource utilization hits a threshold.
+    - [ ] A. Create an Amazon CloudWatch alarm action that triggers a Lambda function to add an Amazon RDS for MySQL read replica when resource utilization hits a threshold.
     - [ ] B. Migrate the database to Amazon Aurora, and add a read replica. Add a database connection pool outside of the Lambda handler function.
     - [ ] C. Migrate the database to Amazon Aurora, and add a read replica. Use Amazon Route 53 weighted records.
     - [ ] D. Migrate the database to Amazon Aurora, and add an Aurora Replica. Configure Amazon RDS Proxy to manage database connection pools.
@@ -1043,9 +1043,9 @@
 
 77. A company stores customer data in an Amazon S3 bucket with S3 Versioning enabled in the us-west-2 Region. The S3 bucket is encrypted with an AWS Key Management Service (AWS KMS) customer managed CMK. A compliance policy states that redundant copies of all S3 objects must be stored in the us-east-2 Region. The S3 buckets are allowed to stay in the same AWS account. Which combination of steps will meet these requirements with the LEAST operational effort? (Select THREE.)
     - [ ] A. Configure an AWS Lambda function that copies objects to the us-east-2 bucket and is triggered when objects are created in the us-west-2 bucket.
-    - [x] B. Create a destination S3 bucket in us-east-2 with S3 Versioning enabled.
-    - [x] C. Set up S3 Cross-Region Replication between the two S3 buckets.
-    - [x] D. Create and assign an S3 bucket policy that allows reading from the source S3 bucket.
+    - [ ] B. Create a destination S3 bucket in us-east-2 with S3 Versioning enabled.
+    - [ ] C. Set up S3 Cross-Region Replication between the two S3 buckets.
+    - [ ] D. Create and assign an S3 bucket policy that allows reading from the source S3 bucket.
     - [ ] E. Create and assign to Amazon S3 an IAM role with a policy that allows reading from the source S3 bucket and replication to the destination S3 bucket.
     - [ ] F. Create a destination S3 bucket in us-east-2.
 
@@ -1059,7 +1059,7 @@
 78. A company that runs applications on AWS recently subscribed to a new software-as-a-service (SaaS) data vendor. The vendor provides the data by way of a REST API that the vendor hosts in its AWS environment. The vendor offers multiple options for connectivity to the API and is working with the company to find the best way to connect. The company’s AWS account does not allow outbound internet access from its AWS environment. The vendor's services run on AWS in the same Region as the company's applications. A solutions architect must implement connectivity to the vendor's API so that the API is highly available in the company's VPC. Which solution will meet these requirements?
     - [ ] A. Connect to the vendor's public API address for the data service.
     - [ ] B. Connect to the vendor by way of a VPC peering connection between the vendor's VPC and the company's VPC.
-    - [x] C. Connect to the vendor by way of a VPC endpoint service that uses AWS PrivateLink.
+    - [ ] C. Connect to the vendor by way of a VPC endpoint service that uses AWS PrivateLink.
     - [ ] D. Connect to a public bastion host that the vendor provides. Tunnel the API traffic.
 
     <details>
@@ -1070,10 +1070,10 @@
     </details>
 
 79. A company recently deployed multiple Amazon Elastic File System (Amazon EFS) file systems in an AWS account. The company wants to access the EFS file systems in Amazon Linux EC2 instance in a second AWS account. Permissions are already granted from the source account. Which combination of actions should the solutions architect recommend meeting these requirements? (Select TWO.)
-    - [x] A. Add a line to the `/etc/hosts` file on the EC2 instance that references the FileSystemld of the EFS file system.
+    - [ ] A. Add a line to the `/etc/hosts` file on the EC2 instance that references the FileSystemld of the EFS file system.
     - [ ] B. Call the DescribeMountTargets operation in the source account for the file system to identify the mount target name for the Availability Zone that matches the Availability Zone of the EC2 instance.
     - [ ] C. Add a line to the `/etc/hosts` file on the EC2 instance that references the MountTargetld of the EFS mount target.
-    - [x] D. Call the DescribeMountTargets operation in the source account for the file system to identify the mount target IP address for the Availability Zone that matches the Availability Zone of the EC2 instance.
+    - [ ] D. Call the DescribeMountTargets operation in the source account for the file system to identify the mount target IP address for the Availability Zone that matches the Availability Zone of the EC2 instance.
     - [ ] E. Add a line to the `/etc/hosts` file on the EC2 instance that references the IpAddress of the EFS mount target.
 
     <details>
@@ -1084,11 +1084,11 @@
     </details>
 
 80. A solutions architect needs to provide AWS Cost and Usage Report data from a company's AWS Organizations master account. The company already has an Amazon S3 bucket to store the reports. The reports must be automatically ingested into a database that can be visualized with other tools. Which combination of steps should the solutions architect take to meet these requirements? (Select Three)
-    - [x] A. Create an Amazon EventBridge (Amazon CloudWatch Events) rule that a new object creation in the S3 bucket will trigger.
+    - [ ] A. Create an Amazon EventBridge (Amazon CloudWatch Events) rule that a new object creation in the S3 bucket will trigger.
     - [ ] B. Create an AWS Cost and Usage Report configuration to deliver the data into the S3 bucket.
     - [ ] C. Configure an AWS Glue crawler that a new object creation in the S3 bucket will trigger.
-    - [x] D. Create an AWS Lambda function that a new object creation in the S3 bucket will trigger.
-    - [x] E. Create an AWS Glue crawler that the AWS Lambda function will trigger to crawl objects in the S3 bucket.
+    - [ ] D. Create an AWS Lambda function that a new object creation in the S3 bucket will trigger.
+    - [ ] E. Create an AWS Glue crawler that the AWS Lambda function will trigger to crawl objects in the S3 bucket.
     - [ ] F. Create an AWS Glue crawler that the Amazon EventBridge (Amazon CloudWatch Events) rule will trigger to crawl in the S3 bucket.
 
     <details>
@@ -1101,7 +1101,7 @@
 81. A company runs several workloads on a mix of Amazon EC2 instances and Amazon RDS instances. The company is using an organization in AWS Organizations to manage multiple AWS accounts. The company's security standards require evaluation of AWS resources against the CIS Benchmarks and to automatically remediate issues where possible. What should a solutions architect recommend meeting these requirements?
     - [ ] A. Enable AWS Config in all accounts in the organization. Create an Amazon S3 bucket in an account within the organization to store the AWS Config compliance reports. Deploy a conformance pack across the organization to implement the required CIS controls and remediate issues.
     - [ ] B. Use AWS OpsWorks for Chef Automate in all accounts in the organization. Create an Amazon S3 bucket in an account within the organization. Deploy Chef cookbooks to implement the required CIS controls to the EC2 instances and use OpsWorks for Chef Automate to deploy the cookbooks.
-    - [x] C. Use AWS Systems Manager Configuration Compliance to scan compliance of the resources in AWS against the required CIS controls. Use Systems Manager Patch Manager to apply any needed remediation on noncompliant EC2 instances. Use AWS Lambda functions for the other remediation on Amazon RDS.
+    - [ ] C. Use AWS Systems Manager Configuration Compliance to scan compliance of the resources in AWS against the required CIS controls. Use Systems Manager Patch Manager to apply any needed remediation on noncompliant EC2 instances. Use AWS Lambda functions for the other remediation on Amazon RDS.
     - [ ] D. Enable Amazon Inspector to audit the environment against the CIS controls ingest results from Amazon Inspector into AWS (Amazon CloudWatch Events) to schedule AWS Lambda functions to remediate issues.
 
     <details>
@@ -1112,7 +1112,7 @@
     </details>
 
 82. A company needs to architect a hybrid DNS solution. This solution will use an Amazon Route 53 private hosted zone for the domain cloud.example.com for the resources stored within VPCs. The company has the following DNS resolution requirements: - On-premises systems should be able to resolve and connect to `cloud.example.com`. -All VPCs should be able to resolve cloud.example.com.- There is already an AWS Direct Connect connection between the on-premises corporate network and AWS Transit Gateway. Which architecture should the company use to meet these requirements with the HIGHEST performance?
-    - [x] A. Associate the private hosted zone to all the VPCs. Create a Route 53 inbound resolver in the shared services VPC. Attach all VPCs to the transit gateway and create forwarding rules in the on-premises DNS server for `cloud.example.com` that point to the inbound resolver.
+    - [ ] A. Associate the private hosted zone to all the VPCs. Create a Route 53 inbound resolver in the shared services VPC. Attach all VPCs to the transit gateway and create forwarding rules in the on-premises DNS server for `cloud.example.com` that point to the inbound resolver.
     - [ ] B. Associate the private hosted zone to all the VPCs. Deploy an Amazon EC2 conditional forwarder in the shared services VPC. Attach all VPCs to the transit gateway and create forwarding rules in the on-premises DNS server for `cloud.example.com` that point to the conditional forwarder.
     - [ ] C. Associate the private hosted zone to the shared services VPC. Create a Route 53 outbound resolver in the shared services VPC. Attach all VPCs to the transit gateway and create forwarding rules in the on-premises DNS server for `cloud.example.com` that point to the outbound resolver.
     - [ ] D. Associate the private hosted zone to the shared services VPC. Create a Route 53 inbound resolver in the shared services VPC. Attach the shared services VPC to the transit gateway and create forwarding rules in the on-premises DNS server for `cloud.example.com` that point to the inbound resolver.
@@ -1126,7 +1126,7 @@
 
 83. A company runs a proprietary stateless ETL application on an Amazon EC2 Linux instance. The application is a Linux binary, and the source code cannot be modified. The application is single-threaded, uses 2 GB of RAM and is highly CPU intensive. The application is scheduled to run every 4 hours and runs for up to 20 minutes. A solutions architect wants to revise the architecture for the solution. Which strategy should the solutions architect use?
     - [ ] A. Use AWS Lambda to run the application. Use Amazon CloudWatch Logs to invoke the Lambda function every 4 hours.
-    - [x] B. Use AWS Batch to run the application. Use an AWS Step Functions state machine to invoke the AWS Batch job every 4 hours.
+    - [ ] B. Use AWS Batch to run the application. Use an AWS Step Functions state machine to invoke the AWS Batch job every 4 hours.
     - [ ] C. Use AWS Fargate to run the application. Use Amazon EventBridge (Amazon CloudWatch Events) to invoke the Fargate task every 4 hours.
     - [ ] D. Use Amazon EC2 Spot Instances to run the application. Use AWS CodeDeploy to deploy and run the application every 4 hours.
 
@@ -1138,7 +1138,7 @@
     </details>
 
 84. A multimedia company needs to deliver its video-on-demand (VOD) content to its subscribers in a cost-effective way. The video files range in size from 1-15 GB and are typically viewed frequently for the first 6 months after creation, and then access decreases considerably. The company requires all video files to remain immediately available for subscribers. There are now roughly 30,000 files, and the company anticipates doubling that number over time. What is the MOST cost-effective solution for delivering the company's VOD content?
-    - [x] A. Store the video files in an Amazon S3 bucket using S3 Intelligent-Tiering. Use Amazon CloudFront to deliver the content with the S3 bucket as the origin.
+    - [ ] A. Store the video files in an Amazon S3 bucket using S3 Intelligent-Tiering. Use Amazon CloudFront to deliver the content with the S3 bucket as the origin.
     - [ ] B. Use AWS Elemental MediaConvert and store the adaptive bitrate video files in Amazon S3. Configure an AWS Elemental MediaPackage endpoint to deliver the content from Amazon S3.
     - [ ] C. Store the video files in Amazon Elastic File System (Amazon EFS) Standard. Enable EFS lifecycle management to move the video files to EFS Infrequent Access after 6 months. Create an Amazon EC2 Auto Scaling group behind an Elastic Load Balancer to deliver the content from Amazon EFS.
     - [ ] D. Store the video files in Amazon S3 Standard. Create S3 Lifecycle rules to move the video files to S3 Standard-Infrequent Access (S3 Standard-IA) after 6 months and to S3 Glacier Deep Archive after 1 year. Use Amazon CloudFront to deliver the content with the S3 bucket as the origin.
@@ -1154,7 +1154,7 @@
     - [ ] A. Increase the backend processing timeout to 30 seconds to match the visibility timeout.
     - [ ] B. Reduce the visibility timeout of the queue to automatically remove the faulty message.
     - [ ] C. Configure a new SQS FIFO queue as a dead-letter queue to isolate the faulty messages.
-    - [x] D. Configure a new SQS standard queue as a dead-letter queue to isolate the faulty messages.
+    - [ ] D. Configure a new SQS standard queue as a dead-letter queue to isolate the faulty messages.
 
     <details>
        <summary>Answer</summary>
@@ -1164,9 +1164,9 @@
     </details>
 
 86. A company has 50 AWS accounts that are members of an organization in AWS Organizations. Each account contains multiple VPCs. The company wants to use AWS Transit Gateway to establish connectivity between the VPCs in each member account. Each time a new member account is created, the company wants to automate the process of creating a new VPC and a transit gateway attachment. Which combination of steps will meet these requirements? (Select TWO.)
-    - [x] A. From the master account, share the transit gateway with member accounts by using AWS Resource Access Manager.
+    - [ ] A. From the master account, share the transit gateway with member accounts by using AWS Resource Access Manager.
     - [ ] B. From the master account, share the transit gateway with member accounts by using an AWS Organizations SCP.
-    - [x] C. Launch an AWS CloudFormation stack set from the master account that automatically creates a new VPC and a VPC transit gateway attachment in a member account. Associate the attachment with the transit gateway in the master account by using the transit gateway ID.
+    - [ ] C. Launch an AWS CloudFormation stack set from the master account that automatically creates a new VPC and a VPC transit gateway attachment in a member account. Associate the attachment with the transit gateway in the master account by using the transit gateway ID.
     - [ ] D. Launch an AWS CloudFormation stack set from the master account that automatically creates a new VPC and a peering transit gateway attachment in a member account. Share the attachment with the transit gateway in the master account by using a transit gateway service-linked role.
     - [ ] E. From the master account, share the transit gateway with member accounts by using AWS Service Catalog.
 
@@ -1179,7 +1179,7 @@
 
 87. A finance company hosts a data lake in Amazon S3. The company receives financial data records over SFTP each night from several third panies. The company luns its own SFTP server on an Amazon EC2 instance in a public subnet ofa VPC. After the files are uploaded, they are moved to the data lake by a cronjob that runs on the same instance. The SFTP server is reachable on DNS sftp.example.com through the use of Amazon Route 53. What should a solutions architect do to improve the reliability and scalability of the SFTP solution?
     - [ ] A. Move the EC2 instance into an Auto Scaling group. Place the EC2 instance behind an Application Load Balancer (ALB). Update the DNS record sftp.example.com in Route 53 to point to the ALB.
-    - [x] B. Migrate the SFTP server to AWS Transfer for SFTP. Update the DNS record sftp.example.com in Route 53 to point to the server endpoint hostname.
+    - [ ] B. Migrate the SFTP server to AWS Transfer for SFTP. Update the DNS record sftp.example.com in Route 53 to point to the server endpoint hostname.
     - [ ] C. Migrate the SFTP server to a file gateway in AWS Storage Gateway. Update the DNS record sftp.example.com in Route 53 to point to the file gateway endpoint.
     - [ ] D. Place the EC2 instance behind a Network Load Balancer (NLB). Update the DNS record sftp.example.com in Route 53 to point to the NLB.
 
@@ -1192,7 +1192,7 @@
 
 88. A scientific company needs to process text and image data during a live, time-critical phase of a deep space mission. The radar stations upload the data to the source S3 bucket. The data is prefixed by radar station identification number. The company created a destination S3 bucket in a second account. Data must be copied from the source S3 bucket to the destination S3 bucket to meet a compliance objective. This replication occurs using an S3 replication rule to cover all objects in the source S3 bucket. One specific radar station is identified as having the most accurate data. Data replication at this radar station must be monitored for completion within 30 minutes after the radar station uploads the objects to the source S3 bucket. What should a solutions architect do to meet these requirements?
     - [ ] A. Set up an AWS DataSync agent to replicate the prefixed data from the source S3 bucket to the destination S3 bucket. Select to use at available bandwidth on the task and monitor the task to ensure that it is in the `TRANSFERRING` status. Create an Amazon EventBridge (Amazon CloudWatch Events) rule to trigger an alert if this status changes.
-    - [x] B. In the second account, create another S3 bucket to receive data from the radar station with the most accurate data. Set up a new replication rule for this new S3 bucket to separate the replication from the other radar stations. Monitor the maximum replication time to the destination. Create an Amazon EventBridge (Amazon CloudWatch Events) rule to trigger an alert when the time exceeds the desired threshold.
+    - [ ] B. In the second account, create another S3 bucket to receive data from the radar station with the most accurate data. Set up a new replication rule for this new S3 bucket to separate the replication from the other radar stations. Monitor the maximum replication time to the destination. Create an Amazon EventBridge (Amazon CloudWatch Events) rule to trigger an alert when the time exceeds the desired threshold.
     - [ ] C. Enable Amazon S3 Transfer Acceleration on the source S3 bucket, and configure the radar station with the most accurate data to use the new endpoint. Monitor the S3 destination bucket's TotalRequestLatency metric. Create an Amazon EventBridge (Amazon CloudWatch Events) rule to trigger an alert if this status changes.
     - [ ] D. Create a new S3 replication rule on the source S3 bucket that filters for the keys that use the prefix of the radar station with the most accurate data. Enable S3 Replication Time Control (S3 RTC). Monitor the maximum replication time to the destination. Create an Amazon EventBridge (Amazon CloudWatch Events) rule to trigger an alert when the time exceeds the desired threshold.
 
@@ -1205,7 +1205,7 @@
 
 89. A software development company has multiple engineers who are working remotely. The company is running Active Directory Domain Services (AD DS) on anAmazon EC2 instance. The company's security policy states that all internal, nonpublic sewices that are deployed in a VPC must be accessible through a VPN. Multi-factor authentication (MFA) must be used for access to a VPN. What should a solutions architect do to meet these requirements?
     - [ ] A. Create an AWS Site-to-Site VPN connection. Configure integration between a VPN and AD DS. Use an Amazon Workspaces client with MFA support enabled to establish a VPN connection.
-    - [x] B. Create an AWS Client endpoint. Create an AD Connector directory for integration with AD DS. Enable MFA for AD Connector. Use AWS Client VPN to establish a VPN connection.
+    - [ ] B. Create an AWS Client endpoint. Create an AD Connector directory for integration with AD DS. Enable MFA for AD Connector. Use AWS Client VPN to establish a VPN connection.
     - [ ] C. Create multiple AWS Site-to-Site VPN connections by using AWS CloudHub. Configure integration between AWS VPN CloudHub and AD DS. Use AWS Copilot to establish a VPN connection.
     - [ ] D. Create an Amazon WorkLink endpoint. Configure integration between Amazon WorkLink and AD DS. Enable MFA in Amazon WorkLink. Use AWS Client VPN to establish a VPN co nection.
 
@@ -1218,7 +1218,7 @@
 
 90. A large company in Europe plans to migrate its applications to the AWS Cloud. The company uses multiple AWS accounts for various business group. A data privacy law requires the company to restrict developers' access to AWS European Regions only. What should the solutions architect do to meet this requirement with the LEAST amount of management overhead?
     - [ ] A. Create IAM users and IAM groups in each account. Create IAM policies to limit access to non-European Regions. Attach the IAM policies to the IAM groups.
-    - [x] B. Enable AWS Organizations, attach the AWS accounts, and create OUS for European Regions and non-European Regions. Create SCPs to limit access to non-European Regions and attach the policies to the OUs.
+    - [ ] B. Enable AWS Organizations, attach the AWS accounts, and create OUS for European Regions and non-European Regions. Create SCPs to limit access to non-European Regions and attach the policies to the OUs.
     - [ ] C. Set up AWS Single Sign-On and attach AWS accounts. Create permission sets with policies to restrict access to non-European Regions. Create IAM users and IAM groups in each account.
     - [ ] D. Enable AWS Organizations, attach the AWS accounts, and create OUS for European Regions and non-European Regions. Create permission sets with policies to restrict access 10 non-European Regions. Create IAM users and IAM groups in the primary account.
 
@@ -1232,7 +1232,7 @@
 91. A company is planning to host a web application on AWS and wants to load balance the traffic across a group of Amazon EC2 instances. One of the security requirements is to enable end-to-end encryption in transit between the client and the web server. Which solution will meet this requirement?
     - [ ] A. Place the EC2 instances behind an Application Load Balancer (ALB). Provision an SSL certificate using AWS Certificate Manager (ACM) and associate the SSL certificate with the ALB. Export the SSL certificate and install it on each EC2 instance. Configure the ALB to listen on port 443 and to forward traffic to port 443 on the instances.
     - [ ] B. Associate the EC2 instances with a target group. Provision an SSL certificate using AWS Certificate Manager (ACM). Create an Amazon CloudFront distribution and configure it to use the SSL certificate. Set CloudFront to use the target group as the origin server.
-    - [x] C. Place the EC2 instances behind an Application Load Balancer (ALB). Provision an SSL certificate using AWS Certificate Manager (ACM) and associate the SSL certificate with the ALB. Provision a third-party SSL certificate and install it on each EC2 instance. Configure the ALB to listen on port 443 and to forward traffic to port 443 on the instances.
+    - [ ] C. Place the EC2 instances behind an Application Load Balancer (ALB). Provision an SSL certificate using AWS Certificate Manager (ACM) and associate the SSL certificate with the ALB. Provision a third-party SSL certificate and install it on each EC2 instance. Configure the ALB to listen on port 443 and to forward traffic to port 443 on the instances.
     - [ ] D. Place the EC2 instances behind a Network Load Balancer (NLB). Provision a third-party SSL certificate and install it on the NLB and on each EC2 instance. Configure the NLB to listen on port 443 and to forward traffic to port 443 on the instances.
 
     <details>
@@ -1243,7 +1243,7 @@
     </details>
 
 92. A company has two VPCs within the same AWS account that are connected through a transit gateway. A solutions architect adds a new subnet to one of the VPCs. Resources that are hosted in the new subnet are not able to communicate with resources in the other VPC. What should the solutions architect do to allow network traffic communication?
-    - [x] A. Configure the new subnet to propagate to the appropriate transit gateway route table. Associate the new subnet with the appropriate VPC route able.
+    - [ ] A. Configure the new subnet to propagate to the appropriate transit gateway route table. Associate the new subnet with the appropriate VPC route able.
     - [ ] B. Create a new static route within the transit gateway route table. Associate the new subnet with the appropriate VPC route table.
     - [ ] C. Update the transit gateway attachment to include the new subnet. Define a new static route within the transit gateway route table.
     - [ ] D. Update the transit gateway attachment to include the new subnet. Associate the new subnet with the appropriate VPC route table.
@@ -1259,7 +1259,7 @@
     - [ ] A. Upload AWS CloudFormation templates that contain approved resources to an Amazon S3 bucket. Update the IAM policy for the engineers' IAM role to only allow access to Amazon S3 and AWS CloudFormation. Use AWS CloudFormation templates to provision resources.
     - [ ] B. Update the IAM policy for the engineers’ IAM role with permissions to only allow provisioning of approved resources and AWS CloudFormation. Use AWS CloudFormation templates to create stacks with approved resources.
     - [ ] C. Update the IAM policy for the engineers' IAM role with permissions to only allow AWS CloudFormation actions. Create a new IAM policy with permission to provision approved resources and assign the policy to a new IAM service role. Using the IAM service role to AWS CloudFormation during stack creation.
-    - [x] D. Provision resources in AWS CloudFormation stacks. Update the IAM policy for the engineers' IAM role to only allow access to their own AWS CloudFormation stack.
+    - [ ] D. Provision resources in AWS CloudFormation stacks. Update the IAM policy for the engineers' IAM role to only allow access to their own AWS CloudFormation stack.
 
     <details>
        <summary>Answer</summary>
@@ -1271,7 +1271,7 @@
 94. A company that develops consumer electronics with offices in Europe and Asia has 60 TB of software images stored on premises in Europe. The company wants to transfer the images to an Amazon S3 bucket in the ap-northeast-1 Region. New software images are created daily and must be encrypted in transit. The company needs a solution that does not require custom development to automatically transfer all existing and new software images to Amazon S3. What is the next step in the transfer process?
     - [ ] A. Deploy an AWS DataSync agent and configure a task to transfer the images to the S3 bucket.
     - [ ] B. Configure Amazon Kinesis Data Firehose to transfer the images using S3 Transfer Acceleration.
-    - [x] C. Use an AWS Snowball device to transfer the images with the S3 bucket as the target.
+    - [ ] C. Use an AWS Snowball device to transfer the images with the S3 bucket as the target.
     - [ ] D. Transfer the images over a Site-to-Site VPN connection using the S3 API with multipart upload.
 
     <details>
@@ -1284,7 +1284,7 @@
 95. A company has an organization in AWS Organizations that has many AWS accounts. One of the AWS accounts is designated as a transit account and has a transit gateway that is shared with all the other AWS accounts. AWS Site-to-Site VPN connections are configured between all the company's global offices and the transit account. The company has AWS Config enacted on all its accounts. The company's networking team needs to centrally manage a list of internal IP address ranges that belong to the global offices. Developers will reference this list to gain access to their applications securely. Which solution meets these requirements with the LEAST amount of operational overhead?
     - [ ] A. Create a JSON file that is hosted in Amazon S3 and that lists all the internal IP address ranges. Configure an Amazon Simple Notification Service (Amazon SNS) topic in each of the accounts that can be invoked when the JSON file is updated. Subscribe an AWS Lambda function to the SNS topic to update all relevant security group rules with the updated IP address.
     - [ ] B. Create a new AWS Config managed rule that contains all the internal IP address ranges. Use the rule to check the security groups in each of the accounts to ensure compliance with the list of IP address ranges. Configure the rule to automatically remediate any noncompliant security group that is detected.
-    - [x] C. In the transit account, create a VPC prefix list with all the internal IP address ranges. Use AWS Resource Access Manager to share the prefix list with all the other accounts. Use the snored prefix list to configure security group rules in the other accounts.
+    - [ ] C. In the transit account, create a VPC prefix list with all the internal IP address ranges. Use AWS Resource Access Manager to share the prefix list with all the other accounts. Use the snored prefix list to configure security group rules in the other accounts.
     - [ ] D. In the transit account, create a security group with all the internal IP address ranges. Configure the security groups in the other accounts to reference the transit account's security group by using a nested security group reference of `/sg- la2b3c4d`.
 
     <details>
@@ -1295,7 +1295,7 @@
     </details>
 
 96. A company wants to migrate its data analytics environment from on premises to AWS. The environment consists of two Node.js applications. One of the applications collects sensor data and loads it into a MySQL database. The other application aggregates the data into reports. When the aggregation jobs run. Some of the load jobs fail to run correctly. The company must resolve the data loading issue. The company also needs the migration to occur without interruptions or changes for the company's customers. What should a solutions architect do to meet those requirements?
-    - [x] A. Set up an Amazon Aurora MySQL database as a replication target for the on-premises database. Create an Aurora Replica for the Aurora MySQL database and move the aggregation jobs to run against the Aurora Replica. Set up collection endpoints as AWS Lambda functions behind a Network Load Balancer (NLB) and use Amazon RDS Proxy to write to the Aurora MySQL database. When the databases are synced, disable the replication job, and restart the Aurora Replica as the primary instance. Point the collector DNS record to the NLB.
+    - [ ] A. Set up an Amazon Aurora MySQL database as a replication target for the on-premises database. Create an Aurora Replica for the Aurora MySQL database and move the aggregation jobs to run against the Aurora Replica. Set up collection endpoints as AWS Lambda functions behind a Network Load Balancer (NLB) and use Amazon RDS Proxy to write to the Aurora MySQL database. When the databases are synced, disable the replication job, and restart the Aurora Replica as the primary instance. Point the collector DNS record to the NLB.
     - [ ] B. Set up an Amazon Aurora MySQL database. Use AWS Database Migration Service (AWS DMS) to perform continuous data replication from the on-premises database to Aurora. Move the aggregation jobs to run against the Aurora MySQL database. Set up collection endpoint behind an Application Load Balancer (ALB) as Amazon EC2 instances in an Auto Scaling group. When the databases arc synced, point the collector DNS record to the ALB. Disable the AWS DMS sync task after the cutover from on premises to AWS.
     - [ ] C. Set up an Amazon Aurora MySQL database. Use AWS Database Migration Service (AWS DMS) to perform continuous data replication from the on-premises database to Aurora. Create an Aurora Replica for the Aurora MySQL database and move the aggregation jobs to run against the Aurora Replica. Set up collection endpoints as AWS Lambda functions behind an Application Load Balancer (ALB) and use Amazon RDS Proxy to write to the Aurora MySQL database. When the databases are synced, point the collector DNS record to the ALB. Disable the AWS DMS sync task alter the cutover from on premises to AWS.
     - [ ] D. Sot up an Amazon Aurora MySQL database. Create an Aurora Replica for the Aurora MySQL database, and move the aggregation jobs to run against the Aurora Replica. Set up collection endpoints as an Amazon Kinesis data stream.
@@ -1311,7 +1311,7 @@
     - [ ] A. Create a new Amazon FSx for Windows File Server fie system. Configure AWS DataSync with are location for the on-premises file share and are location for the new Amazon FSx file system. Create a new DataSync task to copy the data from the on-premises file share location to the Amazon FSx file system.
     - [ ] B. Create an S3 bucket for the application. Copy the data from the on-promises storage to the S3 bucket.
     - [ ] C. Deploy an AWS Server Migration Service (AWS SMS) VM to the on-premises environment. Use AWS SMS to migrate the fie storage sender from on premises to an Amazon EC2 instance.
-    - [x] D. Create an S3 bucket for the application. Deploy a new AWS Storage Gateway file gateway on an on-premises VM. Create a nw file share that stores data in the S3 bucket and is associated with the file gateway. Copy the data from the on-premises storage to the new file gateway endpoint.
+    - [ ] D. Create an S3 bucket for the application. Deploy a new AWS Storage Gateway file gateway on an on-premises VM. Create a nw file share that stores data in the S3 bucket and is associated with the file gateway. Copy the data from the on-premises storage to the new file gateway endpoint.
 
     <details>
        <summary>Answer</summary>
@@ -1324,7 +1324,7 @@
     - [ ] A. Use an AWS managed CMK to ensure that EBS disks for the EC2 instances are encrypted. Edit the key policy to ensure that only the roles provided to the EC2 instances in the application tier are allowed to use the key.
     - [ ] B. Use a customer managed CMK to ensure that EBS disks for the EC2 instances are encrypted. Edit the key policy to ensure that only the roles provided to the EC2 instances in the application tier are allowed to use the key.
     - [ ] C. Use AWS Certificate Manager (ACM) to implement mutual authentication between the application and the database.
-    - [x] D. Use AWS Secrets Manager to ensure that a password is not stored in the application configuration.
+    - [ ] D. Use AWS Secrets Manager to ensure that a password is not stored in the application configuration.
 
     <details>
        <summary>Answer</summary>
@@ -1334,7 +1334,7 @@
     </details>
 
 99. A company is building a hybrid solution between its existing on-premises systems and a new backend in AWS. The company has a management application to monitor the state of its current IT infrastructure and automate responses to issues. The company wants to incorporate the status of its consumed AWS services into the application. The application uses an HTTPS endpoint to receive updates. Which approach meets these requirements with the LEAST amount of operational overhead?
-    - [x] A. Configure AWS Systems Manager OpsCenter to ingest operational events from the on-premises systems. Retire the on-premises management application and adopt OpsCenter as the hub.
+    - [ ] A. Configure AWS Systems Manager OpsCenter to ingest operational events from the on-premises systems. Retire the on-premises management application and adopt OpsCenter as the hub.
     - [ ] B. Configure Amazon EventBridge (Amazon CloudWatch Events) to detect and react to changes for AWS Health events from the AWS Personal Health Dashboard. Configure the EventBndge (CloudWatch Events) event to publish a message to an Amazon Simple Notification Service (Amazon SNS) topic and subscribe the topic to the HTTPS endpoint of the management application.
     - [ ] C. Modify the on-premises management application to call the AWS Health API to poll for status events of AWS services.
     - [ ] D. Configure Amazon EventBndge (Amazon CloudWatch Events) to detect and react to changes for AWS Health events from the AWS Service Health Dashboard. Configure the EventBridge (CloudWatch Events) event to publish a message to an Amazon Simple Notification Service (Amazon SNS) topic and subscribe the topic to an HTTPS endpoint for the management application with a topic filter corresponding to the services being used.
@@ -1347,7 +1347,7 @@
     </details>
 
 100. The company requires the lowest possible networking latency to achieve maximum performance. Which solution will meet these requirements?
-     - [x] A. Launch memory optimized EC2 instances in a partition placement group
+     - [ ] A. Launch memory optimized EC2 instances in a partition placement group
      - [ ] B. Launch compute optimized EC2 instances in a partition placement group
      - [ ] C. Launch memory optimized EC2 instances in a cluster placement group
      - [ ] D. Launch compute optimized EC2 instances in a spread placement group
@@ -1362,8 +1362,8 @@
 101. A company is running a serverless application that consists of several AWS Lambda functions and Amazon DynamoDB tables. The company has created new functionality that requires the Lambda functions to access an Amazon Neptune DB cluster. The Neptune DB cluster is in three subnets in a VPC. Which of the possible solutions will allow the Lambda functions to access the Neptune DB cluster and DynamoDB tables? (Select TWO.)
      - [ ] A. Create three public subnets in the Neptune VPC, and route traffic through an internet gateway. Host the Lambda functions in the three new public subnets.
      - [ ] B. Create three private subnets in the Neptune VPC, and route internet traffic through a NAT gateway. Host the Lambda functions in the three new private subnets.
-     - [x] C. Host the Lambda functions outside the VPC. Create a VPC endpoint for the Neptune database and have the Lambda functions access Neptune over the VPC endpoint.
-     - [x] D. Create three private subnets in the Neptune VPC. Host the Lambda functions in the three new isolated subnets. Create a VPC endpoint for DynamoDB. and route DynamoDB traffic to the VPC endpoint.
+     - [ ] C. Host the Lambda functions outside the VPC. Create a VPC endpoint for the Neptune database and have the Lambda functions access Neptune over the VPC endpoint.
+     - [ ] D. Create three private subnets in the Neptune VPC. Host the Lambda functions in the three new isolated subnets. Create a VPC endpoint for DynamoDB. and route DynamoDB traffic to the VPC endpoint.
 
      <details>
        <summary>Answer</summary>
@@ -1374,7 +1374,7 @@
 
 102. A company that designs multiplayer online games wants to expand its user base outside of Europe. The company transfers a significant amount of UDP traffic to keep all the live and interactive sessions of the games. The company has plans for rapid expansion and wants to build its architecture to provide an optimized online experience to its users. Which architecture will meet these requirements with the LOWEST latency for users?
      - [ ] A. Set up a multi-AZ environment in a single AWS Region. Use Amazon CloudFront to cache user sessions.
-     - [x] B. Set up environments in multiple AWS Regions. Create an accelerator in AWS Global Accelerator and add endpoints from different Regions to it.
+     - [ ] B. Set up environments in multiple AWS Regions. Create an accelerator in AWS Global Accelerator and add endpoints from different Regions to it.
      - [ ] C. Set up environments in multiple AWS Regions. Use Amazon Route 53 and select latency-based routing.
      - [ ] D. Set up a multi-AZ environment in a single AWS Region. Use AWS Lambda@Edge to update sessions closer to the users.
 
@@ -1389,7 +1389,7 @@
      - [ ] A. Create separate OUs in AWS Organizations for each development unit. Assign the created OUs to the company AWS accounts. Create separate SCPs with a deny action and a StringNotEquals condition for the DevelopmentUnit resource tag that matches the development unit name. Assign the SCP to the corresponding OU.
      - [ ] B. Pass an attribute for DevelopmentUnit as an AWS Security Token Service (AWS STS) session tag during SAML federation. Update the AM policy for the developers‘ assumed IAM role with a deny action and a StringNotEquals condition for the DevelopmentUnit resource tag and aws:PrincipalTag/DevelopmentUnit.
      - [ ] C. Pass an attribute for DevelopmentUnit as an AWS Security Token Service (AWS STS) session tag curing SAML federation. Create an SCP with an allow action and a StringEquals condition for the DevelopmentUnit resource tag and aws:PrincipalTag/DevelopmentUnit. Assign the SCP to the root OU.
-     - [x] D. Create separate IAM policies for each development unit. For every IAM policy, add an allow action and a StringEquals condition for the DevelopmentUnit resource tag and the development unit name. During SAML federation, use AWS Security Token Service (AWS STS) to assign the IAM policy and match the development unit name to the assumed IAM role.
+     - [ ] D. Create separate IAM policies for each development unit. For every IAM policy, add an allow action and a StringEquals condition for the DevelopmentUnit resource tag and the development unit name. During SAML federation, use AWS Security Token Service (AWS STS) to assign the IAM policy and match the development unit name to the assumed IAM role.
 
      <details>
        <summary>Answer</summary>
@@ -1401,7 +1401,7 @@
 104. A marketing company is migrating an application that stores data on premises in a PostgreSQL database. The company wants to migrate the database to Amazon Aurora PostgreSQL. The database size grows at an average rate of 5 GB daily and is currently 50 TB. The data center has an internet connection with 50 Mbps of available bandwidth. The migration to AWS must be completed as soon as possible within the next 45 days. Which data transfer strategy meets those requirements with the LEAST amount of application downtime?
      - [ ] A. Take the application offline. Create a local backup of the database. Transmit the database backup file over the existing connection to an Amazon S3 bucket. Use native database tools to restore the backup onto the new database and to set up replication to capture any changes since the backup. Modify the database connection string and bring the application online.
      - [ ] B. Install the Server Migration Connector VM in the local data center. Use the AWS Server Migration Service (AWS SMS) console to replicate the on-premises database to the new database. Modify DNS records to point to the new database.
-     - [x] C. Create a local backup of the database and copy the backup onto an AWS Snowball Edge Storage Optimized device. Ship the device to AWS. Use native database tools to restore the backup onto the new database from Amazon S3 and to set up replication with the source database to capture any changes since the backup. Modify DNS records to point to the new database.
+     - [ ] C. Create a local backup of the database and copy the backup onto an AWS Snowball Edge Storage Optimized device. Ship the device to AWS. Use native database tools to restore the backup onto the new database from Amazon S3 and to set up replication with the source database to capture any changes since the backup. Modify DNS records to point to the new database.
      - [ ] D. Take the application offline. Back up the database to a shared local file system. Install an AWS DataSync agent on a VM in the data center. Configure the file system as the source location and configure an Amazon S3 bucket as the destination. Use native database tools to restore the backup onto the new database. Modify the database connection string and bring the application online.
 
      <details>
@@ -1412,7 +1412,7 @@
      </details>
 
 105. A company with global offices has a single 1 Gbps AWS Direct Connect connection to a single AWS Region. The company's on-premises network uses the connection to communicate with the company's resources in the AWS Cloud. The connection has a single private virtual interface that connects to a single VPC. A solutions architect must implement a solution that adds a redundant Direct Connect connection in the same Region. The solution also must provide connectivity to other Regions through the same pair of Direct Connect connections as the company expands into other Regions. Which solution meets these requirements?
-     - [x] A. Provision a Direct Connect gateway. Delete the existing private virtual interface from the existing connection. Create the second Direct Connect connection. Create a new private virtual interlace on each connection and connect both private victual interfaces to the Direct Connect gateway. Connect the Direct Connect gateway to the single VPC.
+     - [ ] A. Provision a Direct Connect gateway. Delete the existing private virtual interface from the existing connection. Create the second Direct Connect connection. Create a new private virtual interlace on each connection and connect both private victual interfaces to the Direct Connect gateway. Connect the Direct Connect gateway to the single VPC.
      - [ ] B. Keep the existing private virtual interface. Create the second Direct Connect connection. Create a new private virtual interface on the new connection, and connect the new private virtual interface to the single VPC.
      - [ ] C. Keep the existing private virtual interface. Create the second Direct Connect connection. Create a new public virtual interface on the new connection, and connect the new public virtual interface to the single VPC.
      - [ ] D. Provision a transit gateway. Delete the existing private virtual interface from the existing connection. Create the second Direct Connect connection. Create a new private virtual interface on each connection and connect both private virtual interfaces to the transit gateway. Associate the transit gateway with the single VPC.
@@ -1425,7 +1425,7 @@
      </details>
 
 106. A company runs an application on AWS. An AWS Lambda function uses credentials to authenticate to an Amazon RDS tor MySQL DB instance. A security risk assessment identified that these credentials are not frequently rotated. Also, encryption at rest is not enabled for the DB instance. The security team requires that both issues be resolved. Which strategy should a solutions architect recommend to remediate these security risks?
-     - [x] A. Configure the Lambda function to store and retrieve the database credentials in AWS Secrets Manager and enable rotation of the credentials. Take a snapshot to the DB instance and encrypt a copy of that snapshot. Replace the DB instance with a new DB instance that is based on the encrypted snapshot.
+     - [ ] A. Configure the Lambda function to store and retrieve the database credentials in AWS Secrets Manager and enable rotation of the credentials. Take a snapshot to the DB instance and encrypt a copy of that snapshot. Replace the DB instance with a new DB instance that is based on the encrypted snapshot.
      - [ ] B. Enable IAM DB authentication on the DB instance. Grant the Lambda execution role access to the DB instance. Modify the DB instance and enable encryption.
      - [ ] C. Enable IAM DB authentication on the DB instance. Grant the Lambda execution role access to the DB instance. Create an encrypted read replica of the DB instance. Promote the encrypted read replica to be the new primary node.
      - [ ] D. Configure the Lambda function to store and retrieve the database credentials as encrypted AWS Systems Manager Parameter Store parameters. Create another Lambda function to automatically rotate the credentials. Create an encrypted read replica of the DB instance. Promote the encrypted read replica to be the new primary node.
@@ -1438,7 +1438,7 @@
      </details>
 
 107. The company has deployed an Amazon CloudFront distribution that has the ALB as the only origin. Which solution should a solutions architect recommend enhancing the origin security?
-     - [x] A. Store a random string in AWS Secrets Manager. Create an AWS Lambda function for automatic secret rotation. Configure CloudFront to inject the random string as a custom HTTP header for the origin request. Create an AWS WAF web ACL rule with a string match rule for the custom header. Associate the web ACL with the ALB.
+     - [ ] A. Store a random string in AWS Secrets Manager. Create an AWS Lambda function for automatic secret rotation. Configure CloudFront to inject the random string as a custom HTTP header for the origin request. Create an AWS WAF web ACL rule with a string match rule for the custom header. Associate the web ACL with the ALB.
      - [ ] B. Create an AWS WAF web ACL rule with an IP match condition of the CloudFront service IP address ranges. Associate the Web ACL with the ALB. Move into the tree private subnets.
      - [ ] C. Store a random string in AWS Systems Manager Parameter Store. Configure Parameter Store automatic rotation for the string. Configure CloudFront to inject the random siring as a custom HTTP header for the origin request. Inspect the value of the custom HTTP header, and block access in the ALB.
      - [ ] D. Configure AWS Shield Advanced. Create a security group policy to allow connections from CloudFront service IP address ranges. Add the policy to AWS Shield Advanced, and attach the policy to the ALB.
@@ -1453,7 +1453,7 @@
 108. A financial company is building a system to generate monthly, immutable bank account statements (or its users). Statements are stored in Amazon S3. Users should have immediate access to their monthly statements for up to 2 years. Some users access their statements frequently, whereas others rarely access their statements. The company's security and compliance policy require that the statements be retained for at least 7 years. What is the MOST cost-effective solution to meet the company's needs?
      - [ ] A. Create an S3 bucket with Object Lock disabled. Store statements in S3 Standard. Define an S3 Lifecycle policy to transition the data to S3 Standard-Infrequent Access (S3 Standard-IA) after 30 days. Define another S3 Lifecycle policy to move the data to S3 Glacier Deep Archive after 2 years. Attach an S3 Glacier Vault Lock policy with deny delete permissions for archives less than 7 years old.
      - [ ] B. Create an S3 bucket with versioning enabled. Store statements in S3 Intelligent-Tiering. Use same-Region replication to replicate objects to a backup S3 bucket. Define an S3 Lifecycle policy for the backup S3 bucket to move the data to S3 Glacier. Attach an S3 Glacier Vault Lock policy with deny delete permissions for archives less than 7 years old.
-     - [x] C. Create an S3 bucket with Object Lock enabled. Store statements in S3 Intelligent-Tiering. Enable compliance mode with a default retention period of 2 years. Define an S3 Lifecycle policy to move the data to S3 Glacier after 2 years. Attach an S3 Glacier Vault Lock policy with deny delete permissions for archives less than 7 years old.
+     - [ ] C. Create an S3 bucket with Object Lock enabled. Store statements in S3 Intelligent-Tiering. Enable compliance mode with a default retention period of 2 years. Define an S3 Lifecycle policy to move the data to S3 Glacier after 2 years. Attach an S3 Glacier Vault Lock policy with deny delete permissions for archives less than 7 years old.
      - [ ] D. Create an S3 bucket with versioning disabled. Store statements in S3 One Zone-Infrequent Access (S3 One Zone-IA). Define an S3 Lifecycle policy to move the data to S3 Glacier Deep Archive after 2 years. Attach an S3 Glader Vault Lock policy with deny delete permissions for archives less than 7 years old.
 
      <details>
@@ -1467,7 +1467,7 @@
      - [ ] A. Enable EC2 detailed monitoring, and include network logs. Send all logs through Amazon Kinesis Data Firehose to an Amazon Elasticsearch Service (Amazon ES) cluster that the security team uses for analysis.
      - [ ] B. Enable VPC Flow Logs for all EC2 instance network interfaces. Publish WTC Flow Logs to an Amazon S3 bucket. Have the security team use Amazon Athena to query and analyze the logs.
      - [ ] C. Enable access logs for the Application Load Balancer, and publish the logs to an Amazon S3 bucket. Have the security team use Amazon Athena to query and analyze the logs
-     - [x] D. Enable Traffic Mirroring and specify all EC2 instance network interfaces as the source. Send all traffic information through Amazon Kinesis Data Firehose to an Amazon Elasticsearch Service (Amazon ES) cluster that the security team uses for analysis.
+     - [ ] D. Enable Traffic Mirroring and specify all EC2 instance network interfaces as the source. Send all traffic information through Amazon Kinesis Data Firehose to an Amazon Elasticsearch Service (Amazon ES) cluster that the security team uses for analysis.
 
      <details>
        <summary>Answer</summary>
@@ -1480,7 +1480,7 @@
      - [ ] A. Establish VPC peering between the necessary VPCs.Ensure that all route tables are updated as required.
      - [ ] B. Attach an additional transit gateway to the VPCs.Update the route tables accordingly.
      - [ ] C. Create AWS Site-to-Site VPN connections that use equal-cost multi-path (ECMP) routing between the necessary VPCs.
-     - [x] D. Create an additional attachment from the necessary VPCs to the existing transit gateway.
+     - [ ] D. Create an additional attachment from the necessary VPCs to the existing transit gateway.
 
      <details>
        <summary>Answer</summary>
@@ -1492,7 +1492,7 @@
 111. A company has a policy that all Amazon EC2 instances that are running a database must exist within the same subnets in a shared VPC. Administrators must follow security compliance requirements and are not allowed to directly log in to the shared account. All company accounts are members of the same organization in AWS Organizations. The number of accounts will rapidly increase as the company grows. A solutions architect uses AWS Resource Access Manager to create a resource share in the shared account. What is the MOST operationally efficient configuration to meet these requirements?
      - [ ] A. Add the VPC to the resource share. Add the account IDs as principals.
      - [ ] B. Add all subnets within the VPC to the resource share. Add the account IDs as principals.
-     - [x] C. Add all subnets within the VPC to the resource share. Add the organization as a principal.
+     - [ ] C. Add all subnets within the VPC to the resource share. Add the organization as a principal.
      - [ ] D. Add the VPC to the resource share. Add the organization as a principal.
 
      <details>
@@ -1504,8 +1504,8 @@
 
 112. A solutions architect is building a web application that uses an Amazon RDS for PostgreSQL DB instance. The DB instance is expected to receive many more reads than writes. The solutions architect needs to ensure that the large amount of read traffic can be accommodated and that the DB instance is highly available. Which steps should the solutions architect take to meet these requirements? (Select THREE)
      - [ ] A. Create multiple read replicas and put them into an Auto Scaling group.
-     - [x] B. Create multiple read replicas in different Availability Zones.
-     - [x] C. Create an Amazon Route 53 hosted zone and a record set for each read replica with a TTL and a weighted routing policy.
+     - [ ] B. Create multiple read replicas in different Availability Zones.
+     - [ ] C. Create an Amazon Route 53 hosted zone and a record set for each read replica with a TTL and a weighted routing policy.
      - [ ] D. Create an Application Load Balancer (ALB) and put the read replicas behind the ALB.
      - [ ] E. Configure an Amazon CloudWatch alarm to detect a failed read replica. Set the alarm to directly invoke an AWS Lambda function to delete its Route 53 record set.
      - [x] F. Configure an Amazon Route 53 health check for each read replica using its endpoint.
@@ -1519,7 +1519,7 @@
 
 113. A company wants to deploy an AWS WAF solution to manage AWS WAF rules across multiple AWS accounts. The accounts are managed under different OUs in AWS Organizations. Administrators must be able to add or remove accounts or OUs from managed AWS WAF rule sets as needed. Administrators also must have the ability to automatically update and remediate noncompliant AWS WAF rules in all accounts. Which solution meets these requirements with the EAST amount of operational overhead?
      - [ ] A. Use AWS Firewall Manager to manage AWS WAF rules across accounts in the organization. Use an AWS Systems Manager Parameter Store parameter to store account numbers and OUs to manage. Update the parameter as needed to add or remove accounts or OUs. Use an Amazon EventBridge (Amazon CloudWatch Events) rule to identify any changes to the parameter and to invoke an AWS Lambda function to update the security policy in the Firewall Manager administrative account.
-     - [x] B. Deploy an organization-wide AWS Config rule that requires all resources in the selected OUS to associate the AWS WAF rules. Deploy automated remediation actions by using AWS Lambda to fix noncompliant resources. Deploy AWS WAF rules by using an AWS CloudFormation stack set to target the same OU where the AWS Config rule is applied.
+     - [ ] B. Deploy an organization-wide AWS Config rule that requires all resources in the selected OUS to associate the AWS WAF rules. Deploy automated remediation actions by using AWS Lambda to fix noncompliant resources. Deploy AWS WAF rules by using an AWS CloudFormation stack set to target the same OU where the AWS Config rule is applied.
      - [ ] C. Create AWS WAF rules in the management account of the organization. Use AWS Lambda environment variables to store account numbers and OUS to manage. Update environment variables as needed to add or remove accounts or OUS. Create cross-account IAM roles in member accounts. Assume the roles by using AWS Security Token Service (AWS STS) in the Lambda function to create and update AWS WAF rules in the member accounts.
      - [ ] D. Use AWS Control Tower to manage AWS WAF rules across accounts in the organization. Use AWS Key Management Service (AWS KMS) to store account members and OU to manage. Update AWS KMS as needed to add or move accounts or OU. Create AM users in member accounts. Allow AWS Control Tower in the management account to use the access key and secret access key to create and update AWS WAF rules in the member accounts.
 
@@ -1532,7 +1532,7 @@
 
 114. A company runs an application that gives users the ability to search for videos and related information by using keywords that are curated from content providers. The application data is stored in an on-premises Oracle database that is 800 GB in size. The company wants to migrate the data to an Amazon Aurora MySQL DB instance. A solutions architect plans to use the AWS Schema Conversion Tool and AWS Database Migration Sewice (AWS DMS) for the migrationnuring the migration, the existing database must serve ongoing requests. The migration must be completed with minimum downtime. Which solution will meet these requirements?
      - [ ] A. Create primary key indexes, secondary indexes, and referential integrity constraints in the target database before starting the migration process.
-     - [x] B. Use AWS DMS to run the conversion report for Oracle to Aurora MySQL. Remediate any issues Then use AWS DMS to migrate the data.
+     - [ ] B. Use AWS DMS to run the conversion report for Oracle to Aurora MySQL. Remediate any issues Then use AWS DMS to migrate the data.
      - [ ] C. Use the MS or CS DMS replication instance type for ongoing replication.
      - [ ] D. Turn off automatic backups and logging of the target database until the migration and cutover processes are complete.
 
@@ -1545,7 +1545,7 @@
 
 115. A solution architect needs to deploy an application on a fleet of Amazon EC2 instances. The EC2 instances run in private subnets in an Auto Scaling group. The application is expected to generate logs at a rate of 100 MB each second on each of the EC2 instances. The logs must be stored in an Amazon S3 bucket so that an Amazon EMR cluster can consume them for further processing. The logs must be quickly accessible for the first 90 days and should be retrievable within 48 hours thereafter. What is the MOST cost-effective solution that meets these requirements?
      - [ ] A. Set up an S3 copy job to write logs from each EC2 instance to the S3 bucket with S3 Standard storage. Use a NAT instance within the private subnets to connect to Amazon S3.Create S3 Lifecycle policies to move logs that are older than 90 days to S3 Glacier.
-     - [x] B. Set up an S3 sync job to copy logs from each EC2 instance to the S3 bucket with S3 Standard storage. Use a gateway VPC endpoint for Amazon S3 to connect to Amazon S3.Create S3 Lifecycle policies to move logs that are older than 90 days to S3 Glacier Deep Archive.
+     - [ ] B. Set up an S3 sync job to copy logs from each EC2 instance to the S3 bucket with S3 Standard storage. Use a gateway VPC endpoint for Amazon S3 to connect to Amazon S3.Create S3 Lifecycle policies to move logs that are older than 90 days to S3 Glacier Deep Archive.
      - [ ] C. Set up an S3 batch operation to copy logs from each EC2 instance to the S3 bucket with S3 Standard storage. Use a NAT gateway with the private subnets to connect to Amazon S3.Create S3 Lifecycle policies to move logs that are older than 90 days to S3 Glacier Deep Archive.
      - [ ] D. Set up an S3 sync job to copy logs from each EC2 instance to the S3 bucket with S3 Standard Storage. Use a gateway VPC endpoint for Amazon S3 to connect to Amazon S3.Create S3 Lifecycle policies to move logs that are older than 90 days to S3 Glacier.
 
@@ -1560,7 +1560,7 @@
      - [ ] A. Create an AWS Database Migration Service (AWS DMS) replication instance. Authorize the public IP address of the replication instance to reach the data warehouse through the corporate firewall Create a migration task to run at the beginning of the data freeze period.
      - [ ] B. Install the AWS SCT extraction agents on the on-premises servers. Define the extract, upload, and copy tasks to send the data to an Amazon S3 bucket. Copy the data into the Amazon Redshift cluster. Run the tasks at the beginning of the data freeze period.
      - [ ] C. install the AWS SCT extraction agents on the on-premises servers. Create a Site-to-Site VPN connection. Create an AWS Database Migration Service (AWS DMS) replication instance that is the appropriate size. Authorize the IP address of the replication instance to be able to access the on-premises data warehouse through the VPN connection
-     - [x] D. Create a job in AWS Snowball Edge to import data into Amazon S3 Install AWS SCT extraction agents on the on-premises servers. Define the local and AWS Database Migration Service (AWS DMS) tasks to send the data to the Snowball Edge device. When the Snowball Edge device is returned to AWS and the data is available in Amazon S3, run the AWS DMS subtask to copy the data to Amazon Redshift.
+     - [ ] D. Create a job in AWS Snowball Edge to import data into Amazon S3 Install AWS SCT extraction agents on the on-premises servers. Define the local and AWS Database Migration Service (AWS DMS) tasks to send the data to the Snowball Edge device. When the Snowball Edge device is returned to AWS and the data is available in Amazon S3, run the AWS DMS subtask to copy the data to Amazon Redshift.
 
      <details>
        <summary>Answer</summary>
@@ -1572,7 +1572,7 @@
 117. A media company uses Amazon DynamoDB to store metadata for its catalog of movies that are available to stream. Each media item contains user-facing content that concludes a description of the media, a list of search tags, and similar data. ln addition, media items include a list of Amazon S3 key names that relate to movie files. The company stores these movie files in a single S3 bucket that has versioning enable. The company uses Amazon CloudFront to serve these movie files. The company has 100, 000 media items, and each media item can have many different S3 objects that represent different encodings of the same media S3 objects that belong to the same media item are grouped together under the same key prefix, which is a random unique ID Because of an expiring contract with a media provider, the company must remove 2.000 media Items. The company must completely delete all DynamoDB keys and movie files on Amazon S3 that are related to these media items within 36 hours. The company must ensure that the content cannot be recovered. Which combination of actions will meet these requirements? (Select TWO.)
      - [ ] A. Configure the DynamoDB table with a TTL field. Create and invoke an AWS Lambda function to perform a conditional update. Set the TTL field to the time of the contract's expiration on every affected media item.
      - [ ] B. Configure an S3 Lifecycle object expiration rule that is based on the contract's expiration date.
-     - [x] C. Write a script to perform a conditional delete on all the affected DynamoDB records.
+     - [ ] C. Write a script to perform a conditional delete on all the affected DynamoDB records.
      - [ ] D. Temporarily suspend versioning on the S3 bucket. Create and invoke an AWS Lambda function that deletes affected objects. Reactivate versioning when the operation is complete.
      - [x] E. Write a script to delete objects from Amazon S3. Specify in each request a NoncurrentVersionExpiration property with a NoncurrentDays attribute set to 0.
 
@@ -1585,7 +1585,7 @@
 
 118. A solution architect is designing an AWS account structure for a company that consists of multiple terms. All the team will work in the same AWS Region. The company needs a VPC that is connected to the on-premises network. The company expects less than 50Mbps of total to and from the on-premises network. Which combination of steps will meet these requirements MOST cost-effectively? (Select TWO)
      - [ ] A. Create an AWS CloudFormation template that provisions a VPC and the required subnets. Deploy the template to each AWS account.
-     - [x] B. Create an AWS CloudFormation template that provisions a VPC and the required subnets. Deploy the template to a shared services account. Share the subnets by using AWS Resource Access Manager.
+     - [ ] B. Create an AWS CloudFormation template that provisions a VPC and the required subnets. Deploy the template to a shared services account. Share the subnets by using AWS Resource Access Manager.
      - [ ] C. Use AWS Transit Gateway along with an AWS Site-to-Site VPN for connectivity to the on-premises network. Share the transit gateway by using AWS Resource Access Manager.
      - [x] D. Use AWS Site-to-Site VPN for connectivity to the on-premises network.
      - [ ] E. Use AWS Direct Connect for connectivity to the on-premises network.
